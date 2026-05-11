@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O NOME DA LOJA APARECE AQUI NA ABA DO NAVEGADOR -->
+    <title>Sollene Global Store | Luxury Lifestyle</title>
+    <style>
+        @import url('https://googleapis.com');
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #000; color: #fff; }
+
+        /* HEADER */
+        header { padding: 40px 20px; text-align: center; border-bottom: 2px solid #b39359; }
+        .brand-name { font-size: 28px; font-weight: 800; color: #b39359; letter-spacing: 6px; text-transform: uppercase; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 350px; gap: 40px; }
+
+        /* VITRINE */
+        h2 { font-size: 14px; color: #b39359; text-transform: uppercase; letter-spacing: 3px; margin: 40px 0 20px 0; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        
+        .card { background: #111; padding: 25px; border-radius: 20px; border: 1px solid rgba(179,147,89,0.1); text-align: center; }
+        .card h3 { font-size: 16px; margin-bottom: 10px; }
+        .card .price { color: #b39359; font-weight: 800; display: block; margin-bottom: 15px; }
+        .btn-add { background: #b39359; color: #000; border: none; padding: 10px 20px; border-radius: 50px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 10px; }
+
+        /* CART */
+        .cart { background: #111; border: 1px solid #b39359; border-radius: 24px; padding: 30px; height: fit-content; position: sticky; top: 20px; }
+        .btn-checkout { width: 100%; background: #25d366; color: #fff; border: none; padding: 15px; border-radius: 12px; font-weight: 800; margin-top: 20px; cursor: pointer; }
+
+        @media(max-width: 900px) { .container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-name">Sollene Global Store</div>
+        <p style="font-size: 10px; letter-spacing: 4px; margin-top: 10px; color: #666;">CLOTHING • PERFUMES • JEWELRY</p>
+    </header>
+
+    <div class="container">
+        <main>
+            <h2>Clothing & Accessories</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Executive Shirt</h3>
+                    <span class="price">€ 85.00</span>
+                    <button class="btn-add" onclick="add('Shirt', 85)">Add to Cart</button>
+                </div>
+                <div class="card">
+                    <h3>Leather Belt</h3>
+                    <span class="price">€ 110.00</span>
+                    <button class="btn-add" onclick="add('Belt', 110)">Add to Cart</button>
+                </div>
+            </div>
+
+            <h2>Prestige Perfumes</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Sollene Intense</h3>
+                    <span class="price">€ 145.00</span>
+                    <button class="btn-add" onclick="add('Perfume', 145)">Add to Cart</button>
+                </div>
+            </div>
+
+            <h2>Fine Jewelry</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Gold Cufflinks</h3>
+                    <span class="price">€ 280.00</span>
+                    <button class="btn-add" onclick="add('Cufflinks', 280)">Add to Cart</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="cart">
+            <h3 style="color:#b39359; margin-bottom: 20px;">YOUR SELECTION</h3>
+            <div id="items">Your cart is empty</div>
+            <div style="margin-top: 20px; font-weight: 800; font-size: 20px;">
+                Total: € <span id="total">0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">Checkout on WhatsApp</button>
+        </aside>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function add(n, p) {
+            cart.push({n, p});
+            total += p;
+            document.getElementById('items').innerHTML = cart.map(i => `<p>${i.n} - €${i.p}</p>`).join('');
+            document.getElementById('total').innerText = total.toFixed(2);
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Empty cart!");
+            let msg = "Hello! Order from Sollene Store:%0A" + cart.map(i => `- ${i.n}`).join('%0A') + "%0ATotal: €" + total.toFixed(2);
+            window.open(`https://wa.me{msg}`);
+        }
+    </script>
+</body>
+</html>
 
