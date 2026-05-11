@@ -1,734 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-    <title>Sollene Global Store | Executive Collection</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sollene Global Store | Luxury Lifestyle</title>
     <style>
+        @import url('https://googleapis.com');
+        
+        *{ margin:0; padding:0; box-sizing:border-box; }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #f4f1ea; /* FUNDO CREME DOURADO QUE COMBINA COM A FOTO */
+            color: #1a1a1a; 
         }
 
-        body{
-            font-family: Arial, sans-serif;
-            background:#f5efe6;
-            color:#1a1a1a;
-            overflow-x:hidden;
+        /* BARRA SUPERIOR COM O TEXTO QUE VOCÊ PEDIU */
+        .top-info-bar {
+            background: #000000;
+            color: #b39359;
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 2px solid #b39359;
         }
 
-        /* HEADER */
-
-        header{
-            width:100%;
-            padding:20px 30px;
-            background:#efe4d3;
-            border-bottom:1px solid rgba(0,0,0,0.08);
-
-            position:sticky;
-            top:0;
-            z-index:1000;
-
-            backdrop-filter:blur(10px);
+        .top-info-bar h1 {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        .header-container{
-            max-width:1400px;
-            margin:auto;
-
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            gap:20px;
-
-            flex-wrap:wrap;
+        .top-info-bar p {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.8;
         }
 
-        /* LOGO */
-
-        .logo-area{
-            display:flex;
-            align-items:center;
-            gap:15px;
+        /* BANNER LIMPO LOGO ABAIXO DO TOPO */
+        .hero-banner {
+            width: 100%;
+            height: 350px;
+            background: url('banner-sollene.jpg') no-repeat center center; /* Nome da sua foto nova */
+            background-size: cover;
+            border-bottom: 1px solid rgba(179, 147, 89, 0.2);
         }
 
-        .logo-area img{
-            width:80px;
-            height:80px;
-            object-fit:contain;
-
-            border-radius:18px;
-            background:#fff;
-
-            padding:5px;
-
-            box-shadow:0 5px 15px rgba(0,0,0,0.08);
+        .main-container {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
         }
 
-        .brand-text h1{
-            font-size:28px;
-            color:#8d6a35;
-            letter-spacing:4px;
+        /* LADO ESQUERDO: VITRINE COM CARDS PEQUENOS */
+        .products-section {
+            flex: 1;
         }
 
-        .brand-text span{
-            font-size:12px;
-            color:#555;
-            letter-spacing:3px;
-            text-transform:uppercase;
+        h2 {
+            font-size: 11px;
+            color: #b39359;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            border-left: 3px solid #b39359;
+            padding-left: 15px;
         }
 
-        /* MENU */
-
-        nav{
-            display:flex;
-            gap:25px;
-            flex-wrap:wrap;
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
         }
 
-        nav a{
-            text-decoration:none;
-            color:#1a1a1a;
-
-            font-size:13px;
-            font-weight:700;
-
-            text-transform:uppercase;
-
-            transition:0.3s;
+        /* CARD COMPACTO EXECUTIVO */
+        .card {
+            background: #ffffff;
+            padding: 25px 15px;
+            border-radius: 16px;
+            border: 1px solid #e5e1da;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 240px; /* ALTURA REDUZIDA COMO VOCÊ PEDIU */
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.02);
         }
 
-        nav a:hover{
-            color:#b39359;
+        .card:hover { 
+            border-color: #b39359; 
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(179, 147, 89, 0.1);
         }
 
-        /* HERO */
+        .card h3 { font-size: 14px; font-weight: 700; color: #1a1a1a; margin-bottom: 15px; }
+        .card .price { font-size: 20px; color: #b39359; font-weight: 800; margin-bottom: 20px; }
 
-        .hero{
-            width:100%;
-            min-height:700px;
-
-            background:
-            url('Solle-Global-Store.png') center center / cover no-repeat;
-
-            position:relative;
-
-            display:flex;
-            align-items:center;
-            justify-content:center;
-
-            text-align:center;
-
-            overflow:hidden;
+        .btn-add {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 9px;
+            cursor: pointer;
+            transition: 0.3s;
+            letter-spacing: 1px;
         }
 
-        /* CAMADA CREME */
+        .btn-add:hover { background: #b39359; color: #000; }
 
-        .hero-overlay{
-            position:absolute;
-            inset:0;
-
-            background:
-            linear-gradient(
-                rgba(245,239,230,0.60),
-                rgba(245,239,230,0.50)
-            );
+        /* CARRINHO (LADO DIREITO) */
+        .cart-sidebar {
+            width: 350px;
+            background: #ffffff;
+            border: 1px solid #b39359;
+            border-radius: 20px;
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
         }
 
-        /* TEXTO HERO */
+        .cart-sidebar h3 { font-size: 13px; color: #1a1a1a; text-transform: uppercase; margin-bottom: 20px; text-align: center; border-bottom: 1px solid #f4f1ea; padding-bottom: 15px; }
+        #cart-items { min-height: 50px; font-size: 13px; margin-bottom: 20px; color: #666; }
+        .cart-total { border-top: 1px solid #f4f1ea; padding-top: 20px; display: flex; justify-content: space-between; font-weight: 800; font-size: 22px; color: #1a1a1a; }
 
-        .hero-content{
-            position:relative;
-            z-index:2;
-
-            max-width:850px;
-            padding:40px 20px;
+        .btn-checkout {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            margin-top: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
         }
 
-        .hero h2{
-            font-size:72px;
-            color:#1a1a1a;
-
-            margin-bottom:20px;
-
-            letter-spacing:5px;
-            text-transform:uppercase;
+        @media(max-width: 900px) {
+            .main-container { flex-direction: column; }
+            .cart-sidebar { width: 100%; position: static; }
         }
-
-        .hero p{
-            font-size:20px;
-            line-height:1.8;
-
-            color:#3f3f3f;
-
-            margin-bottom:35px;
-        }
-
-        .hero button{
-            background:#b39359;
-            color:#fff;
-
-            border:none;
-
-            padding:18px 40px;
-
-            border-radius:50px;
-
-            cursor:pointer;
-
-            font-weight:800;
-
-            letter-spacing:2px;
-
-            text-transform:uppercase;
-
-            transition:0.3s;
-        }
-
-        .hero button:hover{
-            background:#1a1a1a;
-        }
-
-        /* MAIN */
-
-        .main-container{
-            max-width:1400px;
-
-            margin:60px auto;
-
-            padding:0 20px;
-
-            display:flex;
-            gap:30px;
-
-            align-items:flex-start;
-        }
-
-        /* PRODUCTS */
-
-        .products-section{
-            flex:1;
-        }
-
-        .section-title{
-            margin-bottom:30px;
-        }
-
-        .section-title h3{
-            font-size:14px;
-
-            letter-spacing:4px;
-
-            text-transform:uppercase;
-
-            color:#8d6a35;
-
-            margin-bottom:10px;
-        }
-
-        .section-title p{
-            color:#666;
-        }
-
-        .products-grid{
-            display:grid;
-
-            grid-template-columns:
-            repeat(auto-fill, minmax(230px, 1fr));
-
-            gap:25px;
-        }
-
-        /* CARD */
-
-        .card{
-            background:#fff;
-
-            border-radius:22px;
-
-            overflow:hidden;
-
-            box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-            transition:0.3s;
-        }
-
-        .card:hover{
-            transform:translateY(-8px);
-        }
-
-        .card img{
-            width:100%;
-            height:260px;
-
-            object-fit:cover;
-        }
-
-        .card-content{
-            padding:22px;
-            text-align:center;
-        }
-
-        .card h3{
-            font-size:17px;
-            margin-bottom:10px;
-        }
-
-        .price{
-            font-size:24px;
-
-            color:#b39359;
-
-            font-weight:800;
-
-            margin-bottom:20px;
-        }
-
-        .btn-add{
-            width:100%;
-
-            background:#1a1a1a;
-            color:#fff;
-
-            border:none;
-
-            padding:14px;
-
-            border-radius:50px;
-
-            cursor:pointer;
-
-            font-weight:700;
-
-            text-transform:uppercase;
-
-            transition:0.3s;
-        }
-
-        .btn-add:hover{
-            background:#b39359;
-        }
-
-        /* CARRINHO */
-
-        .cart-sidebar{
-            width:340px;
-
-            background:#fff;
-
-            border-radius:25px;
-
-            padding:30px;
-
-            box-shadow:0 10px 30px rgba(0,0,0,0.08);
-
-            position:sticky;
-            top:110px;
-        }
-
-        .cart-sidebar h3{
-            text-align:center;
-
-            color:#8d6a35;
-
-            margin-bottom:25px;
-
-            letter-spacing:3px;
-
-            text-transform:uppercase;
-
-            font-size:13px;
-        }
-
-        #cart-items{
-            min-height:80px;
-            margin-bottom:20px;
-        }
-
-        .cart-total{
-            border-top:1px solid #ddd;
-
-            padding-top:20px;
-
-            display:flex;
-            justify-content:space-between;
-
-            font-size:20px;
-            font-weight:800;
-        }
-
-        .btn-whatsapp{
-            width:100%;
-
-            margin-top:25px;
-
-            background:#25d366;
-            color:#fff;
-
-            border:none;
-
-            padding:16px;
-
-            border-radius:12px;
-
-            cursor:pointer;
-
-            font-weight:800;
-
-            text-transform:uppercase;
-
-            letter-spacing:1px;
-        }
-
-        /* FOOTER */
-
-        footer{
-            background:#e9dcc8;
-
-            margin-top:70px;
-
-            padding:60px 20px;
-
-            text-align:center;
-        }
-
-        footer h4{
-            font-size:28px;
-
-            color:#8d6a35;
-
-            letter-spacing:4px;
-
-            margin-bottom:15px;
-        }
-
-        footer p{
-            color:#555;
-            margin-bottom:10px;
-        }
-
-        /* RESPONSIVO */
-
-        @media(max-width:900px){
-
-            .main-container{
-                flex-direction:column;
-            }
-
-            .cart-sidebar{
-                width:100%;
-                position:static;
-            }
-
-            .hero{
-                min-height:500px;
-                background-position:center;
-            }
-
-            .hero h2{
-                font-size:42px;
-            }
-
-            .hero p{
-                font-size:16px;
-            }
-
-            .header-container{
-                justify-content:center;
-            }
-
-            nav{
-                justify-content:center;
-            }
-
-            .logo-area{
-                width:100%;
-                justify-content:center;
-            }
-        }
-
     </style>
 </head>
-
 <body>
 
-    <!-- HEADER -->
-
-    <header>
-
-        <div class="header-container">
-
-            <div class="logo-area">
-
-                <!-- LOGO -->
-
-                <img src="Solle-Global-Store.png" alt="Sollene Logo">
-
-                <div class="brand-text">
-                    <h1>SOLLENE</h1>
-                    <span>Global Store</span>
-                </div>
-
-            </div>
-
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Collection</a>
-                <a href="#">Accessories</a>
-                <a href="#">Luxury</a>
-                <a href="#">Contact</a>
-            </nav>
-
-        </div>
-
-    </header>
-
-    <!-- HERO -->
-
-    <section class="hero">
-
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-
-            <h2>Luxury Fashion</h2>
-
-            <p>
-                Discover premium clothing, elegant accessories
-                and modern lifestyle collections designed for
-                sophisticated people.
-            </p>
-
-            <button>Explore Collection</button>
-
-        </div>
-
-    </section>
-
-    <!-- MAIN -->
-
-    <div class="main-container">
-
-        <!-- PRODUCTS -->
-
-        <main class="products-section">
-
-            <div class="section-title">
-                <h3>Executive Collection</h3>
-                <p>Fashion & Accessories</p>
-            </div>
-
-            <div class="products-grid">
-
-                <!-- CARD 1 -->
-
-                <div class="card">
-
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
-
-                    <div class="card-content">
-
-                        <h3>Executive Shirt</h3>
-
-                        <div class="price">€ 85.00</div>
-
-                        <button class="btn-add"
-                        onclick="add('Executive Shirt',85)">
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- CARD 2 -->
-
-                <div class="card">
-
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
-
-                    <div class="card-content">
-
-                        <h3>Luxury Sneakers</h3>
-
-                        <div class="price">€ 120.00</div>
-
-                        <button class="btn-add"
-                        onclick="add('Luxury Sneakers',120)">
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- CARD 3 -->
-
-                <div class="card">
-
-                    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
-
-                    <div class="card-content">
-
-                        <h3>Luxury Watch</h3>
-
-                        <div class="price">€ 210.00</div>
-
-                        <button class="btn-add"
-                        onclick="add('Luxury Watch',210)">
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- CARD 4 -->
-
-                <div class="card">
-
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
-
-                    <div class="card-content">
-
-                        <h3>Premium Bag</h3>
-
-                        <div class="price">€ 165.00</div>
-
-                        <button class="btn-add"
-                        onclick="add('Premium Bag',165)">
-                            Add to Cart
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </main>
-
-        <!-- CARRINHO -->
-
-        <aside class="cart-sidebar">
-
-            <h3>Your Selection</h3>
-
-            <div id="cart-items">
-                No items selected
-            </div>
-
-            <div class="cart-total">
-
-                <span>Total</span>
-
-                <span id="total-price">
-                    € 0.00
-                </span>
-
-            </div>
-
-            <button class="btn-whatsapp"
-            onclick="checkout()">
-
-                Checkout WhatsApp
-
-            </button>
-
-        </aside>
-
+    <!-- TEXTO QUE SAIU DA IMAGEM E FOI PARA O TOPO -->
+    <div class="top-info-bar">
+        <h1>LUXURY FASHION</h1>
+        <p>Discover premium clothing, elegant accessories and modern lifestyle collections designed for sophisticated people.</p>
     </div>
 
-    <!-- FOOTER -->
+    <!-- BANNER AGORA APARECE LIMPO ABAIXO DO TEXTO -->
+    <div class="hero-banner"></div>
 
-    <footer>
-
-        <h4>SOLLENE GLOBAL STORE</h4>
-
-        <p>Luxury Fashion • Accessories • Lifestyle</p>
-
-        <p>
-            Designed for modern elegance and premium shopping experiences.
-        </p>
-
-    </footer>
-
-    <!-- SCRIPT -->
-
-    <script>
-
-        let cart = [];
-        let total = 0;
-
-        function add(n,p){
-
-            cart.push({n,p});
-
-            total += p;
-
-            update();
-        }
-
-        function update(){
-
-            const container =
-            document.getElementById('cart-items');
-
-            if(cart.length === 0){
-
-                container.innerHTML =
-                "No items selected";
-
-            }else{
-
-                container.innerHTML =
-                cart.map(i => `
-
-                <div style="
-                    display:flex;
-                    justify-content:space-between;
-                    margin-bottom:12px;
-                    font-size:14px;
-                ">
-
-                    <span>${i.n}</span>
-                    <span>€ ${i.p}</span>
-
+    <div class="main-container">
+        <main class="products-section">
+            <h2>Executive Collection</h2>
+            
+            <div class="products-grid">
+                <div class="card">
+                    <h3>Executive Shirt</h3>
+                    <span class="price">€ 85.00</span>
+                    <button class="btn-add" onclick="add('Executive Shirt', 85)">Add to Cart</button>
                 </div>
 
-                `).join('');
-            }
+                <div class="card">
+                    <h3>Leather Belt</h3>
+                    <span class="price">€ 110.00</span>
+                    <button class="btn-add" onclick="add('Leather Belt', 110)">Add to Cart</button>
+                </div>
+            </div>
+        </main>
 
-            document.getElementById('total-price')
-            .innerText =
-            `€ ${total.toFixed(2)}`;
+        <aside class="cart-sidebar">
+            <h3>Shopping Bag</h3>
+            <div id="cart-items">Empty</div>
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="total-price">€ 0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="checkout()">WhatsApp Order</button>
+        </aside>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+        function add(n, p) {
+            cart.push({n, p});
+            total += p;
+            update();
         }
-
-        function checkout(){
-
-            if(cart.length === 0){
-
-                alert("Empty cart!");
-
-                return;
-            }
-
-            let msg =
-            "Hello! I would like to order: "
-            + cart.map(i => i.n).join(', ')
-            + " | Total: €"
-            + total.toFixed(2);
-
-            window.open(
-            `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`
-            );
+        function update() {
+            const container = document.getElementById('cart-items');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#1a1a1a"><span>${i.n}</span><span>€${i.p}</span></div>`).join('');
+            document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
         }
-
+        function checkout() {
+            if(cart.length === 0) return alert("Selecione um produto!");
+            let msg = "Hello! My Order: " + cart.map(i => i.n).join(', ') + " | Total: €" + total.toFixed(2);
+            window.open(`https://wa.me{msg}`);
+        }
     </script>
-
 </body>
 </html>
