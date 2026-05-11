@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <title>Sollene Global Store | Executive Collection</title>
 
     <style>
+
         *{
             margin:0;
             padding:0;
@@ -15,34 +16,40 @@
 
         body{
             font-family: Arial, sans-serif;
-            background: #f5efe6;
+            background:#f5efe6;
             color:#1a1a1a;
             overflow-x:hidden;
         }
 
         /* HEADER */
+
         header{
             width:100%;
-            padding:25px 20px;
+            padding:20px 30px;
             background:#efe4d3;
             border-bottom:1px solid rgba(0,0,0,0.08);
+
             position:sticky;
             top:0;
             z-index:1000;
-            backdrop-filter: blur(10px);
+
+            backdrop-filter:blur(10px);
         }
 
         .header-container{
-            max-width:1300px;
+            max-width:1400px;
             margin:auto;
+
             display:flex;
             justify-content:space-between;
             align-items:center;
             gap:20px;
+
             flex-wrap:wrap;
         }
 
         /* LOGO */
+
         .logo-area{
             display:flex;
             align-items:center;
@@ -50,29 +57,33 @@
         }
 
         .logo-area img{
-            width:85px;
-            height:85px;
+            width:80px;
+            height:80px;
             object-fit:contain;
-            border-radius:20px;
+
+            border-radius:18px;
             background:#fff;
+
             padding:5px;
+
             box-shadow:0 5px 15px rgba(0,0,0,0.08);
         }
 
         .brand-text h1{
             font-size:28px;
-            letter-spacing:4px;
             color:#8d6a35;
+            letter-spacing:4px;
         }
 
         .brand-text span{
             font-size:12px;
-            letter-spacing:3px;
             color:#555;
+            letter-spacing:3px;
             text-transform:uppercase;
         }
 
         /* MENU */
+
         nav{
             display:flex;
             gap:25px;
@@ -82,9 +93,12 @@
         nav a{
             text-decoration:none;
             color:#1a1a1a;
+
             font-size:13px;
             font-weight:700;
+
             text-transform:uppercase;
+
             transition:0.3s;
         }
 
@@ -93,49 +107,86 @@
         }
 
         /* HERO */
+
         .hero{
             width:100%;
-            min-height:500px;
+            min-height:700px;
+
             background:
-            linear-gradient(rgba(245,239,230,0.75), rgba(245,239,230,0.75)),
-            url('Sollene-Global-Store.png') center/cover no-repeat;
+            url('Solle-Global-Store.png') center center / cover no-repeat;
+
+            position:relative;
 
             display:flex;
             align-items:center;
             justify-content:center;
+
             text-align:center;
-            padding:60px 20px;
+
+            overflow:hidden;
         }
 
+        /* CAMADA CREME */
+
+        .hero-overlay{
+            position:absolute;
+            inset:0;
+
+            background:
+            linear-gradient(
+                rgba(245,239,230,0.60),
+                rgba(245,239,230,0.50)
+            );
+        }
+
+        /* TEXTO HERO */
+
         .hero-content{
-            max-width:800px;
+            position:relative;
+            z-index:2;
+
+            max-width:850px;
+            padding:40px 20px;
         }
 
         .hero h2{
-            font-size:60px;
+            font-size:72px;
             color:#1a1a1a;
+
             margin-bottom:20px;
-            letter-spacing:4px;
+
+            letter-spacing:5px;
+            text-transform:uppercase;
         }
 
         .hero p{
-            font-size:18px;
-            color:#444;
-            line-height:1.7;
-            margin-bottom:30px;
+            font-size:20px;
+            line-height:1.8;
+
+            color:#3f3f3f;
+
+            margin-bottom:35px;
         }
 
         .hero button{
             background:#b39359;
             color:#fff;
+
             border:none;
-            padding:18px 35px;
+
+            padding:18px 40px;
+
             border-radius:50px;
+
             cursor:pointer;
+
             font-weight:800;
+
             letter-spacing:2px;
-            transition:0.3s;
+
             text-transform:uppercase;
+
+            transition:0.3s;
         }
 
         .hero button:hover{
@@ -143,16 +194,22 @@
         }
 
         /* MAIN */
+
         .main-container{
-            max-width:1300px;
-            margin:50px auto;
+            max-width:1400px;
+
+            margin:60px auto;
+
             padding:0 20px;
+
             display:flex;
             gap:30px;
+
             align-items:flex-start;
         }
 
         /* PRODUCTS */
+
         .products-section{
             flex:1;
         }
@@ -163,9 +220,13 @@
 
         .section-title h3{
             font-size:14px;
+
             letter-spacing:4px;
-            color:#8d6a35;
+
             text-transform:uppercase;
+
+            color:#8d6a35;
+
             margin-bottom:10px;
         }
 
@@ -175,16 +236,24 @@
 
         .products-grid{
             display:grid;
-            grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-            gap:20px;
+
+            grid-template-columns:
+            repeat(auto-fill, minmax(230px, 1fr));
+
+            gap:25px;
         }
 
         /* CARD */
+
         .card{
             background:#fff;
-            border-radius:20px;
+
+            border-radius:22px;
+
             overflow:hidden;
-            box-shadow:0 10px 25px rgba(0,0,0,0.06);
+
+            box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
             transition:0.3s;
         }
 
@@ -195,37 +264,48 @@
         .card img{
             width:100%;
             height:260px;
+
             object-fit:cover;
         }
 
         .card-content{
-            padding:20px;
+            padding:22px;
             text-align:center;
         }
 
         .card h3{
-            font-size:16px;
+            font-size:17px;
             margin-bottom:10px;
         }
 
         .price{
-            font-size:22px;
+            font-size:24px;
+
             color:#b39359;
+
             font-weight:800;
+
             margin-bottom:20px;
         }
 
         .btn-add{
             width:100%;
+
             background:#1a1a1a;
             color:#fff;
+
             border:none;
+
             padding:14px;
+
             border-radius:50px;
+
             cursor:pointer;
+
             font-weight:700;
+
             text-transform:uppercase;
-            font-size:11px;
+
             transition:0.3s;
         }
 
@@ -233,23 +313,34 @@
             background:#b39359;
         }
 
-        /* CART */
+        /* CARRINHO */
+
         .cart-sidebar{
-            width:330px;
+            width:340px;
+
             background:#fff;
+
             border-radius:25px;
+
             padding:30px;
+
             box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
             position:sticky;
-            top:120px;
+            top:110px;
         }
 
         .cart-sidebar h3{
             text-align:center;
-            margin-bottom:25px;
+
             color:#8d6a35;
-            text-transform:uppercase;
+
+            margin-bottom:25px;
+
             letter-spacing:3px;
+
+            text-transform:uppercase;
+
             font-size:13px;
         }
 
@@ -260,40 +351,59 @@
 
         .cart-total{
             border-top:1px solid #ddd;
+
             padding-top:20px;
+
             display:flex;
             justify-content:space-between;
-            font-weight:800;
+
             font-size:20px;
+            font-weight:800;
         }
 
         .btn-whatsapp{
             width:100%;
+
             margin-top:25px;
+
             background:#25d366;
             color:#fff;
+
             border:none;
+
             padding:16px;
+
             border-radius:12px;
+
             cursor:pointer;
+
             font-weight:800;
+
             text-transform:uppercase;
+
             letter-spacing:1px;
         }
 
         /* FOOTER */
+
         footer{
-            margin-top:60px;
             background:#e9dcc8;
-            padding:50px 20px;
+
+            margin-top:70px;
+
+            padding:60px 20px;
+
             text-align:center;
         }
 
         footer h4{
-            font-size:24px;
-            margin-bottom:15px;
+            font-size:28px;
+
             color:#8d6a35;
-            letter-spacing:3px;
+
+            letter-spacing:4px;
+
+            margin-bottom:15px;
         }
 
         footer p{
@@ -302,6 +412,7 @@
         }
 
         /* RESPONSIVO */
+
         @media(max-width:900px){
 
             .main-container{
@@ -313,8 +424,17 @@
                 position:static;
             }
 
+            .hero{
+                min-height:500px;
+                background-position:center;
+            }
+
             .hero h2{
-                font-size:38px;
+                font-size:42px;
+            }
+
+            .hero p{
+                font-size:16px;
             }
 
             .header-container{
@@ -326,23 +446,27 @@
             }
 
             .logo-area{
-                justify-content:center;
                 width:100%;
+                justify-content:center;
             }
         }
+
     </style>
 </head>
 
 <body>
 
     <!-- HEADER -->
+
     <header>
+
         <div class="header-container">
 
             <div class="logo-area">
 
                 <!-- LOGO -->
-                <img src="Solle-Global-Store.png" alt="Sollene Global Store Logo">
+
+                <img src="Solle-Global-Store.png" alt="Sollene Logo">
 
                 <div class="brand-text">
                     <h1>SOLLENE</h1>
@@ -360,19 +484,23 @@
             </nav>
 
         </div>
+
     </header>
 
     <!-- HERO -->
+
     <section class="hero">
+
+        <div class="hero-overlay"></div>
 
         <div class="hero-content">
 
             <h2>Luxury Fashion</h2>
 
             <p>
-                Discover premium clothing, elegant accessories,
-                and modern lifestyle collections designed for people
-                who value style, confidence, and sophistication.
+                Discover premium clothing, elegant accessories
+                and modern lifestyle collections designed for
+                sophisticated people.
             </p>
 
             <button>Explore Collection</button>
@@ -382,9 +510,11 @@
     </section>
 
     <!-- MAIN -->
+
     <div class="main-container">
 
         <!-- PRODUCTS -->
+
         <main class="products-section">
 
             <div class="section-title">
@@ -395,65 +525,85 @@
             <div class="products-grid">
 
                 <!-- CARD 1 -->
+
                 <div class="card">
 
-                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop" alt="Executive Shirt">
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
 
                     <div class="card-content">
+
                         <h3>Executive Shirt</h3>
+
                         <div class="price">€ 85.00</div>
 
-                        <button class="btn-add" onclick="add('Executive Shirt', 85)">
+                        <button class="btn-add"
+                        onclick="add('Executive Shirt',85)">
                             Add to Cart
                         </button>
+
                     </div>
 
                 </div>
 
                 <!-- CARD 2 -->
+
                 <div class="card">
 
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop" alt="Luxury Sneakers">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
 
                     <div class="card-content">
+
                         <h3>Luxury Sneakers</h3>
+
                         <div class="price">€ 120.00</div>
 
-                        <button class="btn-add" onclick="add('Luxury Sneakers', 120)">
+                        <button class="btn-add"
+                        onclick="add('Luxury Sneakers',120)">
                             Add to Cart
                         </button>
+
                     </div>
 
                 </div>
 
                 <!-- CARD 3 -->
+
                 <div class="card">
 
-                    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop" alt="Luxury Watch">
+                    <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
 
                     <div class="card-content">
+
                         <h3>Luxury Watch</h3>
+
                         <div class="price">€ 210.00</div>
 
-                        <button class="btn-add" onclick="add('Luxury Watch', 210)">
+                        <button class="btn-add"
+                        onclick="add('Luxury Watch',210)">
                             Add to Cart
                         </button>
+
                     </div>
 
                 </div>
 
                 <!-- CARD 4 -->
+
                 <div class="card">
 
-                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop" alt="Premium Bag">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
 
                     <div class="card-content">
+
                         <h3>Premium Bag</h3>
+
                         <div class="price">€ 165.00</div>
 
-                        <button class="btn-add" onclick="add('Premium Bag', 165)">
+                        <button class="btn-add"
+                        onclick="add('Premium Bag',165)">
                             Add to Cart
                         </button>
+
                     </div>
 
                 </div>
@@ -462,7 +612,8 @@
 
         </main>
 
-        <!-- CART -->
+        <!-- CARRINHO -->
+
         <aside class="cart-sidebar">
 
             <h3>Your Selection</h3>
@@ -472,12 +623,20 @@
             </div>
 
             <div class="cart-total">
+
                 <span>Total</span>
-                <span id="total-price">€ 0.00</span>
+
+                <span id="total-price">
+                    € 0.00
+                </span>
+
             </div>
 
-            <button class="btn-whatsapp" onclick="checkout()">
+            <button class="btn-whatsapp"
+            onclick="checkout()">
+
                 Checkout WhatsApp
+
             </button>
 
         </aside>
@@ -485,6 +644,7 @@
     </div>
 
     <!-- FOOTER -->
+
     <footer>
 
         <h4>SOLLENE GLOBAL STORE</h4>
@@ -497,14 +657,17 @@
 
     </footer>
 
+    <!-- SCRIPT -->
+
     <script>
 
         let cart = [];
         let total = 0;
 
-        function add(n, p){
+        function add(n,p){
 
-            cart.push({n, p});
+            cart.push({n,p});
+
             total += p;
 
             update();
@@ -512,35 +675,45 @@
 
         function update(){
 
-            const container = document.getElementById('cart-items');
+            const container =
+            document.getElementById('cart-items');
 
             if(cart.length === 0){
 
-                container.innerHTML = "No items selected";
+                container.innerHTML =
+                "No items selected";
 
-            } else {
+            }else{
 
-                container.innerHTML = cart.map(i => `
-                    <div style="
-                        display:flex;
-                        justify-content:space-between;
-                        margin-bottom:12px;
-                        font-size:14px;
-                    ">
-                        <span>${i.n}</span>
-                        <span>€ ${i.p}</span>
-                    </div>
+                container.innerHTML =
+                cart.map(i => `
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:12px;
+                    font-size:14px;
+                ">
+
+                    <span>${i.n}</span>
+                    <span>€ ${i.p}</span>
+
+                </div>
+
                 `).join('');
             }
 
-            document.getElementById('total-price').innerText =
+            document.getElementById('total-price')
+            .innerText =
             `€ ${total.toFixed(2)}`;
         }
 
         function checkout(){
 
             if(cart.length === 0){
+
                 alert("Empty cart!");
+
                 return;
             }
 
@@ -551,7 +724,7 @@
             + total.toFixed(2);
 
             window.open(
-                `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`
+            `https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`
             );
         }
 
