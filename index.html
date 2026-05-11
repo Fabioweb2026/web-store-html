@@ -93,7 +93,7 @@ header{
     text-transform:uppercase;
 }
 
-/* NAVIGATION */
+/* RIGHT HEADER */
 
 .right-header{
     display:flex;
@@ -101,8 +101,11 @@ header{
     gap:35px;
 }
 
+/* NAV */
+
 nav{
     display:flex;
+    align-items:center;
     gap:28px;
 }
 
@@ -126,7 +129,91 @@ nav a:hover{
     color:#b39359;
 }
 
-/* CART ICON */
+/* COLLECTION MENU */
+
+.collection-menu{
+    position:relative;
+}
+
+.collection-btn{
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    color:#1c1c1c;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:0.3s;
+}
+
+.collection-btn:hover{
+    color:#b39359;
+}
+
+.collection-dropdown{
+
+    position:absolute;
+
+    top:35px;
+    left:0;
+
+    width:240px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:15px 0;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+    display:none;
+
+    z-index:999;
+}
+
+.collection-dropdown a{
+
+    display:block;
+
+    padding:12px 20px;
+
+    text-decoration:none;
+
+    color:#1c1c1c;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    transition:0.3s;
+}
+
+.collection-dropdown a:hover{
+
+    background:#f8f3eb;
+
+    color:#b39359;
+}
+
+.collection-menu:hover
+.collection-dropdown{
+
+    display:block;
+}
+
+/* CART */
 
 .cart-icon{
     position:relative;
@@ -236,7 +323,7 @@ nav a:hover{
     gap:35px;
 }
 
-/* PRODUCT CARD */
+/* CARD */
 
 .card{
     background:#fff;
@@ -566,11 +653,47 @@ footer p{
     <div class="right-header">
 
         <nav>
+
             <a href="#">Home</a>
-            <a href="#">Collection</a>
+
+            <!-- COLLECTION -->
+
+            <div class="collection-menu">
+
+                <button class="collection-btn">
+
+                    Collection ▼
+
+                </button>
+
+                <div class="collection-dropdown">
+
+                    <a href="#">Premium Suits</a>
+
+                    <a href="#">Luxury Shirts</a>
+
+                    <a href="#">Executive Shoes</a>
+
+                    <a href="#">Designer Bags</a>
+
+                    <a href="#">Luxury Watches</a>
+
+                    <a href="#">Accessories</a>
+
+                    <a href="#">New Arrivals</a>
+
+                    <a href="#">Exclusive Collection</a>
+
+                </div>
+
+            </div>
+
             <a href="#">Accessories</a>
+
             <a href="#">Luxury</a>
+
             <a href="#">Contact</a>
+
         </nav>
 
         <!-- CART -->
@@ -763,7 +886,9 @@ footer p{
     <div class="footer-links">
 
         <a href="#">Instagram</a>
+
         <a href="#">TikTok</a>
+
         <a href="#">Contact</a>
 
     </div>
