@@ -668,27 +668,37 @@ footer p{
 
                 <div class="collection-dropdown">
 
-                    <a href="#">Premium Suits</a>
+                    <a href="#" onclick="filterProducts('suits')">
+                        Premium Suits
+                    </a>
 
-                    <a href="#">Luxury Shirts</a>
+                    <a href="#" onclick="filterProducts('shirts')">
+                        Luxury Shirts
+                    </a>
 
-                    <a href="#">Executive Shoes</a>
+                    <a href="#" onclick="filterProducts('shoes')">
+                        Executive Shoes
+                    </a>
 
-                    <a href="#">Designer Bags</a>
+                    <a href="#" onclick="filterProducts('bags')">
+                        Designer Bags
+                    </a>
 
-                    <a href="#">Luxury Watches</a>
+                    <a href="#" onclick="filterProducts('watches')">
+                        Luxury Watches
+                    </a>
 
-                    <a href="#">Accessories</a>
+                    <a href="#" onclick="filterProducts('accessories')">
+                        Accessories
+                    </a>
 
-                    <a href="#">New Arrivals</a>
-
-                    <a href="#">Exclusive Collection</a>
+                    <a href="#" onclick="filterProducts('all')">
+                        View All
+                    </a>
 
                 </div>
 
             </div>
-
-            <a href="#">Accessories</a>
 
             <a href="#">Luxury</a>
 
@@ -730,22 +740,22 @@ footer p{
 
 </div>
 
-<div class="products-grid">
+<div class="products-grid" id="products-grid">
 
-    <!-- PRODUCT 1 -->
+    <!-- SUITS -->
 
-    <div class="card">
+    <div class="card suits">
 
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1593032465171-8bd31b5b72f0?q=80&w=1200&auto=format&fit=crop">
 
         <div class="card-content">
 
-            <h3>Executive Shirt</h3>
+            <h3>Premium Suit</h3>
 
-            <div class="price">€ 85.00</div>
+            <div class="price">€ 350.00</div>
 
             <button class="btn-add"
-            onclick="add('Executive Shirt',85)">
+            onclick="add('Premium Suit',350)">
                 Add to Cart
             </button>
 
@@ -753,20 +763,41 @@ footer p{
 
     </div>
 
-    <!-- PRODUCT 2 -->
+    <!-- SHIRTS -->
 
-    <div class="card">
+    <div class="card shirts">
+
+        <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h3>Luxury Shirt</h3>
+
+            <div class="price">€ 85.00</div>
+
+            <button class="btn-add"
+            onclick="add('Luxury Shirt',85)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- SHOES -->
+
+    <div class="card shoes">
 
         <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
 
         <div class="card-content">
 
-            <h3>Luxury Sneakers</h3>
+            <h3>Executive Shoes</h3>
 
-            <div class="price">€ 120.00</div>
+            <div class="price">€ 140.00</div>
 
             <button class="btn-add"
-            onclick="add('Luxury Sneakers',120)">
+            onclick="add('Executive Shoes',140)">
                 Add to Cart
             </button>
 
@@ -774,9 +805,30 @@ footer p{
 
     </div>
 
-    <!-- PRODUCT 3 -->
+    <!-- BAGS -->
 
-    <div class="card">
+    <div class="card bags">
+
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
+
+        <div class="card-content">
+
+            <h3>Designer Bag</h3>
+
+            <div class="price">€ 165.00</div>
+
+            <button class="btn-add"
+            onclick="add('Designer Bag',165)">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- WATCHES -->
+
+    <div class="card watches">
 
         <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
 
@@ -795,20 +847,20 @@ footer p{
 
     </div>
 
-    <!-- PRODUCT 4 -->
+    <!-- ACCESSORIES -->
 
-    <div class="card">
+    <div class="card accessories">
 
-        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop">
 
         <div class="card-content">
 
-            <h3>Premium Bag</h3>
+            <h3>Luxury Sunglasses</h3>
 
-            <div class="price">€ 165.00</div>
+            <div class="price">€ 95.00</div>
 
             <button class="btn-add"
-            onclick="add('Premium Bag',165)">
+            onclick="add('Luxury Sunglasses',95)">
                 Add to Cart
             </button>
 
@@ -965,6 +1017,32 @@ function checkout(){
     alert(
         "Order successfully created!"
     );
+}
+
+/* FILTER PRODUCTS */
+
+function filterProducts(category){
+
+    const cards =
+    document.querySelectorAll('.card');
+
+    cards.forEach(card => {
+
+        if(category === 'all'){
+
+            card.style.display = 'block';
+
+        }else if(card.classList.contains(category)){
+
+            card.style.display = 'block';
+
+        }else{
+
+            card.style.display = 'none';
+        }
+
+    });
+
 }
 
 </script>
