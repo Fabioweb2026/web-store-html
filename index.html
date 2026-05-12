@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sollene Global Store | Luxury Experience</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Sollene Global Store</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
 *{
     margin:0;
@@ -14,260 +14,202 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:'Plus Jakarta Sans',sans-serif;
-    background:#0a0a0a;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0f0f0f;
     color:white;
-    overflow-x:hidden;
 }
 
 /* HEADER */
 
 header{
     width:100%;
-    position:relative;
-}
-
-.top-banner{
-    width:100%;
-    height:320px;
-    overflow:hidden;
-    position:relative;
-}
-
-.top-banner img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:brightness(0.55);
-}
-
-.overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom,rgba(0,0,0,.2),rgba(0,0,0,.8));
-}
-
-.navbar{
-    position:absolute;
+    background:#000;
+    position:sticky;
     top:0;
-    left:0;
-    width:100%;
-    padding:25px 60px;
+    z-index:1000;
+    border-bottom:1px solid #222;
+}
+
+.top-header{
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    z-index:10;
+    justify-content:space-between;
+    padding:15px 40px;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo img{
-    width:55px;
-    height:55px;
-    object-fit:contain;
-}
-
-.logo h1{
-    font-size:26px;
-    font-weight:600;
+    font-size:28px;
+    font-weight:bold;
     letter-spacing:2px;
 }
 
-.menu{
-    display:flex;
-    gap:30px;
+.logo span{
+    color:#c9a86a;
 }
 
-.menu a{
+/* MENU AMAZON STYLE */
+
+.navbar{
+    background:#111;
+    padding:12px 40px;
+    display:flex;
+    gap:25px;
+    overflow-x:auto;
+}
+
+.navbar a{
     color:white;
     text-decoration:none;
-    font-size:15px;
-    transition:.3s;
+    font-size:14px;
+    transition:0.3s;
+    white-space:nowrap;
 }
 
-.menu a:hover{
-    opacity:.7;
+.navbar a:hover{
+    color:#c9a86a;
 }
+
+/* HERO IMAGE */
 
 .hero{
-    position:absolute;
-    bottom:50px;
-    left:60px;
-    z-index:5;
-    max-width:650px;
+    width:100%;
+    height:500px;
+    overflow:hidden;
 }
 
-.hero h2{
-    font-size:52px;
-    margin-bottom:20px;
-    font-weight:700;
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
 }
 
-.hero p{
-    font-size:18px;
-    line-height:1.7;
-    color:#d6d6d6;
-    margin-bottom:25px;
-}
-
-.hero button{
-    padding:14px 35px;
-    border:none;
-    background:white;
-    color:black;
-    font-weight:600;
-    cursor:pointer;
-    border-radius:40px;
-    transition:.3s;
-}
-
-.hero button:hover{
-    transform:translateY(-2px);
-}
-
-/* COLLECTIONS */
+/* SECTION */
 
 .section{
-    padding:80px 60px;
+    padding:70px 40px;
 }
 
 .section-title{
-    font-size:38px;
-    margin-bottom:50px;
-    font-weight:600;
+    font-size:32px;
+    margin-bottom:40px;
+    color:#c9a86a;
 }
 
-.products{
+/* PRODUCTS */
+
+.products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
 }
 
-.card{
-    background:#151515;
-    border-radius:25px;
+.product-card{
+    background:#161616;
+    border-radius:18px;
     overflow:hidden;
-    transition:.4s;
+    transition:0.3s;
+    border:1px solid #222;
 }
 
-.card:hover{
-    transform:translateY(-8px);
+.product-card:hover{
+    transform:translateY(-5px);
+    border:1px solid #c9a86a;
 }
 
-.card img{
+.product-card img{
     width:100%;
     height:320px;
     object-fit:cover;
 }
 
-.card-content{
-    padding:25px;
+.product-info{
+    padding:20px;
 }
 
-.card-content h3{
-    font-size:22px;
+.product-info h3{
     margin-bottom:10px;
+    font-size:22px;
 }
 
-.card-content p{
-    color:#b8b8b8;
-    line-height:1.6;
-    margin-bottom:20px;
+.product-info p{
+    color:#ccc;
+    font-size:14px;
+    line-height:1.5;
 }
 
 .price{
-    font-size:24px;
-    font-weight:700;
-    margin-bottom:20px;
+    margin-top:15px;
+    font-size:22px;
+    color:#c9a86a;
+    font-weight:bold;
 }
 
 .buy-btn{
+    margin-top:20px;
     width:100%;
     padding:14px;
     border:none;
-    background:white;
+    border-radius:10px;
+    background:#c9a86a;
     color:black;
-    border-radius:40px;
-    font-weight:600;
+    font-weight:bold;
     cursor:pointer;
-    transition:.3s;
+    transition:0.3s;
 }
 
 .buy-btn:hover{
-    background:#d6d6d6;
+    background:white;
 }
 
-/* COLLECTION MENU */
+/* ABOUT */
 
-.collections{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.collection-box{
-    background:#121212;
-    border:1px solid #1f1f1f;
-    border-radius:22px;
+.about{
+    background:#111;
+    border-radius:20px;
     padding:40px;
-    text-align:center;
-    transition:.3s;
-}
-
-.collection-box:hover{
-    background:#1b1b1b;
-    transform:translateY(-5px);
-}
-
-.collection-box a{
-    text-decoration:none;
-    color:white;
-    font-size:22px;
-    font-weight:600;
+    line-height:1.8;
+    color:#ddd;
 }
 
 /* FOOTER */
 
 footer{
-    padding:60px;
+    background:#000;
+    padding:40px;
     text-align:center;
-    border-top:1px solid #1b1b1b;
-    color:#9e9e9e;
+    border-top:1px solid #222;
+    margin-top:50px;
 }
 
-/* RESPONSIVE */
+footer p{
+    color:#888;
+}
 
-@media(max-width:900px){
+/* MOBILE */
 
-    .navbar{
-        padding:25px;
-        flex-direction:column;
-        gap:20px;
+@media(max-width:768px){
+
+    .top-header{
+        padding:15px 20px;
     }
 
-    .menu{
-        flex-wrap:wrap;
-        justify-content:center;
+    .navbar{
+        padding:12px 20px;
     }
 
     .hero{
-        left:25px;
-        right:25px;
-        bottom:30px;
-    }
-
-    .hero h2{
-        font-size:38px;
+        height:300px;
     }
 
     .section{
-        padding:60px 25px;
+        padding:50px 20px;
     }
+
 }
 
 </style>
@@ -275,178 +217,295 @@ footer{
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
-<div class="top-banner">
-    <img src="Solle-Global-Store.png" alt="Sollene Banner">
-    <div class="overlay"></div>
-
-    <nav class="navbar">
-
+    <div class="top-header">
         <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <h1>SOLLENE</h1>
+            SOLLENE <span>STORE</span>
         </div>
-
-        <div class="menu">
-            <a href="index.html">Home</a>
-            <a href="#collections">Collections</a>
-            <a href="masculinas.html">Masculinas</a>
-            <a href="femininas.html">Femininas</a>
-            <a href="bolsas.html">Bolsas</a>
-            <a href="acessorios.html">Acessórios</a>
-        </div>
-
-    </nav>
-
-    <div class="hero">
-        <h2>Luxury Fashion Experience</h2>
-
-        <p>
-            Sollene Global Store represents sophistication,
-            minimal elegance and premium fashion for a modern audience.
-        </p>
-
-        <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-            Explore Collection
-        </button>
     </div>
 
-</div>
+    <nav class="navbar">
+        <a href="#collections">Collections</a>
+        <a href="#masculinas">Masculinas</a>
+        <a href="#femininas">Femininas</a>
+        <a href="#bolsas">Bolsas</a>
+        <a href="#acessorios">Acessórios</a>
+    </nav>
 
 </header>
+
+<!-- HERO -->
+
+<section class="hero">
+    <img src="Solle-Global-Store.png" alt="Sollene Banner">
+</section>
 
 <!-- COLLECTIONS -->
 
 <section class="section" id="collections">
 
-<h2 class="section-title">Collections</h2>
+    <h2 class="section-title">
+        Luxury Collections
+    </h2>
 
-<div class="collections">
+    <div class="products-grid">
 
-    <div class="collection-box">
-        <a href="masculinas.html">Masculinas</a>
+        <div class="product-card">
+
+            <img src="producto1.png" alt="Executive Watch">
+
+            <div class="product-info">
+                <h3>Executive Watch</h3>
+
+                <p>
+                    Sophisticated luxury watch designed for modern elegance and premium lifestyle.
+                </p>
+
+                <div class="price">
+                    €390
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="producto2.png" alt="Luxury Shirt">
+
+            <div class="product-info">
+                <h3>Luxury Shirt</h3>
+
+                <p>
+                    Premium executive shirt crafted for business and social occasions.
+                </p>
+
+                <div class="price">
+                    €220
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="bolsa.png" alt="Classic Bag">
+
+            <div class="product-info">
+                <h3>Classic Bag</h3>
+
+                <p>
+                    Elegant feminine handbag inspired by timeless luxury fashion.
+                </p>
+
+                <div class="price">
+                    €540
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
-
-    <div class="collection-box">
-        <a href="femininas.html">Femininas</a>
-    </div>
-
-    <div class="collection-box">
-        <a href="bolsas.html">Bolsas</a>
-    </div>
-
-    <div class="collection-box">
-        <a href="acessorios.html">Acessórios</a>
-    </div>
-
-</div>
 
 </section>
 
-<!-- PRODUCTS -->
+<!-- MASCULINAS -->
 
-<section class="section" id="shop">
+<section class="section" id="masculinas">
 
-<h2 class="section-title">Featured Products</h2>
+    <h2 class="section-title">
+        Masculinas
+    </h2>
 
-<div class="products">
+    <div class="products-grid">
 
-    <div class="card">
+        <div class="product-card">
 
-        <img src="producto1.png" alt="Luxury Watch">
+            <img src="producto2.png" alt="Masculine Fashion">
 
-        <div class="card-content">
+            <div class="product-info">
 
-            <h3>Luxury Signature Watch</h3>
+                <h3>Executive Style</h3>
 
-            <p>
-                Exclusive handcrafted timepiece designed
-                for modern elegance and luxury lifestyle.
-            </p>
+                <p>
+                    Elegant masculine collection for premium lifestyle and modern sophistication.
+                </p>
 
-            <div class="price">€390</div>
+                <div class="price">
+                    €260
+                </div>
 
-            <button class="buy-btn">
-                Add to Bag
-            </button>
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
 
-        </div>
-
-    </div>
-
-    <div class="card">
-
-        <img src="producto2.png" alt="Executive Fashion">
-
-        <div class="card-content">
-
-            <h3>Executive Shirt</h3>
-
-            <p>
-                Sophisticated executive wear crafted
-                with premium materials and timeless design.
-            </p>
-
-            <div class="price">€180</div>
-
-            <button class="buy-btn">
-                Add to Bag
-            </button>
+            </div>
 
         </div>
 
     </div>
-
-    <div class="card">
-
-        <img src="bolsa.png" alt="Luxury Bag">
-
-        <div class="card-content">
-
-            <h3>Classic Woman Bag</h3>
-
-            <p>
-                Elegant luxury handbag created
-                for premium fashion expression.
-            </p>
-
-            <div class="price">€420</div>
-
-            <button class="buy-btn">
-                Add to Bag
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
 
 </section>
 
-<!-- EXPERIENCE -->
+<!-- FEMININAS -->
+
+<section class="section" id="femininas">
+
+    <h2 class="section-title">
+        Femininas
+    </h2>
+
+    <div class="products-grid">
+
+        <div class="product-card">
+
+            <img src="bolsa.png" alt="Women Collection">
+
+            <div class="product-info">
+
+                <h3>Luxury Feminine</h3>
+
+                <p>
+                    Modern feminine collection designed with elegance and exclusivity.
+                </p>
+
+                <div class="price">
+                    €470
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BOLSAS -->
+
+<section class="section" id="bolsas">
+
+    <h2 class="section-title">
+        Bags Collection
+    </h2>
+
+    <div class="products-grid">
+
+        <div class="product-card">
+
+            <img src="bolsa.png" alt="Classic Luxury Bag">
+
+            <div class="product-info">
+
+                <h3>Classic Luxury Bag</h3>
+
+                <p>
+                    Refined luxury bag with premium finishing and timeless design.
+                </p>
+
+                <div class="price">
+                    €610
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ACESSORIOS -->
+
+<section class="section" id="acessorios">
+
+    <h2 class="section-title">
+        Accessories
+    </h2>
+
+    <div class="products-grid">
+
+        <div class="product-card">
+
+            <img src="producto1.png" alt="Luxury Accessories">
+
+            <div class="product-info">
+
+                <h3>Premium Accessories</h3>
+
+                <p>
+                    Luxury accessories designed for refined and sophisticated lifestyle.
+                </p>
+
+                <div class="price">
+                    €180
+                </div>
+
+                <button class="buy-btn">
+                    Add to Bag
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
 
 <section class="section">
 
-<h2 class="section-title">Luxury Experience</h2>
+    <div class="about">
 
-<p style="
-max-width:850px;
-line-height:2;
-color:#b8b8b8;
-font-size:18px;
-">
-Sollene Global Store blends luxury aesthetics with a premium digital experience.
-Every collection is designed to reflect elegance, identity and timeless sophistication
-for clients around the world.
-</p>
+        <h2 class="section-title">
+            Luxury Experience
+        </h2>
+
+        <p>
+            Sollene Global Store represents a modern vision of luxury,
+            blending minimal design with premium digital experience.
+            Built for a global audience that values elegance,
+            identity and sophistication.
+        </p>
+
+    </div>
 
 </section>
 
+<!-- FOOTER -->
+
 <footer>
 
-© 2026 Sollene Global Store — All Rights Reserved
+    <p>
+        © 2026 Sollene Global Store — All Rights Reserved
+    </p>
 
 </footer>
 
