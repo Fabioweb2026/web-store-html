@@ -7,15 +7,11 @@
 
 <title>Sollene Global Store | Luxury Lifestyle</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
-/* ================= RESET ================= */
-
+/* RESET */
 *{
     margin:0;
     padding:0;
@@ -26,8 +22,7 @@ html{
     scroll-behavior:smooth;
 }
 
-/* ================= BODY ================= */
-
+/* BODY */
 body{
     font-family:'Inter',sans-serif;
     min-height:100vh;
@@ -49,8 +44,7 @@ body{
     background-color:#0f0f0f;
 }
 
-/* ================= HEADER FIXO ================= */
-
+/* HEADER */
 header{
     position:fixed;
     top:0;
@@ -59,7 +53,6 @@ header{
     z-index:999;
 
     backdrop-filter:blur(18px);
-
     background:rgba(0,0,0,.55);
 
     border-bottom:1px solid rgba(255,255,255,.08);
@@ -94,7 +87,6 @@ nav a{
     color:#fff;
     font-size:14px;
     font-weight:600;
-    transition:.3s;
 }
 
 nav a:hover{
@@ -102,82 +94,42 @@ nav a:hover{
 }
 
 .contact-btn{
-    background:linear-gradient(
-        135deg,
-        #f7e7b3,
-        #d6b36a
-    );
-
+    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
     color:#111;
     border:none;
     padding:12px 24px;
     border-radius:50px;
     font-weight:800;
-    cursor:pointer;
-    transition:.3s;
 }
 
-.contact-btn:hover{
-    transform:translateY(-3px);
-}
-
-/* ================= PRODUCTS ================= */
-
+/* PRODUCTS */
 .products-section{
-    max-width:1450px;
+    max-width:1400px;
     margin:auto;
-
     padding:140px 40px 100px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:70px;
-}
+/* ❌ REMOVIDO TITULO E SUBTITULO */
 
-.section-title h2{
-    font-size:54px;
-    margin-bottom:15px;
-    color:#f1d89b;
-}
-
-.section-title p{
-    color:#eaeaea;
-    font-size:16px;
-}
-
-/* ================= GRID ================= */
-
+/* GRID */
 .products-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
     gap:35px;
 }
 
-/* ================= CARD ================= */
-
+/* CARD */
 .card{
-    position:relative;
-
     background:rgba(255,255,255,.10);
-
-    border:1px solid rgba(255,255,255,.16);
-
+    border:1px solid rgba(255,255,255,.15);
     backdrop-filter:blur(18px);
-
     border-radius:28px;
-
     overflow:hidden;
-
-    transition:.5s;
-
-    box-shadow:0 10px 35px rgba(0,0,0,.18);
+    transition:.4s;
 }
 
 .card:hover{
-    transform:translateY(-10px) scale(1.02);
-    border-color:#e5c98b;
-    box-shadow:0 25px 60px rgba(0,0,0,.25);
+    transform:translateY(-10px);
 }
 
 .card-image{
@@ -186,12 +138,6 @@ nav a:hover{
     align-items:center;
     justify-content:center;
     font-size:70px;
-
-    background:linear-gradient(
-        145deg,
-        rgba(255,255,255,.06),
-        rgba(255,255,255,.02)
-    );
 }
 
 .card-content{
@@ -203,19 +149,17 @@ nav a:hover{
     font-size:12px;
     font-weight:700;
     letter-spacing:2px;
-    margin-bottom:10px;
 }
 
 .card h3{
     font-size:24px;
-    margin-bottom:12px;
+    margin:10px 0;
 }
 
 .card p{
     color:#e8e8e8;
     font-size:14px;
-    line-height:1.7;
-    margin-bottom:22px;
+    margin-bottom:20px;
 }
 
 .price-row{
@@ -237,51 +181,9 @@ nav a:hover{
     padding:12px 18px;
     border-radius:12px;
     font-weight:800;
-    cursor:pointer;
-    transition:.3s;
 }
 
-.btn-add:hover{
-    transform:scale(1.05);
-}
-
-/* ================= ABOUT ================= */
-
-.about{
-    padding:120px 40px;
-    background:rgba(255,255,255,.03);
-}
-
-.about-container{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:50px;
-}
-
-.about-box{
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.10);
-    padding:55px;
-    border-radius:28px;
-    backdrop-filter:blur(16px);
-}
-
-.about h2{
-    font-size:42px;
-    margin-bottom:20px;
-    color:#f1d89b;
-}
-
-.about p{
-    color:#eaeaea;
-    line-height:1.8;
-    font-size:15px;
-}
-
-/* ================= CART ================= */
-
+/* CART */
 .cart-sidebar{
     position:fixed;
     top:120px;
@@ -294,33 +196,19 @@ nav a:hover{
 
     padding:30px;
     backdrop-filter:blur(22px);
-
-    z-index:999;
-
-    box-shadow:0 20px 60px rgba(0,0,0,.20);
 }
 
 .cart-sidebar h4{
     text-align:center;
-    margin-bottom:25px;
     color:#f1d89b;
-    font-size:14px;
-    letter-spacing:3px;
-}
-
-#cart-items{
-    max-height:240px;
-    overflow-y:auto;
     margin-bottom:20px;
 }
 
 .cart-item{
     display:flex;
     justify-content:space-between;
-    margin-bottom:12px;
-    padding-bottom:10px;
-    border-bottom:1px solid rgba(255,255,255,.08);
     font-size:14px;
+    margin-bottom:10px;
 }
 
 .total-box{
@@ -329,8 +217,7 @@ nav a:hover{
     margin-top:20px;
     padding-top:20px;
     border-top:1px solid rgba(255,255,255,.08);
-    font-size:22px;
-    font-weight:800;
+    font-size:20px;
     color:#f1d89b;
 }
 
@@ -343,67 +230,17 @@ nav a:hover{
     background:#25d366;
     color:#fff;
     font-weight:800;
-    cursor:pointer;
-    transition:.3s;
 }
 
-.btn-checkout:hover{
-    transform:translateY(-3px);
-}
-
-/* ================= FOOTER ================= */
-
+/* FOOTER */
 footer{
-    padding:70px 30px;
+    padding:60px;
     text-align:center;
     background:rgba(255,255,255,.04);
-    border-top:1px solid rgba(255,255,255,.08);
 }
 
 footer h3{
     color:#f1d89b;
-    letter-spacing:5px;
-    margin-bottom:15px;
-}
-
-footer p{
-    color:#d0d0d0;
-    font-size:14px;
-}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:1100px){
-
-    .cart-sidebar{
-        position:relative;
-        width:90%;
-        margin:40px auto;
-        top:auto;
-        right:auto;
-    }
-
-    .about-container{
-        grid-template-columns:1fr;
-    }
-}
-
-@media(max-width:800px){
-
-    .navbar{
-        flex-direction:column;
-        gap:15px;
-        padding:10px 20px;
-    }
-
-    nav{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    .section-title h2{
-        font-size:38px;
-    }
 }
 
 </style>
@@ -411,8 +248,6 @@ footer p{
 </head>
 
 <body>
-
-<!-- ================= HEADER ================= -->
 
 <header>
 
@@ -422,28 +257,20 @@ footer p{
 
 <nav>
 <a href="#">Home</a>
-<a href="#">Collection</a>
+<a href="#">Shop</a>
 <a href="#">Luxury</a>
-<a href="#">About</a>
 <a href="#">Contact</a>
 </nav>
 
-<button class="contact-btn">Premium Access</button>
+<button class="contact-btn">Premium</button>
 
 </div>
 
 </header>
 
-<!-- ================= PRODUCTS ================= -->
+<!-- PRODUCTS (SEM TEXTO NO TOPO) -->
 
 <section class="products-section">
-
-<div class="section-title">
-
-<h2>Exclusive Collection</h2>
-<p>Premium lifestyle products with modern luxury design</p>
-
-</div>
 
 <div class="products-grid">
 
@@ -452,23 +279,10 @@ footer p{
 <div class="card-content">
 <div class="card-category">EXECUTIVE</div>
 <h3>Luxury Shirt</h3>
-<p>Elegant premium cotton shirt with modern fit.</p>
+<p>Premium cotton shirt</p>
 <div class="price-row">
 <span class="price">€85</span>
 <button class="btn-add" onclick="add('Shirt',85)">Add</button>
-</div>
-</div>
-</div>
-
-<div class="card">
-<div class="card-image">👜</div>
-<div class="card-content">
-<div class="card-category">PREMIUM</div>
-<h3>Leather Belt</h3>
-<p>High quality leather with refined finish.</p>
-<div class="price-row">
-<span class="price">€110</span>
-<button class="btn-add" onclick="add('Belt',110)">Add</button>
 </div>
 </div>
 </div>
@@ -478,7 +292,7 @@ footer p{
 <div class="card-content">
 <div class="card-category">SIGNATURE</div>
 <h3>Luxury Watch</h3>
-<p>Elegant design inspired by timeless style.</p>
+<p>Elegant premium design</p>
 <div class="price-row">
 <span class="price">€390</span>
 <button class="btn-add" onclick="add('Watch',390)">Add</button>
@@ -490,40 +304,31 @@ footer p{
 
 </section>
 
-<!-- ================= CART ================= -->
+<!-- CART -->
 
 <aside class="cart-sidebar">
 
 <h4>YOUR BAG</h4>
 
-<div id="cart-items">Empty bag</div>
+<div id="cart-items">Empty</div>
 
 <div class="total-box">
 <span>Total</span>
-<span id="total-price">€0.00</span>
+<span id="total-price">€0</span>
 </div>
 
-<button class="btn-checkout" onclick="checkout()">WhatsApp Order</button>
+<button class="btn-checkout" onclick="checkout()">WhatsApp</button>
 
 </aside>
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-<h3>SOLLENE GLOBAL STORE</h3>
-<p>Luxury Lifestyle • Modern Experience</p>
-
-</footer>
 
 <script>
 
 let cart=[];
 let total=0;
 
-function add(name,price){
-cart.push({name,price});
-total+=price;
+function add(n,p){
+cart.push({n,p});
+total+=p;
 update();
 }
 
@@ -531,31 +336,23 @@ function update(){
 let box=document.getElementById("cart-items");
 
 if(cart.length===0){
-box.innerHTML="Empty bag";
+box.innerHTML="Empty";
 }else{
 box.innerHTML=cart.map(i=>`
 <div class="cart-item">
-<span>${i.name}</span>
-<span>€${i.price}</span>
+<span>${i.n}</span>
+<span>€${i.p}</span>
 </div>`).join("");
 }
 
-document.getElementById("total-price").innerText="€"+total.toFixed(2);
+document.getElementById("total-price").innerText="€"+total;
 }
 
 function checkout(){
-if(cart.length===0){
-alert("Add products first!");
-return;
-}
-
 let msg="Order:%0A";
 cart.forEach(i=>{
-msg+=`${i.name} - €${i.price}%0A`;
+msg+=`${i.n} - €${i.p}%0A`;
 });
-
-msg+=`Total: €${total}`;
-
 window.open("https://wa.me/?text="+msg);
 }
 
