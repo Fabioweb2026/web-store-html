@@ -29,110 +29,79 @@ html{
 /* ================= BODY ================= */
 
 body{
-
     font-family:'Inter',sans-serif;
-
     min-height:100vh;
-
     overflow-x:hidden;
-
     color:#fff;
 
     background:
     linear-gradient(
-        rgba(15,15,15,.30),
-        rgba(15,15,15,.45)
+        rgba(10,10,10,.35),
+        rgba(10,10,10,.55)
     ),
     url('Solle-Global-Store.png');
 
     background-repeat:no-repeat;
-
-    /* IMAGEM MENOR SEM CORTAR */
-    background-size:contain;
-
-    /* POSIÇÃO DA IMAGEM */
-    background-position:center 120px;
-
+    background-size:cover;
+    background-position:center top;
     background-attachment:fixed;
 
-    background-color:#111;
+    background-color:#0f0f0f;
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER FIXO ================= */
 
 header{
-
     position:fixed;
-
     top:0;
     left:0;
-
     width:100%;
-
     z-index:999;
 
-    backdrop-filter:blur(14px);
+    backdrop-filter:blur(18px);
 
-    background:rgba(255,255,255,.06);
+    background:rgba(0,0,0,.55);
 
     border-bottom:1px solid rgba(255,255,255,.08);
 
-    box-shadow:0 8px 30px rgba(0,0,0,.15);
+    padding:18px 0;
 }
 
 .navbar{
-
     max-width:1400px;
-
     margin:auto;
-
-    padding:22px 40px;
+    padding:0 40px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:space-between;
 }
 
 .logo{
-
     font-size:22px;
-
     font-weight:900;
-
     letter-spacing:6px;
-
     color:#f1d89b;
 }
 
 nav{
-
     display:flex;
-
-    gap:35px;
+    gap:30px;
 }
 
 nav a{
-
     text-decoration:none;
-
     color:#fff;
-
     font-size:14px;
-
     font-weight:600;
-
     transition:.3s;
 }
 
 nav a:hover{
-
     color:#f1d89b;
 }
 
 .contact-btn{
-
     background:linear-gradient(
         135deg,
         #f7e7b3,
@@ -140,123 +109,85 @@ nav a:hover{
     );
 
     color:#111;
-
     border:none;
-
-    padding:13px 26px;
-
+    padding:12px 24px;
     border-radius:50px;
-
     font-weight:800;
-
     cursor:pointer;
-
-    transition:.4s;
-
-    box-shadow:
-    0 10px 30px rgba(214,179,106,.35);
+    transition:.3s;
 }
 
 .contact-btn:hover{
-
     transform:translateY(-3px);
 }
 
 /* ================= PRODUCTS ================= */
 
 .products-section{
-
     max-width:1450px;
-
     margin:auto;
 
-    /* CARDS MAIS PARA CIMA */
-    padding:40px 40px 100px;
+    padding:140px 40px 100px;
 }
 
 .section-title{
-
     text-align:center;
-
-    margin-top:40px;
-
     margin-bottom:70px;
 }
 
 .section-title h2{
-
     font-size:54px;
-
     margin-bottom:15px;
-
     color:#f1d89b;
 }
 
 .section-title p{
-
-    color:#f0f0f0;
-
+    color:#eaeaea;
     font-size:16px;
 }
 
+/* ================= GRID ================= */
+
 .products-grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(270px,1fr));
-
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
     gap:35px;
 }
 
 /* ================= CARD ================= */
 
 .card{
-
     position:relative;
 
-    background:rgba(255,255,255,.12);
+    background:rgba(255,255,255,.10);
 
-    border:1px solid rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.16);
 
-    backdrop-filter:blur(20px);
+    backdrop-filter:blur(18px);
 
-    border-radius:30px;
+    border-radius:28px;
 
     overflow:hidden;
 
     transition:.5s;
 
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.18);
+    box-shadow:0 10px 35px rgba(0,0,0,.18);
 }
 
 .card:hover{
-
-    transform:
-    translateY(-10px)
-    scale(1.02);
-
+    transform:translateY(-10px) scale(1.02);
     border-color:#e5c98b;
-
-    box-shadow:
-    0 25px 60px rgba(0,0,0,.22);
+    box-shadow:0 25px 60px rgba(0,0,0,.25);
 }
 
 .card-image{
-
     height:240px;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
+    font-size:70px;
 
-    font-size:72px;
-
-    background:
-    linear-gradient(
+    background:linear-gradient(
         145deg,
         rgba(255,255,255,.06),
         rgba(255,255,255,.02)
@@ -264,278 +195,179 @@ nav a:hover{
 }
 
 .card-content{
-
     padding:30px;
 }
 
 .card-category{
-
     color:#f1d89b;
-
     font-size:12px;
-
     font-weight:700;
-
     letter-spacing:2px;
-
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .card h3{
-
-    font-size:25px;
-
-    margin-bottom:15px;
+    font-size:24px;
+    margin-bottom:12px;
 }
 
 .card p{
-
-    color:#f0f0f0;
-
+    color:#e8e8e8;
     font-size:14px;
-
-    line-height:1.8;
-
-    margin-bottom:25px;
+    line-height:1.7;
+    margin-bottom:22px;
 }
 
 .price-row{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
 .price{
-
-    font-size:30px;
-
+    font-size:28px;
     font-weight:900;
-
     color:#f1d89b;
 }
 
 .btn-add{
-
-    background:linear-gradient(
-        135deg,
-        #f7e7b3,
-        #d6b36a
-    );
-
+    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
     color:#111;
-
     border:none;
-
-    padding:13px 20px;
-
-    border-radius:14px;
-
+    padding:12px 18px;
+    border-radius:12px;
     font-weight:800;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .btn-add:hover{
-
-    transform:scale(1.06);
+    transform:scale(1.05);
 }
 
 /* ================= ABOUT ================= */
 
 .about{
-
     padding:120px 40px;
-
     background:rgba(255,255,255,.03);
 }
 
 .about-container{
-
-    max-width:1250px;
-
+    max-width:1200px;
     margin:auto;
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:50px;
 }
 
 .about-box{
-
     background:rgba(255,255,255,.08);
-
     border:1px solid rgba(255,255,255,.10);
-
     padding:55px;
-
-    border-radius:30px;
-
-    backdrop-filter:blur(18px);
+    border-radius:28px;
+    backdrop-filter:blur(16px);
 }
 
 .about h2{
-
-    font-size:46px;
-
-    margin-bottom:25px;
-
+    font-size:42px;
+    margin-bottom:20px;
     color:#f1d89b;
 }
 
 .about p{
-
-    color:#ececec;
-
-    line-height:1.9;
-
-    font-size:16px;
+    color:#eaeaea;
+    line-height:1.8;
+    font-size:15px;
 }
 
 /* ================= CART ================= */
 
 .cart-sidebar{
-
     position:fixed;
-
     top:120px;
-
     right:25px;
-
     width:320px;
 
     background:rgba(255,255,255,.10);
-
     border:1px solid rgba(255,255,255,.15);
-
-    border-radius:30px;
+    border-radius:28px;
 
     padding:30px;
-
-    backdrop-filter:blur(25px);
+    backdrop-filter:blur(22px);
 
     z-index:999;
 
-    box-shadow:
-    0 20px 70px rgba(0,0,0,.18);
+    box-shadow:0 20px 60px rgba(0,0,0,.20);
 }
 
 .cart-sidebar h4{
-
     text-align:center;
-
     margin-bottom:25px;
-
     color:#f1d89b;
-
     font-size:14px;
-
     letter-spacing:3px;
 }
 
 #cart-items{
-
     max-height:240px;
-
     overflow-y:auto;
-
     margin-bottom:20px;
 }
 
 .cart-item{
-
     display:flex;
-
     justify-content:space-between;
-
-    margin-bottom:14px;
-
+    margin-bottom:12px;
     padding-bottom:10px;
-
     border-bottom:1px solid rgba(255,255,255,.08);
-
     font-size:14px;
 }
 
 .total-box{
-
     display:flex;
-
     justify-content:space-between;
-
     margin-top:20px;
-
     padding-top:20px;
-
     border-top:1px solid rgba(255,255,255,.08);
-
-    font-size:24px;
-
+    font-size:22px;
     font-weight:800;
-
     color:#f1d89b;
 }
 
 .btn-checkout{
-
     width:100%;
-
-    margin-top:25px;
-
-    padding:17px;
-
+    margin-top:20px;
+    padding:16px;
     border:none;
-
-    border-radius:16px;
-
+    border-radius:14px;
     background:#25d366;
-
     color:#fff;
-
     font-weight:800;
-
     cursor:pointer;
-
     transition:.3s;
 }
 
 .btn-checkout:hover{
-
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 }
 
 /* ================= FOOTER ================= */
 
 footer{
-
     padding:70px 30px;
-
     text-align:center;
-
     background:rgba(255,255,255,.04);
-
     border-top:1px solid rgba(255,255,255,.08);
 }
 
 footer h3{
-
     color:#f1d89b;
-
-    letter-spacing:6px;
-
-    margin-bottom:18px;
+    letter-spacing:5px;
+    margin-bottom:15px;
 }
 
 footer p{
-
-    color:#d4d4d4;
-
+    color:#d0d0d0;
     font-size:14px;
 }
 
@@ -544,70 +376,33 @@ footer p{
 @media(max-width:1100px){
 
     .cart-sidebar{
-
         position:relative;
-
         width:90%;
-
         margin:40px auto;
-
         top:auto;
-
         right:auto;
     }
 
     .about-container{
-
         grid-template-columns:1fr;
     }
 }
 
-@media(max-width:850px){
+@media(max-width:800px){
 
     .navbar{
-
-        padding:20px;
-
         flex-direction:column;
-
-        gap:22px;
+        gap:15px;
+        padding:10px 20px;
     }
 
     nav{
-
-        gap:18px;
-
         flex-wrap:wrap;
-
         justify-content:center;
     }
 
     .section-title h2{
-
-        font-size:42px;
-    }
-}
-
-@media(max-width:500px){
-
-    .products-section{
-
-        padding:40px 20px 80px;
-    }
-
-    .about{
-
-        padding:80px 20px;
-    }
-
-    .about-box{
-
-        padding:35px;
-    }
-
-    .section-title h2{
-
-        font-size:34px;
+        font-size:38px;
     }
 }
 
@@ -623,23 +418,17 @@ footer p{
 
 <div class="navbar">
 
-<div class="logo">
-SOLLENE
-</div>
+<div class="logo">SOLLENE</div>
 
 <nav>
-
 <a href="#">Home</a>
 <a href="#">Collection</a>
 <a href="#">Luxury</a>
 <a href="#">About</a>
 <a href="#">Contact</a>
-
 </nav>
 
-<button class="contact-btn">
-Premium Access
-</button>
+<button class="contact-btn">Premium Access</button>
 
 </div>
 
@@ -652,189 +441,49 @@ Premium Access
 <div class="section-title">
 
 <h2>Exclusive Collection</h2>
-
-<p>
-Timeless elegance crafted for executive lifestyle.
-</p>
+<p>Premium lifestyle products with modern luxury design</p>
 
 </div>
 
 <div class="products-grid">
 
-<!-- PRODUCT 1 -->
-
 <div class="card">
-
-<div class="card-image">
-👔
-</div>
-
+<div class="card-image">👔</div>
 <div class="card-content">
-
-<div class="card-category">
-EXECUTIVE
-</div>
-
+<div class="card-category">EXECUTIVE</div>
 <h3>Luxury Shirt</h3>
-
-<p>
-Elegant premium cotton shirt with modern executive fit.
-</p>
-
+<p>Elegant premium cotton shirt with modern fit.</p>
 <div class="price-row">
-
-<span class="price">€ 85</span>
-
-<button class="btn-add" onclick="add('Luxury Shirt',85)">
-Add
-</button>
-
+<span class="price">€85</span>
+<button class="btn-add" onclick="add('Shirt',85)">Add</button>
 </div>
-
 </div>
-
 </div>
-
-<!-- PRODUCT 2 -->
 
 <div class="card">
-
-<div class="card-image">
-👜
-</div>
-
+<div class="card-image">👜</div>
 <div class="card-content">
-
-<div class="card-category">
-PREMIUM
-</div>
-
+<div class="card-category">PREMIUM</div>
 <h3>Leather Belt</h3>
-
-<p>
-Crafted leather belt with sophisticated premium finish.
-</p>
-
+<p>High quality leather with refined finish.</p>
 <div class="price-row">
-
-<span class="price">€ 110</span>
-
-<button class="btn-add" onclick="add('Leather Belt',110)">
-Add
-</button>
-
+<span class="price">€110</span>
+<button class="btn-add" onclick="add('Belt',110)">Add</button>
 </div>
-
 </div>
-
 </div>
-
-<!-- PRODUCT 3 -->
 
 <div class="card">
-
-<div class="card-image">
-⌚
-</div>
-
+<div class="card-image">⌚</div>
 <div class="card-content">
-
-<div class="card-category">
-SIGNATURE
-</div>
-
+<div class="card-category">SIGNATURE</div>
 <h3>Luxury Watch</h3>
-
-<p>
-Premium executive watch inspired by timeless elegance.
-</p>
-
+<p>Elegant design inspired by timeless style.</p>
 <div class="price-row">
-
-<span class="price">€ 390</span>
-
-<button class="btn-add" onclick="add('Luxury Watch',390)">
-Add
-</button>
-
+<span class="price">€390</span>
+<button class="btn-add" onclick="add('Watch',390)">Add</button>
 </div>
-
 </div>
-
-</div>
-
-<!-- PRODUCT 4 -->
-
-<div class="card">
-
-<div class="card-image">
-👞
-</div>
-
-<div class="card-content">
-
-<div class="card-category">
-CLASSIC
-</div>
-
-<h3>Executive Shoes</h3>
-
-<p>
-Handcrafted luxury shoes designed for sophisticated events.
-</p>
-
-<div class="price-row">
-
-<span class="price">€ 240</span>
-
-<button class="btn-add" onclick="add('Executive Shoes',240)">
-Add
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= ABOUT ================= -->
-
-<section class="about">
-
-<div class="about-container">
-
-<div class="about-box">
-
-<h2>
-About Sollene
-</h2>
-
-<p>
-Sollene Global Store represents sophistication,
-innovation and premium digital commerce.
-Inspired by luxury European aesthetics and
-modern executive lifestyle experiences.
-</p>
-
-</div>
-
-<div class="about-box">
-
-<h2>
-Luxury Experience
-</h2>
-
-<p>
-Designed with modern UI/UX concepts,
-glassmorphism effects, elegant lighting
-and responsive architecture for desktop
-and mobile premium experiences.
-</p>
-
 </div>
 
 </div>
@@ -845,27 +494,16 @@ and mobile premium experiences.
 
 <aside class="cart-sidebar">
 
-<h4>
-YOUR BAG
-</h4>
+<h4>YOUR BAG</h4>
 
-<div id="cart-items">
-Empty bag
-</div>
+<div id="cart-items">Empty bag</div>
 
 <div class="total-box">
-
 <span>Total</span>
-
-<span id="total-price">
-€ 0.00
-</span>
-
+<span id="total-price">€0.00</span>
 </div>
 
-<button class="btn-checkout" onclick="checkout()">
-WhatsApp Order
-</button>
+<button class="btn-checkout" onclick="checkout()">WhatsApp Order</button>
 
 </aside>
 
@@ -873,80 +511,52 @@ WhatsApp Order
 
 <footer>
 
-<h3>
-SOLLENE GLOBAL STORE
-</h3>
-
-<p>
-Luxury Lifestyle • Premium Experience • Modern Web Design
-</p>
+<h3>SOLLENE GLOBAL STORE</h3>
+<p>Luxury Lifestyle • Modern Experience</p>
 
 </footer>
 
-<!-- ================= JAVASCRIPT ================= -->
-
 <script>
 
-let cart = [];
-let total = 0;
+let cart=[];
+let total=0;
 
 function add(name,price){
-
-    cart.push({name,price});
-
-    total += price;
-
-    updateCart();
+cart.push({name,price});
+total+=price;
+update();
 }
 
-function updateCart(){
+function update(){
+let box=document.getElementById("cart-items");
 
-    const cartContainer =
-    document.getElementById('cart-items');
+if(cart.length===0){
+box.innerHTML="Empty bag";
+}else{
+box.innerHTML=cart.map(i=>`
+<div class="cart-item">
+<span>${i.name}</span>
+<span>€${i.price}</span>
+</div>`).join("");
+}
 
-    if(cart.length === 0){
-
-        cartContainer.innerHTML = 'Empty bag';
-
-    }else{
-
-        cartContainer.innerHTML = cart.map(item => `
-
-        <div class="cart-item">
-
-            <span>${item.name}</span>
-
-            <span>€ ${item.price.toFixed(2)}</span>
-
-        </div>
-
-        `).join('');
-    }
-
-    document.getElementById('total-price').innerText =
-    `€ ${total.toFixed(2)}`;
+document.getElementById("total-price").innerText="€"+total.toFixed(2);
 }
 
 function checkout(){
+if(cart.length===0){
+alert("Add products first!");
+return;
+}
 
-    if(cart.length === 0){
+let msg="Order:%0A";
+cart.forEach(i=>{
+msg+=`${i.name} - €${i.price}%0A`;
+});
 
-        alert("Select a product first!");
+msg+=`Total: €${total}`;
 
-        return;
-    }
-
-    let message = "Luxury Order:%0A%0A";
-
-    cart.forEach(item => {
-
-        message += `${item.name} - €${item.price}%0A`;
-
-    });
-
-    message += `%0ATotal: €${total.toFixed(2)}`;
-
-    window.open(`https://wa.me/?text=${message}`);
+window.open("https://wa.me/?text="+msg);
 }
 
 </script>
