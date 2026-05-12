@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Luxury Store</title>
+    <title>Sollene Group | Executive Collection</title>
     <style>
         @import url('https://googleapis.com');
         html { scroll-behavior: smooth; }
         *{ margin:0; padding:0; box-sizing:border-box; }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; min-height: 100vh; }
 
-        /* HEADER COM CARRINHO */
+        /* HEADER */
         .main-header {
             background: rgba(247, 243, 235, 0.95); backdrop-filter: blur(10px);
             display: flex; align-items: center; justify-content: space-between;
@@ -26,37 +26,45 @@
         }
         .brand-info h1 { font-size: 18px; font-weight: 800; color: #7a5c33; text-transform: uppercase; }
 
-        /* ÍCONE CARRINHO */
-        .cart-trigger { position: relative; cursor: pointer; display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 12px; }
+        .cart-trigger { cursor: pointer; font-weight: 800; font-size: 12px; display: flex; gap: 10px; align-items: center; }
         .cart-count { background: #7a5c33; color: #fff; padding: 2px 8px; border-radius: 50px; font-size: 10px; }
 
-        /* HERO */
-        .hero-section { width: 100%; height: 85vh; background: url('Solle-Global-Store.png') no-repeat center top; background-size: cover; }
+        /* SEÇÃO DE DESTAQUE ÚNICO */
+        .feature-section {
+            display: flex; justify-content: center; align-items: center;
+            padding: 80px 20px;
+        }
 
-        /* GALERIA */
-        .gallery-section { background: #fff; padding: 60px 5%; text-align: center; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .product-card { background: #fdfaf6; border-radius: 20px; overflow: hidden; border: 1px solid #f1eee4; padding-bottom: 20px; transition: 0.3s; }
-        .product-img { width: 100%; height: 400px; object-fit: cover; }
-        .btn-buy { background: #7a5c33; color: #fff; border: none; padding: 10px 25px; border-radius: 50px; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 10px; }
+        .product-focus-card {
+            background: #fff; border-radius: 30px; width: 100%; max-width: 500px;
+            overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+            text-align: center; transition: 0.5s;
+        }
 
-        /* ABA LATERAL (CHECKOUT) */
+        .product-focus-card:hover { transform: translateY(-10px); }
+
+        .img-focus { width: 100%; height: 500px; object-fit: cover; background: #fff; }
+
+        .product-details { padding: 40px; }
+        .product-details h2 { font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
+        .product-details p { color: #7a5c33; font-weight: 800; font-size: 28px; margin-bottom: 30px; }
+
+        .btn-buy-now {
+            width: 100%; background: #7a5c33; color: #fff; border: none;
+            padding: 20px; border-radius: 50px; font-weight: 800;
+            text-transform: uppercase; cursor: pointer; transition: 0.3s;
+        }
+        .btn-buy-now:hover { background: #000; }
+
+        /* ABA DE CHECKOUT */
         .side-menu {
             position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
             background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1);
-            z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto;
+            z-index: 2000; transition: 0.5s; padding: 40px;
         }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
-
-        /* ESTILO PAGAMENTO */
-        .payment-methods { margin-top: 30px; text-align: left; }
-        .payment-option { display: block; margin-bottom: 10px; padding: 15px; border: 1px solid #eee; border-radius: 10px; cursor: pointer; font-size: 13px; font-weight: 600; }
-        .payment-option input { margin-right: 10px; }
-        .no-installments { font-size: 11px; color: #991b1b; font-weight: 800; text-transform: uppercase; margin-top: 5px; display: block; }
-
-        .btn-finish { width: 100%; padding: 18px; background: #25d366; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 20px; cursor: pointer; }
 
         @media(max-width: 500px) { .side-menu { width: 100%; } }
     </style>
@@ -70,57 +78,33 @@
             <div class="logo-circle"></div>
             <div class="brand-info"><h1>Sollene Group</h1></div>
         </div>
-        <!-- CARRINHO NO CANTO SUPERIOR DIREITO -->
         <div class="cart-trigger" onclick="toggleCart()">
             BAG <span class="cart-count" id="cartCount">0</span>
         </div>
     </header>
 
-    <section class="hero-section"></section>
-
-    <section class="gallery-section">
-        <div class="gallery-grid">
-            <div class="product-card">
-                <img src="productos1.png" class="product-img">
-                <h3 style="margin-top:15px">Executive Shirt</h3>
-                <p style="color:#7a5c33; font-weight:800; margin:10px 0">€ 85.00</p>
-                <button class="btn-buy" onclick="addToCart('Executive Shirt', 85)">Add to Bag</button>
-            </div>
-            <div class="product-card">
-                <img src="prodcuto2.png" class="product-img">
-                <h3 style="margin-top:15px">Luxury Selection</h3>
-                <p style="color:#7a5c33; font-weight:800; margin:10px 0">€ 110.00</p>
-                <button class="btn-buy" onclick="addToCart('Luxury Selection', 110)">Add to Bag</button>
+    <main class="feature-section">
+        <div class="product-focus-card">
+            <!-- SUA IMAGEM NOVA AQUI -->
+            <img src="executive-shoe.png" alt="Executive Shoes" class="img-focus">
+            
+            <div class="product-details">
+                <h2>Executive Shoes</h2>
+                <p>€ 145.00</p>
+                <button class="btn-buy-now" onclick="addToCart('Executive Shoes', 145)">Add to Bag</button>
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- ABA LATERAL DE FINALIZAÇÃO -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px;">✕ CLOSE</div>
-        <h2 style="letter-spacing:2px; font-size:18px; text-transform:uppercase;">Your Order</h2>
-        
-        <div id="cartItems" style="margin-top:20px; border-bottom:1px solid #eee; padding-bottom:15px">
-            Your bag is empty.
-        </div>
-
-        <div style="display:flex; justify-content:space-between; font-weight:800; font-size:20px; margin-top:20px">
+        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase;">Summary</h2>
+        <div id="cartItems" style="margin-top:20px; border-bottom:1px solid #eee; padding-bottom:15px">Bag is empty</div>
+        <div style="display:flex; justify-content:space-between; font-weight:800; font-size:22px; margin-top:20px">
             <span>Total:</span>
             <span id="totalVal">€ 0.00</span>
         </div>
-
-        <div class="payment-methods">
-            <p style="font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:15px">Payment Method</p>
-            <label class="payment-option">
-                <input type="radio" name="pay" value="Card" checked> Credit / Debit Card
-                <span class="no-installments">* No installments available in EU</span>
-            </label>
-            <label class="payment-option">
-                <input type="radio" name="pay" value="Cash"> Cash on Delivery
-            </label>
-        </div>
-
-        <button class="btn-finish" onclick="finishOrder()">Finish via WhatsApp</button>
+        <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:40px; cursor:pointer;" onclick="finish()">Finalize on WhatsApp</button>
     </div>
 
     <script>
@@ -136,20 +120,19 @@
             cart.push({name, price});
             total += price;
             updateUI();
-            alert(name + " added to bag!");
+            toggleCart();
         }
 
         function updateUI() {
             document.getElementById('cartCount').innerText = cart.length;
             const container = document.getElementById('cartItems');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:13px"><span>${i.name}</span><span>€${i.price}.00</span></div>`).join('');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px"><span>${i.name}</span><span>€${i.price}.00</span></div>`).join('');
             document.getElementById('totalVal').innerText = `€ ${total}.00`;
         }
 
-        function finishOrder() {
-            if(cart.length === 0) return alert("Your bag is empty!");
-            const method = document.querySelector('input[name="pay"]:checked').value;
-            let msg = `Hello Sollene Group, I'd like to order:%0A%0A` + cart.map(i => `- ${i.name} (€${i.price})`).join('%0A') + `%0A%0A*Total: €${total}.00*%0APayment: ${method} (Full Payment)`;
+        function finish() {
+            if(cart.length === 0) return alert("Empty!");
+            let msg = `Hello Sollene Group, I'd like to buy: ` + cart.map(i => i.name).join(', ') + `. Total: €${total}.00`;
             window.open(`https://wa.me{msg}`);
         }
     </script>
