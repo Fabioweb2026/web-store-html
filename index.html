@@ -82,7 +82,7 @@
         }
         .btn-add:hover { background: #000; }
 
-        /* ABA LATERAL INTERATIVA */
+        /* ABA LATERAL DE PAGAMENTO */
         .side-menu {
             position: fixed; top: 0; right: -420px;
             width: 400px; height: 100%; background: #fff;
@@ -104,6 +104,25 @@
         .total-container {
             margin-top: 30px; padding-top: 20px; border-top: 2px solid #7a5c33;
             display: flex; justify-content: space-between; font-weight: 800; font-size: 18px;
+        }
+
+        /* SEÇÃO DE PAGAMENTO */
+        .payment-methods {
+            margin-top: 35px;
+            text-align: left;
+        }
+        .payment-methods h4 { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #7a5c33; margin-bottom: 15px; }
+        
+        .pay-option {
+            display: block; padding: 15px; border: 1px solid #eee; border-radius: 12px;
+            margin-bottom: 10px; cursor: pointer; transition: 0.3s; font-size: 13px; font-weight: 600;
+        }
+        .pay-option:hover { background: #fdfaf6; border-color: #7a5c33; }
+        .pay-option input { margin-right: 12px; accent-color: #7a5c33; }
+
+        .btn-confirm {
+            width: 100%; padding: 20px; background: #000; color: #fff; border: none;
+            border-radius: 12px; font-weight: 800; margin-top: 20px; cursor: pointer; text-transform: uppercase;
         }
 
         @media(max-width: 900px) { .side-menu { width: 100%; } .main-header { flex-direction: column; gap: 15px; } }
@@ -141,30 +160,30 @@
                 <div class="img-container"><img src="productos1.png" class="card-img"></div>
                 <h3>Executive Shirt</h3>
                 <p style="margin:15px 0; font-weight:800;">€ 85.00</p>
-                <button class="btn-add" onclick="addToCart('Executive Shirt', 85, 'productos1.png')">Add to Cart</button>
+                <button class="btn-add" onclick="addToCart('Executive Shirt', 85, 'productos1.png')">Add to Bag</button>
             </div>
             <div class="card">
                 <div class="img-container"><img src="prodcuto2.png" class="card-img"></div>
                 <h3>Luxury Selection</h3>
                 <p style="margin:15px 0; font-weight:800;">€ 110.00</p>
-                <button class="btn-add" onclick="addToCart('Luxury Selection', 110, 'prodcuto2.png')">Add to Cart</button>
+                <button class="btn-add" onclick="addToCart('Luxury Selection', 110, 'prodcuto2.png')">Add to Bag</button>
             </div>
             <div class="card">
                 <div class="img-container"><img src="bolsa..png" class="card-img"></div>
                 <h3>Executive Leather Bag</h3>
                 <p style="margin:15px 0; font-weight:800;">€ 185.00</p>
-                <button class="btn-add" onclick="addToCart('Executive Bag', 185, 'bolsa..png')">Add to Cart</button>
+                <button class="btn-add" onclick="addToCart('Executive Bag', 185, 'bolsa..png')">Add to Bag</button>
             </div>
         </div>
     </section>
 
-    <!-- ABA LATERAL COM LISTA REAL -->
+    <!-- ABA LATERAL DE PAGAMENTO REAL -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleMenu()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Your Selection</h2>
+        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Order Summary</h2>
         
         <div id="cart-items-list" style="margin-top:20px;">
-            <p style="color:#999; font-size:13px;">Your bag is empty.</p>
+            <p style="color:#999; font-size:13px;">Bag is empty.</p>
         </div>
 
         <div class="total-container">
@@ -172,8 +191,21 @@
             <span id="cart-total-price">€ 0.00</span>
         </div>
 
-        <p style="margin-top: 20px; font-size: 10px; color: #991b1b; font-weight: 800;">* FULL PAYMENT ONLY (NO INSTALLMENTS)</p>
-        <button onclick="checkout()" style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:20px; cursor:pointer;">CHECKOUT WHATSAPP</button>
+        <!-- SEÇÃO DE PAGAMENTO SUBSTITUINDO O WHATSAPP -->
+        <div class="payment-methods">
+            <h4>Select Payment</h4>
+            <label class="pay-option">
+                <input type="radio" name="pay" value="card" checked> Credit / Debit Card
+            </label>
+            <label class="pay-option">
+                <input type="radio" name="pay" value="cash"> Cash on Delivery
+            </label>
+            <p style="margin-top: 20px; font-size: 10px; color: #991b1b; font-weight: 800; text-transform: uppercase;">
+                * European Market Rule: Full payment only. No installments.
+            </p>
+        </div>
+
+        <button onclick="confirmOrder()" class="btn-confirm">Complete Purchase</button>
     </div>
 
     <script>
@@ -190,13 +222,13 @@
             total += price;
             renderCart();
             document.getElementById('cart-count').innerText = cart.length;
-            toggleMenu(); // Abre a aba automaticamente ao adicionar
+            toggleMenu();
         }
 
         function renderCart() {
             const list = document.getElementById('cart-items-list');
             if (cart.length === 0) {
-                list.innerHTML = '<p style="color:#999; font-size:13px;">Your bag is empty.</p>';
+                list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
             } else {
                 list.innerHTML = cart.map(item => `
                     <div class="cart-item">
@@ -211,10 +243,15 @@
             document.getElementById('cart-total-price').innerText = `€ ${total}.00`;
         }
 
-        function checkout() {
-            if (cart.length === 0) return alert("Please add items first.");
-            let message = "Hello Sollene Group! I'd like to order:%0A" + cart.map(i => `- ${i.name} (€${i.price})`).join('%0A') + "%0A*Total: €" + total + ".00*";
-            window.open(`https://wa.me{message}`);
+        function confirmOrder() {
+            if (cart.length === 0) return alert("Select a product first.");
+            const method = document.querySelector('input[name="pay"]:checked').value;
+            alert("Order Confirmed!\nTotal: €" + total + ".00\nPayment: " + method.toUpperCase() + "\nThank you for choosing Sollene Group.");
+            // Limpa o carrinho após confirmar
+            cart = []; total = 0;
+            renderCart();
+            document.getElementById('cart-count').innerText = "0";
+            toggleMenu();
         }
     </script>
 </body>
