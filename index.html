@@ -40,11 +40,20 @@ body{
 
     background:
     linear-gradient(
-        rgba(15,15,15,.45),
-        rgba(15,15,15,.60)
+        rgba(15,15,15,.30),
+        rgba(15,15,15,.45)
     ),
-    url('Solle-Global-Store.png')
-    center/cover fixed no-repeat;
+    url('Solle-Global-Store.png');
+
+    background-repeat:no-repeat;
+
+    /* IMAGEM MENOR SEM CORTAR */
+    background-size:contain;
+
+    /* POSIÇÃO DA IMAGEM */
+    background-position:center 120px;
+
+    background-attachment:fixed;
 
     background-color:#111;
 }
@@ -153,154 +162,6 @@ nav a:hover{
     transform:translateY(-3px);
 }
 
-/* ================= HERO ================= */
-
-.hero{
-
-    position:relative;
-
-    min-height:100vh;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    padding:150px 30px 80px;
-
-    overflow:hidden;
-}
-
-/* LIGHT EFFECT */
-
-.hero::before{
-
-    content:'';
-
-    position:absolute;
-
-    width:650px;
-
-    height:650px;
-
-    background:rgba(214,179,106,.15);
-
-    filter:blur(130px);
-
-    border-radius:50%;
-
-    top:20px;
-
-    left:50%;
-
-    transform:translateX(-50%);
-
-    z-index:0;
-}
-
-.hero-content{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:950px;
-
-    animation:fadeUp 1.2s ease;
-}
-
-.hero h1{
-
-    font-size:78px;
-
-    line-height:1.05;
-
-    margin-bottom:30px;
-
-    font-weight:900;
-}
-
-.gold{
-
-    color:#f1d89b;
-}
-
-.hero p{
-
-    font-size:18px;
-
-    line-height:1.9;
-
-    color:#ececec;
-
-    max-width:720px;
-
-    margin:auto auto 45px;
-}
-
-.hero-buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:20px;
-
-    flex-wrap:wrap;
-}
-
-.btn-main{
-
-    padding:16px 40px;
-
-    border:none;
-
-    border-radius:50px;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    cursor:pointer;
-
-    transition:.4s;
-}
-
-.btn-gold{
-
-    background:linear-gradient(
-        135deg,
-        #f7e7b3,
-        #d6b36a
-    );
-
-    color:#111;
-
-    box-shadow:
-    0 10px 30px rgba(214,179,106,.35);
-}
-
-.btn-dark{
-
-    background:rgba(255,255,255,.08);
-
-    color:#fff;
-
-    border:1px solid rgba(255,255,255,.12);
-
-    backdrop-filter:blur(10px);
-}
-
-.btn-main:hover{
-
-    transform:
-    translateY(-5px)
-    scale(1.02);
-}
-
 /* ================= PRODUCTS ================= */
 
 .products-section{
@@ -309,12 +170,15 @@ nav a:hover{
 
     margin:auto;
 
-    padding:100px 40px;
+    /* CARDS MAIS PARA CIMA */
+    padding:40px 40px 100px;
 }
 
 .section-title{
 
     text-align:center;
+
+    margin-top:40px;
 
     margin-bottom:70px;
 }
@@ -324,11 +188,13 @@ nav a:hover{
     font-size:54px;
 
     margin-bottom:15px;
+
+    color:#f1d89b;
 }
 
 .section-title p{
 
-    color:#e2e2e2;
+    color:#f0f0f0;
 
     font-size:16px;
 }
@@ -519,6 +385,8 @@ nav a:hover{
     font-size:46px;
 
     margin-bottom:25px;
+
+    color:#f1d89b;
 }
 
 .about p{
@@ -671,25 +539,6 @@ footer p{
     font-size:14px;
 }
 
-/* ================= ANIMATION ================= */
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(50px);
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-    }
-}
-
 /* ================= MOBILE ================= */
 
 @media(max-width:1100px){
@@ -733,11 +582,6 @@ footer p{
         justify-content:center;
     }
 
-    .hero h1{
-
-        font-size:52px;
-    }
-
     .section-title h2{
 
         font-size:42px;
@@ -746,19 +590,9 @@ footer p{
 
 @media(max-width:500px){
 
-    .hero h1{
-
-        font-size:40px;
-    }
-
-    .hero p{
-
-        font-size:15px;
-    }
-
     .products-section{
 
-        padding:80px 20px;
+        padding:40px 20px 80px;
     }
 
     .about{
@@ -769,6 +603,11 @@ footer p{
     .about-box{
 
         padding:35px;
+    }
+
+    .section-title h2{
+
+        font-size:34px;
     }
 }
 
@@ -805,39 +644,6 @@ Premium Access
 </div>
 
 </header>
-
-<!-- ================= HERO ================= -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>
-Luxury Fashion <br>
-<span class="gold">Global Experience</span>
-</h1>
-
-<p>
-Discover premium lifestyle products crafted for elegance,
-sophistication and modern luxury. A refined digital store
-experience inspired by executive global brands.
-</p>
-
-<div class="hero-buttons">
-
-<button class="btn-main btn-gold">
-Explore Collection
-</button>
-
-<button class="btn-main btn-dark">
-Watch Experience
-</button>
-
-</div>
-
-</div>
-
-</section>
 
 <!-- ================= PRODUCTS ================= -->
 
