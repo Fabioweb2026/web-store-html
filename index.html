@@ -11,39 +11,35 @@
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #f7f3eb; /* Bege suave constante */
-            color: #1a1a1a;
+            background: #f7f3eb;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* IMAGEM DE FUNDO POSICIONADA PARA NÃO CORTAR ROSTOS */
-        .bg-wrap {
+        /* FUNDO COM FOCO NAS PESSOAS (CENTRALIZADO) */
+        .bg-fixed {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: url('Solle-Global-Store.png') no-repeat center 30% fixed;
+            background: url('Solle-Global-Store.png') no-repeat center center;
             background-size: cover;
             z-index: -1;
-            opacity: 0.9; /* Deixa a foto bem clara e realista */
         }
 
-        /* HEADER INSPIRADO NA SUA IMAGEM (BEGE LUXO) */
+        /* HEADER BEGE LUXO */
         .main-header {
             background-color: #f7f3eb;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 15px 5%;
-            border-bottom: 1px solid rgba(122, 92, 51, 0.2);
-            position: sticky;
-            top: 0;
+            border-bottom: 1px solid rgba(122, 92, 51, 0.1);
+            position: relative;
             z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
         .header-left { display: flex; align-items: center; gap: 15px; }
-        
         .logo-circle {
-            width: 65px; height: 65px;
+            width: 60px; height: 60px;
             border-radius: 50%;
             border: 1px solid #7a5c33;
             background: #fff url('Sollene-Group.png') no-repeat center center;
@@ -51,88 +47,71 @@
         }
 
         .brand-info h1 {
-            font-size: 24px; font-weight: 800; color: #7a5c33; 
+            font-size: 22px; font-weight: 800; color: #7a5c33; 
             letter-spacing: 3px; text-transform: uppercase; line-height: 1;
         }
         .brand-info p {
-            font-size: 10px; letter-spacing: 2px; color: #b0a89e;
-            text-transform: uppercase; margin-top: 4px; font-weight: 600;
+            font-size: 9px; letter-spacing: 2px; color: #b0a89e;
+            text-transform: uppercase; margin-top: 4px;
         }
 
-        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav ul { display: flex; list-style: none; gap: 20px; }
         nav ul li a {
-            text-decoration: none; color: #333; font-size: 11px;
+            text-decoration: none; color: #333; font-size: 10px;
             font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
         }
 
-        .cart-wrapper { position: relative; cursor: pointer; }
-        .cart-badge {
-            position: absolute; top: -8px; right: -12px;
-            background: #7a5c33; color: #fff; font-size: 9px;
-            font-weight: 800; width: 18px; height: 18px;
-            display: flex; align-items: center; justify-content: center; border-radius: 50%;
-        }
-
-        /* VITRINE DE CARDS CLAROS (HARMONIA COM O HEADER) */
-        .showcase-container {
-            max-width: 1400px;
-            margin: 30px auto;
-            padding: 0 5%;
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-        }
-
-        /* CARD MINI PREMIUM - FUNDO CLARO */
-        .card {
-            background: rgba(255, 255, 255, 0.85); /* Branco Perolado semi-transparente */
+        /* VITRINE SUPERIOR (PRODUTOS NO TOPO) */
+        .top-shelf {
+            background: rgba(247, 243, 235, 0.9); /* Mesmo bege do header com transparência */
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            width: 180px;
-            height: 200px; /* ALTURA TRAVADA PARA ALINHAMENTO PERFEITO */
+            padding: 20px 5%;
+            display: flex;
+            gap: 15px;
+            overflow-x: auto; /* Permite deslizar se tiver muitos itens */
+            border-bottom: 1px solid rgba(122, 92, 51, 0.1);
+            position: relative;
+            z-index: 999;
+        }
+
+        /* CARD MINI E SLIM */
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 15px;
+            min-width: 160px;
+            height: 140px; /* BEM BAIXINHO PARA NÃO TAPAR A FOTO */
             text-align: center;
             border: 1px solid rgba(122, 92, 51, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: 0.4s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            background: #ffffff;
-            border-color: #7a5c33;
-            box-shadow: 0 15px 30px rgba(122, 92, 51, 0.1);
-        }
-
-        .card h3 { font-size: 11px; font-weight: 800; color: #7a5c33; text-transform: uppercase; letter-spacing: 1px; }
-        .card .price { font-size: 18px; font-weight: 800; color: #1a1a1a; }
-
-        .btn-add {
-            background: #7a5c33;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 9px;
-            text-transform: uppercase;
-            cursor: pointer;
             transition: 0.3s;
         }
-        .btn-add:hover { background: #000; }
+        .card:hover { border-color: #7a5c33; transform: translateY(-3px); }
+        .card h3 { font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; }
+        .card .price { font-size: 16px; font-weight: 800; color: #1a1a1a; }
+
+        .btn-add {
+            background: #7a5c33; color: #fff; border: none;
+            padding: 6px; border-radius: 4px; font-weight: 800;
+            font-size: 8px; text-transform: uppercase; cursor: pointer;
+        }
+
+        /* ESPAÇO PARA A FOTO APARECER */
+        .hero-spacer {
+            height: 60vh; /* Deixa 60% da tela livre para as pessoas na foto */
+        }
 
         @media(max-width: 900px) {
-            .main-header { flex-direction: column; gap: 15px; padding: 20px; }
-            .showcase-container { justify-content: center; }
+            .main-header { flex-direction: column; gap: 15px; }
+            .top-shelf { justify-content: flex-start; }
         }
     </style>
 </head>
 <body>
 
-    <div class="bg-wrap"></div>
+    <div class="bg-fixed"></div>
 
     <header class="main-header">
         <div class="header-left">
@@ -142,7 +121,6 @@
                 <p>Luxury Fashion Collection</p>
             </div>
         </div>
-
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -151,15 +129,10 @@
                 <li><a href="#">Contact</a></li>
             </ul>
         </nav>
-
-        <div class="cart-wrapper">
-            <img src="https://flaticon.com" width="22" style="filter: sepia(1) saturate(5) hue-rotate(10deg);">
-            <div class="cart-badge" id="cart-count">0</div>
-        </div>
     </header>
 
-    <!-- VITRINE DE PRODUTOS CLAROS -->
-    <div class="showcase-container">
+    <!-- VITRINE NO TOPO -->
+    <div class="top-shelf">
         <div class="card">
             <h3>Executive Shirt</h3>
             <span class="price">€ 85.00</span>
@@ -177,15 +150,12 @@
         </div>
     </div>
 
+    <!-- ÁREA LIVRE PARA A FOTO -->
+    <div class="hero-spacer"></div>
+
     <script>
-        let count = 0;
         function add() {
-            count++;
-            document.getElementById('cart-count').innerText = count;
-            document.getElementById('cart-count').style.background = "#25d366"; // Muda para verde ao adicionar
-            setTimeout(() => {
-                document.getElementById('cart-count').style.background = "#7a5c33";
-            }, 500);
+            alert("Item added to selection.");
         }
     </script>
 </body>
