@@ -6,198 +6,140 @@
     <title>Sollene Store Group | Official Store</title>
     <style>
         @import url('https://googleapis.com');
-        html { scroll-behavior: smooth; }
+        
         *{ margin:0; padding:0; box-sizing:border-box; }
-
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #f7f3eb; 
-            color: #1a1a1a;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
         /* HEADER PREMIUM */
         .main-header {
             background-color: #f7f3eb;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 5%;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
         }
 
         .header-left { display: flex; align-items: center; gap: 20px; }
-        
         .logo-circle {
-            width: 75px; height: 75px;
-            border-radius: 50%;
-            border: 1px solid #7a5c33;
-            background: #fff url('logo.png') no-repeat center center;
-            background-size: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 75px; height: 75px; border-radius: 50%; border: 1px solid #7a5c33;
+            background: #fff url('logo.png') no-repeat center center; background-size: cover;
         }
 
-        .brand-info h1 {
-            font-size: 26px; font-weight: 800; color: #7a5c33; 
-            letter-spacing: 4px; text-transform: uppercase; line-height: 1;
-        }
-        .brand-info p {
-            font-size: 10px; letter-spacing: 2px; color: #b0a89e;
-            text-transform: uppercase; margin-top: 5px; font-weight: 600;
-        }
+        .brand-info h1 { font-size: 26px; font-weight: 800; color: #7a5c33; letter-spacing: 4px; text-transform: uppercase; }
 
         nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
         nav ul li a { 
-            text-decoration: none; color: #000; font-size: 11px; 
-            font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
-            padding: 8px 15px; transition: 0.3s;
+            text-decoration: none; color: #000; font-size: 11px; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; cursor: pointer;
         }
 
-        .btn-home { border: 2px solid #000; border-radius: 8px; }
-        nav ul li a:hover { color: #7a5c33; }
+        /* ABA LATERAL DE ESCOLHA (DRAWER) */
+        .side-menu {
+            position: fixed; top: 0; right: -400px; /* Escondido */
+            width: 400px; height: 100%; background: #fff;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.1);
+            z-index: 2000; transition: 0.5s cubic-bezier(0.77,0,0.175,1);
+            padding: 40px; overflow-y: auto;
+        }
 
+        .side-menu.active { right: 0; }
+
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+            display: none; z-index: 1900;
+        }
+        .overlay.active { display: block; }
+
+        .side-menu h2 { font-size: 18px; color: #7a5c33; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 3px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        /* MINI CARDS DENTRO DA ABA */
+        .drawer-item {
+            display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
+            padding: 10px; border-radius: 12px; border: 1px solid #f9f9f9; transition: 0.3s;
+        }
+        .drawer-item:hover { background: #fdfaf6; border-color: #7a5c33; }
+        .drawer-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
+        .drawer-info h3 { font-size: 12px; text-transform: uppercase; }
+        .drawer-info p { font-size: 14px; font-weight: 800; color: #7a5c33; }
+
+        .close-btn { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 20px; font-weight: 800; color: #7a5c33; }
+
+        /* BANNER */
         .hero-section {
-            width: 100%;
-            height: 85vh;
+            width: 100%; height: 85vh;
             background: url('Solle-Global-Store.png') no-repeat center top;
-            background-size: cover;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 40px;
+            background-size: cover; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px;
         }
 
-        .products-section {
-            background: #fff;
-            padding: 100px 5%;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: 0.5s;
-            text-align: center;
-            padding-bottom: 30px;
-        }
-
-        .img-container {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            background: #f9f9f9;
-        }
-
-        .card-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s;
-        }
-
-        .card:hover .card-img { transform: scale(1.08); }
-        .card:hover { transform: translateY(-10px); }
-
-        .card h3 { font-size: 14px; color: #1a1a1a; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
-        .card .price { font-size: 20px; font-weight: 800; color: #7a5c33; margin-bottom: 20px; display: block; }
-
-        .btn-add {
-            background: #7a5c33; color: #fff; border: none;
-            padding: 14px 40px; border-radius: 50px; font-weight: 800;
-            text-transform: uppercase; font-size: 10px; cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn-add:hover { background: #000; }
-
-        footer {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 60px 5%;
-            text-align: center;
-        }
-
-        @media(max-width: 900px) {
-            .main-header { flex-direction: column; gap: 20px; text-align: center; }
-            .hero-section { height: 60vh; }
-        }
+        @media(max-width: 500px) { .side-menu { width: 100%; right: -100%; } }
     </style>
 </head>
 <body>
 
-    <header class="main-header" id="home">
+    <!-- CAMADA DE DESFOQUE -->
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <header class="main-header">
         <div class="header-left">
             <div class="logo-circle"></div>
             <div class="brand-info">
                 <h1>Sollene Store Group</h1>
-                <p>Luxury Fashion Collection</p>
             </div>
         </div>
         <nav>
             <ul>
-                <li><a href="#home" class="btn-home">HOME</a></li>
-                <li><a href="#collections">COLLECTIONS</a></li>
+                <li><a href="#" style="border: 2px solid #000; border-radius: 8px;">HOME</a></li>
+                <!-- BOTÃO QUE ABRE A ABA -->
+                <li><a onclick="toggleMenu()">COLLECTIONS</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero-section">
-        <p style="color: #7a5c33; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;">Discover Prestige</p>
-    </section>
-
-    <section class="products-section" id="collections">
-        <h2 style="text-align:center; margin-bottom:60px; letter-spacing:5px; text-transform:uppercase; font-size: 14px;">Prestige Selection</h2>
+    <!-- ABA LATERAL DE PRODUTOS -->
+    <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="toggleMenu()">✕</div>
+        <h2>Our Collections</h2>
         
-        <div class="products-grid">
-            <!-- PRODUTO 1 (Manteve o anterior) -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="productos1.png" class="card-img" alt="Product 1">
-                </div>
-                <h3>Executive Collection I</h3>
-                <span class="price">€ 85.00</span>
-                <button class="btn-add">Add to Cart</button>
-            </div>
-
-            <!-- PRODUTO 2 (Atualizado para prodcuto2.png) -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="prodcuto2.png" class="card-img" alt="Product 2">
-                </div>
-                <h3>Luxury Selection II</h3>
-                <span class="price">€ 110.00</span>
-                <button class="btn-add">Add to Cart</button>
-            </div>
-
-            <!-- PRODUTO 3 (Atualizado para produtdos45.png) -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="produtdos45.png" class="card-img" alt="Product 3">
-                </div>
-                <h3>Classic Selection III</h3>
-                <span class="price">€ 145.00</span>
-                <button class="btn-add">Add to Cart</button>
+        <div class="drawer-item">
+            <img src="productos1.png" class="drawer-img">
+            <div class="drawer-info">
+                <h3>Executive Shirt</h3>
+                <p>€ 85.00</p>
             </div>
         </div>
+
+        <div class="drawer-item">
+            <img src="prodcuto2.png" class="drawer-img">
+            <div class="drawer-info">
+                <h3>Luxury Selection II</h3>
+                <p>€ 110.00</p>
+            </div>
+        </div>
+
+        <div class="drawer-item">
+            <img src="produtdos45.png" class="drawer-img">
+            <div class="drawer-info">
+                <h3>Classic Selection III</h3>
+                <p>€ 145.00</p>
+            </div>
+        </div>
+
+        <button style="width:100%; padding:15px; background:#7a5c33; color:#fff; border:none; border-radius:8px; font-weight:800; margin-top:20px; cursor:pointer;">
+            VIEW FULL CATALOG
+        </button>
+    </div>
+
+    <section class="hero-section">
+        <p style="color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">Discover Prestige</p>
     </section>
 
-    <footer id="contact">
-        <p style="letter-spacing:3px; color:#b39359; margin-bottom:20px;">CONTACT US</p>
-        <p>EMAIL: CONTACT@SOLLENE-GROUP.COM</p>
-        <p style="margin-top:20px; font-size:10px; opacity:0.5;">© 2026 SOLLENE STORE GROUP</p>
-    </footer>
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+    </script>
 
 </body>
 </html>
