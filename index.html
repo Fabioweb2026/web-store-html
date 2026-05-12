@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sollene Global Store | Luxury Lifestyle</title>
+<title>Sollene Global Store | Luxury Experience</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -32,7 +32,7 @@ body{
     background:
     linear-gradient(
         rgba(10,10,10,.35),
-        rgba(10,10,10,.55)
+        rgba(10,10,10,.65)
     ),
     url('Solle-Global-Store.png');
 
@@ -101,12 +101,84 @@ nav a:hover{
     font-weight:800;
 }
 
-/* HERO LIMPO (SEM TEXTO) */
+/* HERO PRINCIPAL */
 .hero{
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero-logo{
+    font-size:60px;
+    font-weight:900;
+    letter-spacing:10px;
+    color:#f1d89b;
+}
+
+/* PRODUTO DESTAQUE ÚNICO */
+.featured-product{
+    max-width:900px;
+    margin:-120px auto 80px;
+    text-align:center;
+
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+
+    backdrop-filter:blur(20px);
+    padding:60px;
+}
+
+.featured-product h2{
+    font-size:34px;
+    color:#f1d89b;
+    margin-bottom:15px;
+}
+
+.featured-product p{
+    color:#ddd;
+    margin-bottom:25px;
+    font-size:15px;
+}
+
+.price{
+    font-size:32px;
+    font-weight:900;
+    color:#f1d89b;
+    margin-bottom:20px;
+    display:block;
+}
+
+.btn-buy{
+    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
+    color:#111;
+    border:none;
+    padding:14px 28px;
+    border-radius:14px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+/* LAYOUT INSTITUCIONAL */
+.info-section{
+    max-width:1100px;
+    margin:auto;
+    padding:80px 40px;
+    text-align:center;
+}
+
+.info-section h3{
+    font-size:40px;
+    color:#f1d89b;
+    margin-bottom:20px;
+}
+
+.info-section p{
+    color:#ddd;
+    line-height:1.8;
 }
 
 /* CART */
@@ -167,12 +239,34 @@ footer{
 
 footer h3{
     color:#f1d89b;
-    letter-spacing:3px;
+    letter-spacing:5px;
 }
 
 footer p{
     color:#ccc;
     font-size:14px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+.hero-logo{
+    font-size:38px;
+}
+
+.featured-product{
+    margin:-60px 20px 60px;
+    padding:40px;
+}
+
+.cart-sidebar{
+    position:relative;
+    width:90%;
+    margin:40px auto;
+    top:auto;
+    right:auto;
+}
+
 }
 
 </style>
@@ -190,18 +284,53 @@ footer p{
 
 <nav>
 <a href="#">Home</a>
+<a href="#">Collection</a>
 <a href="#">About</a>
 <a href="#">Contact</a>
 </nav>
 
-<button class="contact-btn">Premium</button>
+<button class="contact-btn">Premium Access</button>
 
 </div>
 
 </header>
 
-<!-- HERO (LIMPO, SEM TEXTO) -->
-<section class="hero"></section>
+<!-- HERO VISUAL FORTE -->
+<section class="hero">
+    <div class="hero-logo">SOLLENE</div>
+</section>
+
+<!-- PRODUTO DESTAQUE ÚNICO -->
+<section class="featured-product">
+
+<h2>Luxury Signature Watch</h2>
+
+<p>
+Exclusive handcrafted timepiece designed for modern elegance
+and premium lifestyle expression.
+</p>
+
+<span class="price">€390</span>
+
+<button class="btn-buy" onclick="add('Luxury Watch',390)">
+Add to Bag
+</button>
+
+</section>
+
+<!-- LAYOUT INSTITUCIONAL -->
+<section class="info-section">
+
+<h3>Luxury Experience</h3>
+
+<p>
+Sollene Global Store represents a modern vision of luxury,
+blending minimal design with premium digital experience.
+Built for a global audience that values elegance, identity
+and sophistication.
+</p>
+
+</section>
 
 <!-- CART -->
 <aside class="cart-sidebar">
@@ -223,7 +352,7 @@ footer p{
 <footer>
 
 <h3>SOLLENE GLOBAL STORE</h3>
-<p>Luxury minimal experience</p>
+<p>Luxury • Minimal • Modern Experience</p>
 
 </footer>
 
