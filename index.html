@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sollene Store Group | Official Store</title>
+
+    <!-- CORREÇÃO: FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://googleapis.com');
-        
         *{ margin:0; padding:0; box-sizing:border-box; }
 
         body { 
@@ -29,6 +31,7 @@
         }
 
         .header-left { display: flex; align-items: center; gap: 20px; }
+
         .logo-circle {
             width: 70px; height: 70px;
             border-radius: 50%;
@@ -41,6 +44,7 @@
             font-size: 28px; font-weight: 800; color: #7a5c33; 
             letter-spacing: 4px; text-transform: uppercase; line-height: 1;
         }
+
         .brand-info p {
             font-size: 10px; letter-spacing: 3px; color: #b0a89e;
             text-transform: uppercase; margin-top: 5px;
@@ -49,7 +53,7 @@
         nav ul { display: flex; list-style: none; gap: 30px; }
         nav ul li a { text-decoration: none; color: #000; font-size: 12px; font-weight: 700; text-transform: uppercase; }
 
-        /* HERO SECTION - IMAGEM DAS PESSOAS NÍTIDA */
+        /* HERO SECTION */
         .hero-section {
             width: 100%;
             height: 85vh;
@@ -63,15 +67,19 @@
 
         .scroll-hint { color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 11px; }
 
-        /* SEÇÃO DE PRODUTOS COM AS NOVAS IMAGENS */
+        /* PRODUCTS */
         .products-section {
             background: #fff;
             padding: 100px 5%;
         }
 
         .section-title {
-            text-align: center; font-size: 12px; color: #b39359; 
-            text-transform: uppercase; letter-spacing: 6px; margin-bottom: 60px;
+            text-align: center;
+            font-size: 12px;
+            color: #b39359;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 60px;
         }
 
         .products-grid {
@@ -82,7 +90,6 @@
             margin: 0 auto;
         }
 
-        /* CARD AJUSTADO PARA AS FOTOS DO PRINT */
         .card {
             background: #fff;
             border-radius: 24px;
@@ -111,89 +118,104 @@
         .card:hover { transform: translateY(-10px); }
 
         .card h3 { font-size: 15px; color: #1a1a1a; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
-        .card .price { font-size: 22px; font-weight: 800; color: #7a5c33; margin-bottom: 20px; display: block; }
+
+        .card .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: #7a5c33;
+            margin-bottom: 20px;
+            display: block;
+        }
 
         .btn-add {
-            background: #7a5c33; color: #fff; border: none;
-            padding: 14px 40px; border-radius: 50px; font-weight: 800;
-            text-transform: uppercase; font-size: 10px; cursor: pointer;
+            background: #7a5c33;
+            color: #fff;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 10px;
+            cursor: pointer;
             transition: 0.3s;
         }
+
         .btn-add:hover { background: #000; letter-spacing: 1px; }
 
-        @media(max-width: 900px) { .main-header { flex-direction: column; gap: 20px; } }
+        @media(max-width: 900px){
+            .main-header { flex-direction: column; gap: 20px; }
+        }
     </style>
 </head>
+
 <body>
 
-    <header class="main-header">
-        <div class="header-left">
-            <div class="logo-circle"></div>
-            <div class="brand-info">
-                <h1>Sollene Store Group</h1>
-                <p>Luxury Fashion Collection</p>
-            </div>
+<header class="main-header">
+    <div class="header-left">
+        <div class="logo-circle"></div>
+        <div class="brand-info">
+            <h1>Sollene Store Group</h1>
+            <p>Luxury Fashion Collection</p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Collections</a></li>
-                <li><a href="#">Store</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    </div>
 
-    <section class="hero-section">
-        <div class="scroll-hint">Explore the Collection ↓</div>
-    </section>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Collections</a></li>
+            <li><a href="#">Store</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <section class="products-section">
-        <h2 class="section-title">Prestige Selection</h2>
-        
-        <div class="products-grid">
-            <!-- PRODUTO 1 -->
-            <div class="card">
-                <div class="img-container">
-                    <!-- Substitua pelo link da sua imagem no GitHub ou use estas de exemplo -->
-                    <img src="https://unsplash.com" class="card-img">
-                </div>
-                <h3>Executive Shirt</h3>
-                <span class="price">€ 85.00</span>
-                <button class="btn-add">Add to Cart</button>
+<section class="hero-section">
+    <div class="scroll-hint">Explore the Collection ↓</div>
+</section>
+
+<section class="products-section">
+    <h2 class="section-title">Prestige Selection</h2>
+
+    <div class="products-grid">
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47" class="card-img">
             </div>
-
-            <!-- PRODUTO 2 -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="card-img">
-                </div>
-                <h3>Luxury Sneakers</h3>
-                <span class="price">€ 110.00</span>
-                <button class="btn-add">Add to Cart</button>
-            </div>
-
-            <!-- PRODUTO 3 -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="card-img">
-                </div>
-                <h3>Luxury Watch</h3>
-                <span class="price">€ 45.00</span>
-                <button class="btn-add">Add to Cart</button>
-            </div>
-
-            <!-- PRODUTO 4 -->
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://unsplash.com" class="card-img">
-                </div>
-                <h3>Premium Bag</h3>
-                <span class="price">€ 180.00</span>
-                <button class="btn-add">Add to Cart</button>
-            </div>
+            <h3>Executive Shirt</h3>
+            <span class="price">€ 85.00</span>
+            <button class="btn-add">Add to Cart</button>
         </div>
-    </section>
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea2f7" class="card-img">
+            </div>
+            <h3>Luxury Sneakers</h3>
+            <span class="price">€ 110.00</span>
+            <button class="btn-add">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3" class="card-img">
+            </div>
+            <h3>Luxury Watch</h3>
+            <span class="price">€ 45.00</span>
+            <button class="btn-add">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" class="card-img">
+            </div>
+            <h3>Premium Bag</h3>
+            <span class="price">€ 180.00</span>
+            <button class="btn-add">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
 
 </body>
 </html>
