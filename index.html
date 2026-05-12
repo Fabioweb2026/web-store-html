@@ -36,7 +36,6 @@ body{
     ),
     url('Solle-Global-Store.png');
 
-    background-repeat:no-repeat;
     background-size:cover;
     background-position:center top;
     background-attachment:fixed;
@@ -102,85 +101,31 @@ nav a:hover{
     font-weight:800;
 }
 
-/* PRODUCTS */
-.products-section{
-    max-width:1400px;
-    margin:auto;
-    padding:140px 40px 100px;
-}
+/* HERO SIMPLES (SEM CARD / SEM PRODUTOS) */
 
-/* ❌ REMOVIDO TITULO E SUBTITULO */
-
-/* GRID */
-.products-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-    gap:35px;
-}
-
-/* CARD */
-.card{
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.15);
-    backdrop-filter:blur(18px);
-    border-radius:28px;
-    overflow:hidden;
-    transition:.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.card-image{
-    height:240px;
+.hero{
+    height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:70px;
+    text-align:center;
+    padding:120px 20px;
 }
 
-.card-content{
-    padding:30px;
-}
-
-.card-category{
-    color:#f1d89b;
-    font-size:12px;
-    font-weight:700;
+.hero h1{
+    font-size:62px;
+    font-weight:900;
     letter-spacing:2px;
 }
 
-.card h3{
-    font-size:24px;
-    margin:10px 0;
-}
-
-.card p{
-    color:#e8e8e8;
-    font-size:14px;
-    margin-bottom:20px;
-}
-
-.price-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.price{
-    font-size:28px;
-    font-weight:900;
+.hero span{
     color:#f1d89b;
 }
 
-.btn-add{
-    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
-    color:#111;
-    border:none;
-    padding:12px 18px;
-    border-radius:12px;
-    font-weight:800;
+.hero p{
+    margin-top:20px;
+    font-size:16px;
+    color:#ddd;
 }
 
 /* CART */
@@ -204,11 +149,10 @@ nav a:hover{
     margin-bottom:20px;
 }
 
-.cart-item{
-    display:flex;
-    justify-content:space-between;
+#cart-items{
     font-size:14px;
-    margin-bottom:10px;
+    text-align:center;
+    color:#ccc;
 }
 
 .total-box{
@@ -217,8 +161,8 @@ nav a:hover{
     margin-top:20px;
     padding-top:20px;
     border-top:1px solid rgba(255,255,255,.08);
-    font-size:20px;
     color:#f1d89b;
+    font-size:20px;
 }
 
 .btn-checkout{
@@ -237,10 +181,16 @@ footer{
     padding:60px;
     text-align:center;
     background:rgba(255,255,255,.04);
+    margin-top:80px;
 }
 
 footer h3{
     color:#f1d89b;
+}
+
+footer p{
+    color:#ccc;
+    font-size:14px;
 }
 
 </style>
@@ -249,6 +199,7 @@ footer h3{
 
 <body>
 
+<!-- HEADER -->
 <header>
 
 <div class="navbar">
@@ -257,8 +208,7 @@ footer h3{
 
 <nav>
 <a href="#">Home</a>
-<a href="#">Shop</a>
-<a href="#">Luxury</a>
+<a href="#">About</a>
 <a href="#">Contact</a>
 </nav>
 
@@ -268,44 +218,24 @@ footer h3{
 
 </header>
 
-<!-- PRODUCTS (SEM TEXTO NO TOPO) -->
+<!-- HERO LIMPO -->
+<section class="hero">
 
-<section class="products-section">
+<div>
 
-<div class="products-grid">
+<h1>
+Luxury <span>Global Store</span>
+</h1>
 
-<div class="card">
-<div class="card-image">👔</div>
-<div class="card-content">
-<div class="card-category">EXECUTIVE</div>
-<h3>Luxury Shirt</h3>
-<p>Premium cotton shirt</p>
-<div class="price-row">
-<span class="price">€85</span>
-<button class="btn-add" onclick="add('Shirt',85)">Add</button>
-</div>
-</div>
-</div>
-
-<div class="card">
-<div class="card-image">⌚</div>
-<div class="card-content">
-<div class="card-category">SIGNATURE</div>
-<h3>Luxury Watch</h3>
-<p>Elegant premium design</p>
-<div class="price-row">
-<span class="price">€390</span>
-<button class="btn-add" onclick="add('Watch',390)">Add</button>
-</div>
-</div>
-</div>
+<p>
+Premium digital experience built for modern lifestyle.
+</p>
 
 </div>
 
 </section>
 
 <!-- CART -->
-
 <aside class="cart-sidebar">
 
 <h4>YOUR BAG</h4>
@@ -321,6 +251,14 @@ footer h3{
 
 </aside>
 
+<!-- FOOTER -->
+<footer>
+
+<h3>SOLLENE GLOBAL STORE</h3>
+<p>Luxury minimal experience</p>
+
+</footer>
+
 <script>
 
 let cart=[];
@@ -333,17 +271,10 @@ update();
 }
 
 function update(){
-let box=document.getElementById("cart-items");
-
-if(cart.length===0){
-box.innerHTML="Empty";
-}else{
-box.innerHTML=cart.map(i=>`
-<div class="cart-item">
-<span>${i.n}</span>
-<span>€${i.p}</span>
-</div>`).join("");
-}
+document.getElementById("cart-items").innerHTML =
+cart.length ? cart.map(i=>
+`${i.n} - €${i.p}`
+).join("<br>") : "Empty";
 
 document.getElementById("total-price").innerText="€"+total;
 }
