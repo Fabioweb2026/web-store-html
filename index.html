@@ -101,31 +101,12 @@ nav a:hover{
     font-weight:800;
 }
 
-/* HERO SIMPLES (SEM CARD / SEM PRODUTOS) */
-
+/* HERO LIMPO (SEM TEXTO) */
 .hero{
     height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    text-align:center;
-    padding:120px 20px;
-}
-
-.hero h1{
-    font-size:62px;
-    font-weight:900;
-    letter-spacing:2px;
-}
-
-.hero span{
-    color:#f1d89b;
-}
-
-.hero p{
-    margin-top:20px;
-    font-size:16px;
-    color:#ddd;
 }
 
 /* CART */
@@ -186,6 +167,7 @@ footer{
 
 footer h3{
     color:#f1d89b;
+    letter-spacing:3px;
 }
 
 footer p{
@@ -218,22 +200,8 @@ footer p{
 
 </header>
 
-<!-- HERO LIMPO -->
-<section class="hero">
-
-<div>
-
-<h1>
-Luxury <span>Global Store</span>
-</h1>
-
-<p>
-Premium digital experience built for modern lifestyle.
-</p>
-
-</div>
-
-</section>
+<!-- HERO (LIMPO, SEM TEXTO) -->
+<section class="hero"></section>
 
 <!-- CART -->
 <aside class="cart-sidebar">
@@ -272,9 +240,10 @@ update();
 
 function update(){
 document.getElementById("cart-items").innerHTML =
-cart.length ? cart.map(i=>
+cart.length ? cart.map(i =>
 `${i.n} - €${i.p}`
-).join("<br>") : "Empty";
+).join("<br>")
+: "Empty";
 
 document.getElementById("total-price").innerText="€"+total;
 }
