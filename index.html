@@ -15,10 +15,21 @@
     box-sizing:border-box;
 }
 
+/* BODY */
+
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#0f0f0f;
     color:white;
+
+    background-image:
+    linear-gradient(rgba(0,0,0,0.82),
+    rgba(0,0,0,0.82)),
+    url("Solle-Global-Store.png");
+
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
 }
 
 /* HEADER */
@@ -115,11 +126,12 @@ header{
 }
 
 .product-card{
-    background:#161616;
+    background:rgba(15,15,15,0.92);
     border-radius:18px;
     overflow:hidden;
     border:1px solid #222;
     transition:0.3s;
+    backdrop-filter:blur(5px);
 }
 
 .product-card:hover{
@@ -175,11 +187,12 @@ header{
 /* ABOUT */
 
 .about{
-    background:#111;
+    background:rgba(17,17,17,0.92);
     padding:45px;
     border-radius:20px;
     line-height:1.8;
     color:#ccc;
+    backdrop-filter:blur(6px);
 }
 
 /* FOOTER */
@@ -240,7 +253,7 @@ footer p{
 
     </div>
 
-    <!-- OPTION 2 - MULTI PAGE MENU -->
+    <!-- MULTI PAGE MENU -->
 
     <nav class="navbar">
 
@@ -297,7 +310,7 @@ footer p{
                 <h3>Men Collection</h3>
 
                 <p>
-                    Sophisticated masculine fashion inspired by luxury lifestyle and premium elegance.
+                    Sophisticated masculine fashion inspired by premium luxury lifestyle and elegance.
                 </p>
 
                 <div class="price">
@@ -326,7 +339,7 @@ footer p{
                 <h3>Women Collection</h3>
 
                 <p>
-                    Elegant feminine collection designed for timeless sophistication and modern luxury.
+                    Elegant feminine collection designed for modern sophistication and timeless fashion.
                 </p>
 
                 <div class="price">
@@ -355,7 +368,7 @@ footer p{
                 <h3>Luxury Bags</h3>
 
                 <p>
-                    Premium handbag collection crafted with exclusive finishing and elegant design.
+                    Premium handbag collection crafted with exclusive finishing and luxury design.
                 </p>
 
                 <div class="price">
