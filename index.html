@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malta | Sollene Group Experience</title>
+    <title>Sollene Store Group | Official Store</title>
     <style>
         @import url('https://googleapis.com');
         
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
-        /* HEADER IDÊNTICO AO SOLLENE STORE */
+        /* HEADER PREMIUM */
         .main-header {
             background-color: #f7f3eb;
             display: flex; align-items: center; justify-content: space-between;
@@ -21,8 +21,7 @@
         .header-left { display: flex; align-items: center; gap: 20px; }
         .logo-circle {
             width: 75px; height: 75px; border-radius: 50%; border: 1px solid #7a5c33;
-            background: #fff url('https://github.io') no-repeat center center; 
-            background-size: cover;
+            background: #fff url('logo.png') no-repeat center center; background-size: cover;
         }
 
         .brand-info h1 { font-size: 26px; font-weight: 800; color: #7a5c33; letter-spacing: 4px; text-transform: uppercase; }
@@ -33,14 +32,15 @@
             text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; cursor: pointer;
         }
 
-        /* ABA LATERAL (DRAWER) - IGUAL AO DA LOJA */
+        /* ABA LATERAL DE ESCOLHA (DRAWER) */
         .side-menu {
-            position: fixed; top: 0; right: -400px;
+            position: fixed; top: 0; right: -400px; /* Escondido */
             width: 400px; height: 100%; background: #fff;
             box-shadow: -10px 0 50px rgba(0,0,0,0.1);
             z-index: 2000; transition: 0.5s cubic-bezier(0.77,0,0.175,1);
             padding: 40px; overflow-y: auto;
         }
+
         .side-menu.active { right: 0; }
 
         .overlay {
@@ -50,29 +50,33 @@
         }
         .overlay.active { display: block; }
 
+        .side-menu h2 { font-size: 18px; color: #7a5c33; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 3px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        
+        /* MINI CARDS DENTRO DA ABA */
         .drawer-item {
             display: flex; align-items: center; gap: 15px; margin-bottom: 20px;
-            padding: 10px; border-radius: 12px; border: 1px solid #f9f9f9;
+            padding: 10px; border-radius: 12px; border: 1px solid #f9f9f9; transition: 0.3s;
         }
+        .drawer-item:hover { background: #fdfaf6; border-color: #7a5c33; }
         .drawer-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
+        .drawer-info h3 { font-size: 12px; text-transform: uppercase; }
+        .drawer-info p { font-size: 14px; font-weight: 800; color: #7a5c33; }
 
-        /* CONTEÚDO DE MALTA */
-        .hero-malta {
-            width: 100%; height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://unsplash.com');
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; color: #fff;
+        .close-btn { position: absolute; top: 20px; right: 20px; cursor: pointer; font-size: 20px; font-weight: 800; color: #7a5c33; }
+
+        /* BANNER */
+        .hero-section {
+            width: 100%; height: 85vh;
+            background: url('Solle-Global-Store.png') no-repeat center top;
+            background-size: cover; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 40px;
         }
-
-        .malta-content { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        .info-card { background: #fff; padding: 40px; border-radius: 24px; border: 1px solid #eee; margin-bottom: 30px; }
-        h2 { color: #7a5c33; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; }
 
         @media(max-width: 500px) { .side-menu { width: 100%; right: -100%; } }
     </style>
 </head>
 <body>
 
+    <!-- CAMADA DE DESFOQUE -->
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <header class="main-header">
@@ -84,42 +88,51 @@
         </div>
         <nav>
             <ul>
-                <li><a href="https://github.io">HOME</a></li>
+                <li><a href="#" style="border: 2px solid #000; border-radius: 8px;">HOME</a></li>
+                <!-- BOTÃO QUE ABRE A ABA -->
                 <li><a onclick="toggleMenu()">COLLECTIONS</a></li>
                 <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- ABA LATERAL DE PRODUTOS -->
     <div class="side-menu" id="sideMenu">
-        <div onclick="toggleMenu()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:20px;">✕ CLOSE</div>
-        <h2 style="font-size:18px;">Luxury Selection</h2>
+        <div class="close-btn" onclick="toggleMenu()">✕</div>
+        <h2>Our Collections</h2>
         
-        <!-- OS PRODUTOS DA LOJA APARECEM AQUI TAMBÉM -->
         <div class="drawer-item">
-            <img src="https://github.ioproductos1.png" class="drawer-img">
+            <img src="productos1.png" class="drawer-img">
             <div class="drawer-info">
-                <h3 style="font-size:12px;">Executive Shirt</h3>
-                <p style="font-weight:800; color:#7a5c33;">€ 85.00</p>
+                <h3>Executive Shirt</h3>
+                <p>€ 85.00</p>
             </div>
         </div>
-        <!-- Adicione mais itens se quiser -->
 
-        <a href="https://github.io" style="display:block; text-align:center; padding:15px; background:#7a5c33; color:#fff; text-decoration:none; border-radius:8px; font-weight:800; margin-top:20px;">
-            GO TO FULL STORE
-        </a>
-    </div>
-
-    <section class="hero-malta">
-        <h1 style="font-size: 50px; letter-spacing: 10px; text-transform: uppercase;">Malta Guide</h1>
-    </section>
-
-    <div class="malta-content">
-        <div class="info-card">
-            <h2>The Jewel of Mediterranean</h2>
-            <p>Malta is more than just a destination; it's a lifestyle. Explore our curated guide for the most sophisticated travelers.</p>
+        <div class="drawer-item">
+            <img src="prodcuto2.png" class="drawer-img">
+            <div class="drawer-info">
+                <h3>Luxury Selection II</h3>
+                <p>€ 110.00</p>
+            </div>
         </div>
+
+        <div class="drawer-item">
+            <img src="produtdos45.png" class="drawer-img">
+            <div class="drawer-info">
+                <h3>Classic Selection III</h3>
+                <p>€ 145.00</p>
+            </div>
+        </div>
+
+        <button style="width:100%; padding:15px; background:#7a5c33; color:#fff; border:none; border-radius:8px; font-weight:800; margin-top:20px; cursor:pointer;">
+            VIEW FULL CATALOG
+        </button>
     </div>
+
+    <section class="hero-section">
+        <p style="color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase;">Discover Prestige</p>
+    </section>
 
     <script>
         function toggleMenu() {
@@ -127,5 +140,6 @@
             document.getElementById('overlay').classList.toggle('active');
         }
     </script>
+
 </body>
 </html>
