@@ -1,144 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sollene Global Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sollene Store Group | Official</title>
+    <style>
+        @import url('https://googleapis.com');
+        
+        *{ margin:0; padding:0; box-sizing:border-box; }
 
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#0e0e0e;
-    color:#fff;
-}
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #f7f3eb; /* Cor creme do fundo da imagem */
+            color: #1a1a1a;
+        }
 
-/* HEADER */
-header{
-    padding:25px;
-    text-align:center;
-    font-size:24px;
-    letter-spacing:2px;
-    font-weight:300;
-}
+        /* HEADER CONFORME A SUA IMAGEM */
+        .main-header {
+            background-color: #f7f3eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 50px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            width: 100%;
+        }
 
-/* PRODUCTS */
-.products{
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-    gap:20px;
-    padding:40px;
-}
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-.card{
-    background:#1a1a1a;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    transition:0.3s;
-}
+        .logo-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: url('Solle-Global-Store.png') no-repeat center center;
+            background-size: cover;
+            border: 1px solid #d4af37;
+        }
 
-.card:hover{
-    transform:scale(1.03);
-}
+        .brand-info h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #7a5c33; /* Tom de marrom bronze da imagem */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
 
-.card h3{
-    margin:10px 0;
-}
+        .brand-info p {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #b0a89e;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
 
-.price{
-    color:#d4af37;
-    font-size:18px;
-}
+        /* MENU DE NAVEGAÇÃO */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
 
-/* BAG */
-.bag{
-    background:#111;
-    padding:30px;
-    margin:20px;
-    border-radius:12px;
-}
+        nav ul li a {
+            text-decoration: none;
+            color: #000;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
 
-.bag h2{
-    margin-bottom:15px;
-}
+        nav ul li a:hover { color: #7a5c33; }
 
-.total{
-    margin-top:10px;
-    font-size:18px;
-    color:#d4af37;
-}
+        /* ÍCONE DE CARRINHO COM NOTIFICAÇÃO */
+        .cart-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
 
-/* BUTTON */
-button{
-    background:#25D366;
-    border:none;
-    padding:12px 20px;
-    color:#fff;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:15px;
-}
-</style>
+        .cart-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #b39359;
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* CONTEÚDO E CARDS NO TOPO */
+        .top-shelf {
+            padding: 30px 50px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 220px;
+        }
+
+        .card h3 { font-size: 13px; text-transform: uppercase; color: #7a5c33; margin-bottom: 10px; }
+        .card .price { font-size: 18px; font-weight: 800; margin-bottom: 15px; }
+
+        .btn-add {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 9px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* IMAGEM REALISTA DE FUNDO (LOGO ABAIXO) */
+        .hero-image {
+            width: 100%;
+            height: 500px;
+            background: url('Solle-Global-Store.png') no-repeat center center;
+            background-size: cover;
+            margin-top: 20px;
+        }
+
+        @media(max-width: 900px) {
+            .main-header { flex-direction: column; gap: 20px; text-align: center; }
+            nav ul { gap: 15px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-SOLLENE GLOBAL STORE
-</header>
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-circle"></div>
+            <div class="brand-info">
+                <h1>Sollene Store Group</h1>
+                <p>Luxury Fashion Collection</p>
+            </div>
+        </div>
 
-<!-- PRODUCTS -->
-<section class="products">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
 
-    <div class="card">
-        <h3>Luxury Watch</h3>
-        <p>Modern elegance timepiece</p>
-        <div class="price">€390</div>
+        <div class="cart-wrapper">
+            <div class="cart-icon">🛒</div>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
+    </header>
+
+    <div class="top-shelf">
+        <div class="card">
+            <h3>Executive Shirt</h3>
+            <span class="price">€ 85.00</span>
+            <button class="btn-add" onclick="add()">Add to Cart</button>
+        </div>
+        <div class="card">
+            <h3>Leather Belt</h3>
+            <span class="price">€ 110.00</span>
+            <button class="btn-add" onclick="add()">Add to Cart</button>
+        </div>
     </div>
 
-    <div class="card">
-        <h3>Classic Leather Bag</h3>
-        <p>Italian handcrafted leather</p>
-        <div class="price">€520</div>
-    </div>
+    <!-- IMAGEM REALISTA PARA AMBIENTAÇÃO -->
+    <div class="hero-image"></div>
 
-    <div class="card">
-        <h3>Gold Bracelet</h3>
-        <p>Minimal luxury accessory</p>
-        <div class="price">€260</div>
-    </div>
-
-    <div class="card">
-        <h3>Vintage Perfume</h3>
-        <p>Classic French fragrance</p>
-        <div class="price">€180</div>
-    </div>
-
-</section>
-
-<!-- BAG -->
-<section class="bag">
-
-<h2>YOUR BAG</h2>
-
-<p>Luxury Watch - €390</p>
-
-<div class="total">
-Total: €390
-</div>
-
-<button onclick="whatsapp()">WhatsApp Checkout</button>
-
-</section>
-
-<script>
-function whatsapp(){
-    let msg = "Hello, I want to buy items from Sollene Global Store.";
-    let url = "https://wa.me/0000000000?text=" + encodeURIComponent(msg);
-    window.open(url, "_blank");
-}
-</script>
-
+    <script>
+        let count = 0;
+        function add() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+        }
+    </script>
 </body>
 </html>
