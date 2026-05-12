@@ -3,120 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Store Group | Official Store</title>
+    <title>Sollene Group | Luxury Store</title>
     <style>
         @import url('https://googleapis.com');
-        html { scroll-behavior: smooth; }
-        *{ margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
-
-        /* HEADER */
-        .main-header {
-            background-color: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
-        }
-        .header-left { display: flex; align-items: center; gap: 20px; }
-        .logo-circle {
-            width: 75px; height: 75px; border-radius: 50%; border: 1px solid #7a5c33;
-            background: #fff url('logo.png') no-repeat center center; background-size: cover;
-        }
-        .brand-info h1 { font-size: 26px; font-weight: 800; color: #7a5c33; letter-spacing: 4px; text-transform: uppercase; }
-        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
-        nav ul li a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 8px 15px; cursor: pointer; }
-
-        /* ABA LATERAL (COLLECTIONS/SELECTION) */
-        .side-menu { position: fixed; top: 0; right: -400px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
-        .side-menu.active { right: 0; }
-        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); display: none; z-index: 1900; }
-        .overlay.active { display: block; }
-
-        /* ITENS DENTRO DA ABA */
-        .drawer-item { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding: 15px; border-radius: 12px; background: #fdfaf6; border: 1px solid #f1eee4; }
-        .drawer-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
-        .drawer-info h4 { font-size: 12px; text-transform: uppercase; color: #333; }
-        .drawer-info p { font-size: 14px; font-weight: 800; color: #7a5c33; }
-
-        /* VITRINE DE CARDS */
-        .products-section { background: #fff; padding: 80px 5%; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1300px; margin: 0 auto; }
-        .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; transition: 0.4s; border: 1px solid transparent; }
-        .card:hover { border-color: #f1eee4; transform: translateY(-10px); }
-        .img-container { width: 100%; height: 380px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #f9f9f9; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .card:hover .card-img { transform: scale(1.1); }
         
-        .btn-add { background: #7a5c33; color: #fff; border: none; padding: 14px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; }
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #000; 
+            overflow: hidden; /* Mantém o foco na imagem sem rolagem desnecessária */
+        }
+
+        /* IMAGEM DE FUNDO NÍTIDA */
+        .main-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: url('Solle-Global-Store.png') no-repeat center top;
+            background-size: cover;
+            z-index: -1;
+        }
+
+        /* HEADER BEGE LUXO */
+        .main-header {
+            background: rgba(247, 243, 235, 0.95);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        
+        .logo-circle {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: 1px solid #7a5c33;
+            background: #fff url('logo.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .brand-info h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #7a5c33;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul { display: flex; list-style: none; gap: 20px; }
+        nav a { 
+            text-decoration: none; 
+            color: #000; 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            cursor: pointer;
+        }
+
+        /* VITRINE FLUTUANTE NA BASE */
+        .floating-vitrine {
+            position: fixed;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            z-index: 500;
+        }
+
+        /* CARDS ESTILO VIDRO */
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.4s ease;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-10px);
+            border-color: #7a5c33;
+        }
+
+        .card h3 { 
+            font-size: 12px; 
+            font-weight: 800; 
+            color: #fff; 
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+        }
+
+        .card .price { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: #fff; 
+        }
+
+        .btn-add {
+            background: #7a5c33;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 9px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
         .btn-add:hover { background: #000; }
 
-        .close-btn { cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:20px; text-align: right; }
+        /* ABA LATERAL (SELECTION) */
+        .side-menu {
+            position: fixed;
+            top: 0; right: -400px;
+            width: 400px; height: 100%;
+            background: #fff;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: 0.5s cubic-bezier(0.77,0,0.175,1);
+            padding: 40px;
+        }
 
-        @media(max-width: 900px) { .main-header { flex-direction: column; gap: 20px; } .side-menu { width: 100%; } }
+        .side-menu.active { right: 0; }
+
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(4px);
+            display: none;
+            z-index: 1900;
+        }
+
+        .overlay.active { display: block; }
+
+        .drawer-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 15px;
+            background: #fdfaf6;
+            border-radius: 15px;
+            border: 1px solid #f1eee4;
+        }
+
+        .drawer-img { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; }
+
+        /* RESPONSIVIDADE */
+        @media(max-width: 900px) {
+            .floating-vitrine { 
+                grid-template-columns: repeat(2, 1fr); 
+                bottom: 20px;
+                gap: 10px;
+            }
+            .card { height: 180px; padding: 15px; }
+            .side-menu { width: 100%; right: -100%; }
+        }
     </style>
 </head>
 <body>
 
+    <div class="main-bg"></div>
     <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <header class="main-header">
         <div class="header-left">
             <div class="logo-circle"></div>
-            <div class="brand-info"><h1>Sollene Store Group</h1></div>
+            <div class="brand-info"><h1>Sollene Group</h1></div>
         </div>
         <nav>
             <ul>
-                <li><a href="#" style="border: 2px solid #000; border-radius: 8px;">HOME</a></li>
+                <li><a href="#">HOME</a></li>
                 <li><a onclick="toggleMenu()">COLLECTIONS</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- ABA LATERAL QUE ABRE EM TODOS OS CARDS -->
-    <div class="side-menu" id="sideMenu">
-        <div class="close-btn" onclick="toggleMenu()">✕ CLOSE</div>
-        <h2 style="margin-bottom:30px; font-size:18px; color:#7a5c33; letter-spacing:2px;">YOUR SELECTION</h2>
-        
-        <div id="selection-content">
-            <!-- Os produtos selecionados aparecerão aqui -->
-             <p style="font-size: 13px; color: #999;">Select a product to view details.</p>
+    <!-- CARDS FLUTUANTES -->
+    <div class="floating-vitrine">
+        <div class="card">
+            <h3>Executive Shirt</h3>
+            <span class="price">€ 85.00</span>
+            <button class="btn-add" onclick="openSelection('Executive Shirt', '85.00', 'productos1.png')">Quick View</button>
         </div>
-
-        <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:30px; cursor:pointer;">
-            ORDER VIA WHATSAPP
-        </button>
+        <div class="card">
+            <h3>Luxury Selection II</h3>
+            <span class="price">€ 110.00</span>
+            <button class="btn-add" onclick="openSelection('Luxury Selection II', '110.00', 'prodcuto2.png')">Quick View</button>
+        </div>
+        <div class="card">
+            <h3>Classic Selection III</h3>
+            <span class="price">€ 145.00</span>
+            <button class="btn-add" onclick="openSelection('Classic Selection III', '145.00', 'produtdos45.png')">Quick View</button>
+        </div>
+        <div class="card">
+            <h3>Executive Watch</h3>
+            <span class="price">€ 290.00</span>
+            <button class="btn-add" onclick="openSelection('Executive Watch', '290.00', 'producto4.png')">Quick View</button>
+        </div>
     </div>
 
-    <section class="products-section" id="collections">
-        <div class="products-grid">
-            <!-- CARD 1 -->
-            <div class="card">
-                <div class="img-container"><img src="productos1.png" class="card-img"></div>
-                <h3>Executive Shirt</h3>
-                <p style="margin:10px 0; font-weight:800;">€ 85.00</p>
-                <button class="btn-add" onclick="openSelection('Executive Shirt', '85.00', 'productos1.png')">Add to Cart</button>
-            </div>
-            <!-- CARD 2 -->
-            <div class="card">
-                <div class="img-container"><img src="prodcuto2.png" class="card-img"></div>
-                <h3>Luxury Selection II</h3>
-                <p style="margin:10px 0; font-weight:800;">€ 110.00</p>
-                <button class="btn-add" onclick="openSelection('Luxury Selection II', '110.00', 'prodcuto2.png')">Add to Cart</button>
-            </div>
-            <!-- CARD 3 -->
-            <div class="card">
-                <div class="img-container"><img src="produtdos45.png" class="card-img"></div>
-                <h3>Classic Selection III</h3>
-                <p style="margin:10px 0; font-weight:800;">€ 145.00</p>
-                <button class="btn-add" onclick="openSelection('Classic Selection III', '145.00', 'produtdos45.png')">Add to Cart</button>
-            </div>
-            <!-- CARD 4 -->
-            <div class="card">
-                <div class="img-container"><img src="producto4.png" class="card-img"></div>
-                <h3>Executive Watch</h3>
-                <p style="margin:10px 0; font-weight:800;">€ 290.00</p>
-                <button class="btn-add" onclick="openSelection('Executive Watch', '290.00', 'producto4.png')">Add to Cart</button>
-            </div>
-        </div>
-    </section>
+    <!-- ABA LATERAL -->
+    <div class="side-menu" id="sideMenu">
+        <div onclick="toggleMenu()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
+        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Your Selection</h2>
+        <div id="selection-content"></div>
+        <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:30px; cursor:pointer; text-transform:uppercase;">
+            Order via WhatsApp
+        </button>
+    </div>
 
     <script>
         function toggleMenu() {
@@ -124,21 +238,21 @@
             document.getElementById('overlay').classList.toggle('active');
         }
 
-        // FUNÇÃO PARA ABRIR A ABA COM O PRODUTO ESCOLHIDO
         function openSelection(name, price, img) {
             const content = document.getElementById('selection-content');
             content.innerHTML = `
                 <div class="drawer-item">
                     <img src="${img}" class="drawer-img">
-                    <div class="drawer-info">
-                        <h4>${name}</h4>
-                        <p>€ ${price}</p>
+                    <div>
+                        <h4 style="font-size:12px; text-transform:uppercase; color:#333;">${name}</h4>
+                        <p style="font-weight:800; color:#7a5c33; font-size:20px; margin-top:5px;">€ ${price}</p>
                     </div>
                 </div>
-                <p style="font-size:12px; color:#666; line-height:1.6;">You have selected this premium item. Our team will verify availability once you proceed to WhatsApp.</p>
+                <p style="font-size:13px; color:#666; line-height:1.6;">Our executive team will check availability and shipping costs for your region.</p>
             `;
-            toggleMenu(); // Abre a aba
+            toggleMenu();
         }
     </script>
 </body>
 </html>
+
