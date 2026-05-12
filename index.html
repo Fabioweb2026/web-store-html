@@ -6,178 +6,49 @@
     <title>Sollene Group | Luxury Store</title>
     <style>
         @import url('https://googleapis.com');
-        
         *{ margin:0; padding:0; box-sizing:border-box; }
-        
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #000; 
-            overflow: hidden; /* Mantém o foco na imagem sem rolagem desnecessária */
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #000; overflow: hidden; }
 
         /* IMAGEM DE FUNDO NÍTIDA */
         .main-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: url('Solle-Global-Store.png') no-repeat center top;
-            background-size: cover;
-            z-index: -1;
+            background-size: cover; z-index: -1;
         }
 
         /* HEADER BEGE LUXO */
         .main-header {
             background: rgba(247, 243, 235, 0.95);
             backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 5%;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative; z-index: 1000;
         }
 
         .header-left { display: flex; align-items: center; gap: 15px; }
-        
         .logo-circle {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            border: 1px solid #7a5c33;
-            background: #fff url('logo.png') no-repeat center center;
-            background-size: cover;
+            width: 60px; height: 60px; border-radius: 50%; border: 1px solid #7a5c33;
+            background: #fff url('logo.png') no-repeat center center; background-size: cover;
         }
-
-        .brand-info h1 {
-            font-size: 20px;
-            font-weight: 800;
-            color: #7a5c33;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .brand-info h1 { font-size: 20px; font-weight: 800; color: #7a5c33; text-transform: uppercase; letter-spacing: 2px; }
 
         nav ul { display: flex; list-style: none; gap: 20px; }
-        nav a { 
-            text-decoration: none; 
-            color: #000; 
-            font-size: 11px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            cursor: pointer;
-        }
-
-        /* VITRINE FLUTUANTE NA BASE */
-        .floating-vitrine {
-            position: fixed;
-            bottom: 40px;
-            left: 0;
-            width: 100%;
-            padding: 0 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            z-index: 500;
-        }
-
-        /* CARDS ESTILO VIDRO */
-        .card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.4s ease;
-            height: 200px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-10px);
-            border-color: #7a5c33;
-        }
-
-        .card h3 { 
-            font-size: 12px; 
-            font-weight: 800; 
-            color: #fff; 
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-        }
-
-        .card .price { 
-            font-size: 20px; 
-            font-weight: 800; 
-            color: #fff; 
-        }
-
-        .btn-add {
-            background: #7a5c33;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 9px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-add:hover { background: #000; }
+        nav a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; cursor: pointer; }
 
         /* ABA LATERAL (SELECTION) */
         .side-menu {
-            position: fixed;
-            top: 0; right: -400px;
-            width: 400px; height: 100%;
-            background: #fff;
-            box-shadow: -10px 0 50px rgba(0,0,0,0.2);
-            z-index: 2000;
-            transition: 0.5s cubic-bezier(0.77,0,0.175,1);
-            padding: 40px;
+            position: fixed; top: 0; right: -400px; width: 400px; height: 100%;
+            background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.2);
+            z-index: 2000; transition: 0.5s cubic-bezier(0.77,0,0.175,1); padding: 40px;
         }
-
         .side-menu.active { right: 0; }
-
-        .overlay {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-            display: none;
-            z-index: 1900;
-        }
-
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); display: none; z-index: 1900; }
         .overlay.active { display: block; }
 
-        .drawer-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 30px 0;
-            padding: 15px;
-            background: #fdfaf6;
-            border-radius: 15px;
-            border: 1px solid #f1eee4;
-        }
-
+        .drawer-item { display: flex; align-items: center; gap: 15px; margin: 25px 0; padding: 15px; background: #fdfaf6; border-radius: 15px; border: 1px solid #f1eee4; }
         .drawer-img { width: 70px; height: 70px; border-radius: 10px; object-fit: cover; }
 
-        /* RESPONSIVIDADE */
-        @media(max-width: 900px) {
-            .floating-vitrine { 
-                grid-template-columns: repeat(2, 1fr); 
-                bottom: 20px;
-                gap: 10px;
-            }
-            .card { height: 180px; padding: 15px; }
-            .side-menu { width: 100%; right: -100%; }
-        }
+        @media(max-width: 900px) { .side-menu { width: 100%; right: -100%; } }
     </style>
 </head>
 <body>
@@ -198,35 +69,27 @@
         </nav>
     </header>
 
-    <!-- CARDS FLUTUANTES -->
-    <div class="floating-vitrine">
-        <div class="card">
-            <h3>Executive Shirt</h3>
-            <span class="price">€ 85.00</span>
-            <button class="btn-add" onclick="openSelection('Executive Shirt', '85.00', 'productos1.png')">Quick View</button>
-        </div>
-        <div class="card">
-            <h3>Luxury Selection II</h3>
-            <span class="price">€ 110.00</span>
-            <button class="btn-add" onclick="openSelection('Luxury Selection II', '110.00', 'prodcuto2.png')">Quick View</button>
-        </div>
-        <div class="card">
-            <h3>Classic Selection III</h3>
-            <span class="price">€ 145.00</span>
-            <button class="btn-add" onclick="openSelection('Classic Selection III', '145.00', 'produtdos45.png')">Quick View</button>
-        </div>
-        <div class="card">
-            <h3>Executive Watch</h3>
-            <span class="price">€ 290.00</span>
-            <button class="btn-add" onclick="openSelection('Executive Watch', '290.00', 'producto4.png')">Quick View</button>
-        </div>
-    </div>
-
-    <!-- ABA LATERAL -->
+    <!-- ABA LATERAL COM APENAS ALGUNS ITENS SELECIONADOS -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleMenu()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Your Selection</h2>
-        <div id="selection-content"></div>
+        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Curated Selection</h2>
+        
+        <div class="drawer-item">
+            <img src="productos1.png" class="drawer-img">
+            <div>
+                <h4 style="font-size:12px; text-transform:uppercase;">Executive Shirt</h4>
+                <p style="font-weight:800; color:#7a5c33;">€ 85.00</p>
+            </div>
+        </div>
+
+        <div class="drawer-item">
+            <img src="producto2.png" class="drawer-img">
+            <div>
+                <h4 style="font-size:12px; text-transform:uppercase;">Luxury Selection</h4>
+                <p style="font-weight:800; color:#7a5c33;">€ 110.00</p>
+            </div>
+        </div>
+
         <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:30px; cursor:pointer; text-transform:uppercase;">
             Order via WhatsApp
         </button>
@@ -237,22 +100,6 @@
             document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
-
-        function openSelection(name, price, img) {
-            const content = document.getElementById('selection-content');
-            content.innerHTML = `
-                <div class="drawer-item">
-                    <img src="${img}" class="drawer-img">
-                    <div>
-                        <h4 style="font-size:12px; text-transform:uppercase; color:#333;">${name}</h4>
-                        <p style="font-weight:800; color:#7a5c33; font-size:20px; margin-top:5px;">€ ${price}</p>
-                    </div>
-                </div>
-                <p style="font-size:13px; color:#666; line-height:1.6;">Our executive team will check availability and shipping costs for your region.</p>
-            `;
-            toggleMenu();
-        }
     </script>
 </body>
 </html>
-
