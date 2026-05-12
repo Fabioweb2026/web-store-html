@@ -43,26 +43,27 @@ header{
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
     font-size:28px;
     font-weight:bold;
     letter-spacing:2px;
-}
-
-.logo img{
-    width:45px;
-    height:45px;
-    object-fit:cover;
-    border-radius:50%;
+    display:flex;
+    align-items:center;
+    color:white;
 }
 
 .logo span{
     color:#c9a86a;
 }
 
-/* MENU */
+.logo img{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-right:12px;
+}
+
+/* NAVBAR */
 
 .navbar{
     background:#111;
@@ -176,49 +177,6 @@ header{
     background:white;
 }
 
-/* CATEGORY CARDS */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.category-card{
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    height:400px;
-    cursor:pointer;
-    border:1px solid #222;
-    transition:0.3s;
-}
-
-.category-card:hover{
-    transform:scale(1.02);
-    border:1px solid #c9a86a;
-}
-
-.category-card img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-.category-overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    display:flex;
-    align-items:flex-end;
-    padding:30px;
-}
-
-.category-overlay h3{
-    font-size:30px;
-    color:white;
-}
-
 /* ABOUT */
 
 .about{
@@ -280,17 +238,19 @@ footer p{
 
             <img src="logo.png" alt="Logo">
 
-            <div>
-                SOLLENE <span>STORE</span>
-            </div>
+            SOLLENE <span>STORE</span>
 
         </div>
 
     </div>
 
+    <!-- NAVIGATION -->
+
     <nav class="navbar">
 
-        <a href="index.html">Home</a>
+        <a href="index.html">
+            Home
+        </a>
 
         <a href="men.html">
             Men
@@ -328,43 +288,88 @@ footer p{
         Luxury Collections
     </h2>
 
-    <div class="category-grid">
+    <div class="products-grid">
 
         <!-- MEN -->
 
-        <a href="men.html" class="category-card">
+        <div class="product-card">
 
-            <img src="men1.png" alt="Men Collection">
+            <img src="men1.png" alt="Men Fashion">
 
-            <div class="category-overlay">
+            <div class="product-info">
+
                 <h3>Men Collection</h3>
+
+                <p>
+                    Sophisticated masculine fashion inspired by premium lifestyle and modern elegance.
+                </p>
+
+                <div class="price">
+                    €260
+                </div>
+
+                <button class="buy-btn"
+                onclick="window.location.href='men.html'">
+                    Explore Collection
+                </button>
+
             </div>
 
-        </a>
+        </div>
 
-        <!-- WOMAN -->
+        <!-- WOMEN -->
 
-        <a href="woman.html" class="category-card">
+        <div class="product-card">
 
             <img src="woman.bag.png" alt="Women Collection">
 
-            <div class="category-overlay">
+            <div class="product-info">
+
                 <h3>Women Collection</h3>
+
+                <p>
+                    Luxury feminine collection designed for elegance and timeless sophistication.
+                </p>
+
+                <div class="price">
+                    €470
+                </div>
+
+                <button class="buy-btn"
+                onclick="window.location.href='woman.html'">
+                    Explore Collection
+                </button>
+
             </div>
 
-        </a>
+        </div>
 
         <!-- BAGS -->
 
-        <a href="bolsas.html" class="category-card">
+        <div class="product-card">
 
             <img src="bags.png" alt="Luxury Bags">
 
-            <div class="category-overlay">
+            <div class="product-info">
+
                 <h3>Luxury Bags</h3>
+
+                <p>
+                    Refined luxury bags crafted with premium finishing and exclusive style.
+                </p>
+
+                <div class="price">
+                    €610
+                </div>
+
+                <button class="buy-btn"
+                onclick="window.location.href='bolsas.html'">
+                    Explore Collection
+                </button>
+
             </div>
 
-        </a>
+        </div>
 
     </div>
 
@@ -389,11 +394,36 @@ footer p{
                 <h3>Executive Shirts</h3>
 
                 <p>
-                    Premium shirt collection crafted for elegance and executive lifestyle.
+                    Premium shirt collection crafted for business, elegance and executive lifestyle.
                 </p>
 
                 <div class="price">
                     €220
+                </div>
+
+                <button class="buy-btn"
+                onclick="window.location.href='menshirts.html'">
+                    View Shirts
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="product-card">
+
+            <img src="executivemen1.png" alt="Luxury Executive">
+
+            <div class="product-info">
+
+                <h3>Luxury Executive</h3>
+
+                <p>
+                    Exclusive masculine fashion collection inspired by timeless luxury design.
+                </p>
+
+                <div class="price">
+                    €390
                 </div>
 
                 <button class="buy-btn">
@@ -406,18 +436,18 @@ footer p{
 
         <div class="product-card">
 
-            <img src="executivemen1.png" alt="Luxury Men">
+            <img src="produtdos45.png" alt="Accessories">
 
             <div class="product-info">
 
-                <h3>Luxury Executive</h3>
+                <h3>Premium Accessories</h3>
 
                 <p>
-                    Sophisticated masculine fashion inspired by timeless luxury.
+                    Luxury accessories for sophisticated lifestyle and modern identity.
                 </p>
 
                 <div class="price">
-                    €390
+                    €180
                 </div>
 
                 <button class="buy-btn">
