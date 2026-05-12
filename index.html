@@ -11,14 +11,15 @@
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            /* FUNDO: Foco no topo para não cortar rostos */
             background: url('Solle-Global-Store.png') no-repeat center top fixed;
             background-size: cover;
             color: #1a1a1a; 
             min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* HEADER COM LOGO REDONDO À ESQUERDA */
+        /* HEADER */
         header {
             background: rgba(0, 0, 0, 0.9);
             backdrop-filter: blur(10px);
@@ -26,19 +27,16 @@
             padding: 15px 40px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centraliza o título */
+            justify-content: center;
             border-bottom: 2px solid #b39359;
-            position: sticky;
-            top: 0;
             z-index: 1000;
         }
 
-        /* O LOGO PEQUENO REDONDO */
         .logo-round {
             position: absolute;
-            left: 40px; /* Alinhado à esquerda */
-            width: 60px;
-            height: 60px;
+            left: 40px;
+            width: 50px;
+            height: 50px;
             background: #000;
             border: 2px solid #b39359;
             border-radius: 50%;
@@ -46,112 +44,81 @@
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 18px;
             color: #b39359;
-            box-shadow: 0 0 20px rgba(179, 147, 89, 0.3);
             text-decoration: none;
-            overflow: hidden;
         }
 
-        .logo-round img {
+        header h1 { font-size: 20px; font-weight: 800; letter-spacing: 6px; text-transform: uppercase; }
+
+        /* CONTAINER DOS CARDS NO TOPO */
+        .top-showcase {
             width: 100%;
-            height: 100%;
-            object-fit: cover; /* Se você subir uma imagem de logo depois */
-        }
-
-        header h1 { 
-            font-size: 22px; 
-            font-weight: 800; 
-            letter-spacing: 10px; 
-            text-transform: uppercase; 
-        }
-
-        .main-layout {
-            max-width: 1400px;
-            margin: 40px auto;
-            padding: 0 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1); /* Faixa sutil no topo */
+            backdrop-filter: blur(5px);
             display: flex;
-            gap: 40px;
-            align-items: flex-start;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap; /* Ajusta se tiver muitos produtos */
         }
 
-        /* VITRINE (ESQUERDA) */
-        .shop-content { flex: 1; }
-
-        h2 { 
-            font-size: 12px; 
-            color: #fff; 
-            text-transform: uppercase; 
-            letter-spacing: 4px; 
-            margin-bottom: 30px; 
-            background: #000;
-            display: inline-block;
-            padding: 10px 25px;
-            border-radius: 4px;
-            font-weight: 800;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        /* CARDS COM EFEITO VIDRO TRANSPARENTE */
+        /* CARDS MINI E COMPACTOS */
         .card {
-            background: rgba(255, 255, 255, 0.2); 
+            background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(15px);
-            padding: 30px 20px;
-            border-radius: 20px;
+            padding: 15px;
+            border-radius: 12px;
             border: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
-            height: 280px;
+            width: 180px; /* BEM MENORES */
+            height: 160px; /* ALTURA REDUZIDA */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: 0.4s;
+            transition: 0.3s;
         }
+
         .card:hover { 
-            background: rgba(255, 255, 255, 0.5);
-            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateY(-5px);
             border-color: #b39359;
         }
 
-        .card h3 { font-size: 15px; font-weight: 800; color: #000; }
-        .card .price { font-size: 24px; color: #000; font-weight: 800; }
+        .card h3 { font-size: 12px; font-weight: 800; color: #000; text-transform: uppercase; }
+        .card .price { font-size: 16px; color: #000; font-weight: 800; }
 
         .btn-add {
             background: #000;
             color: #b39359;
             border: none;
-            padding: 14px;
-            border-radius: 50px;
+            padding: 8px;
+            border-radius: 4px;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 9px;
+            font-size: 8px;
             cursor: pointer;
         }
 
-        /* CARRINHO (DIREITA) */
-        .cart-sidebar {
-            width: 380px;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(25px);
+        /* CARRINHO ABAIXO OU FLUTUANTE */
+        .cart-container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
             border: 1px solid #b39359;
-            border-radius: 24px;
-            padding: 40px;
-            position: sticky;
-            top: 120px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.15);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .cart-total {
-            border-top: 2px solid #b39359;
-            padding-top: 25px;
+            border-top: 1px solid #b39359;
+            padding-top: 10px;
             display: flex;
             justify-content: space-between;
             font-weight: 800;
-            font-size: 26px;
+            font-size: 18px;
             color: #000;
         }
 
@@ -160,58 +127,58 @@
             background: #25d366;
             color: #fff;
             border: none;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 8px;
             font-weight: 800;
-            margin-top: 30px;
+            margin-top: 15px;
             cursor: pointer;
             text-transform: uppercase;
+            font-size: 11px;
         }
 
-        @media(max-width: 1000px) {
-            .logo-round { position: static; margin-bottom: 10px; }
-            header { flex-direction: column; padding: 20px; }
-            .main-layout { flex-direction: column; }
-            .cart-sidebar { width: 100%; position: static; }
+        @media(max-width: 600px) {
+            header h1 { font-size: 14px; letter-spacing: 2px; }
+            .card { width: 140px; height: 140px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- LOGO REDONDO À ESQUERDA -->
-        <a href="#" class="logo-round">
-            <span>SG</span> <!-- Iniciais da sua marca -->
-        </a>
+        <a href="#" class="logo-round">SG</a>
         <h1>SOLLENE GLOBAL STORE</h1>
     </header>
 
-    <div class="main-layout">
-        <main class="shop-content">
-            <h2>Luxury Selection</h2>
-            <div class="products-grid">
-                <div class="card">
-                    <h3>Executive Shirt</h3>
-                    <span class="price">€ 85.00</span>
-                    <button class="btn-add" onclick="add('Executive Shirt', 85)">Add to Cart</button>
-                </div>
-                <div class="card">
-                    <h3>Leather Belt</h3>
-                    <span class="price">€ 110.00</span>
-                    <button class="btn-add" onclick="add('Leather Belt', 110)">Add to Cart</button>
-                </div>
-            </div>
-        </main>
+    <!-- CARDS NA PARTE SUPERIOR -->
+    <div class="top-showcase">
+        <div class="card">
+            <h3>Executive Shirt</h3>
+            <span class="price">€ 85.00</span>
+            <button class="btn-add" onclick="add('Shirt', 85)">Add to Cart</button>
+        </div>
 
-        <aside class="cart-sidebar">
-            <h3 style="text-align:center; margin-bottom:25px; text-transform:uppercase; letter-spacing:2px; color:#000;">Your Bag</h3>
-            <div id="cart-items" style="margin-bottom:25px; font-weight:700; color:#000;">Empty</div>
-            <div class="cart-total">
-                <span>Total</span>
-                <span id="total-price">€ 0.00</span>
-            </div>
-            <button class="btn-whatsapp" onclick="checkout()">WhatsApp Checkout</button>
-        </aside>
+        <div class="card">
+            <h3>Leather Belt</h3>
+            <span class="price">€ 110.00</span>
+            <button class="btn-add" onclick="add('Belt', 110)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <h3>Classic Tie</h3>
+            <span class="price">€ 45.00</span>
+            <button class="btn-add" onclick="add('Tie', 45)">Add to Cart</button>
+        </div>
+    </div>
+
+    <!-- CARRINHO LOGO ABAIXO -->
+    <div class="cart-container">
+        <h4 style="text-align:center; font-size:12px; text-transform:uppercase; margin-bottom:10px;">Your Bag</h4>
+        <div id="cart-items" style="font-size: 12px; color: #000; margin-bottom: 10px;">Empty</div>
+        <div class="cart-total">
+            <span>Total</span>
+            <span id="total-price">€ 0.00</span>
+        </div>
+        <button class="btn-whatsapp" onclick="checkout()">WhatsApp Checkout</button>
     </div>
 
     <script>
@@ -221,7 +188,7 @@
         }
         function update() {
             const container = document.getElementById('cart-items');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:12px; border-bottom:1px solid rgba(0,0,0,0.05); padding-bottom:5px; color:#000;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:5px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
             document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
         }
         function checkout() {
