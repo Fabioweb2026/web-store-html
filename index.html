@@ -1,165 +1,880 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Global Store | Luxury Lifestyle</title>
-    <style>
-        @import url('https://googleapis.com');
-        
-        *{ margin:0; padding:0; box-sizing:border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        body { 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            /* IMAGEM 100% NÍTIDA NO FUNDO */
-            background: url('Solle-Global-Store.png') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            color: #fff;
-        }
+<title>Sollene Global Store | Luxury Lifestyle</title>
 
-        /* BARRA SUPERIOR (LOGO TEXTO) */
-        header {
-            background: rgba(0, 0, 0, 0.95);
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #b39359;
-            z-index: 1000;
-            position: relative;
-        }
-        header h1 { font-size: 16px; font-weight: 800; letter-spacing: 8px; color: #b39359; text-transform: uppercase; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        /* FAIXA DE PRODUTOS NO TOPO SUPERIOR */
-        .top-shelf {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Transparência luxuosa */
-            backdrop-filter: blur(10px);
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            border-bottom: 1px solid rgba(179, 147, 89, 0.3);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-        /* CARDS MENORES E MAIS ELEGANTES */
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(179, 147, 89, 0.4);
-            border-radius: 12px;
-            padding: 15px;
-            width: 170px;
-            text-align: center;
-            transition: 0.4s;
-        }
-        .card:hover { background: rgba(179, 147, 89, 0.2); transform: translateY(-5px); }
+<style>
 
-        .card h3 { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #fff; }
-        .card .price { font-size: 16px; font-weight: 800; color: #b39359; margin-bottom: 12px; display: block; }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .btn-add {
-            background: #b39359;
-            color: #000;
-            border: none;
-            padding: 8px;
-            border-radius: 4px;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 8px;
-            cursor: pointer;
-            width: 100%;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        /* CARRINHO DISCRETO NA DIREITA SUPERIOR */
-        .cart-sidebar {
-            position: fixed;
-            top: 130px;
-            right: 20px;
-            width: 280px;
-            background: rgba(0, 0, 0, 0.9);
-            border: 1px solid #b39359;
-            border-radius: 16px;
-            padding: 25px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            z-index: 1001;
-        }
+body{
+    font-family:'Inter',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    color:#fff;
 
-        .cart-sidebar h4 { font-size: 11px; text-transform: uppercase; color: #b39359; margin-bottom: 20px; text-align: center; letter-spacing: 2px; }
-        #cart-items { font-size: 12px; max-height: 150px; overflow-y: auto; margin-bottom: 15px; }
-        .total-box { border-top: 1px solid #333; padding-top: 15px; display: flex; justify-content: space-between; font-weight: 800; font-size: 18px; color: #b39359; }
+    background:
+    linear-gradient(rgba(0,0,0,.78),rgba(0,0,0,.88)),
+    url('Solle-Global-Store.png') center/cover fixed no-repeat;
+}
 
-        .btn-checkout {
-            width: 100%;
-            background: #25d366;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: 800;
-            margin-top: 20px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 10px;
-        }
+/* ================= HEADER ================= */
 
-        @media(max-width: 800px) {
-            .top-shelf { overflow-x: auto; justify-content: flex-start; padding: 15px; }
-            .card { flex-shrink: 0; }
-            .cart-sidebar { position: static; width: 90%; margin: 20px auto; }
-        }
-    </style>
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    backdrop-filter:blur(14px);
+
+    background:rgba(0,0,0,.45);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.navbar{
+    max-width:1400px;
+    margin:auto;
+    padding:20px 40px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:900;
+    letter-spacing:6px;
+    color:#d6b36a;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#d6b36a;
+}
+
+.contact-btn{
+    background:#d6b36a;
+    color:#000;
+    border:none;
+    padding:12px 24px;
+    border-radius:40px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.contact-btn:hover{
+    transform:translateY(-2px);
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    padding:140px 30px 80px;
+}
+
+.hero-content{
+    max-width:900px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1{
+    font-size:74px;
+    line-height:1.05;
+    margin-bottom:30px;
+    font-weight:900;
+}
+
+.gold{
+    color:#d6b36a;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.8;
+    color:#d9d9d9;
+    max-width:700px;
+    margin:auto auto 40px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn-main{
+    padding:16px 38px;
+    border:none;
+    border-radius:50px;
+    font-size:14px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.btn-gold{
+    background:#d6b36a;
+    color:#000;
+}
+
+.btn-dark{
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    border:1px solid rgba(255,255,255,.15);
+    backdrop-filter:blur(8px);
+}
+
+.btn-main:hover{
+    transform:translateY(-4px);
+}
+
+/* ================= PRODUCTS ================= */
+
+.products-section{
+    max-width:1400px;
+    margin:auto;
+    padding:100px 40px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    color:#bbb;
+    font-size:16px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+.card{
+    position:relative;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:.5s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    border-color:#d6b36a;
+    box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+
+.card-image{
+    height:240px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:70px;
+
+    background:linear-gradient(145deg,#1a1a1a,#111);
+}
+
+.card-content{
+    padding:28px;
+}
+
+.card-category{
+    color:#d6b36a;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:12px;
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:14px;
+}
+
+.card p{
+    color:#cfcfcf;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.price{
+    font-size:28px;
+    font-weight:900;
+    color:#d6b36a;
+}
+
+.btn-add{
+    background:#d6b36a;
+    color:#000;
+    border:none;
+    padding:12px 18px;
+    border-radius:14px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn-add:hover{
+    transform:scale(1.05);
+}
+
+/* ================= ABOUT ================= */
+
+.about{
+    padding:120px 40px;
+    background:rgba(0,0,0,.55);
+}
+
+.about-container{
+    max-width:1200px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:80px;
+    align-items:center;
+}
+
+.about-box{
+    background:rgba(255,255,255,.05);
+    padding:50px;
+    border-radius:30px;
+    border:1px solid rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
+}
+
+.about h2{
+    font-size:48px;
+    margin-bottom:25px;
+}
+
+.about p{
+    color:#d2d2d2;
+    line-height:1.9;
+    font-size:16px;
+}
+
+/* ================= CART ================= */
+
+.cart-sidebar{
+    position:fixed;
+    top:120px;
+    right:25px;
+
+    width:320px;
+
+    background:rgba(10,10,10,.92);
+
+    border:1px solid rgba(214,179,106,.25);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    backdrop-filter:blur(14px);
+
+    z-index:999;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.45);
+}
+
+.cart-sidebar h4{
+    text-align:center;
+    margin-bottom:25px;
+    color:#d6b36a;
+    font-size:14px;
+    letter-spacing:3px;
+}
+
+#cart-items{
+    max-height:240px;
+    overflow-y:auto;
+    margin-bottom:20px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+    padding-bottom:10px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:14px;
+}
+
+.total-box{
+    display:flex;
+    justify-content:space-between;
+    margin-top:20px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.08);
+
+    font-size:22px;
+    font-weight:800;
+    color:#d6b36a;
+}
+
+.btn-checkout{
+    width:100%;
+    margin-top:25px;
+
+    padding:16px;
+
+    border:none;
+    border-radius:16px;
+
+    background:#25d366;
+    color:#fff;
+
+    font-weight:800;
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.btn-checkout:hover{
+    transform:translateY(-3px);
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:60px 30px;
+    text-align:center;
+    background:#000;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+footer h3{
+    color:#d6b36a;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+footer p{
+    color:#999;
+    font-size:14px;
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:1100px){
+
+    .cart-sidebar{
+        position:relative;
+        width:90%;
+        margin:40px auto;
+        top:auto;
+        right:auto;
+    }
+
+    .about-container{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .navbar{
+        padding:20px;
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav{
+        gap:18px;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .section-title h2{
+        font-size:38px;
+    }
+
+    .about h2{
+        font-size:36px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .products-section{
+        padding:80px 20px;
+    }
+
+    .about{
+        padding:80px 20px;
+    }
+
+    .about-box{
+        padding:35px;
+    }
+
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>SOLLENE GLOBAL STORE</h1>
-    </header>
+<!-- ================= HEADER ================= -->
 
-    <!-- PRODUTOS AGORA FICAM NO TOPO -->
-    <div class="top-shelf">
-        <div class="card">
-            <h3>Executive Shirt</h3>
-            <span class="price">€ 85.00</span>
-            <button class="btn-add" onclick="add('Shirt', 85)">Add to Cart</button>
+<header>
+
+    <div class="navbar">
+
+        <div class="logo">
+            SOLLENE
         </div>
 
-        <div class="card">
-            <h3>Leather Belt</h3>
-            <span class="price">€ 110.00</span>
-            <button class="btn-add" onclick="add('Belt', 110)">Add to Cart</button>
-        </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Collection</a>
+            <a href="#">Luxury</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
 
-        <div class="card">
-            <h3>Classic Tie</h3>
-            <span class="price">€ 45.00</span>
-            <button class="btn-add" onclick="add('Tie', 45)">Add to Cart</button>
-        </div>
+        <button class="contact-btn">
+            Premium Access
+        </button>
+
     </div>
 
-    <!-- CARRINHO FLUTUANTE NA DIREITA -->
-    <aside class="cart-sidebar">
-        <h4>Your Selection</h4>
-        <div id="cart-items">Empty bag</div>
-        <div class="total-box">
-            <span>Total</span>
-            <span id="total-price">€ 0.00</span>
-        </div>
-        <button class="btn-checkout" onclick="checkout()">WhatsApp Order</button>
-    </aside>
+</header>
 
-    <script>
-        let cart = []; let total = 0;
-        function add(n, p) {
-            cart.push({n, p}); total += p; update();
-        }
-        function update() {
-            const container = document.getElementById('cart-items');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom:1px solid #222; padding-bottom:5px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
-            document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
-        }
-        function checkout() {
-            if(cart.length === 0) return alert("Select an item first!");
-            window.open(`https://wa.me`);
-        }
-    </script>
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Luxury Fashion <br>
+            <span class="gold">Global Experience</span>
+        </h1>
+
+        <p>
+            Discover premium lifestyle products crafted for elegance,
+            sophistication and modern luxury. A refined digital store
+            experience designed for visionary professionals.
+        </p>
+
+        <div class="hero-buttons">
+
+            <button class="btn-main btn-gold">
+                Explore Collection
+            </button>
+
+            <button class="btn-main btn-dark">
+                Watch Experience
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+
+<section class="products-section">
+
+    <div class="section-title">
+
+        <h2>Exclusive Collection</h2>
+
+        <p>
+            Timeless elegance crafted for executive lifestyle.
+        </p>
+
+    </div>
+
+    <div class="products-grid">
+
+        <!-- CARD 1 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                👔
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-category">
+                    EXECUTIVE
+                </div>
+
+                <h3>Luxury Shirt</h3>
+
+                <p>
+                    Elegant premium cotton shirt with modern executive fit.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">€ 85</span>
+
+                    <button class="btn-add" onclick="add('Luxury Shirt',85)">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 2 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                👜
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-category">
+                    PREMIUM
+                </div>
+
+                <h3>Leather Belt</h3>
+
+                <p>
+                    Crafted leather belt with sophisticated premium finish.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">€ 110</span>
+
+                    <button class="btn-add" onclick="add('Leather Belt',110)">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 3 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                👞
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-category">
+                    CLASSIC
+                </div>
+
+                <h3>Executive Shoes</h3>
+
+                <p>
+                    Modern handcrafted luxury shoes for formal occasions.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">€ 240</span>
+
+                    <button class="btn-add" onclick="add('Executive Shoes',240)">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CARD 4 -->
+
+        <div class="card">
+
+            <div class="card-image">
+                ⌚
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-category">
+                    SIGNATURE
+                </div>
+
+                <h3>Luxury Watch</h3>
+
+                <p>
+                    Premium executive watch inspired by timeless design.
+                </p>
+
+                <div class="price-row">
+
+                    <span class="price">€ 390</span>
+
+                    <button class="btn-add" onclick="add('Luxury Watch',390)">
+                        Add
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about">
+
+    <div class="about-container">
+
+        <div class="about-box">
+
+            <h2>
+                About Sollene
+            </h2>
+
+            <p>
+                Sollene Global Store represents sophistication,
+                innovation and luxury digital commerce.
+                Our mission is to create a premium online
+                experience inspired by elite global fashion brands.
+            </p>
+
+        </div>
+
+        <div class="about-box">
+
+            <h2>
+                Premium Experience
+            </h2>
+
+            <p>
+                Designed with modern UI/UX principles,
+                elegant animations and responsive structure
+                to deliver a futuristic executive experience
+                across desktop and mobile devices.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CART ================= -->
+
+<aside class="cart-sidebar">
+
+    <h4>
+        YOUR BAG
+    </h4>
+
+    <div id="cart-items">
+        Empty bag
+    </div>
+
+    <div class="total-box">
+
+        <span>Total</span>
+
+        <span id="total-price">
+            € 0.00
+        </span>
+
+    </div>
+
+    <button class="btn-checkout" onclick="checkout()">
+        WhatsApp Order
+    </button>
+
+</aside>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h3>
+        SOLLENE GLOBAL STORE
+    </h3>
+
+    <p>
+        Luxury Lifestyle • Premium Experience • Modern Web Design
+    </p>
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+let cart = [];
+let total = 0;
+
+function add(name,price){
+
+    cart.push({name,price});
+
+    total += price;
+
+    updateCart();
+
+}
+
+function updateCart(){
+
+    const cartContainer = document.getElementById('cart-items');
+
+    if(cart.length === 0){
+
+        cartContainer.innerHTML = 'Empty bag';
+
+    }else{
+
+        cartContainer.innerHTML = cart.map(item => `
+
+            <div class="cart-item">
+
+                <span>${item.name}</span>
+
+                <span>€ ${item.price.toFixed(2)}</span>
+
+            </div>
+
+        `).join('');
+
+    }
+
+    document.getElementById('total-price').innerText =
+    `€ ${total.toFixed(2)}`;
+
+}
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert("Select a product first!");
+
+        return;
+
+    }
+
+    let message = "Luxury Order:%0A%0A";
+
+    cart.forEach(item => {
+
+        message += `${item.name} - €${item.price}%0A`;
+
+    });
+
+    message += `%0ATotal: €${total.toFixed(2)}`;
+
+    window.open(`https://wa.me/?text=${message}`);
+
+}
+
+</script>
+
 </body>
 </html>
