@@ -11,127 +11,107 @@
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #f7f3eb; /* Cor creme do fundo da imagem */
+            background: #f7f3eb; /* Bege suave constante */
             color: #1a1a1a;
+            min-height: 100vh;
         }
 
-        /* HEADER CONFORME A SUA IMAGEM */
+        /* IMAGEM DE FUNDO POSICIONADA PARA NÃO CORTAR ROSTOS */
+        .bg-wrap {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url('Solle-Global-Store.png') no-repeat center 30% fixed;
+            background-size: cover;
+            z-index: -1;
+            opacity: 0.9; /* Deixa a foto bem clara e realista */
+        }
+
+        /* HEADER INSPIRADO NA SUA IMAGEM (BEGE LUXO) */
         .main-header {
             background-color: #f7f3eb;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 50px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            width: 100%;
+            padding: 15px 5%;
+            border-bottom: 1px solid rgba(122, 92, 51, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        
         .logo-circle {
-            width: 70px;
-            height: 70px;
+            width: 65px; height: 65px;
             border-radius: 50%;
-            background: url('Solle-Global-Store.png') no-repeat center center;
-            background-size: cover;
-            border: 1px solid #d4af37;
+            border: 1px solid #7a5c33;
+            background: #fff url('Sollene-Group.png') no-repeat center center;
+            background-size: 80%;
         }
 
         .brand-info h1 {
-            font-size: 32px;
-            font-weight: 800;
-            color: #7a5c33; /* Tom de marrom bronze da imagem */
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            line-height: 1;
+            font-size: 24px; font-weight: 800; color: #7a5c33; 
+            letter-spacing: 3px; text-transform: uppercase; line-height: 1;
         }
-
         .brand-info p {
-            font-size: 11px;
-            letter-spacing: 3px;
-            color: #b0a89e;
-            text-transform: uppercase;
-            margin-top: 5px;
+            font-size: 10px; letter-spacing: 2px; color: #b0a89e;
+            text-transform: uppercase; margin-top: 4px; font-weight: 600;
         }
 
-        /* MENU DE NAVEGAÇÃO */
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
+        nav ul { display: flex; list-style: none; gap: 25px; }
         nav ul li a {
-            text-decoration: none;
-            color: #000;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
+            text-decoration: none; color: #333; font-size: 11px;
+            font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
         }
 
-        nav ul li a:hover { color: #7a5c33; }
-
-        /* ÍCONE DE CARRINHO COM NOTIFICAÇÃO */
-        .cart-wrapper {
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .cart-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-
+        .cart-wrapper { position: relative; cursor: pointer; }
         .cart-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #b39359;
-            color: #fff;
-            font-size: 10px;
-            font-weight: 800;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+            position: absolute; top: -8px; right: -12px;
+            background: #7a5c33; color: #fff; font-size: 9px;
+            font-weight: 800; width: 18px; height: 18px;
+            display: flex; align-items: center; justify-content: center; border-radius: 50%;
         }
 
-        /* CONTEÚDO E CARDS NO TOPO */
-        .top-shelf {
-            padding: 30px 50px;
+        /* VITRINE DE CARDS CLAROS (HARMONIA COM O HEADER) */
+        .showcase-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 5%;
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            justify-content: flex-start;
         }
 
+        /* CARD MINI PREMIUM - FUNDO CLARO */
         .card {
-            background: #fff;
-            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85); /* Branco Perolado semi-transparente */
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
             padding: 20px;
-            width: 200px;
+            width: 180px;
+            height: 200px; /* ALTURA TRAVADA PARA ALINHAMENTO PERFEITO */
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid #eee;
+            border: 1px solid rgba(122, 92, 51, 0.1);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 220px;
+            transition: 0.4s ease;
         }
 
-        .card h3 { font-size: 13px; text-transform: uppercase; color: #7a5c33; margin-bottom: 10px; }
-        .card .price { font-size: 18px; font-weight: 800; margin-bottom: 15px; }
+        .card:hover {
+            transform: translateY(-5px);
+            background: #ffffff;
+            border-color: #7a5c33;
+            box-shadow: 0 15px 30px rgba(122, 92, 51, 0.1);
+        }
+
+        .card h3 { font-size: 11px; font-weight: 800; color: #7a5c33; text-transform: uppercase; letter-spacing: 1px; }
+        .card .price { font-size: 18px; font-weight: 800; color: #1a1a1a; }
 
         .btn-add {
-            background: #1a1a1a;
+            background: #7a5c33;
             color: #fff;
             border: none;
             padding: 10px;
@@ -140,24 +120,19 @@
             font-size: 9px;
             text-transform: uppercase;
             cursor: pointer;
+            transition: 0.3s;
         }
-
-        /* IMAGEM REALISTA DE FUNDO (LOGO ABAIXO) */
-        .hero-image {
-            width: 100%;
-            height: 500px;
-            background: url('Solle-Global-Store.png') no-repeat center center;
-            background-size: cover;
-            margin-top: 20px;
-        }
+        .btn-add:hover { background: #000; }
 
         @media(max-width: 900px) {
-            .main-header { flex-direction: column; gap: 20px; text-align: center; }
-            nav ul { gap: 15px; }
+            .main-header { flex-direction: column; gap: 15px; padding: 20px; }
+            .showcase-container { justify-content: center; }
         }
     </style>
 </head>
 <body>
+
+    <div class="bg-wrap"></div>
 
     <header class="main-header">
         <div class="header-left">
@@ -178,12 +153,13 @@
         </nav>
 
         <div class="cart-wrapper">
-            <div class="cart-icon">🛒</div>
+            <img src="https://flaticon.com" width="22" style="filter: sepia(1) saturate(5) hue-rotate(10deg);">
             <div class="cart-badge" id="cart-count">0</div>
         </div>
     </header>
 
-    <div class="top-shelf">
+    <!-- VITRINE DE PRODUTOS CLAROS -->
+    <div class="showcase-container">
         <div class="card">
             <h3>Executive Shirt</h3>
             <span class="price">€ 85.00</span>
@@ -194,16 +170,22 @@
             <span class="price">€ 110.00</span>
             <button class="btn-add" onclick="add()">Add to Cart</button>
         </div>
+        <div class="card">
+            <h3>Classic Tie</h3>
+            <span class="price">€ 45.00</span>
+            <button class="btn-add" onclick="add()">Add to Cart</button>
+        </div>
     </div>
-
-    <!-- IMAGEM REALISTA PARA AMBIENTAÇÃO -->
-    <div class="hero-image"></div>
 
     <script>
         let count = 0;
         function add() {
             count++;
             document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-count').style.background = "#25d366"; // Muda para verde ao adicionar
+            setTimeout(() => {
+                document.getElementById('cart-count').style.background = "#7a5c33";
+            }, 500);
         }
     </script>
 </body>
