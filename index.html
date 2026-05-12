@@ -52,7 +52,7 @@
             padding: 8px 12px; transition: 0.3s;
         }
 
-        /* ÍCONE DE CARRINHO (SVG ESTÁVEL) */
+        /* ÍCONE DE CARRINHO */
         .cart-icon-container {
             position: relative;
             cursor: pointer;
@@ -62,23 +62,15 @@
         }
 
         .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #7a5c33;
-            color: #fff;
-            font-size: 9px;
-            font-weight: 800;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            border: 2px solid #f7f3eb;
+            position: absolute; top: -5px; right: -5px;
+            background: #7a5c33; color: #fff;
+            font-size: 9px; font-weight: 800;
+            width: 18px; height: 18px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; border: 2px solid #f7f3eb;
         }
 
-        /* SEÇÃO HERO - IMAGEM NÍTIDA */
+        /* SEÇÃO HERO */
         .hero-section {
             width: 100%;
             height: 85vh;
@@ -92,7 +84,7 @@
 
         .scroll-hint { color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 11px; }
 
-        /* GALERIA DE PRODUTOS */
+        /* GALERIA DE PRODUTOS AJUSTADA PARA 3 ITENS */
         .products-section {
             background: #fff;
             padding: 80px 5%;
@@ -100,7 +92,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             max-width: 1300px;
             margin: 0 auto;
@@ -130,7 +122,7 @@
             text-transform: uppercase; font-size: 10px; cursor: pointer;
         }
 
-        /* ABA LATERAL (DRAWER) */
+        /* ABA LATERAL */
         .side-menu {
             position: fixed; top: 0; right: -420px;
             width: 400px; height: 100%; background: #fff;
@@ -154,9 +146,7 @@
     <header class="main-header">
         <div class="header-left">
             <div class="logo-circle"></div>
-            <div class="brand-info">
-                <h1>Sollene Group</h1>
-            </div>
+            <div class="brand-info"><h1>Sollene Group</h1></div>
         </div>
         
         <nav>
@@ -166,7 +156,6 @@
             </ul>
         </nav>
 
-        <!-- ÍCONE DO CARRINHO AJUSTADO COM SVG -->
         <div class="cart-icon-container" onclick="toggleMenu()">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1"></circle>
@@ -183,16 +172,25 @@
 
     <section class="products-section" id="collections">
         <div class="products-grid">
+            <!-- PRODUTO 1 -->
             <div class="card">
                 <div class="img-container"><img src="productos1.png" class="card-img"></div>
                 <h3>Executive Shirt</h3>
                 <p style="margin:15px 0; font-weight:800;">€ 85.00</p>
                 <button class="btn-add" onclick="add()">Add to Cart</button>
             </div>
+            <!-- PRODUTO 2 -->
             <div class="card">
                 <div class="img-container"><img src="prodcuto2.png" class="card-img"></div>
                 <h3>Luxury Selection</h3>
                 <p style="margin:15px 0; font-weight:800;">€ 110.00</p>
+                <button class="btn-add" onclick="add()">Add to Cart</button>
+            </div>
+            <!-- PRODUTO 3: BOLSA -->
+            <div class="card">
+                <div class="img-container"><img src="bolsa..png" class="card-img"></div>
+                <h3>Executive Leather Bag</h3>
+                <p style="margin:15px 0; font-weight:800;">€ 185.00</p>
                 <button class="btn-add" onclick="add()">Add to Cart</button>
             </div>
         </div>
