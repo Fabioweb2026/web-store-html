@@ -6,38 +6,160 @@
     <title>Sollene Global Store | Luxury Lifestyle</title>
     <style>
         @import url('https://googleapis.com');
+        
         *{ margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #121212; color: #f4f1ea; }
-        
-        .top-info-bar { background: #000; color: #b39359; padding: 25px; text-align: center; border-bottom: 2px solid #b39359; }
-        .top-info-bar h1 { font-size: 24px; letter-spacing: 10px; text-transform: uppercase; }
-        
-        .hero-banner { width: 100%; height: 350px; background: url('banner-sollene.jpg') no-repeat center center; background-size: cover; border-bottom: 1px solid rgba(179, 147, 89, 0.2); }
-        
-        .main-container { max-width: 1400px; margin: 40px auto; padding: 0 20px; display: flex; gap: 30px; align-items: flex-start; }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #fdfaf6; /* FUNDO CREME PREMIUM */
+            color: #1a1a1a; 
+            overflow-x: hidden;
+        }
+
+        /* BARRA SUPERIOR EXECUTIVA */
+        .top-info-bar {
+            background: #000000;
+            color: #b39359;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #b39359;
+        }
+        .top-info-bar h1 { font-size: 22px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; }
+
+        /* BANNER - DE LADO A LADO COM HARMONIA */
+        .banner-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px; /* Espaço para não encostar na borda do navegador */
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px; /* Bordas levemente arredondadas dão elegância */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            object-fit: contain; /* Garante que a imagem e as letras não sejam cortadas */
+        }
+
+        /* LAYOUT PRINCIPAL */
+        .main-layout {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        /* LADO ESQUERDO: VITRINE */
         .shop-content { flex: 1; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 15px; }
+
+        h2 { 
+            font-size: 11px; 
+            color: #b39359; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            margin-bottom: 25px; 
+            border-left: 3px solid #b39359; 
+            padding-left: 15px; 
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* CARDS PEQUENOS */
+            gap: 15px;
+        }
+
+        /* CARDS COMPACTOS CREME */
+        .card {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #e5e1da;
+            text-align: center;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s ease;
+        }
+        .card:hover { border-color: #b39359; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(179, 147, 89, 0.1); }
+        .card h3 { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+        .card .price { font-size: 18px; color: #b39359; font-weight: 800; }
+
+        .btn-add {
+            background: #111;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 50px;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 9px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .btn-add:hover { background: #b39359; color: #111; }
+
+        /* LADO DIREITO: CARRINHO */
+        .cart-sidebar {
+            width: 350px;
+            background: #ffffff;
+            border: 1px solid #b39359;
+            border-radius: 20px;
+            padding: 30px;
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+        }
+        .cart-sidebar h3 { font-size: 13px; color: #1a1a1a; text-transform: uppercase; margin-bottom: 20px; text-align: center; }
+        #cart-items { min-height: 50px; font-size: 13px; color: #666; }
         
-        .card { background: #1a1a1a; padding: 20px; border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.05); text-align: center; height: 250px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
-        .card:hover { border-color: #b39359; transform: translateY(-5px); }
-        .card .price { font-size: 20px; color: #b39359; font-weight: 800; }
-        
-        .btn-add { background: #b39359; color: #121212; border: none; padding: 12px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 9px; cursor: pointer; }
-        
-        .cart-sidebar { width: 350px; background: #0a0a0a; border: 1px solid rgba(179, 147, 89, 0.4); border-radius: 20px; padding: 30px; position: sticky; top: 20px; }
-        .btn-checkout { width: 100%; background: #25d366; color: #fff; border: none; padding: 18px; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; }
-        
-        @media(max-width: 1000px) { .main-container { flex-direction: column; } .cart-sidebar { width: 100%; position: static; } }
+        .cart-total {
+            border-top: 1px solid #f4f1ea;
+            padding-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            font-size: 22px;
+            color: #1a1a1a;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-weight: 800;
+            margin-top: 25px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        @media(max-width: 1000px) {
+            .main-layout { flex-direction: column; }
+            .cart-sidebar { width: 100%; position: static; }
+        }
     </style>
 </head>
 <body>
+
     <div class="top-info-bar">
         <h1>LUXURY FASHION</h1>
-        <p>DISCOVER PREMIUM CLOTHING AND MODERN LIFESTYLE</p>
     </div>
-    <div class="hero-banner"></div>
-    <div class="main-container">
+
+    <!-- BANNER DE LADO A LADO -->
+    <div class="banner-wrapper">
+        <img src="Sollene-Global-Store.png" alt="Sollene Global Store Banner" class="banner-img">
+    </div>
+
+    <div class="main-layout">
         <main class="shop-content">
+            <h2>Executive Collection</h2>
             <div class="products-grid">
                 <div class="card">
                     <h3>Executive Shirt</h3>
@@ -51,25 +173,33 @@
                 </div>
             </div>
         </main>
+
         <aside class="cart-sidebar">
             <h3>Your Selection</h3>
-            <div id="cart-items" style="margin:20px 0; color:#888;">Empty Bag</div>
-            <div style="display:flex; justify-content:space-between; font-weight:800; font-size:22px; border-top:1px solid #b39359; padding-top:20px;">
+            <div id="cart-items">Empty Bag</div>
+            <div class="cart-total">
                 <span>Total</span>
                 <span id="total-price">€ 0.00</span>
             </div>
-            <button class="btn-checkout" onclick="checkout()">WhatsApp Order</button>
+            <button class="btn-checkout" onclick="sendWhatsApp()">WhatsApp Order</button>
         </aside>
     </div>
+
     <script>
         let cart = []; let total = 0;
-        function add(n, p) { cart.push({n, p}); total += p; update(); }
+        function add(n, p) {
+            cart.push({n, p}); total += p; update();
+        }
         function update() {
             const container = document.getElementById('cart-items');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${i.n}</span><span>€${i.p}</span></div>`).join('');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
             document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
         }
-        function checkout() { window.open(`https://wa.me from Sollene Global Store`); }
+        function sendWhatsApp() {
+            if(cart.length === 0) return alert("Select an item!");
+            let msg = "Order from Sollene Store: " + cart.map(i => i.n).join(', ') + " | Total: €" + total.toFixed(2);
+            window.open(`https://wa.me{msg}`);
+        }
     </script>
 </body>
 </html>
