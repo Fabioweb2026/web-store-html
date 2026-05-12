@@ -3,138 +3,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Executive Collection</title>
+    <title>Sollene Store Group | Official Store</title>
     <style>
         @import url('https://googleapis.com');
+        
         html { scroll-behavior: smooth; }
         *{ margin:0; padding:0; box-sizing:border-box; }
 
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; min-height: 100vh; }
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: #f7f3eb; 
+            color: #1a1a1a;
+        }
 
-        /* HEADER */
+        /* HEADER PREMIUM BEGE */
         .main-header {
-            background: rgba(247, 243, 235, 0.95); backdrop-filter: blur(10px);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+            background-color: #f7f3eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 5%;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .header-left { display: flex; align-items: center; gap: 15px; }
+        
         .logo-circle {
-            width: 60px; height: 60px; border-radius: 50%; border: 1px solid #7a5c33;
-            background: #fff url('logo.png') no-repeat center center; background-size: cover;
-        }
-        .brand-info h1 { font-size: 18px; font-weight: 800; color: #7a5c33; text-transform: uppercase; }
-
-        .cart-trigger { cursor: pointer; font-weight: 800; font-size: 12px; display: flex; gap: 10px; align-items: center; }
-        .cart-count { background: #7a5c33; color: #fff; padding: 2px 8px; border-radius: 50px; font-size: 10px; }
-
-        /* SEÇÃO DE DESTAQUE ÚNICO */
-        .feature-section {
-            display: flex; justify-content: center; align-items: center;
-            padding: 80px 20px;
+            width: 65px; height: 65px;
+            border-radius: 50%;
+            border: 1px solid #7a5c33;
+            background: #fff url('logo.png') no-repeat center center;
+            background-size: cover;
         }
 
-        .product-focus-card {
-            background: #fff; border-radius: 30px; width: 100%; max-width: 500px;
-            overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.08);
-            text-align: center; transition: 0.5s;
+        .brand-info h1 {
+            font-size: 22px; font-weight: 800; color: #7a5c33; 
+            letter-spacing: 3px; text-transform: uppercase; line-height: 1;
         }
 
-        .product-focus-card:hover { transform: translateY(-10px); }
-
-        .img-focus { width: 100%; height: 500px; object-fit: cover; background: #fff; }
-
-        .product-details { padding: 40px; }
-        .product-details h2 { font-size: 24px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .product-details p { color: #7a5c33; font-weight: 800; font-size: 28px; margin-bottom: 30px; }
-
-        .btn-buy-now {
-            width: 100%; background: #7a5c33; color: #fff; border: none;
-            padding: 20px; border-radius: 50px; font-weight: 800;
-            text-transform: uppercase; cursor: pointer; transition: 0.3s;
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav ul li a { 
+            text-decoration: none; color: #000; font-size: 11px; 
+            font-weight: 800; text-transform: uppercase; 
+            padding: 8px 15px; transition: 0.3s;
         }
-        .btn-buy-now:hover { background: #000; }
 
-        /* ABA DE CHECKOUT */
+        .cart-icon { position: relative; cursor: pointer; }
+        .cart-badge {
+            position: absolute; top: -8px; right: -10px;
+            background: #7a5c33; color: #fff; font-size: 9px;
+            font-weight: 800; width: 18px; height: 18px;
+            display: flex; align-items: center; justify-content: center; border-radius: 50%;
+        }
+
+        /* SEÇÃO DA IMAGEM PRINCIPAL (HERO) */
+        .hero-section {
+            width: 100%;
+            height: 85vh;
+            background: url('Solle-Global-Store.png') no-repeat center top;
+            background-size: cover;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 40px;
+        }
+
+        .scroll-hint { color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 11px; }
+
+        /* GALERIA DE PRODUTOS ABAIXO */
+        .products-section {
+            background: #fff;
+            padding: 80px 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            text-align: center;
+            padding-bottom: 30px;
+            transition: 0.4s;
+        }
+
+        .img-container {
+            width: 100%; height: 400px;
+            overflow: hidden; border-radius: 20px;
+            margin-bottom: 20px; background: #f9f9f9;
+        }
+
+        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .card:hover .card-img { transform: scale(1.08); }
+        .card:hover { transform: translateY(-10px); }
+
+        .btn-add {
+            background: #7a5c33; color: #fff; border: none;
+            padding: 14px 40px; border-radius: 50px; font-weight: 800;
+            text-transform: uppercase; font-size: 10px; cursor: pointer;
+        }
+
+        /* ABA LATERAL (SELECTION) */
         .side-menu {
-            position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
-            background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1);
+            position: fixed; top: 0; right: -420px;
+            width: 400px; height: 100%; background: #fff;
+            box-shadow: -10px 0 50px rgba(0,0,0,0.1);
             z-index: 2000; transition: 0.5s; padding: 40px;
         }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
 
-        @media(max-width: 500px) { .side-menu { width: 100%; } }
+        @media(max-width: 900px) {
+            .main-header { flex-direction: column; gap: 15px; }
+            .side-menu { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
 
     <header class="main-header">
         <div class="header-left">
             <div class="logo-circle"></div>
-            <div class="brand-info"><h1>Sollene Group</h1></div>
+            <div class="brand-info">
+                <h1>Sollene Group</h1>
+            </div>
         </div>
-        <div class="cart-trigger" onclick="toggleCart()">
-            BAG <span class="cart-count" id="cartCount">0</span>
+        <nav>
+            <ul>
+                <li><a href="#" style="border: 2px solid #000; border-radius: 8px;">HOME</a></li>
+                <li><a onclick="toggleMenu()">COLLECTIONS</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="toggleMenu()">
+            <img src="https://flaticon.com" width="22">
+            <div class="cart-badge" id="cart-count">0</div>
         </div>
     </header>
 
-    <main class="feature-section">
-        <div class="product-focus-card">
-            <!-- SUA IMAGEM NOVA AQUI -->
-            <img src="executive-shoe.png" alt="Executive Shoes" class="img-focus">
-            
-            <div class="product-details">
-                <h2>Executive Shoes</h2>
-                <p>€ 145.00</p>
-                <button class="btn-buy-now" onclick="addToCart('Executive Shoes', 145)">Add to Bag</button>
+    <section class="hero-section">
+        <div class="scroll-hint">Explore the Collection ↓</div>
+    </section>
+
+    <section class="products-section" id="collections">
+        <div class="products-grid">
+            <!-- PRODUTO 1 -->
+            <div class="card">
+                <div class="img-container"><img src="productos1.png" class="card-img"></div>
+                <h3>Executive Shirt</h3>
+                <p style="margin:15px 0; font-weight:800;">€ 85.00</p>
+                <button class="btn-add" onclick="add()">Add to Cart</button>
+            </div>
+            <!-- PRODUTO 2 -->
+            <div class="card">
+                <div class="img-container"><img src="prodcuto2.png" class="card-img"></div>
+                <h3>Luxury Selection</h3>
+                <p style="margin:15px 0; font-weight:800;">€ 110.00</p>
+                <button class="btn-add" onclick="add()">Add to Cart</button>
             </div>
         </div>
-    </main>
+    </section>
 
     <div class="side-menu" id="sideMenu">
-        <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px;">✕ CLOSE</div>
-        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase;">Summary</h2>
-        <div id="cartItems" style="margin-top:20px; border-bottom:1px solid #eee; padding-bottom:15px">Bag is empty</div>
-        <div style="display:flex; justify-content:space-between; font-weight:800; font-size:22px; margin-top:20px">
-            <span>Total:</span>
-            <span id="totalVal">€ 0.00</span>
-        </div>
-        <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:40px; cursor:pointer;" onclick="finish()">Finalize on WhatsApp</button>
+        <div onclick="toggleMenu()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
+        <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">Your Selection</h2>
+        <div id="cart-items" style="margin-top:20px; font-size:13px; color:#666;">Bag is empty.</div>
+        <button style="width:100%; padding:18px; background:#25d366; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:40px; cursor:pointer;">CHECKOUT WHATSAPP</button>
     </div>
 
     <script>
-        let cart = [];
-        let total = 0;
-
-        function toggleCart() {
+        let count = 0;
+        function toggleMenu() {
             document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
-
-        function addToCart(name, price) {
-            cart.push({name, price});
-            total += price;
-            updateUI();
-            toggleCart();
-        }
-
-        function updateUI() {
-            document.getElementById('cartCount').innerText = cart.length;
-            const container = document.getElementById('cartItems');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px"><span>${i.name}</span><span>€${i.price}.00</span></div>`).join('');
-            document.getElementById('totalVal').innerText = `€ ${total}.00`;
-        }
-
-        function finish() {
-            if(cart.length === 0) return alert("Empty!");
-            let msg = `Hello Sollene Group, I'd like to buy: ` + cart.map(i => i.name).join(', ') + `. Total: €${total}.00`;
-            window.open(`https://wa.me{msg}`);
+        function add() {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+            toggleMenu();
         }
     </script>
 </body>
 </html>
+
