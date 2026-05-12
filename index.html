@@ -11,40 +11,29 @@
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #fdfaf6; /* FUNDO CREME LIMPO */
+            /* IMAGEM DE FUNDO REALISTA E FIXA */
+            background: url('Solle-Global-Store.png') no-repeat center center fixed;
+            background-size: cover;
             color: #1a1a1a; 
+            min-height: 100vh;
         }
 
-        /* HEADER PRETO */
+        /* BARRA SUPERIOR PRETA TRANSPARENTE */
         header {
-            background: #000000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
             color: #b39359;
             padding: 20px;
             text-align: center;
-            border-bottom: 2px solid #b39359;
+            border-bottom: 1px solid #b39359;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         header h1 { font-size: 22px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; }
 
-        /* BANNER - AQUI A IMAGEM APARECE LIMPA E CLARA */
-        .brand-banner {
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        .banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            /* Garante que a imagem Solle-Global-Store.png apareça 100% nítida */
-        }
-
-        /* LAYOUT PRINCIPAL */
         .main-layout {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 40px auto;
             padding: 0 20px;
             display: flex;
@@ -57,77 +46,78 @@
 
         h2 { 
             font-size: 11px; 
-            color: #b39359; 
+            color: #000; 
             text-transform: uppercase; 
             letter-spacing: 3px; 
             margin-bottom: 25px; 
-            border-left: 3px solid #b39359;
-            padding-left: 15px;
+            background: rgba(179, 147, 89, 0.8); /* Fundo dourado para ler o título */
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 800;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
         }
 
-        /* CARDS COMPACTOS E LIMPOS */
+        /* CARDS COM EFEITO VIDRO PARA APARECER O FUNDO */
         .card {
-            background: #ffffff;
-            padding: 25px 15px;
-            border-radius: 16px;
-            border: 1px solid #e5e1da;
+            background: rgba(255, 255, 255, 0.4); /* Muito transparente */
+            backdrop-filter: blur(8px); /* Desfoque leve para dar elegância */
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
-            height: 240px;
+            height: 260px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: 0.3s ease;
+            transition: 0.4s;
         }
         .card:hover { 
-            transform: translateY(-5px); 
-            border-color: #b39359; 
-            box-shadow: 0 15px 30px rgba(179, 147, 89, 0.1);
+            background: rgba(255, 255, 255, 0.7);
+            transform: translateY(-5px);
         }
 
-        .card h3 { font-size: 14px; font-weight: 700; color: #111; }
-        .card .price { font-size: 20px; color: #b39359; font-weight: 800; }
+        .card h3 { font-size: 15px; font-weight: 800; color: #000; }
+        .card .price { font-size: 22px; color: #000; font-weight: 800; }
 
         .btn-add {
-            background: #111;
-            color: #fff;
+            background: #000;
+            color: #b39359;
             border: none;
             padding: 12px;
             border-radius: 50px;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 9px;
+            font-size: 10px;
             cursor: pointer;
         }
-        .btn-add:hover { background: #b39359; color: #000; }
 
-        /* LADO DIREITO: CARRINHO */
+        /* CARRINHO TRANSPARENTE NA DIREITA */
         .cart-sidebar {
             width: 350px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
             border: 1px solid #b39359;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 24px;
+            padding: 35px;
             position: sticky;
-            top: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            top: 100px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.2);
         }
 
-        .cart-sidebar h3 { font-size: 13px; text-transform: uppercase; margin-bottom: 20px; text-align: center; color: #111; }
-        
         .cart-total {
-            border-top: 1px solid #f4f1ea;
+            border-top: 1px solid #b39359;
             padding-top: 20px;
             display: flex;
             justify-content: space-between;
             font-weight: 800;
-            font-size: 22px;
-            color: #111;
+            font-size: 24px;
+            color: #000;
         }
 
         .btn-checkout {
@@ -135,10 +125,10 @@
             background: #25d366;
             color: #fff;
             border: none;
-            padding: 18px;
-            border-radius: 12px;
+            padding: 20px;
+            border-radius: 15px;
             font-weight: 800;
-            margin-top: 25px;
+            margin-top: 30px;
             cursor: pointer;
             text-transform: uppercase;
         }
@@ -155,14 +145,9 @@
         <h1>SOLLENE GLOBAL STORE</h1>
     </header>
 
-    <!-- BANNER COM A IMAGEM 100% LIMPA -->
-    <div class="brand-banner">
-        
-    </div>
-
     <div class="main-layout">
         <main class="shop-content">
-            <h2>Executive Selection</h2>
+            <h2>Luxury Selection</h2>
             <div class="products-grid">
                 <div class="card">
                     <h3>Executive Shirt</h3>
@@ -178,8 +163,8 @@
         </main>
 
         <aside class="cart-sidebar">
-            <h3>Your Bag</h3>
-            <div id="cart-items" style="font-size: 13px; color: #444; margin-bottom: 20px;">No items selected</div>
+            <h3 style="text-align:center; margin-bottom:20px; text-transform:uppercase; letter-spacing:2px;">Your Bag</h3>
+            <div id="cart-items" style="margin-bottom:20px; font-weight:600;">Empty</div>
             <div class="cart-total">
                 <span>Total</span>
                 <span id="total-price">€ 0.00</span>
@@ -195,11 +180,11 @@
         }
         function update() {
             const container = document.getElementById('cart-items');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px; color:#000"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
             document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
         }
         function sendWhatsApp() {
-            if(cart.length === 0) return alert("Select an item first!");
+            if(cart.length === 0) return alert("Selecione um produto!");
             window.open(`https://wa.me from Sollene Store`);
         }
     </script>
