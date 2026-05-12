@@ -103,7 +103,7 @@ nav a:hover{
     color:#b39359;
 }
 
-/* COLLECTION */
+/* COLLECTION MENU */
 
 .collection-menu{
     position:relative;
@@ -141,7 +141,7 @@ nav a:hover{
     display:block;
 }
 
-/* VISUAL MENU */
+/* COLLECTION ITEMS */
 
 .collection-item{
     display:flex;
@@ -167,7 +167,6 @@ nav a:hover{
 .collection-item h4{
     font-size:13px;
     margin-bottom:4px;
-    color:#1c1c1c;
 }
 
 .collection-item span{
@@ -218,7 +217,7 @@ nav a:hover{
     background-color:#f8f3eb;
 }
 
-/* PRODUCTS */
+/* PRODUCTS SECTION */
 
 .products-section{
     max-width:1450px;
@@ -226,16 +225,19 @@ nav a:hover{
     padding:0 25px;
 }
 
-.section-title{
-    text-align:center;
-    margin-bottom:55px;
+/* CATEGORY */
+
+.category-section{
+    margin-bottom:100px;
 }
 
-.section-title h3{
-    font-size:15px;
+.category-title{
+    font-size:24px;
     color:#7d5d30;
+    margin-bottom:40px;
     letter-spacing:4px;
     text-transform:uppercase;
+    text-align:center;
 }
 
 /* GRID */
@@ -452,7 +454,7 @@ footer p{
 
 <a href="#">Home</a>
 
-<!-- COLLECTION MENU -->
+<!-- COLLECTION -->
 
 <div class="collection-menu">
 
@@ -554,21 +556,6 @@ onclick="filterProducts('accessories')">
 
 </div>
 
-<div class="collection-item"
-onclick="filterProducts('all')">
-
-<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=400&auto=format&fit=crop">
-
-<div>
-
-<h4>View All</h4>
-
-<span>Explore all collections</span>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -581,12 +568,16 @@ onclick="filterProducts('all')">
 
 <!-- CART -->
 
-<div class="cart-icon" onclick="toggleCart()">
+<div class="cart-icon"
+onclick="toggleCart()">
 
 🛒
 
-<div class="cart-count" id="cart-count">
+<div class="cart-count"
+id="cart-count">
+
 0
+
 </div>
 
 </div>
@@ -605,105 +596,254 @@ onclick="filterProducts('all')">
 
 <section class="products-section">
 
-<div class="section-title">
+<!-- SUITS -->
 
-<h3>Executive Collection</h3>
+<section class="category-section"
+id="suits">
 
-</div>
+<h2 class="category-title">
+Premium Suits
+</h2>
 
 <div class="products-grid">
 
-<!-- SUITS -->
+<div class="card">
 
-<div class="card suits">
 <img src="https://images.unsplash.com/photo-1593032465171-8bd31b5b72f0?q=80&w=1200&auto=format&fit=crop">
+
 <div class="card-content">
+
 <h3>Italian Premium Suit</h3>
+
 <div class="price">€ 350</div>
-<button class="btn-add" onclick="add('Italian Premium Suit',350)">Add to Cart</button>
-</div>
+
+<button class="btn-add"
+onclick="add('Italian Premium Suit',350)">
+Add to Cart
+</button>
+
 </div>
 
-<div class="card suits">
+</div>
+
+<div class="card">
+
 <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop">
+
 <div class="card-content">
+
 <h3>Luxury Black Suit</h3>
+
 <div class="price">€ 410</div>
-<button class="btn-add" onclick="add('Luxury Black Suit',410)">Add to Cart</button>
-</div>
+
+<button class="btn-add"
+onclick="add('Luxury Black Suit',410)">
+Add to Cart
+</button>
+
 </div>
 
-<!-- SHIRTS -->
-
-<div class="card shirts">
-<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Luxury White Shirt</h3>
-<div class="price">€ 85</div>
-<button class="btn-add" onclick="add('Luxury White Shirt',85)">Add to Cart</button>
-</div>
-</div>
-
-<div class="card shirts">
-<img src="https://images.unsplash.com/photo-1563630423918-b58f07336ac9?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Executive Slim Shirt</h3>
-<div class="price">€ 95</div>
-<button class="btn-add" onclick="add('Executive Slim Shirt',95)">Add to Cart</button>
-</div>
-</div>
-
-<!-- SHOES -->
-
-<div class="card shoes">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Executive Shoes</h3>
-<div class="price">€ 140</div>
-<button class="btn-add" onclick="add('Executive Shoes',140)">Add to Cart</button>
-</div>
-</div>
-
-<!-- BAGS -->
-
-<div class="card bags">
-<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Designer Bag</h3>
-<div class="price">€ 165</div>
-<button class="btn-add" onclick="add('Designer Bag',165)">Add to Cart</button>
-</div>
-</div>
-
-<!-- WATCHES -->
-
-<div class="card watches">
-<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Luxury Watch</h3>
-<div class="price">€ 210</div>
-<button class="btn-add" onclick="add('Luxury Watch',210)">Add to Cart</button>
-</div>
-</div>
-
-<!-- ACCESSORIES -->
-
-<div class="card accessories">
-<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop">
-<div class="card-content">
-<h3>Luxury Sunglasses</h3>
-<div class="price">€ 95</div>
-<button class="btn-add" onclick="add('Luxury Sunglasses',95)">Add to Cart</button>
-</div>
 </div>
 
 </div>
 
 </section>
 
+<!-- SHIRTS -->
+
+<section class="category-section"
+id="shirts">
+
+<h2 class="category-title">
+Luxury Shirts
+</h2>
+
+<div class="products-grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Luxury White Shirt</h3>
+
+<div class="price">€ 85</div>
+
+<button class="btn-add"
+onclick="add('Luxury White Shirt',85)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1563630423918-b58f07336ac9?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Executive Slim Shirt</h3>
+
+<div class="price">€ 95</div>
+
+<button class="btn-add"
+onclick="add('Executive Slim Shirt',95)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SHOES -->
+
+<section class="category-section"
+id="shoes">
+
+<h2 class="category-title">
+Executive Shoes
+</h2>
+
+<div class="products-grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Executive Shoes</h3>
+
+<div class="price">€ 140</div>
+
+<button class="btn-add"
+onclick="add('Executive Shoes',140)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- BAGS -->
+
+<section class="category-section"
+id="bags">
+
+<h2 class="category-title">
+Designer Bags
+</h2>
+
+<div class="products-grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Designer Bag</h3>
+
+<div class="price">€ 165</div>
+
+<button class="btn-add"
+onclick="add('Designer Bag',165)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- WATCHES -->
+
+<section class="category-section"
+id="watches">
+
+<h2 class="category-title">
+Luxury Watches
+</h2>
+
+<div class="products-grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Luxury Watch</h3>
+
+<div class="price">€ 210</div>
+
+<button class="btn-add"
+onclick="add('Luxury Watch',210)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ACCESSORIES -->
+
+<section class="category-section"
+id="accessories">
+
+<h2 class="category-title">
+Accessories
+</h2>
+
+<div class="products-grid">
+
+<div class="card">
+
+<img src="https://images.unsplash.com/photo-1617038220319-276d3cfab638?q=80&w=1200&auto=format&fit=crop">
+
+<div class="card-content">
+
+<h3>Luxury Sunglasses</h3>
+
+<div class="price">€ 95</div>
+
+<button class="btn-add"
+onclick="add('Luxury Sunglasses',95)">
+Add to Cart
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</section>
+
 <!-- CART -->
 
-<div class="cart-modal" id="cartModal">
+<div class="cart-modal"
+id="cartModal">
 
 <h3>Your Cart</h3>
 
@@ -736,7 +876,9 @@ Complete Order
 
 <h4>SOLLENE STORE GROUP</h4>
 
-<p>Luxury Fashion • Accessories • Lifestyle</p>
+<p>
+Luxury Fashion • Accessories • Lifestyle
+</p>
 
 </footer>
 
@@ -745,12 +887,17 @@ Complete Order
 let cart = [];
 let total = 0;
 
+/* TOGGLE CART */
+
 function toggleCart(){
 
 document
 .getElementById('cartModal')
 .classList.toggle('active');
+
 }
+
+/* ADD PRODUCT */
 
 function add(name,price){
 
@@ -759,7 +906,10 @@ cart.push({name,price});
 total += price;
 
 updateCart();
+
 }
+
+/* UPDATE CART */
 
 function updateCart(){
 
@@ -790,13 +940,17 @@ cart.map(item => `
 </div>
 
 `).join('');
+
 }
 
 document
 .getElementById('total-price')
 .innerText =
 `€ ${total.toFixed(2)}`;
+
 }
+
+/* CHECKOUT */
 
 function checkout(){
 
@@ -805,34 +959,27 @@ if(cart.length === 0){
 alert("Your cart is empty!");
 
 return;
+
 }
 
 alert("Order successfully created!");
+
 }
 
-/* FILTER PRODUCTS */
+/* COLLECTION NAVIGATION */
 
 function filterProducts(category){
 
-const cards =
-document.querySelectorAll('.card');
+const section =
+document.getElementById(category);
 
-cards.forEach(card => {
+if(section){
 
-if(category === 'all'){
-
-card.style.display = 'block';
-
-}else if(card.classList.contains(category)){
-
-card.style.display = 'block';
-
-}else{
-
-card.style.display = 'none';
-}
-
+section.scrollIntoView({
+behavior:'smooth'
 });
+
+}
 
 }
 
