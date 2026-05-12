@@ -1,390 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sollene Global Store | Luxury Experience</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>Sollene Global Store</title>
 
 <style>
-
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-/* BODY */
 body{
-    font-family:'Inter',sans-serif;
-    min-height:100vh;
-    overflow-x:hidden;
+    margin:0;
+    font-family: Arial, sans-serif;
+    background:#0e0e0e;
     color:#fff;
-
-    background:
-    linear-gradient(
-        rgba(10,10,10,.35),
-        rgba(10,10,10,.65)
-    ),
-    url('Solle-Global-Store.png');
-
-    background-size:cover;
-    background-position:center top;
-    background-attachment:fixed;
-
-    background-color:#0f0f0f;
 }
 
 /* HEADER */
 header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:999;
-
-    backdrop-filter:blur(18px);
-    background:rgba(0,0,0,.55);
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
-    padding:18px 0;
-}
-
-.navbar{
-    max-width:1400px;
-    margin:auto;
-    padding:0 40px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:900;
-    letter-spacing:6px;
-    color:#f1d89b;
-}
-
-nav{
-    display:flex;
-    gap:30px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#fff;
-    font-size:14px;
-    font-weight:600;
-}
-
-nav a:hover{
-    color:#f1d89b;
-}
-
-.contact-btn{
-    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
-    color:#111;
-    border:none;
-    padding:12px 24px;
-    border-radius:50px;
-    font-weight:800;
-}
-
-/* HERO PRINCIPAL */
-.hero{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    padding:25px;
     text-align:center;
-    padding:120px 20px;
+    font-size:24px;
+    letter-spacing:2px;
+    font-weight:300;
 }
 
-.hero-logo{
-    font-size:60px;
-    font-weight:900;
-    letter-spacing:10px;
-    color:#f1d89b;
-}
-
-/* PRODUTO DESTAQUE ÚNICO */
-.featured-product{
-    max-width:900px;
-    margin:-120px auto 80px;
-    text-align:center;
-
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:30px;
-
-    backdrop-filter:blur(20px);
-    padding:60px;
-}
-
-.featured-product h2{
-    font-size:34px;
-    color:#f1d89b;
-    margin-bottom:15px;
-}
-
-.featured-product p{
-    color:#ddd;
-    margin-bottom:25px;
-    font-size:15px;
-}
-
-.price{
-    font-size:32px;
-    font-weight:900;
-    color:#f1d89b;
-    margin-bottom:20px;
-    display:block;
-}
-
-.btn-buy{
-    background:linear-gradient(135deg,#f7e7b3,#d6b36a);
-    color:#111;
-    border:none;
-    padding:14px 28px;
-    border-radius:14px;
-    font-weight:800;
-    cursor:pointer;
-}
-
-/* LAYOUT INSTITUCIONAL */
-.info-section{
-    max-width:1100px;
-    margin:auto;
-    padding:80px 40px;
-    text-align:center;
-}
-
-.info-section h3{
-    font-size:40px;
-    color:#f1d89b;
-    margin-bottom:20px;
-}
-
-.info-section p{
-    color:#ddd;
-    line-height:1.8;
-}
-
-/* CART */
-.cart-sidebar{
-    position:fixed;
-    top:120px;
-    right:25px;
-    width:320px;
-
-    background:rgba(255,255,255,.10);
-    border:1px solid rgba(255,255,255,.15);
-    border-radius:28px;
-
-    padding:30px;
-    backdrop-filter:blur(22px);
-}
-
-.cart-sidebar h4{
-    text-align:center;
-    color:#f1d89b;
-    margin-bottom:20px;
-}
-
-#cart-items{
-    font-size:14px;
-    text-align:center;
-    color:#ccc;
-}
-
-.total-box{
-    display:flex;
-    justify-content:space-between;
-    margin-top:20px;
-    padding-top:20px;
-    border-top:1px solid rgba(255,255,255,.08);
-    color:#f1d89b;
-    font-size:20px;
-}
-
-.btn-checkout{
-    width:100%;
-    margin-top:20px;
-    padding:16px;
-    border:none;
-    border-radius:14px;
-    background:#25d366;
-    color:#fff;
-    font-weight:800;
-}
-
-/* FOOTER */
-footer{
-    padding:60px;
-    text-align:center;
-    background:rgba(255,255,255,.04);
-    margin-top:80px;
-}
-
-footer h3{
-    color:#f1d89b;
-    letter-spacing:5px;
-}
-
-footer p{
-    color:#ccc;
-    font-size:14px;
-}
-
-/* MOBILE */
-@media(max-width:900px){
-
-.hero-logo{
-    font-size:38px;
-}
-
-.featured-product{
-    margin:-60px 20px 60px;
+/* PRODUCTS */
+.products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
     padding:40px;
 }
 
-.cart-sidebar{
-    position:relative;
-    width:90%;
-    margin:40px auto;
-    top:auto;
-    right:auto;
+.card{
+    background:#1a1a1a;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    transition:0.3s;
 }
 
+.card:hover{
+    transform:scale(1.03);
 }
 
+.card h3{
+    margin:10px 0;
+}
+
+.price{
+    color:#d4af37;
+    font-size:18px;
+}
+
+/* BAG */
+.bag{
+    background:#111;
+    padding:30px;
+    margin:20px;
+    border-radius:12px;
+}
+
+.bag h2{
+    margin-bottom:15px;
+}
+
+.total{
+    margin-top:10px;
+    font-size:18px;
+    color:#d4af37;
+}
+
+/* BUTTON */
+button{
+    background:#25D366;
+    border:none;
+    padding:12px 20px;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    margin-top:15px;
+}
 </style>
-
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
-
-<div class="navbar">
-
-<div class="logo">SOLLENE</div>
-
-<nav>
-<a href="#">Home</a>
-<a href="#">Collection</a>
-<a href="#">About</a>
-<a href="#">Contact</a>
-</nav>
-
-<button class="contact-btn">Premium Access</button>
-
-</div>
-
+SOLLENE GLOBAL STORE
 </header>
 
-<!-- HERO VISUAL FORTE -->
-<section class="hero">
-    <div class="hero-logo">SOLLENE</div>
-</section>
+<!-- PRODUCTS -->
+<section class="products">
 
-<!-- PRODUTO DESTAQUE ÚNICO -->
-<section class="featured-product">
+    <div class="card">
+        <h3>Luxury Watch</h3>
+        <p>Modern elegance timepiece</p>
+        <div class="price">€390</div>
+    </div>
 
-<h2>Luxury Signature Watch</h2>
+    <div class="card">
+        <h3>Classic Leather Bag</h3>
+        <p>Italian handcrafted leather</p>
+        <div class="price">€520</div>
+    </div>
 
-<p>
-Exclusive handcrafted timepiece designed for modern elegance
-and premium lifestyle expression.
-</p>
+    <div class="card">
+        <h3>Gold Bracelet</h3>
+        <p>Minimal luxury accessory</p>
+        <div class="price">€260</div>
+    </div>
 
-<span class="price">€390</span>
-
-<button class="btn-buy" onclick="add('Luxury Watch',390)">
-Add to Bag
-</button>
-
-</section>
-
-<!-- LAYOUT INSTITUCIONAL -->
-<section class="info-section">
-
-<h3>Luxury Experience</h3>
-
-<p>
-Sollene Global Store represents a modern vision of luxury,
-blending minimal design with premium digital experience.
-Built for a global audience that values elegance, identity
-and sophistication.
-</p>
+    <div class="card">
+        <h3>Vintage Perfume</h3>
+        <p>Classic French fragrance</p>
+        <div class="price">€180</div>
+    </div>
 
 </section>
 
-<!-- CART -->
-<aside class="cart-sidebar">
+<!-- BAG -->
+<section class="bag">
 
-<h4>YOUR BAG</h4>
+<h2>YOUR BAG</h2>
 
-<div id="cart-items">Empty</div>
+<p>Luxury Watch - €390</p>
 
-<div class="total-box">
-<span>Total</span>
-<span id="total-price">€0</span>
+<div class="total">
+Total: €390
 </div>
 
-<button class="btn-checkout" onclick="checkout()">WhatsApp</button>
+<button onclick="whatsapp()">WhatsApp Checkout</button>
 
-</aside>
-
-<!-- FOOTER -->
-<footer>
-
-<h3>SOLLENE GLOBAL STORE</h3>
-<p>Luxury • Minimal • Modern Experience</p>
-
-</footer>
+</section>
 
 <script>
-
-let cart=[];
-let total=0;
-
-function add(n,p){
-cart.push({n,p});
-total+=p;
-update();
+function whatsapp(){
+    let msg = "Hello, I want to buy items from Sollene Global Store.";
+    let url = "https://wa.me/0000000000?text=" + encodeURIComponent(msg);
+    window.open(url, "_blank");
 }
-
-function update(){
-document.getElementById("cart-items").innerHTML =
-cart.length ? cart.map(i =>
-`${i.n} - €${i.p}`
-).join("<br>")
-: "Empty";
-
-document.getElementById("total-price").innerText="€"+total;
-}
-
-function checkout(){
-let msg="Order:%0A";
-cart.forEach(i=>{
-msg+=`${i.n} - €${i.p}%0A`;
-});
-window.open("https://wa.me/?text="+msg);
-}
-
 </script>
 
 </body>
