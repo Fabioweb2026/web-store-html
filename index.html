@@ -11,37 +11,26 @@
 
         body { 
             font-family: 'Plus Jakarta Sans', sans-serif; 
-            background: #fdfaf6; /* FUNDO CREME PREMIUM */
+            /* IMAGEM DE FUNDO DA WEBPAGE */
+            background: linear-gradient(rgba(244, 241, 234, 0.85), rgba(244, 241, 234, 0.85)), 
+                        url('Solle-Global-Store.png') no-repeat center center fixed;
+            background-size: cover;
             color: #1a1a1a; 
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* BARRA SUPERIOR EXECUTIVA */
-        .top-info-bar {
+        /* BARRA SUPERIOR */
+        .top-brand-bar {
             background: #000000;
             color: #b39359;
             padding: 20px;
             text-align: center;
             border-bottom: 2px solid #b39359;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        .top-info-bar h1 { font-size: 22px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; }
-
-        /* BANNER - DE LADO A LADO COM HARMONIA */
-        .banner-wrapper {
-            width: 100%;
-            max-width: 1400px;
-            margin: 20px auto;
-            padding: 0 20px; /* Espaço para não encostar na borda do navegador */
-        }
-
-        .banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 15px; /* Bordas levemente arredondadas dão elegância */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
-            object-fit: contain; /* Garante que a imagem e as letras não sejam cortadas */
-        }
+        .top-brand-bar h1 { font-size: 22px; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; }
 
         /* LAYOUT PRINCIPAL */
         .main-layout {
@@ -53,7 +42,7 @@
             align-items: flex-start;
         }
 
-        /* LADO ESQUERDO: VITRINE */
+        /* LADO ESQUERDO: PRODUTOS */
         .shop-content { flex: 1; }
 
         h2 { 
@@ -62,31 +51,39 @@
             text-transform: uppercase; 
             letter-spacing: 3px; 
             margin-bottom: 25px; 
-            border-left: 3px solid #b39359; 
-            padding-left: 15px; 
+            background: rgba(0,0,0,0.05);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50px;
         }
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* CARDS PEQUENOS */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
 
-        /* CARDS COMPACTOS CREME */
+        /* CARDS COMPACTOS COM EFEITO VIDRO (GLASSMORPHISM) */
         .card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.7); /* Branco transparente */
+            backdrop-filter: blur(10px); /* Efeito de vidro fosco */
             padding: 20px;
             border-radius: 16px;
-            border: 1px solid #e5e1da;
+            border: 1px solid rgba(179, 147, 89, 0.2);
             text-align: center;
-            height: 240px;
+            height: 250px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: 0.3s ease;
         }
-        .card:hover { border-color: #b39359; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(179, 147, 89, 0.1); }
-        .card h3 { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+        .card:hover { 
+            transform: translateY(-5px); 
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #b39359; 
+        }
+
+        .card h3 { font-size: 14px; font-weight: 700; color: #111; }
         .card .price { font-size: 18px; color: #b39359; font-weight: 800; }
 
         .btn-add {
@@ -99,32 +96,32 @@
             text-transform: uppercase;
             font-size: 9px;
             cursor: pointer;
-            transition: 0.3s;
         }
-        .btn-add:hover { background: #b39359; color: #111; }
+        .btn-add:hover { background: #b39359; }
 
-        /* LADO DIREITO: CARRINHO */
+        /* LADO DIREITO: CARRINHO TRAVADO */
         .cart-sidebar {
             width: 350px;
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
             border: 1px solid #b39359;
             border-radius: 20px;
             padding: 30px;
             position: sticky;
-            top: 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            top: 100px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
-        .cart-sidebar h3 { font-size: 13px; color: #1a1a1a; text-transform: uppercase; margin-bottom: 20px; text-align: center; }
-        #cart-items { min-height: 50px; font-size: 13px; color: #666; }
+
+        .cart-sidebar h3 { font-size: 13px; text-transform: uppercase; margin-bottom: 20px; text-align: center; color: #111; }
         
         .cart-total {
-            border-top: 1px solid #f4f1ea;
+            border-top: 1px solid #e5e1da;
             padding-top: 20px;
             display: flex;
             justify-content: space-between;
             font-weight: 800;
             font-size: 22px;
-            color: #1a1a1a;
+            color: #111;
         }
 
         .btn-checkout {
@@ -148,18 +145,13 @@
 </head>
 <body>
 
-    <div class="top-info-bar">
-        <h1>LUXURY FASHION</h1>
-    </div>
-
-    <!-- BANNER DE LADO A LADO -->
-    <div class="banner-wrapper">
-        <img src="Sollene-Global-Store.png" alt="Sollene Global Store Banner" class="banner-img">
+    <div class="top-brand-bar">
+        <h1>SOLLENE GLOBAL STORE</h1>
     </div>
 
     <div class="main-layout">
         <main class="shop-content">
-            <h2>Executive Collection</h2>
+            <h2>Executive Selection</h2>
             <div class="products-grid">
                 <div class="card">
                     <h3>Executive Shirt</h3>
@@ -176,12 +168,12 @@
 
         <aside class="cart-sidebar">
             <h3>Your Selection</h3>
-            <div id="cart-items">Empty Bag</div>
+            <div id="cart-items" style="font-size: 13px; color: #444; margin-bottom: 20px;">No items in bag</div>
             <div class="cart-total">
                 <span>Total</span>
                 <span id="total-price">€ 0.00</span>
             </div>
-            <button class="btn-checkout" onclick="sendWhatsApp()">WhatsApp Order</button>
+            <button class="btn-checkout" onclick="sendOrder()">WhatsApp Checkout</button>
         </aside>
     </div>
 
@@ -192,13 +184,12 @@
         }
         function update() {
             const container = document.getElementById('cart-items');
-            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
+            container.innerHTML = cart.map(i => `<div style="display:flex; justify-content:space-between; margin-bottom:10px; border-bottom: 1px solid #f4f1ea; padding-bottom: 5px;"><span>${i.n}</span><span>€${i.p.toFixed(2)}</span></div>`).join('');
             document.getElementById('total-price').innerText = `€ ${total.toFixed(2)}`;
         }
-        function sendWhatsApp() {
-            if(cart.length === 0) return alert("Select an item!");
-            let msg = "Order from Sollene Store: " + cart.map(i => i.n).join(', ') + " | Total: €" + total.toFixed(2);
-            window.open(`https://wa.me{msg}`);
+        function sendOrder() {
+            if(cart.length === 0) return alert("Selecione um produto!");
+            window.open(`https://wa.me from Sollene Store`);
         }
     </script>
 </body>
