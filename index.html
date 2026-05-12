@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,25 +6,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sollene Store Group | Official Store</title>
+<title>Sollene Store Group</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:'Plus Jakarta Sans',sans-serif;
     background:#f7f3eb;
-    overflow-x:hidden;
 }
 
 /* HEADER */
-.main-header{
+header{
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -35,26 +31,10 @@ body{
     z-index:1000;
 }
 
-.header-left{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.logo-circle{
-    width:65px;
-    height:65px;
-    border-radius:50%;
-    border:1px solid #7a5c33;
-    background:#fff url('logo.png') center/cover no-repeat;
-}
-
-.brand-info h1{
-    font-size:22px;
+.logo{
     font-weight:800;
     color:#7a5c33;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    letter-spacing:2px;
 }
 
 /* MENU */
@@ -62,144 +42,63 @@ nav ul{
     display:flex;
     list-style:none;
     gap:12px;
-    align-items:center;
 }
 
-nav ul li{
-    position:relative;
-}
-
-nav ul li a{
+nav a{
     text-decoration:none;
     color:#000;
-    font-size:11px;
     font-weight:800;
+    font-size:11px;
     text-transform:uppercase;
-    padding:10px 14px;
+    padding:8px 12px;
     border-radius:8px;
-    transition:0.3s;
-    display:block;
 }
 
-nav ul li a:hover{
+nav a:hover{
     background:#000;
     color:#fff;
-}
-
-/* DROPDOWN FIXADO */
-.dropdown-menu{
-    position:absolute;
-    top:45px;
-    left:0;
-    background:#fff;
-    min-width:230px;
-    border-radius:12px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    padding:10px 0;
-
-    display:none;
-    flex-direction:column;
-}
-
-.dropdown-menu li{
-    list-style:none;
-}
-
-.dropdown-menu li a{
-    padding:12px 18px;
-    font-size:11px;
-    font-weight:800;
-    text-transform:uppercase;
-    color:#000;
-}
-
-.dropdown-menu li a:hover{
-    background:#000;
-    color:#fff;
-}
-
-.dropdown-menu.show{
-    display:flex;
-}
-
-/* CART */
-.cart-icon-container{
-    cursor:pointer;
 }
 
 /* HERO */
-.hero-section{
-    width:100%;
-    height:85vh;
+.hero{
+    height:80vh;
     background:url('Solle-Global-Store.png') center/cover no-repeat;
 }
 
 /* PRODUCTS */
-.products-section{
-    background:#fff;
-    padding:80px 5%;
-}
-
-.products-grid{
+.products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:40px;
-    max-width:1300px;
-    margin:0 auto;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    padding:60px 5%;
+    background:#fff;
 }
 
 .card{
     background:#fff;
-    border-radius:24px;
-    text-align:center;
-    padding-bottom:30px;
-    transition:0.4s;
-}
-
-.card:hover{
-    transform:translateY(-10px);
-}
-
-.img-container{
-    width:100%;
-    height:400px;
-    overflow:hidden;
     border-radius:20px;
+    text-align:center;
+    padding:20px;
 }
 
-.card-img{
+.card img{
     width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:0.5s;
+    border-radius:12px;
 }
 
-.card:hover .card-img{
-    transform:scale(1.08);
-}
-
-.btn-add{
-    margin-top:15px;
+.btn{
+    margin-top:10px;
+    padding:12px 30px;
+    border:none;
+    border-radius:30px;
     background:#7a5c33;
     color:#fff;
-    border:none;
-    padding:14px 40px;
-    border-radius:50px;
     font-weight:800;
-    font-size:10px;
     cursor:pointer;
 }
 
-.btn-add:hover{
+.btn:hover{
     background:#000;
-}
-
-/* RESPONSIVO */
-@media(max-width:768px){
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
 }
 </style>
 
@@ -207,80 +106,37 @@ nav ul li a:hover{
 
 <body>
 
-<header class="main-header">
+<header>
 
-    <div class="header-left">
-        <div class="logo-circle"></div>
-        <div class="brand-info">
-            <h1>Sollene Group</h1>
-        </div>
-    </div>
+<div class="logo">Sollene Group</div>
 
-    <!-- MENU -->
-    <nav>
-        <ul>
-
-            <li><a href="index.html">Home</a></li>
-
-            <li class="dropdown">
-                <a href="javascript:void(0)" onclick="toggleDropdown()">Collections</a>
-
-                <ul class="dropdown-menu" id="dropdownMenu">
-                    <li><a href="masculino.html">Roupas Masculinas</a></li>
-                    <li><a href="feminino.html">Roupas Femininas</a></li>
-                    <li><a href="calcados.html">Calçados</a></li>
-                    <li><a href="acessorios.html">Acessórios</a></li>
-                    <li><a href="bolsas.html">Bolsas</a></li>
-                </ul>
-            </li>
-
-        </ul>
-    </nav>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="masculino.html">Masculino</a></li>
+<li><a href="feminino.html">Feminino</a></li>
+</ul>
+</nav>
 
 </header>
 
-<!-- HERO -->
-<section class="hero-section"></section>
+<div class="hero"></div>
 
-<!-- PRODUCTS -->
-<section class="products-section">
+<section class="products">
 
-<div class="products-grid">
+<div class="card">
+<img src="produto1.jpg">
+<h3>Destaque 1</h3>
+<button class="btn">Ver Produto</button>
+</div>
 
-    <div class="card">
-        <div class="img-container">
-            <img src="produto1.jpg" class="card-img">
-        </div>
-        <button class="btn-add">Ver Produto</button>
-    </div>
-
-    <div class="card">
-        <div class="img-container">
-            <img src="produto2.jpg" class="card-img">
-        </div>
-        <button class="btn-add">Ver Produto</button>
-    </div>
-
+<div class="card">
+<img src="produto2.jpg">
+<h3>Destaque 2</h3>
+<button class="btn">Ver Produto</button>
 </div>
 
 </section>
-
-<!-- JAVASCRIPT -->
-<script>
-function toggleDropdown(){
-    document.getElementById("dropdownMenu").classList.toggle("show");
-}
-
-// fecha ao clicar fora
-document.addEventListener("click", function(e){
-    const dropdown = document.querySelector(".dropdown");
-    const menu = document.getElementById("dropdownMenu");
-
-    if(!dropdown.contains(e.target)){
-        menu.classList.remove("show");
-    }
-});
-</script>
 
 </body>
 </html>
