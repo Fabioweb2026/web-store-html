@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sollene Store Group | Official Store</title>
-
-    <!-- CORREÇÃO: FONT -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
     <style>
+        @import url('https://googleapis.com');
+        
+        /* EFEITO DE DESLIZE SUAVE */
+        html { scroll-behavior: smooth; }
+
         *{ margin:0; padding:0; box-sizing:border-box; }
 
         body { 
@@ -23,7 +24,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px 5%;
+            padding: 15px 5%;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky;
             top: 0;
@@ -31,29 +32,39 @@
         }
 
         .header-left { display: flex; align-items: center; gap: 20px; }
-
+        
+        /* BOLINHA DO LOGO COM SUA IMAGEM NOVA */
         .logo-circle {
-            width: 70px; height: 70px;
+            width: 75px; height: 75px;
             border-radius: 50%;
-            border: 1px solid #7a5c33;
-            background: #fff url('Sollene-Group.png') no-repeat center center;
-            background-size: 80%;
+            border: 2px solid #7a5c33;
+            background: #fff url('logo-bolinha.png') no-repeat center center;
+            background-size: cover;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .brand-info h1 {
-            font-size: 28px; font-weight: 800; color: #7a5c33; 
+            font-size: 26px; font-weight: 800; color: #7a5c33; 
             letter-spacing: 4px; text-transform: uppercase; line-height: 1;
         }
-
         .brand-info p {
-            font-size: 10px; letter-spacing: 3px; color: #b0a89e;
-            text-transform: uppercase; margin-top: 5px;
+            font-size: 10px; letter-spacing: 2px; color: #b0a89e;
+            text-transform: uppercase; margin-top: 5px; font-weight: 600;
         }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li a { text-decoration: none; color: #000; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+        /* MENU DE NAVEGAÇÃO */
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        nav ul li a { 
+            text-decoration: none; color: #000; font-size: 11px; 
+            font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+            padding: 8px 15px; transition: 0.3s;
+        }
 
-        /* HERO SECTION */
+        /* BOTÃO HOME COM MOLDURA PRETA */
+        .btn-home { border: 2px solid #000; border-radius: 8px; }
+        nav ul li a:hover { color: #7a5c33; }
+
+        /* HERO SECTION - FUNDO NÍTIDO */
         .hero-section {
             width: 100%;
             height: 85vh;
@@ -67,19 +78,15 @@
 
         .scroll-hint { color: #7a5c33; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; font-size: 11px; }
 
-        /* PRODUCTS */
+        /* SEÇÃO DE PRODUTOS */
         .products-section {
             background: #fff;
             padding: 100px 5%;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 12px;
-            color: #b39359;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-            margin-bottom: 60px;
+            text-align: center; font-size: 12px; color: #b39359; 
+            text-transform: uppercase; letter-spacing: 6px; margin-bottom: 60px;
         }
 
         .products-grid {
@@ -90,6 +97,7 @@
             margin: 0 auto;
         }
 
+        /* CARD DOS PRODUTOS */
         .card {
             background: #fff;
             border-radius: 24px;
@@ -105,6 +113,7 @@
             overflow: hidden;
             border-radius: 20px;
             margin-bottom: 25px;
+            background: #f9f9f9;
         }
 
         .card-img {
@@ -117,105 +126,118 @@
         .card:hover .card-img { transform: scale(1.1); }
         .card:hover { transform: translateY(-10px); }
 
-        .card h3 { font-size: 15px; color: #1a1a1a; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
-
-        .card .price {
-            font-size: 22px;
-            font-weight: 800;
-            color: #7a5c33;
-            margin-bottom: 20px;
-            display: block;
-        }
+        .card h3 { font-size: 14px; color: #1a1a1a; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; }
+        .card .price { font-size: 20px; font-weight: 800; color: #7a5c33; margin-bottom: 20px; display: block; }
 
         .btn-add {
-            background: #7a5c33;
-            color: #fff;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 10px;
-            cursor: pointer;
+            background: #7a5c33; color: #fff; border: none;
+            padding: 14px 40px; border-radius: 50px; font-weight: 800;
+            text-transform: uppercase; font-size: 10px; cursor: pointer;
             transition: 0.3s;
         }
+        .btn-add:hover { background: #000; }
 
-        .btn-add:hover { background: #000; letter-spacing: 1px; }
+        /* FOOTER / CONTACT */
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 60px 5%;
+            text-align: center;
+        }
 
-        @media(max-width: 900px){
-            .main-header { flex-direction: column; gap: 20px; }
+        @media(max-width: 900px) {
+            .main-header { flex-direction: column; gap: 20px; text-align: center; }
+            .hero-section { height: 60vh; }
         }
     </style>
 </head>
-
 <body>
 
-<header class="main-header">
-    <div class="header-left">
-        <div class="logo-circle"></div>
-        <div class="brand-info">
-            <h1>Sollene Store Group</h1>
-            <p>Luxury Fashion Collection</p>
-        </div>
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Collections</a></li>
-            <li><a href="#">Store</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<section class="hero-section">
-    <div class="scroll-hint">Explore the Collection ↓</div>
-</section>
-
-<section class="products-section">
-    <h2 class="section-title">Prestige Selection</h2>
-
-    <div class="products-grid">
-
-        <div class="card">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47" class="card-img">
+    <!-- CABEÇALHO COM O NOVO LOGO NA BOLINHA -->
+    <header class="main-header" id="home">
+        <div class="header-left">
+            <div class="logo-circle"></div>
+            <div class="brand-info">
+                <h1>Sollene Store Group</h1>
+                <p>Luxury Fashion Collection</p>
             </div>
-            <h3>Executive Shirt</h3>
-            <span class="price">€ 85.00</span>
-            <button class="btn-add">Add to Cart</button>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="btn-home">HOME</a></li>
+                <li><a href="#collections">COLLECTIONS</a></li>
+                <li><a href="#collections">STORE</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="card">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1528701800489-20be3c1ea2f7" class="card-img">
+    <!-- BANNER COM ROSTOS PRESERVADOS -->
+    <section class="hero-section">
+        <div class="scroll-hint">Explore the Collection ↓</div>
+    </section>
+
+    <!-- VITRINE DE PRODUTOS -->
+    <section class="products-section" id="collections">
+        <h2 class="section-title">Prestige Selection</h2>
+        
+        <div class="products-grid">
+            <!-- PRODUTO 1 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="shirt.jpg" class="card-img" alt="Executive Shirt">
+                </div>
+                <h3>Executive Shirt</h3>
+                <span class="price">€ 85.00</span>
+                <button class="btn-add">Add to Cart</button>
             </div>
-            <h3>Luxury Sneakers</h3>
-            <span class="price">€ 110.00</span>
-            <button class="btn-add">Add to Cart</button>
-        </div>
 
-        <div class="card">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3" class="card-img">
+            <!-- PRODUTO 2 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="sneakers.jpg" class="card-img" alt="Luxury Sneakers">
+                </div>
+                <h3>Luxury Sneakers</h3>
+                <span class="price">€ 110.00</span>
+                <button class="btn-add">Add to Cart</button>
             </div>
-            <h3>Luxury Watch</h3>
-            <span class="price">€ 45.00</span>
-            <button class="btn-add">Add to Cart</button>
-        </div>
 
-        <div class="card">
-            <div class="img-container">
-                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" class="card-img">
+            <!-- PRODUTO 3 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="watch.jpg" class="card-img" alt="Luxury Watch">
+                </div>
+                <h3>Luxury Watch</h3>
+                <span class="price">€ 45.00</span>
+                <button class="btn-add">Add to Cart</button>
             </div>
-            <h3>Premium Bag</h3>
-            <span class="price">€ 180.00</span>
-            <button class="btn-add">Add to Cart</button>
+
+            <!-- PRODUTO 4 -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="bag.jpg" class="card-img" alt="Premium Bag">
+                </div>
+                <h3>Premium Bag</h3>
+                <span class="price">€ 180.00</span>
+                <button class="btn-add">Add to Cart</button>
+            </div>
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- SEÇÃO DE CONTATO -->
+    <footer id="contact">
+        <p style="letter-spacing:3px; color:#b39359; margin-bottom:20px;">CONTACT US</p>
+        <p style="font-size: 14px;">EMAIL: CONTACT@SOLLENE-GROUP.COM</p>
+        <p style="margin-top:20px; font-size:10px; opacity:0.5;">© 2026 SOLLENE STORE GROUP • VALLETTA, MALTA</p>
+    </footer>
 
+    <script>
+        // Função simples para dar feedback ao clicar
+        document.querySelectorAll('.btn-add').forEach(button => {
+            button.addEventListener('click', () => {
+                alert("Product added to your selection!");
+            });
+        });
+    </script>
 </body>
 </html>
