@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sollene Global Store</title>
+<title>Sollene Store Group | Official Store</title>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+html{
+    scroll-behavior:smooth;
+}
 
 *{
     margin:0;
@@ -15,218 +22,368 @@
     box-sizing:border-box;
 }
 
-/* BODY */
-
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    color:white;
-
-    background-image:
-    linear-gradient(rgba(0,0,0,0.82),
-    rgba(0,0,0,0.82)),
-    url("Solle-Global-Store.png");
-
-    background-size:cover;
-    background-position:center;
-    background-attachment:fixed;
-    background-repeat:no-repeat;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:#f7f3eb;
+    color:#1a1a1a;
+    overflow-x:hidden;
 }
 
 /* HEADER */
 
-header{
-    background:#000;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    border-bottom:1px solid #222;
-}
-
-.top-header{
+.main-header{
+    background:#f7f3eb;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:15px 40px;
+    padding:15px 5%;
+    border-bottom:1px solid rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
-.logo{
+.header-left{
     display:flex;
     align-items:center;
-    font-size:28px;
-    font-weight:bold;
-    letter-spacing:2px;
+    gap:15px;
 }
 
-.logo img{
-    width:45px;
-    height:45px;
+.logo-circle{
+    width:65px;
+    height:65px;
     border-radius:50%;
-    object-fit:cover;
-    margin-right:12px;
+    border:1px solid #7a5c33;
+    background:#fff url('logo.png') no-repeat center center;
+    background-size:cover;
 }
 
-.logo span{
-    color:#c9a86a;
+.brand-info h1{
+    font-size:22px;
+    font-weight:800;
+    color:#7a5c33;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 
 /* NAVBAR */
 
-.navbar{
-    background:#111;
-    padding:14px 40px;
+nav ul{
     display:flex;
-    gap:30px;
-    overflow-x:auto;
+    align-items:center;
+    gap:15px;
+    list-style:none;
 }
 
-.navbar a{
-    color:white;
+nav ul li a{
     text-decoration:none;
-    font-size:15px;
+    color:#000;
+    font-size:11px;
+    font-weight:800;
+    text-transform:uppercase;
+    padding:10px 14px;
+    border-radius:10px;
     transition:0.3s;
-    white-space:nowrap;
+    cursor:pointer;
 }
 
-.navbar a:hover{
-    color:#c9a86a;
+nav ul li a:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* CART */
+
+.cart-icon-container{
+    position:relative;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    padding:5px;
+}
+
+.cart-badge{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:#7a5c33;
+    color:#fff;
+    font-size:9px;
+    font-weight:800;
+    width:18px;
+    height:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    border:2px solid #f7f3eb;
 }
 
 /* HERO */
 
-.hero{
+.hero-section{
     width:100%;
-    height:550px;
-    overflow:hidden;
-}
-
-.hero img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-}
-
-/* SECTION */
-
-.section{
-    padding:70px 40px;
-}
-
-.section-title{
-    font-size:34px;
-    margin-bottom:40px;
-    color:#c9a86a;
+    height:85vh;
+    background:url('Solle-Global-Store.png') no-repeat center top;
+    background-size:cover;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    padding-bottom:40px;
 }
 
 /* PRODUCTS */
 
+.products-section{
+    background:#fff;
+    padding:80px 5%;
+}
+
+.products-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.products-title h2{
+    font-size:38px;
+    color:#7a5c33;
+    text-transform:uppercase;
+    letter-spacing:3px;
+}
+
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:40px;
+    max-width:1300px;
+    margin:0 auto;
 }
 
-.product-card{
-    background:rgba(15,15,15,0.92);
-    border-radius:18px;
+.card{
+    background:#fff;
+    border-radius:24px;
+    text-align:center;
+    padding-bottom:30px;
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.img-container{
+    width:100%;
+    height:400px;
     overflow:hidden;
-    border:1px solid #222;
-    transition:0.3s;
-    backdrop-filter:blur(5px);
+    border-radius:20px;
+    margin-bottom:20px;
+    background:#f9f9f9;
 }
 
-.product-card:hover{
-    transform:translateY(-6px);
-    border:1px solid #c9a86a;
-}
-
-.product-card img{
+.card-img{
     width:100%;
-    height:340px;
+    height:100%;
     object-fit:cover;
+    transition:0.6s;
 }
 
-.product-info{
-    padding:22px;
+.card:hover .card-img{
+    transform:scale(1.08);
 }
 
-.product-info h3{
-    margin-bottom:12px;
-    font-size:24px;
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
 }
 
-.product-info p{
-    color:#ccc;
-    line-height:1.6;
-    font-size:14px;
+.card-price{
+    margin:15px 0;
+    font-weight:800;
+    color:#7a5c33;
+    font-size:18px;
 }
 
-.price{
-    margin-top:18px;
-    color:#c9a86a;
-    font-size:24px;
-    font-weight:bold;
-}
+/* BUTTON */
 
-.buy-btn{
-    width:100%;
-    margin-top:22px;
-    padding:15px;
+.btn-add{
+    background:#7a5c33;
+    color:#fff;
     border:none;
-    border-radius:12px;
-    background:#c9a86a;
-    color:black;
-    font-weight:bold;
+    padding:14px 40px;
+    border-radius:50px;
+    font-weight:800;
+    text-transform:uppercase;
+    font-size:10px;
     cursor:pointer;
     transition:0.3s;
 }
 
-.buy-btn:hover{
-    background:white;
+.btn-add:hover{
+    background:#000;
 }
 
-/* ABOUT */
+/* SIDEBAR */
 
-.about{
-    background:rgba(17,17,17,0.92);
-    padding:45px;
-    border-radius:20px;
-    line-height:1.8;
-    color:#ccc;
-    backdrop-filter:blur(6px);
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-420px;
+    width:400px;
+    height:100%;
+    background:#fff;
+    box-shadow:-10px 0 50px rgba(0,0,0,0.1);
+    z-index:2000;
+    transition:0.5s;
+    padding:40px;
+    overflow-y:auto;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    display:none;
+    z-index:1900;
+}
+
+.overlay.active{
+    display:block;
+}
+
+.close-menu{
+    cursor:pointer;
+    font-weight:800;
+    color:#7a5c33;
+    margin-bottom:30px;
+    text-align:right;
+}
+
+/* CART ITEMS */
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+    width:60px;
+    height:60px;
+    border-radius:8px;
+    object-fit:cover;
+}
+
+.cart-item-info h4{
+    font-size:12px;
+    text-transform:uppercase;
+}
+
+.cart-item-info p{
+    font-weight:800;
+    color:#7a5c33;
+}
+
+/* TOTAL */
+
+.total-container{
+    margin-top:30px;
+    padding-top:20px;
+    border-top:2px solid #7a5c33;
+    display:flex;
+    justify-content:space-between;
+    font-weight:800;
+    font-size:18px;
+}
+
+/* PAYMENT */
+
+.payment-methods{
+    margin-top:35px;
+}
+
+.payment-methods h4{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    color:#7a5c33;
+    margin-bottom:15px;
+}
+
+.pay-option{
+    display:block;
+    padding:15px;
+    border:1px solid #eee;
+    border-radius:12px;
+    margin-bottom:10px;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:13px;
+    font-weight:600;
+}
+
+.pay-option:hover{
+    background:#fdfaf6;
+    border-color:#7a5c33;
+}
+
+.pay-option input{
+    margin-right:12px;
+    accent-color:#7a5c33;
+}
+
+.btn-confirm{
+    width:100%;
+    padding:20px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-weight:800;
+    margin-top:20px;
+    cursor:pointer;
+    text-transform:uppercase;
 }
 
 /* FOOTER */
 
 footer{
     background:#000;
+    color:#fff;
     text-align:center;
-    padding:45px;
-    margin-top:50px;
-    border-top:1px solid #222;
+    padding:40px 20px;
 }
 
 footer p{
-    color:#888;
+    opacity:0.7;
+    font-size:12px;
+    letter-spacing:2px;
 }
 
 /* MOBILE */
 
-@media(max-width:768px){
+@media(max-width:900px){
 
-    .top-header{
-        padding:15px 20px;
+    .main-header{
+        flex-direction:column;
+        gap:15px;
     }
 
-    .navbar{
-        padding:14px 20px;
+    .side-menu{
+        width:100%;
     }
 
-    .hero{
-        height:300px;
-    }
-
-    .section{
-        padding:50px 20px;
+    .hero-section{
+        height:60vh;
     }
 
 }
@@ -237,152 +394,144 @@ footer p{
 
 <body>
 
+<div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
 <!-- HEADER -->
 
-<header>
+<header class="main-header">
 
-    <div class="top-header">
+    <div class="header-left">
 
-        <div class="logo">
+        <div class="logo-circle"></div>
 
-            <img src="logo.png" alt="Logo">
-
-            SOLLENE <span>STORE</span>
-
+        <div class="brand-info">
+            <h1>Sollene Group</h1>
         </div>
 
     </div>
 
-    <!-- MULTI PAGE MENU -->
+    <!-- MENU -->
 
-    <nav class="navbar">
+    <nav>
 
-        <a href="index.html">
-            Home
-        </a>
+        <ul>
 
-        <a href="men.html">
-            Men
-        </a>
+            <li>
+                <a href="index.html">Home</a>
+            </li>
 
-        <a href="woman.html">
-            Women
-        </a>
+            <li>
+                <a href="men.html">Men</a>
+            </li>
 
-        <a href="bolsas.html">
-            Bags
-        </a>
+            <li>
+                <a href="woman.html">Women</a>
+            </li>
 
-        <a href="menshirts.html">
-            Men Shirts
-        </a>
+            <li>
+                <a href="bolsas.html">Bags</a>
+            </li>
+
+            <li>
+                <a href="menshirts.html">Men Shirts</a>
+            </li>
+
+        </ul>
 
     </nav>
+
+    <!-- CART -->
+
+    <div class="cart-icon-container" onclick="toggleMenu()">
+
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+
+        <div class="cart-badge" id="cart-count">
+            0
+        </div>
+
+    </div>
 
 </header>
 
 <!-- HERO -->
 
-<section class="hero">
+<section class="hero-section"></section>
 
-    <img src="executivemen1.png" alt="Luxury Banner">
+<!-- PRODUCTS -->
 
-</section>
+<section class="products-section">
 
-<!-- COLLECTIONS -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        Luxury Collections
-    </h2>
+    <div class="products-title">
+        <h2>Luxury Collections</h2>
+    </div>
 
     <div class="products-grid">
 
-        <!-- MEN -->
+        <!-- PRODUCT 1 -->
 
-        <div class="product-card">
+        <div class="card">
 
-            <img src="men1.png" alt="Men Collection">
-
-            <div class="product-info">
-
-                <h3>Men Collection</h3>
-
-                <p>
-                    Sophisticated masculine fashion inspired by premium luxury lifestyle and elegance.
-                </p>
-
-                <div class="price">
-                    €260
-                </div>
-
-                <button class="buy-btn"
-                onclick="window.location.href='men.html'">
-
-                    Explore Collection
-
-                </button>
-
+            <div class="img-container">
+                <img src="productos1.png" class="card-img" alt="Executive Shirt">
             </div>
+
+            <h3>Executive Shirt</h3>
+
+            <p class="card-price">€ 85.00</p>
+
+            <button class="btn-add"
+            onclick="addToCart('Executive Shirt',85,'productos1.png')">
+
+                Add to Bag
+
+            </button>
 
         </div>
 
-        <!-- WOMEN -->
+        <!-- PRODUCT 2 -->
 
-        <div class="product-card">
+        <div class="card">
 
-            <img src="woman.bag.png" alt="Women Collection">
-
-            <div class="product-info">
-
-                <h3>Women Collection</h3>
-
-                <p>
-                    Elegant feminine collection designed for modern sophistication and timeless fashion.
-                </p>
-
-                <div class="price">
-                    €470
-                </div>
-
-                <button class="buy-btn"
-                onclick="window.location.href='woman.html'">
-
-                    Explore Collection
-
-                </button>
-
+            <div class="img-container">
+                <img src="producto2.png" class="card-img" alt="Luxury Selection">
             </div>
+
+            <h3>Luxury Selection</h3>
+
+            <p class="card-price">€ 110.00</p>
+
+            <button class="btn-add"
+            onclick="addToCart('Luxury Selection',110,'producto2.png')">
+
+                Add to Bag
+
+            </button>
 
         </div>
 
-        <!-- BAGS -->
+        <!-- PRODUCT 3 -->
 
-        <div class="product-card">
+        <div class="card">
 
-            <img src="bags.png" alt="Luxury Bags">
-
-            <div class="product-info">
-
-                <h3>Luxury Bags</h3>
-
-                <p>
-                    Premium handbag collection crafted with exclusive finishing and luxury design.
-                </p>
-
-                <div class="price">
-                    €610
-                </div>
-
-                <button class="buy-btn"
-                onclick="window.location.href='bolsas.html'">
-
-                    Explore Collection
-
-                </button>
-
+            <div class="img-container">
+                <img src="bolsa.png" class="card-img" alt="Executive Leather Bag">
             </div>
+
+            <h3>Executive Leather Bag</h3>
+
+            <p class="card-price">€ 185.00</p>
+
+            <button class="btn-add"
+            onclick="addToCart('Executive Leather Bag',185,'bolsa.png')">
+
+                Add to Bag
+
+            </button>
 
         </div>
 
@@ -390,133 +539,179 @@ footer p{
 
 </section>
 
-<!-- MEN SHIRTS -->
+<!-- SIDEBAR -->
 
-<section class="section">
+<div class="side-menu" id="sideMenu">
 
-    <h2 class="section-title">
-        Premium Men Shirts
+    <div class="close-menu" onclick="toggleMenu()">
+        ✕ CLOSE
+    </div>
+
+    <h2 style="letter-spacing:2px; font-size:18px; color:#7a5c33; text-transform:uppercase;">
+        Order Summary
     </h2>
 
-    <div class="products-grid">
+    <div id="cart-items-list" style="margin-top:20px;">
 
-        <div class="product-card">
-
-            <img src="executivemen1.png" alt="Executive Fashion">
-
-            <div class="product-info">
-
-                <h3>Executive Collection</h3>
-
-                <p>
-                    Luxury executive fashion collection created for premium lifestyle and modern identity.
-                </p>
-
-                <div class="price">
-                    €390
-                </div>
-
-                <button class="buy-btn"
-                onclick="window.location.href='menshirts.html'">
-
-                    View Collection
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="product-card">
-
-            <img src="produtdos45.png" alt="Luxury Accessories">
-
-            <div class="product-info">
-
-                <h3>Luxury Accessories</h3>
-
-                <p>
-                    Refined accessories designed for sophisticated and exclusive fashion experience.
-                </p>
-
-                <div class="price">
-                    €180
-                </div>
-
-                <button class="buy-btn">
-
-                    Add to Bag
-
-                </button>
-
-            </div>
-
-        </div>
-
-        <div class="product-card">
-
-            <img src="bags.png" alt="Premium Bags">
-
-            <div class="product-info">
-
-                <h3>Premium Bags</h3>
-
-                <p>
-                    Elegant premium bags inspired by timeless luxury and modern fashion style.
-                </p>
-
-                <div class="price">
-                    €540
-                </div>
-
-                <button class="buy-btn"
-                onclick="window.location.href='bolsas.html'">
-
-                    Shop Now
-
-                </button>
-
-            </div>
-
-        </div>
+        <p style="color:#999; font-size:13px;">
+            Bag is empty.
+        </p>
 
     </div>
 
-</section>
+    <div class="total-container">
 
-<!-- ABOUT -->
+        <span>TOTAL</span>
 
-<section class="section">
+        <span id="cart-total-price">
+            € 0.00
+        </span>
 
-    <div class="about">
+    </div>
 
-        <h2 class="section-title">
-            Luxury Experience
-        </h2>
+    <!-- PAYMENT -->
 
-        <p>
+    <div class="payment-methods">
 
-            Sollene Global Store represents a modern vision of luxury,
-            blending minimal design with premium digital experience.
+        <h4>Select Payment</h4>
 
-            Built for a global audience that values elegance,
-            identity and sophistication.
+        <label class="pay-option">
+            <input type="radio" name="pay" value="card" checked>
+            Credit / Debit Card
+        </label>
+
+        <label class="pay-option">
+            <input type="radio" name="pay" value="cash">
+            Cash on Delivery
+        </label>
+
+        <p style="margin-top:20px; font-size:10px; color:#991b1b; font-weight:800; text-transform:uppercase;">
+
+            * European Market Rule: Full payment only. No installments.
 
         </p>
 
     </div>
 
-</section>
+    <button onclick="confirmOrder()" class="btn-confirm">
+
+        Complete Purchase
+
+    </button>
+
+</div>
 
 <!-- FOOTER -->
 
 <footer>
 
     <p>
-        © 2026 Sollene Global Store — All Rights Reserved
+        © 2026 SOLLENE STORE GROUP — ALL RIGHTS RESERVED
     </p>
 
 </footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+let cart = [];
+let total = 0;
+
+function toggleMenu(){
+
+    document.getElementById('sideMenu').classList.toggle('active');
+
+    document.getElementById('overlay').classList.toggle('active');
+
+}
+
+function addToCart(name, price, img){
+
+    cart.push({ name, price, img });
+
+    total += price;
+
+    renderCart();
+
+    document.getElementById('cart-count').innerText = cart.length;
+
+    toggleMenu();
+
+}
+
+function renderCart(){
+
+    const list = document.getElementById('cart-items-list');
+
+    if(cart.length === 0){
+
+        list.innerHTML = `
+        <p style="color:#999; font-size:13px;">
+            Bag is empty.
+        </p>
+        `;
+
+    } else {
+
+        list.innerHTML = cart.map(item => `
+
+            <div class="cart-item">
+
+                <img src="${item.img}" alt="${item.name}">
+
+                <div class="cart-item-info">
+
+                    <h4>${item.name}</h4>
+
+                    <p>€ ${item.price}.00</p>
+
+                </div>
+
+            </div>
+
+        `).join('');
+
+    }
+
+    document.getElementById('cart-total-price').innerText =
+    `€ ${total}.00`;
+
+}
+
+function confirmOrder(){
+
+    if(cart.length === 0){
+
+        alert("Select a product first.");
+
+        return;
+
+    }
+
+    const method =
+    document.querySelector('input[name="pay"]:checked').value;
+
+    alert(
+        "Order Confirmed!\n\n" +
+        "Total: €" + total + ".00\n" +
+        "Payment: " + method.toUpperCase() +
+        "\n\nThank you for choosing Sollene Group."
+    );
+
+    cart = [];
+
+    total = 0;
+
+    renderCart();
+
+    document.getElementById('cart-count').innerText = "0";
+
+    toggleMenu();
+
+}
+
+</script>
 
 </body>
 </html>
