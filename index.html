@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sollene Group</title>
-
 <style>
-
 *{
     margin:0;
     padding:0;
@@ -20,126 +11,135 @@ body{
 }
 
 /* HEADER */
-header{
+.main-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 5%;
     background:#fff;
+    border-bottom:1px solid #eee;
     position:sticky;
     top:0;
+    z-index:1000;
+}
+
+/* LOGO */
+.logo-circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#ddd;
+}
+
+/* GRID */
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    padding:40px 5%;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    text-align:center;
+    padding-bottom:15px;
+}
+
+/* IMAGEM (CORRIGIDA) */
+.img-container{
+    width:100%;
+    height:320px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fdfaf6;
+}
+
+.card-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:10px;
+}
+
+/* SELECT */
+.select-option{
+    width:90%;
+    padding:10px;
+    margin-top:10px;
+}
+
+/* BOTÃO */
+.btn-add{
+    width:90%;
+    margin-top:10px;
+    padding:12px;
+    background:#7a5c33;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+    border-radius:8px;
+}
+
+/* CART */
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.4);
+    display:none;
+}
+
+.overlay.active{
+    display:block;
+}
+
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:380px;
+    height:100%;
+    background:#fff;
+    padding:20px;
+    transition:0.3s;
+    overflow:auto;
+    z-index:2000;
+}
+
+.side-menu.active{
+    right:0;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
     border-bottom:1px solid #eee;
 }
 
-.logo{
-    font-weight:900;
-    color:#7a5c33;
-    letter-spacing:2px;
-}
-
-nav a{
-    text-decoration:none;
-    color:#000;
-    margin:0 10px;
-    font-weight:700;
-    font-size:12px;
-}
-
-/* HERO CORRIGIDO */
-.hero{
-    width:100%;
-    height:85vh;
-
-    /* 🔥 CORREÇÃO PRINCIPAL */
-    background-image:url('Solle-Global-Store.png');
-    background-repeat:no-repeat;
-
-    /* antes era cover (cortava) */
-    background-size:contain;
-
-    background-position:center;
-    background-color:#f7f3eb;
-}
-
-/* COLLECTIONS */
-.collections{
-    padding:60px 5%;
-    text-align:center;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:30px;
-}
-
-.card{
-    background:#fff;
-    padding:20px;
-    border-radius:16px;
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:translateY(-5px);
-}
-
-.card a{
-    text-decoration:none;
-    color:#7a5c33;
-    font-weight:800;
-}
-
-.cart{
+.remove-btn{
+    background:none;
+    border:none;
+    color:red;
     cursor:pointer;
 }
 
+.clear-btn{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    background:#000;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.cart-icon{
+    cursor:pointer;
+}
 </style>
-
-</head>
-
-<body>
-
-<header>
-    <div class="logo">SOLLENE GROUP</div>
-
-    <nav>
-        <a href="index.html">HOME</a>
-        <a href="woman.html">WOMAN</a>
-        <a href="menshirts.html">MEN</a>
-        <a href="accessories.html">ACCESSORIES</a>
-    </nav>
-
-    <div class="cart">🛒</div>
-</header>
-
-<section class="hero"></section>
-
-<section class="collections">
-
-    <h2>COLLECTIONS</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Women</h3>
-            <a href="woman.html">View Collection</a>
-        </div>
-
-        <div class="card">
-            <h3>Men</h3>
-            <a href="menshirts.html">View Collection</a>
-        </div>
-
-        <div class="card">
-            <h3>Accessories</h3>
-            <a href="accessories.html">View Collection</a>
-        </div>
-
-    </div>
-
-</section>
-
-</body>
-</html>
