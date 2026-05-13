@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women's Selection | Sollene Group Official</title>
     <style>
-        @import url('https://googleapis.com');
+        @import url('googleapis.com');
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; }
 
-        /* HEADER PREMIUM */
+        /* HEADER PADRÃO COM CARRINHO */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -24,7 +24,7 @@
             display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
         }
 
-        /* VITRINE AJUSTADA PARA NÃO CORTAR */
+        /* VITRINE HARMÔNICA COM DOIS CARDS LADO A LADO */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
         
@@ -45,36 +45,29 @@
             transition: 0.4s;
             overflow: hidden;
         }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
 
-        /* MUDANÇA AQUI: Background neutro e object-fit contain */
-        .img-container { 
-            width: 100%; 
-            height: 550px; /* Aumentei a altura para a foto brilhar */
-            overflow: hidden; 
-            background: #fdfaf6; /* Fundo suave para as bordas da foto */
-            margin-bottom: 20px;
-        }
-
-        .card-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; /* MOSTRA A FOTO INTEIRA SEM CORTAR AS BORDAS */
-            transition: 0.5s; 
-        }
-        
+        /* Contain para não cortar a cabeça de nenhum modelo */
+        .img-container { width: 100%; height: 550px; overflow: hidden; background: #fdfaf6; margin-bottom: 20px; padding: 10px; display: flex; align-items: center; justify-content: center; }
+        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; transition: 0.5s; }
         .card:hover .card-img { transform: scale(1.03); }
 
+        /* BOTÃO PREMIUM */
         .btn-add {
             background: #7a5c33; color: #fff; border: none;
             padding: 15px 45px; border-radius: 50px; font-weight: 800;
             text-transform: uppercase; font-size: 11px; cursor: pointer;
         }
+        .btn-add:hover { background: #000; }
 
-        /* ABA LATERAL */
+        /* ABA LATERAL (RESUMO DE APENAS ESCOLHA) */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 13px; }
+
+        @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -87,6 +80,7 @@
             <h1 style="font-size: 20px; font-weight: 800; color: #7a5c33;">SOLLENE</h1>
         </div>
         <nav><a href="index.html" style="text-decoration:none; color:#000; font-weight:800; font-size:11px; border: 2px solid #000; padding: 8px 15px; border-radius: 6px;">HOME</a></nav>
+        
         <div class="cart-icon-container" onclick="toggleCart()">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
@@ -95,47 +89,82 @@
             <div class="cart-badge" id="cart-count">0</div>
         </div>
     </header>
-<!-- ... (O topo é igual) ... -->
+
     <main class="products-section">
+        <h2 class="page-title">Women's Premium Selection</h2>
         <div class="products-grid">
+            
+            <!-- PRODUTO 1: imagem.woman.png -->
             <div class="card">
-                <div class="img-container"><img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'"></div>
-                <h3>Signature Style</h3>
-                <p style="font-weight:800; margin:15px 0; font-size:18px;">€ 195.00</p>
+                <div class="img-container">
+                    <img src="imagem.woman.png" class="card-img" alt="Luxury Selection 1" onerror="this.src='logo.png'">
+                </div>
+                <h3>Executive Signature Style</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 20px;">€ 195.00</p>
                 <button class="btn-add" onclick="addToCart('Signature Style', 195)">Add to Bag</button>
             </div>
+
+            <!-- PRODUTO 2: imagen.woman.png2.png -->
             <div class="card">
-                <div class="img-container"><img src="imagen.woman.png2.png" class="card-img" onerror="this.src='logo.png'"></div>
-                <h3>Prestige Outfit</h3>
-                <p style="font-weight:800; margin:15px 0; font-size:18px;">€ 245.00</p>
+                <div class="img-container">
+                    <img src="imagen.woman.png2.png" class="card-img" alt="Luxury Selection 2" onerror="this.src='logo.png'">
+                </div>
+                <h3>Prestige Female Outfit</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 20px;">€ 245.00</p>
                 <button class="btn-add" onclick="addToCart('Prestige Outfit', 245)">Add to Bag</button>
             </div>
+
         </div>
     </main>
-<!-- ... (O script e side-menu é igual ao código 1) ... -->
 
-   
-    </main>
-
+    <!-- ABA LATERAL COM MEMÓRIA COMPARTILHADA -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Summary</h2>
-        <div id="cart-list" style="margin-top:20px;"></div>
-        <button style="width:100%; padding:18px; background:#000; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:20px; cursor:pointer;" onclick="alert('Order Processed!')">COMPLETE PURCHASE</button>
+        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Selected Items</h2>
+        
+        <div id="cart-list" style="margin-top:20px;">
+            <p style="color:#999; font-size:13px;">Bag is empty.</p>
+        </div>
+        
+        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
+            To delete items or pay,<br>please return to the <strong>HOME PAGE</strong>.
+        </p>
+        
+        <a href="index.html" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">GO TO CHECKOUT</a>
     </div>
 
     <script>
-        let cart = []; let total = 0;
+        // Carrega itens gravados de outras seções
+        let cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
+
         function toggleCart() {
             document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
+
         function addToCart(name, price) {
-            count = (document.getElementById('cart-count').innerText * 1) + 1;
-            document.getElementById('cart-count').innerText = count;
-            document.getElementById('cart-list').innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${name}</span><strong>€ ${price}.00</strong></div>`;
+            cart.push({name, price});
+            localStorage.setItem('sollene_cart', JSON.stringify(cart));
+            updateUI();
             toggleCart();
         }
+
+        function updateUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const list = document.getElementById('cart-list');
+            if (cart.length === 0) {
+                list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
+            } else {
+                list.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <span>${item.name}</span>
+                        <span style="font-weight:800;">€ ${item.price}.00</span>
+                    </div>
+                `).join('');
+            }
+        }
+
+        window.onload = updateUI;
     </script>
 </body>
 </html>
