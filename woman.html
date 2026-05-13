@@ -233,16 +233,39 @@ SOLLENE
 
 <div class="products-grid">
 
-<!-- CARD -->
+<!-- CARD 1-->
 
 <div class="card">
 
 <div class="img-container">
 <img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
 </div>
-
 <h3>Executive Signature Style</h3>
+<p style="font-weight:800; margin:15px 0; font-size:20px;">
+€ 195.00
+</p>
 
+<select id="option1" class="select-option">
+<option value="T-Shirt">T-Shirt</option>
+<option value="Pants">Pants</option>
+<option value="Full Outfit">Full Outfit</option>
+</select>
+
+<button
+class="btn-add"
+onclick="addToCart(
+'Executive Signature Style',
+195,
+document.getElementById('option1').value
+)">
+Add to Bag
+</button>
+    <div class="card">
+
+<div class="img-container">
+<img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
+</div>
+<h3>Executive Signature Style</h3>
 <p style="font-weight:800; margin:15px 0; font-size:20px;">
 € 195.00
 </p>
@@ -264,6 +287,35 @@ Add to Bag
 </button>
 
 </div>
+<!-- CARD 2-->
+<div class="card">
+
+<div class="img-container">
+<img src="womancal1.png" class="card-img" onerror="this.src='logo.png'">
+</div>
+<h3>Executive Signature Style</h3>
+<p style="font-weight:800; margin:15px 0; font-size:20px;">
+€ 25
+</p>
+<select id="option1" class="select-option">
+<option value="woman.calca1.png </option>
+<option value="Pants">calça1.</option>
+<option value="Full Outfit">Full Outfit</option>
+</select>
+<button
+class="btn-add"
+onclick="addToCart(
+'Executive Signature Style',
+  € 36  
+document.getElementById('option1').value
+)">
+Add to Bag
+</button>
+
+</div>
+
+
+
 
 </div>
 
