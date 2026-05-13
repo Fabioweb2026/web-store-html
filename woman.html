@@ -7,37 +7,60 @@
 <title>Women's Collection | Sollene Group</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
     font-family:sans-serif;
     background:#f7f3eb;
 }
 
+/* HEADER */
 header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 5%;
     background:#f7f3eb;
+    border-bottom:1px solid rgba(0,0,0,0.05);
     position:sticky;
     top:0;
-    border-bottom:1px solid rgba(0,0,0,0.05);
+    z-index:1000;
 }
 
 .logo-circle{
-    width:55px;height:55px;
+    width:55px;
+    height:55px;
     border-radius:50%;
     border:1px solid #d4af37;
     background:#fff url('logo.png') center/cover no-repeat;
 }
+
+/* HOME BUTTON */
+.home-btn{
+    padding:10px 16px;
+    border:2px solid #000;
+    border-radius:8px;
+    text-decoration:none;
+    color:#000;
+    font-weight:800;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+/* GRID */
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
     padding:40px;
     justify-items:center;
 }
+
 .card{
     width:100%;
     max-width:320px;
@@ -45,6 +68,7 @@ header{
     border-radius:18px;
     padding:15px;
     text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
 }
 
 .img-container{
@@ -62,9 +86,9 @@ header{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
-    display:block;
 }
 
+/* SELECT */
 .select-option{
     width:100%;
     padding:10px;
@@ -72,6 +96,7 @@ header{
     border-radius:10px;
 }
 
+/* BUTTON */
 .btn-add{
     width:100%;
     padding:12px;
@@ -83,6 +108,7 @@ header{
     cursor:pointer;
 }
 
+/* CART */
 .cart-icon{
     cursor:pointer;
 }
@@ -96,6 +122,7 @@ header{
     margin-left:5px;
 }
 
+/* SIDE CART */
 .side-menu{
     position:fixed;
     top:0;
@@ -107,18 +134,24 @@ header{
     transition:0.4s;
     padding:20px;
     overflow-y:auto;
+    z-index:2000;
 }
 
-.side-menu.active{right:0;}
+.side-menu.active{
+    right:0;
+}
 
 .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,0.4);
     display:none;
+    z-index:1500;
 }
 
-.overlay.active{display:block;}
+.overlay.active{
+    display:block;
+}
 
 .cart-item{
     display:flex;
@@ -131,20 +164,10 @@ header{
     background:none;
     border:none;
     color:red;
-    font-size:11px;
     cursor:pointer;
+    font-size:11px;
 }
 
-.btn-clear{
-    width:100%;
-    margin-top:15px;
-    padding:10px;
-    border:none;
-    background:#000;
-    color:#fff;
-    cursor:pointer;
-    border-radius:20px;
-}
 </style>
 </head>
 
@@ -152,93 +175,117 @@ header{
 
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
+<!-- HEADER -->
 <header>
-    <div style="display:flex;gap:10px;align-items:center;">
-        <div class="logo-circle"></div>
-        <h3>SOLLENE</h3>
-    </div>
 
-    <div onclick="toggleCart()" class="cart-icon">
-        🛒 <span id="cart-count" class="cart-badge">0</span>
-    </div>
+<div style="display:flex;align-items:center;gap:10px;">
+    <div class="logo-circle"></div>
+    <h3>SOLLENE</h3>
+</div>
+
+<nav>
+    <a href="index.html" class="home-btn">HOME</a>
+</nav>
+
+<div onclick="toggleCart()" class="cart-icon">
+    🛒 <span id="cart-count" class="cart-badge">0</span>
+</div>
+
 </header>
 
 <!-- PRODUCTS -->
 <div class="products-grid">
 
-    <!-- CARD 1 -->
-    <div class="card">
-        <div class="img-container">
-            <img src="imagem.woman.png" class="card-img">
-        </div>
+<!-- CARD 1 -->
+<div class="card">
 
-        <h3>Signature Style</h3>
-        <p><b>€195</b></p>
-
-        <select class="select-option">
-            <option>T-Shirt</option>
-            <option>Pants</option>
-            <option>Full Outfit</option>
-        </select>
-
-        <button class="btn-add"
-        onclick="addToCart('Signature Style',195,this.parentNode.querySelector('select').value)">
-        Add to Bag
-        </button>
+    <div class="img-container">
+        <img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
     </div>
 
-    <!-- CARD 2 -->
-    <div class="card">
-       <div class="img-container">
-    <img src="womancalca1.png" class="card-img" onerror="this.src='logo.png'">
+    <h3>Signature Style</h3>
+    <p><b>€195</b></p>
+
+    <select class="select-option">
+        <option>T-Shirt</option>
+        <option>Pants</option>
+        <option>Full Outfit</option>
+    </select>
+
+    <button class="btn-add"
+    onclick="addToCart('Signature Style',195,this.parentNode.querySelector('select').value)">
+    Add to Bag
+    </button>
+
 </div>
-        <h3>Luxury Pants</h3>
-        <p><b>€85</b></p>
 
-        <select class="select-option">
-            <option>Size 36</option>
-            <option>Size 38</option>
-            <option>Size 40</option>
-        </select>
+<!-- CARD 2 -->
+<div class="card">
 
-        <button class="btn-add"
-        onclick="addToCart('Luxury Pants',85,this.parentNode.querySelector('select').value)">
-        Add to Bag
-        </button>
+    <div class="img-container">
+        <img src="womancalca1.png" class="card-img" onerror="this.src='logo.png'">
     </div>
 
-    <!-- CARD 3 -->
-    <div class="card">
-        <div class="img-container">
-            <img src="womancalça3.png" class="card-img">
-        </div>
+    <h3>Elegant Pants</h3>
+    <p><b>€85</b></p>
 
-        <h3>Premium Pants</h3>
-        <p><b>€95</b></p>
+    <select class="select-option">
+        <option>Size 36</option>
+        <option>Size 38</option>
+        <option>Size 40</option>
+    </select>
 
-        <select class="select-option">
-            <option>Black</option>
-            <option>Beige</option>
-            <option>Grey</option>
-        </select>
+    <button class="btn-add"
+    onclick="addToCart('Elegant Pants',85,this.parentNode.querySelector('select').value)">
+    Add to Bag
+    </button>
 
-        <button class="btn-add"
-        onclick="addToCart('Premium Pants',95,this.parentNode.querySelector('select').value)">
-        Add to Bag
-        </button>
+</div>
+
+<!-- CARD 3 -->
+<div class="card">
+
+    <div class="img-container">
+        <img src="womancalca3.png" class="card-img" onerror="this.src='logo.png'">
     </div>
+
+    <h3>Premium Style</h3>
+    <p><b>€95</b></p>
+
+    <select class="select-option">
+        <option>Black</option>
+        <option>Beige</option>
+        <option>Grey</option>
+    </select>
+
+    <button class="btn-add"
+    onclick="addToCart('Premium Style',95,this.parentNode.querySelector('select').value)">
+    Add to Bag
+    </button>
+
+</div>
 
 </div>
 
 <!-- CART -->
 <div class="side-menu" id="sideMenu">
-    <h3>Your Cart</h3>
 
-    <div id="cart-list"></div>
+<h3>Cart</h3>
 
-    <button class="btn-clear" onclick="clearCart()">
-        Clear Cart
-    </button>
+<div id="cart-list"></div>
+
+<button onclick="clearCart()" style="
+width:100%;
+margin-top:15px;
+padding:10px;
+border:none;
+background:#000;
+color:#fff;
+border-radius:20px;
+">
+Clear Cart
+</button>
+
 </div>
 
 <script>
@@ -296,6 +343,7 @@ function updateUI(){
             </button>
         </div>
     `).join('');
+
 }
 
 function toggleCart(){
