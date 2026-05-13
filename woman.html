@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sollene Group</title>
+<title>Woman | Sollene</title>
 
 <style>
 
@@ -35,11 +35,10 @@ header{
 
 /* LOGO */
 .logo-circle{
-    width:55px;
-    height:55px;
+    width:50px;
+    height:50px;
     border-radius:50%;
     overflow:hidden;
-    border:2px solid #d4af37;
 }
 
 .logo-circle img{
@@ -48,50 +47,72 @@ header{
     object-fit:cover;
 }
 
+/* NAV CORRIGIDO */
 nav a{
     text-decoration:none;
     color:#000;
-    margin:0 10px;
     font-weight:700;
     font-size:12px;
+    margin:0 8px;
+    padding:6px 10px;
+    border:1px solid transparent;
 }
 
+nav a:hover{
+    border:1px solid #7a5c33;
+    border-radius:6px;
+}
+
+/* CART */
 .cart-icon{
     cursor:pointer;
-    font-size:18px;
-}
-
-/* HERO */
-.hero{
-    width:100%;
-    height:85vh;
-    overflow:hidden;
-}
-
-.hero img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    object-position:center 20%;
 }
 
 /* GRID */
-.collections{
-    padding:60px 5%;
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+    padding:40px 5%;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:16px;
+    padding:15px;
     text-align:center;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-    margin-top:30px;
+.img-container{
+    width:100%;
+    height:320px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fdfaf6;
+    border-radius:12px;
+    overflow:hidden;
 }
 
-.card{
-    background:#fff;
-    padding:20px;
-    border-radius:16px;
+.card-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:10px;
+}
+
+/* BUTTON */
+.btn-add{
+    margin-top:10px;
+    padding:12px;
+    width:100%;
+    background:#7a5c33;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+    border-radius:8px;
 }
 
 /* CART */
@@ -104,8 +125,8 @@ nav a{
     background:#fff;
     padding:20px;
     transition:0.3s;
-    overflow:auto;
     z-index:2000;
+    overflow:auto;
 }
 
 .side-menu.active{
@@ -135,30 +156,16 @@ nav a{
     border:none;
     color:red;
     cursor:pointer;
-    font-size:12px;
 }
 
-.clear-btn, .checkout-btn{
-    width:100%;
-    padding:12px;
-    margin-top:10px;
-    border:none;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.clear-btn{
-    background:#000;
-    color:#fff;
-}
-
-.checkout-btn{
-    background:#7a5c33;
-    color:#fff;
+/* LINKS NAV FIX */
+nav{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -183,36 +190,51 @@ nav a{
 
 </header>
 
-<!-- HERO -->
-<section class="hero">
-    <img src="Solle-Global-Store.png">
-</section>
+<!-- PRODUCTS -->
+<main class="products-grid">
 
-<!-- COLLECTIONS -->
-<section class="collections">
-
-    <h2>COLLECTIONS</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Women</h3>
-            <a href="woman.html">View Collection</a>
+    <!-- CARD -->
+    <div class="card">
+        <div class="img-container">
+            <img src="womancalca1.png" class="card-img">
         </div>
 
-        <div class="card">
-            <h3>Men</h3>
-            <a href="menshirts.html">View Collection</a>
-        </div>
+        <h3>Elegant Style</h3>
+        <p>€195</p>
 
-        <div class="card">
-            <h3>Accessories</h3>
-            <a href="accessories.html">View Collection</a>
-        </div>
+        <select class="select-option">
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Full">Full Outfit</option>
+        </select>
 
+        <button class="btn-add"
+        onclick="addToCart('Elegant Style',195,this.previousElementSibling.value)">
+            ADD TO CART
+        </button>
     </div>
 
-</section>
+    <!-- CARD 2 -->
+    <div class="card">
+        <div class="img-container">
+            <img src="woman.calca2.png.jpg" class="card-img">
+        </div>
+
+        <h3>Luxury Pants</h3>
+        <p>€120</p>
+
+        <select class="select-option">
+            <option value="Pants 1">Pants 1</option>
+            <option value="Pants 2">Pants 2</option>
+        </select>
+
+        <button class="btn-add"
+        onclick="addToCart('Luxury Pants',120,this.previousElementSibling.value)">
+            ADD TO CART
+        </button>
+    </div>
+
+</main>
 
 <!-- CART -->
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
@@ -223,14 +245,8 @@ nav a{
 
     <div id="cart-list"></div>
 
-    <p id="cart-total" style="margin-top:10px;font-weight:bold;"></p>
-
-    <button class="clear-btn" onclick="clearCart()">
+    <button onclick="clearCart()" style="width:100%;padding:12px;background:#000;color:#fff;border:none;margin-top:10px;">
         CLEAR CART
-    </button>
-
-    <button class="checkout-btn" onclick="checkout()">
-        FINALIZE PURCHASE
     </button>
 
 </div>
@@ -245,44 +261,12 @@ function saveCart(cart){
     localStorage.setItem("sollene_cart", JSON.stringify(cart));
 }
 
-function updateUI(){
-
+function addToCart(name,price,option){
     let cart = getCart();
-
-    let list = document.getElementById("cart-list");
-    let totalBox = document.getElementById("cart-total");
-
-    document.getElementById("cart-count").innerText = cart.length;
-
-    if(!list) return;
-
-    if(cart.length === 0){
-        list.innerHTML = "<p>Cart empty</p>";
-        if(totalBox) totalBox.innerText = "";
-        return;
-    }
-
-    let total = 0;
-
-    list.innerHTML = cart.map((item,index)=>{
-        total += Number(item.price);
-
-        return `
-        <div class="cart-item">
-            <div>
-                <b>${item.name}</b><br>
-                <small>${item.option}</small><br>
-                €${item.price}
-            </div>
-
-            <button class="remove-btn" onclick="removeItem(${index})">
-                REMOVE
-            </button>
-        </div>
-        `;
-    }).join('');
-
-    totalBox.innerText = "Total: € " + total;
+    cart.push({name,price,option});
+    saveCart(cart);
+    updateUI();
+    toggleCart();
 }
 
 function removeItem(index){
@@ -297,23 +281,37 @@ function clearCart(){
     updateUI();
 }
 
-function toggleCart(){
-    document.getElementById("sideMenu").classList.toggle("active");
-    document.getElementById("overlay").classList.toggle("active");
-}
+function updateUI(){
 
-function checkout(){
     let cart = getCart();
 
+    document.getElementById("cart-count").innerText = cart.length;
+
+    let list = document.getElementById("cart-list");
+
     if(cart.length === 0){
-        alert("Cart is empty");
+        list.innerHTML = "<p>Cart empty</p>";
         return;
     }
 
-    alert("Order completed successfully!");
-    localStorage.removeItem("sollene_cart");
-    updateUI();
-    toggleCart();
+    list.innerHTML = cart.map((item,index)=>`
+        <div class="cart-item">
+            <div>
+                <b>${item.name}</b><br>
+                <small>${item.option}</small><br>
+                €${item.price}
+            </div>
+
+            <button class="remove-btn" onclick="removeItem(${index})">
+                REMOVE
+            </button>
+        </div>
+    `).join('');
+}
+
+function toggleCart(){
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
 }
 
 document.addEventListener("DOMContentLoaded", updateUI);
