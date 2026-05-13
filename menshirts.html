@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -16,10 +17,39 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    background:#0b0b0b;
-    color:white;
     font-family:'Plus Jakarta Sans',sans-serif;
+    background:#070707;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND EFFECT */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,#d4af3720,transparent 70%);
+    top:-200px;
+    left:-200px;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#ffffff08,transparent 70%);
+    bottom:-200px;
+    right:-200px;
+    z-index:-1;
 }
 
 /* HEADER */
@@ -30,22 +60,24 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    position:sticky;
+    position:fixed;
     top:0;
-    background:#0b0b0b;
-    z-index:999;
-    border-bottom:1px solid rgba(255,255,255,0.08);
+    left:0;
+    z-index:1000;
+    backdrop-filter:blur(14px);
+    background:rgba(0,0,0,0.45);
+    border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
     font-size:28px;
     font-weight:700;
-    letter-spacing:3px;
+    letter-spacing:4px;
 }
 
 nav{
     display:flex;
-    gap:30px;
+    gap:35px;
 }
 
 nav a{
@@ -59,106 +91,120 @@ nav a:hover{
     color:#d4af37;
 }
 
-.cart-icon{
+/* CART BUTTON */
+
+.cart-button{
     background:#d4af37;
     color:black;
-    padding:10px 18px;
-    border-radius:30px;
-    cursor:pointer;
+    padding:12px 22px;
+    border-radius:40px;
     font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.cart-button:hover{
+    transform:scale(1.05);
 }
 
 /* HERO */
 
 .hero{
     width:100%;
-    height:75vh;
-    background:url('menshirts.png') center/cover;
+    min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     position:relative;
-}
-
-.hero::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.55);
+    padding:120px 8%;
+    background:
+    linear-gradient(rgba(0,0,0,0.55),
+    rgba(0,0,0,0.7)),
+    url('menshirts.png') center/cover;
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
+    max-width:800px;
 }
 
-.hero-content h1{
-    font-size:65px;
+.hero h1{
+    font-size:82px;
+    line-height:1.1;
+    margin-bottom:25px;
     letter-spacing:5px;
-    margin-bottom:20px;
 }
 
-.hero-content p{
-    font-size:18px;
-    color:#d8d8d8;
-    margin-bottom:30px;
+.hero p{
+    font-size:19px;
+    color:#d7d7d7;
+    margin-bottom:35px;
+    line-height:1.7;
 }
 
-.hero-content button{
-    padding:15px 35px;
+.hero button{
+    padding:17px 40px;
     border:none;
+    border-radius:40px;
     background:#d4af37;
     color:black;
     font-weight:700;
-    border-radius:40px;
+    font-size:15px;
     cursor:pointer;
     transition:0.3s;
 }
 
-.hero-content button:hover{
-    transform:scale(1.05);
+.hero button:hover{
+    transform:translateY(-5px);
 }
 
 /* PRODUCTS */
 
-.products-section{
-    padding:80px 8%;
+.products{
+    padding:100px 8%;
 }
 
 .section-title{
     text-align:center;
-    font-size:42px;
-    margin-bottom:60px;
-    letter-spacing:3px;
+    font-size:45px;
+    margin-bottom:70px;
+    letter-spacing:4px;
 }
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
     gap:35px;
 }
 
 .product-card{
-    background:#141414;
-    border-radius:22px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.05);
+    border-radius:28px;
     overflow:hidden;
     transition:0.4s;
-    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+    backdrop-filter:blur(10px);
+    position:relative;
 }
 
 .product-card:hover{
     transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
 .product-card img{
     width:100%;
-    height:320px;
+    height:340px;
     object-fit:cover;
+    transition:0.5s;
+}
+
+.product-card:hover img{
+    transform:scale(1.05);
 }
 
 .product-info{
-    padding:20px;
+    padding:22px;
 }
 
 .product-info h3{
@@ -169,7 +215,7 @@ nav a:hover{
 .price{
     color:#d4af37;
     font-size:22px;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
 .buttons{
@@ -179,9 +225,9 @@ nav a:hover{
 
 .buttons button{
     flex:1;
+    padding:14px;
     border:none;
-    padding:13px;
-    border-radius:12px;
+    border-radius:14px;
     font-weight:700;
     cursor:pointer;
     transition:0.3s;
@@ -193,7 +239,7 @@ nav a:hover{
 }
 
 .save-btn{
-    background:#2a2a2a;
+    background:#1f1f1f;
     color:white;
 }
 
@@ -205,31 +251,40 @@ nav a:hover{
 
 .cart-sidebar{
     position:fixed;
-    right:-400px;
     top:0;
-    width:350px;
+    right:-420px;
+    width:380px;
     height:100%;
-    background:#121212;
-    padding:25px;
+    background:#101010;
+    z-index:2000;
     transition:0.4s;
-    z-index:1000;
+    padding:30px;
     overflow-y:auto;
-    box-shadow:-10px 0 30px rgba(0,0,0,0.5);
+    border-left:1px solid rgba(255,255,255,0.08);
 }
 
 .cart-sidebar.active{
     right:0;
 }
 
+.close-cart{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:30px;
+    cursor:pointer;
+}
+
 .cart-sidebar h2{
-    margin-bottom:25px;
+    margin-bottom:40px;
+    margin-top:20px;
 }
 
 .cart-item{
-    background:#1d1d1d;
-    padding:15px;
-    border-radius:15px;
-    margin-bottom:15px;
+    background:#1b1b1b;
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:18px;
 }
 
 .cart-item h4{
@@ -237,58 +292,53 @@ nav a:hover{
 }
 
 .remove-btn{
-    margin-top:10px;
+    margin-top:12px;
     width:100%;
-    background:#a80000;
-    color:white;
+    padding:11px;
     border:none;
-    padding:10px;
+    background:#7a0000;
+    color:white;
     border-radius:10px;
     cursor:pointer;
 }
 
 .total{
-    margin-top:25px;
-    font-size:22px;
+    font-size:24px;
     color:#d4af37;
+    margin-top:25px;
 }
 
 .checkout-btn{
-    margin-top:20px;
     width:100%;
-    padding:15px;
+    padding:16px;
     border:none;
+    border-radius:14px;
+    margin-top:20px;
     background:#d4af37;
     color:black;
     font-weight:700;
-    border-radius:12px;
-    cursor:pointer;
-}
-
-.close-cart{
-    position:absolute;
-    top:15px;
-    right:20px;
-    font-size:28px;
     cursor:pointer;
 }
 
 /* FOOTER */
 
 footer{
-    padding:40px;
     text-align:center;
-    border-top:1px solid rgba(255,255,255,0.08);
-    margin-top:60px;
-    color:#999;
+    padding:40px;
+    color:#777;
+    border-top:1px solid rgba(255,255,255,0.05);
 }
 
 /* MOBILE */
 
 @media(max-width:768px){
 
-.hero-content h1{
-    font-size:42px;
+.hero h1{
+    font-size:50px;
+}
+
+.hero p{
+    font-size:16px;
 }
 
 nav{
@@ -302,56 +352,70 @@ nav{
 }
 
 </style>
+
 </head>
+
 <body>
 
 <header>
 
-<div class="logo">SOLLENE</div>
+<div class="logo">
+SOLLENE
+</div>
 
 <nav>
-<a href="#">Home</a>
-<a href="#">Collection</a>
-<a href="#">Luxury</a>
-<a href="#">Contact</a>
+
+<a href="#">HOME</a>
+<a href="#products">COLLECTION</a>
+<a href="#">LUXURY</a>
+<a href="#">CONTACT</a>
+
 </nav>
 
-<div class="cart-icon" onclick="toggleCart()">
-Cart (<span id="cart-count">0</span>)
+<div class="cart-button" onclick="toggleCart()">
+CART (<span id="cart-count">0</span>)
 </div>
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
 
 <div class="hero-content">
-<h1>MEN COLLECTION</h1>
+
+<h1>
+MEN<br>ESSENTIALS
+</h1>
 
 <p>
-Modern elegance for men who value luxury and identity.
+A sophisticated menswear experience inspired by timeless elegance,
+minimal aesthetics and modern luxury fashion.
 </p>
 
-<button>
-Shop Now
+<button onclick="document.getElementById('products').scrollIntoView()">
+EXPLORE COLLECTION
 </button>
 
 </div>
 
 </section>
 
-<section class="products-section">
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
 
 <h2 class="section-title">
-Luxury Essentials
+LUXURY COLLECTION
 </h2>
 
 <div class="products-grid">
 
-<!-- PRODUCT 1 -->
+<!-- 1 -->
 
 <div class="product-card">
 
-<img src="menshirts.png" alt="Men Shirt">
+<img src="menshirts.png">
 
 <div class="product-info">
 
@@ -376,11 +440,11 @@ Save
 
 </div>
 
-<!-- PRODUCT 2 -->
+<!-- 2 -->
 
 <div class="product-card">
 
-<img src="menshorts.png" alt="Shorts">
+<img src="menshorts.png">
 
 <div class="product-info">
 
@@ -405,11 +469,11 @@ Save
 
 </div>
 
-<!-- PRODUCT 3 -->
+<!-- 3 -->
 
 <div class="product-card">
 
-<img src="gravata.png" alt="Tie">
+<img src="gravata.png">
 
 <div class="product-info">
 
@@ -434,11 +498,11 @@ Save
 
 </div>
 
-<!-- PRODUCT 4 -->
+<!-- 4 -->
 
 <div class="product-card">
 
-<img src="bone.png" alt="Cap">
+<img src="bone.png">
 
 <div class="product-info">
 
@@ -463,11 +527,11 @@ Save
 
 </div>
 
-<!-- PRODUCT 5 -->
+<!-- 5 -->
 
 <div class="product-card">
 
-<img src="chinelo.png" alt="Slides">
+<img src="chinelo.png">
 
 <div class="product-info">
 
@@ -492,11 +556,11 @@ Save
 
 </div>
 
-<!-- PRODUCT 6 -->
+<!-- 6 -->
 
 <div class="product-card">
 
-<img src="imagenswen.png" alt="Fashion">
+<img src="imagenswen.png">
 
 <div class="product-info">
 
@@ -529,11 +593,14 @@ Save
 
 <div class="cart-sidebar" id="cartSidebar">
 
-<div class="close-cart" onclick="toggleCart()">
+<div class="close-cart"
+onclick="toggleCart()">
 ×
 </div>
 
-<h2>Your Cart</h2>
+<h2>
+YOUR CART
+</h2>
 
 <div id="cartItems"></div>
 
@@ -548,7 +615,9 @@ Checkout
 </div>
 
 <footer>
-© 2026 Sollene Luxury Store — Premium Men Experience
+
+© 2026 Sollene Luxury Experience
+
 </footer>
 
 <script>
@@ -576,11 +645,14 @@ updateCart();
 
 function updateCart(){
 
-const cartItems = document.getElementById('cartItems');
+const cartItems =
+document.getElementById('cartItems');
 
-const cartTotal = document.getElementById('cartTotal');
+const cartTotal =
+document.getElementById('cartTotal');
 
-const cartCount = document.getElementById('cart-count');
+const cartCount =
+document.getElementById('cart-count');
 
 cartItems.innerHTML = '';
 
@@ -605,9 +677,11 @@ Remove
 
 });
 
-cartTotal.innerHTML = `Total: €${total}`;
+cartTotal.innerHTML =
+`Total: €${total}`;
 
-cartCount.innerHTML = cart.length;
+cartCount.innerHTML =
+cart.length;
 
 }
 
