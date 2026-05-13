@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -201,9 +200,9 @@ nav a:hover{
 
 .section-title{
     text-align:center;
-    font-size:45px;
-    letter-spacing:4px;
+    font-size:46px;
     margin-bottom:70px;
+    letter-spacing:4px;
 }
 
 .products-grid{
@@ -216,10 +215,13 @@ nav a:hover{
 
 .product-card{
     background:
-    rgba(255,255,255,0.03);
+    linear-gradient(
+    180deg,
+    rgba(255,255,255,0.04),
+    rgba(255,255,255,0.02));
 
     border:
-    1px solid rgba(255,255,255,0.05);
+    1px solid rgba(255,255,255,0.06);
 
     border-radius:28px;
 
@@ -241,7 +243,6 @@ nav a:hover{
     width:100%;
     height:340px;
     object-fit:cover;
-
     transition:0.5s;
 }
 
@@ -271,17 +272,11 @@ nav a:hover{
 
 .buttons button{
     flex:1;
-
     padding:14px;
-
     border:none;
-
     border-radius:14px;
-
     font-weight:700;
-
     cursor:pointer;
-
     transition:0.3s;
 }
 
@@ -454,19 +449,13 @@ SOLLENE
 </div>
 
 <nav>
-
-<a href="#">HOME</a>
 <a href="#products">COLLECTION</a>
 <a href="#">LUXURY</a>
 <a href="#">CONTACT</a>
-
 </nav>
 
-<div class="cart-button"
-onclick="toggleCart()">
-
+<div class="cart-button" onclick="toggleCart()">
 CART (<span id="cart-count">0</span>)
-
 </div>
 
 </header>
@@ -500,7 +489,7 @@ EXPLORE COLLECTION
 <section class="products" id="products">
 
 <h2 class="section-title">
-LUXURY COLLECTION
+MEN COLLECTION
 </h2>
 
 <div class="products-grid">
@@ -509,7 +498,7 @@ LUXURY COLLECTION
 
 <div class="product-card">
 
-<img src="menshirts.png">
+<img src="menshirts.png" alt="Executive Linen Shirt">
 
 <div class="product-info">
 
@@ -538,7 +527,7 @@ Save
 
 <div class="product-card">
 
-<img src="menshorts.png">
+<img src="menshorts.png" alt="Luxury Casual Shorts">
 
 <div class="product-info">
 
@@ -567,7 +556,7 @@ Save
 
 <div class="product-card">
 
-<img src="gravata.png">
+<img src="gravata.png" alt="Classic Black Tie">
 
 <div class="product-info">
 
@@ -596,7 +585,7 @@ Save
 
 <div class="product-card">
 
-<img src="bone.png">
+<img src="bone.png" alt="Urban Luxury Cap">
 
 <div class="product-info">
 
@@ -625,7 +614,7 @@ Save
 
 <div class="product-card">
 
-<img src="chinelo.png">
+<img src="chinelo.png" alt="Summer Elite Slides">
 
 <div class="product-info">
 
@@ -654,7 +643,7 @@ Save
 
 <div class="product-card">
 
-<img src="imagenswen.png">
+<img src="imagenswen.png" alt="Premium Fashion Piece">
 
 <div class="product-info">
 
@@ -685,11 +674,9 @@ Save
 
 <!-- CART -->
 
-<div class="cart-sidebar"
-id="cartSidebar">
+<div class="cart-sidebar" id="cartSidebar">
 
-<div class="close-cart"
-onclick="toggleCart()">
+<div class="close-cart" onclick="toggleCart()">
 ×
 </div>
 
@@ -699,8 +686,7 @@ YOUR CART
 
 <div id="cartItems"></div>
 
-<div class="total"
-id="cartTotal">
+<div class="total" id="cartTotal">
 Total: €0
 </div>
 
