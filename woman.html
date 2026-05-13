@@ -24,7 +24,7 @@
             display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
         }
 
-        /* VITRINE HARMÔNICA */
+        /* VITRINE AJUSTADA PARA NÃO CORTAR */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
         
@@ -43,29 +43,38 @@
             padding-bottom: 30px; 
             border: 1px solid #f9f9f9; 
             transition: 0.4s;
+            overflow: hidden;
         }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
 
-        .img-container { width: 100%; height: 480px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #f9f9f9; }
-        .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover .card-img { transform: scale(1.05); }
+        /* MUDANÇA AQUI: Background neutro e object-fit contain */
+        .img-container { 
+            width: 100%; 
+            height: 550px; /* Aumentei a altura para a foto brilhar */
+            overflow: hidden; 
+            background: #fdfaf6; /* Fundo suave para as bordas da foto */
+            margin-bottom: 20px;
+        }
+
+        .card-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* MOSTRA A FOTO INTEIRA SEM CORTAR AS BORDAS */
+            transition: 0.5s; 
+        }
+        
+        .card:hover .card-img { transform: scale(1.03); }
 
         .btn-add {
             background: #7a5c33; color: #fff; border: none;
             padding: 15px 45px; border-radius: 50px; font-weight: 800;
             text-transform: uppercase; font-size: 11px; cursor: pointer;
-            transition: 0.3s;
         }
-        .btn-add:hover { background: #000; }
 
         /* ABA LATERAL */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 13px; }
-
-        @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -78,7 +87,6 @@
             <h1 style="font-size: 20px; font-weight: 800; color: #7a5c33;">SOLLENE</h1>
         </div>
         <nav><a href="index.html" style="text-decoration:none; color:#000; font-weight:800; font-size:11px; border: 2px solid #000; padding: 8px 15px; border-radius: 6px;">HOME</a></nav>
-        
         <div class="cart-icon-container" onclick="toggleCart()">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
@@ -92,7 +100,6 @@
         <h2 class="page-title">Women's Premium Selection</h2>
         <div class="products-grid">
             
-            <!-- PRODUTO 1 -->
             <div class="card">
                 <div class="img-container">
                     <img src="imagem.woman.png" class="card-img" alt="Luxury Selection 1" onerror="this.src='logo.png'">
@@ -102,9 +109,9 @@
                 <button class="btn-add" onclick="addToCart('Signature Style', 195)">Add to Bag</button>
             </div>
 
-            <!-- PRODUTO 2 -->
             <div class="card">
                 <div class="img-container">
+                    <!-- FOTO QUE ESTAVA CORTANDO -->
                     <img src="imagen.woman.png2.png" class="card-img" alt="Luxury Selection 2" onerror="this.src='logo.png'">
                 </div>
                 <h3>Prestige Female Outfit</h3>
@@ -118,35 +125,21 @@
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Summary</h2>
-        <div id="cart-list" style="margin-top:20px;">
-            <p style="color:#999; font-size:13px;">Bag is empty.</p>
-        </div>
-        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800;">
-            <span>TOTAL:</span><span id="total-price">€ 0.00</span>
-        </div>
+        <div id="cart-list" style="margin-top:20px;"></div>
         <button style="width:100%; padding:18px; background:#000; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:20px; cursor:pointer;" onclick="alert('Order Processed!')">COMPLETE PURCHASE</button>
     </div>
 
     <script>
-        let cart = [];
-        let total = 0;
+        let cart = []; let total = 0;
         function toggleCart() {
             document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
         function addToCart(name, price) {
-            cart.push({name, price});
-            total += price;
-            updateCart();
-            document.getElementById('cart-count').innerText = cart.length;
+            count = (document.getElementById('cart-count').innerText * 1) + 1;
+            document.getElementById('cart-count').innerText = count;
+            document.getElementById('cart-list').innerHTML += `<div style="display:flex; justify-content:space-between; margin-bottom:10px;"><span>${name}</span><strong>€ ${price}.00</strong></div>`;
             toggleCart();
-        }
-        function updateCart() {
-            const list = document.getElementById('cart-list');
-            list.innerHTML = cart.map(item => `
-                <div class="cart-item"><span>${item.name}</span><span style="font-weight:800;">€ ${item.price}.00</span></div>
-            `).join('');
-            document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
     </script>
 </body>
