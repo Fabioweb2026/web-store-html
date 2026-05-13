@@ -8,7 +8,7 @@
 <style>
 body{
     margin:0;
-    font-family:Arial, sans-serif;
+    font-family:Arial;
     background:#f7f3eb;
 }
 
@@ -21,10 +21,10 @@ header{
     background:#fff;
     position:sticky;
     top:0;
-    z-index:1000;
 }
 
-.logo-circle img{
+/* LOGO */
+.logo img{
     width:45px;
     height:45px;
     border-radius:50%;
@@ -32,21 +32,15 @@ header{
 
 /* NAV */
 nav a{
-    margin:0 10px;
+    margin:0 8px;
     text-decoration:none;
     color:#000;
-    font-weight:700;
     font-size:12px;
-}
-
-/* CART ICON */
-.cart{
-    cursor:pointer;
     font-weight:700;
 }
 
 /* GRID */
-.products-grid{
+.grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
@@ -56,19 +50,19 @@ nav a{
 /* CARD */
 .card{
     background:#fff;
-    border-radius:16px;
     padding:15px;
+    border-radius:16px;
     text-align:center;
 }
 
-.img-container{
+.img-box{
     height:260px;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
 }
 
-.card img{
+.img-box img{
     max-width:100%;
     max-height:100%;
     object-fit:contain;
@@ -81,10 +75,10 @@ select{
 }
 
 button{
-    padding:10px 15px;
-    border:none;
     background:#000;
     color:#fff;
+    border:none;
+    padding:10px;
     cursor:pointer;
 }
 
@@ -100,10 +94,10 @@ button{
     display:block;
 }
 
-.side-menu{
+.cart{
     position:fixed;
-    top:0;
     right:-400px;
+    top:0;
     width:350px;
     height:100%;
     background:#fff;
@@ -112,32 +106,30 @@ button{
     overflow:auto;
 }
 
-.side-menu.active{
+.cart.active{
     right:0;
 }
 
-.cart-item{
+.item{
     display:flex;
     justify-content:space-between;
     border-bottom:1px solid #eee;
     padding:10px 0;
 }
 
-.remove-btn{
+.remove{
+    color:red;
     background:none;
     border:none;
-    color:red;
     cursor:pointer;
 }
 
-.clear-btn{
+.clear{
     width:100%;
-    padding:12px;
+    padding:10px;
+    margin-top:10px;
     background:#000;
     color:#fff;
-    border:none;
-    margin-top:10px;
-    cursor:pointer;
 }
 </style>
 </head>
@@ -146,7 +138,7 @@ button{
 
 <!-- HEADER -->
 <header>
-    <div class="logo-circle">
+    <div class="logo">
         <img src="logo.png">
     </div>
 
@@ -157,40 +149,36 @@ button{
         <a href="accessories.html">ACCESSORIES</a>
     </nav>
 
-    <div class="cart" onclick="toggleCart()">
-        🛒 <span id="cart-count">0</span>
+    <div onclick="toggleCart()" style="cursor:pointer;">
+        🛒 <span id="count">0</span>
     </div>
 </header>
 
 <!-- PRODUCTS -->
-<main class="products-grid">
+<div class="grid">
 
-    <!-- CARD 1 -->
     <div class="card">
-        <div class="img-container">
+        <div class="img-box">
             <img src="womancalca1.png">
         </div>
-
-        <h3>Elegant Outfit</h3>
-        <p>€120</p>
+        <h3>Product 1</h3>
+        <p>€100</p>
 
         <select>
             <option value="S">S</option>
             <option value="M">M</option>
         </select>
 
-        <button onclick="addToCart('Elegant Outfit',120,this.previousElementSibling.value)">
-            ADD TO CART
+        <button onclick="add('Product 1',100,this.previousElementSibling.value)">
+            ADD
         </button>
     </div>
 
-    <!-- CARD 2 -->
     <div class="card">
-        <div class="img-container">
+        <div class="img-box">
             <img src="womancalca2.png.jpg">
         </div>
-
-        <h3>Pants Style</h3>
+        <h3>Product 2</h3>
         <p>€80</p>
 
         <select>
@@ -198,116 +186,103 @@ button{
             <option value="M">M</option>
         </select>
 
-        <button onclick="addToCart('Pants Style',80,this.previousElementSibling.value)">
-            ADD TO CART
+        <button onclick="add('Product 2',80,this.previousElementSibling.value)">
+            ADD
         </button>
     </div>
 
-</main>
+</div>
 
 <!-- CART -->
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-<div class="side-menu" id="sideMenu">
+<div class="cart" id="cart">
 
     <h2>Your Cart</h2>
 
-    <div id="cart-list"></div>
+    <div id="list"></div>
 
-    <p id="cart-total"></p>
+    <p id="total"></p>
 
-    <button class="clear-btn" onclick="clearCart()">
-        CLEAR CART
-    </button>
-
+    <button class="clear" onclick="clearCart()">CLEAR CART</button>
 </div>
 
-<!-- JS -->
 <script>
 function getCart(){
     return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
 
-function saveCart(cart){
+function save(cart){
     localStorage.setItem("sollene_cart", JSON.stringify(cart));
 }
 
-function addToCart(name, price, option){
+function add(name,price,size){
     let cart = getCart();
-
-    cart.push({name, price, option});
-
-    saveCart(cart);
-    updateCart();
+    cart.push({name,price,size});
+    save(cart);
+    update();
     openCart();
 }
 
-function removeItem(index){
+function remove(i){
     let cart = getCart();
-    cart.splice(index,1);
-    saveCart(cart);
-    updateCart();
+    cart.splice(i,1);
+    save(cart);
+    update();
 }
 
 function clearCart(){
     localStorage.removeItem("sollene_cart");
-    updateCart();
+    update();
 }
 
-function updateCart(){
-
+function update(){
     let cart = getCart();
 
-    let list = document.getElementById("cart-list");
-    let count = document.getElementById("cart-count");
-    let total = document.getElementById("cart-total");
+    let list = document.getElementById("list");
+    let count = document.getElementById("count");
+    let total = document.getElementById("total");
 
     if(count) count.innerText = cart.length;
 
-    if(!list) return;
-
     if(cart.length === 0){
-        list.innerHTML = "<p>Cart empty</p>";
-        if(total) total.innerHTML = "";
+        list.innerHTML = "<p>Empty</p>";
+        total.innerHTML = "";
         return;
     }
 
     let sum = 0;
 
-    list.innerHTML = cart.map((item,index)=>{
-        sum += Number(item.price);
+    list.innerHTML = cart.map((i,idx)=>{
+        sum += Number(i.price);
 
         return `
-        <div class="cart-item">
+        <div class="item">
             <div>
-                <b>${item.name}</b><br>
-                <small>${item.option}</small><br>
-                €${item.price}
+                <b>${i.name}</b><br>
+                ${i.size}<br>
+                €${i.price}
             </div>
 
-            <button class="remove-btn" onclick="removeItem(${index})">
-                REMOVE
-            </button>
+            <button class="remove" onclick="remove(${idx})">X</button>
         </div>
         `;
     }).join('');
 
-    if(total){
-        total.innerHTML = "TOTAL: € " + sum;
-    }
+    total.innerHTML = "TOTAL € " + sum;
 }
 
 function toggleCart(){
-    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("cart").classList.toggle("active");
     document.getElementById("overlay").classList.toggle("active");
 }
 
 function openCart(){
-    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("cart").classList.add("active");
     document.getElementById("overlay").classList.add("active");
 }
 
-document.addEventListener("DOMContentLoaded", updateCart);
+update();
 </script>
 
 </body>
