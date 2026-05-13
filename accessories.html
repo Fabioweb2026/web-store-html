@@ -2,36 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Accessories | Sollene Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessories | Sollene Group Official</title>
     <style>
         @import url('https://googleapis.com');
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; }
-        .main-header { background: rgba(247, 243, 235, 0.95); display: flex; align-items: center; justify-content: space-between; padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 1px solid #7a5c33; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
-        nav a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 12px 15px; }
+
+        /* HEADER PADRÃO COM CARRINHO */
+        .main-header {
+            background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
+            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
+        }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
+        
+        .cart-icon-container { position: relative; cursor: pointer; display: flex; align-items: center; }
+        .cart-badge {
+            position: absolute; top: -8px; right: -8px; background: #7a5c33; color: #fff;
+            font-size: 10px; font-weight: 800; width: 20px; height: 20px;
+            display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
+        }
+
+        /* VITRINE */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto; }
-        .card { background: #fff; border-radius: 20px; padding-bottom: 25px; border: 1px solid #f9f9f9; }
-        .img-container { width: 100%; height: 350px; overflow: hidden; border-radius: 15px; background: #f9f9f9; }
+        .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
+        .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; transition: 0.4s; border: 1px solid #f9f9f9; }
+        .img-container { width: 100%; height: 400px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #f9f9f9; }
         .card-img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* BOTÃO PREMIUM */
+        .btn-add {
+            background: #7a5c33; color: #fff; border: none;
+            padding: 15px 45px; border-radius: 50px; font-weight: 800;
+            text-transform: uppercase; font-size: 11px; cursor: pointer; transition: 0.3s;
+        }
+        .btn-add:hover { background: #000; transform: scale(1.05); }
+
+        /* ABA LATERAL (RESUMO) */
+        .side-menu {
+            position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
+            background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1);
+            z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto;
+        }
+        .side-menu.active { right: 0; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
+        .overlay.active { display: block; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
     </style>
 </head>
 <body>
+
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
     <header class="main-header">
-        <div style="display:flex; align-items:center; gap:15px;"><div class="logo-circle"></div><h1>Sollene</h1></div>
-        <nav><a href="index.html">HOME</a></nav>
+        <div class="header-left">
+            <div class="logo-circle"></div>
+            <h1 style="font-size: 20px; font-weight: 800; color: #7a5c33;">SOLLENE</h1>
+        </div>
+        <nav><a href="index.html" style="text-decoration:none; color:#000; font-weight:800; font-size:11px; margin-right:20px;">HOME</a></nav>
+        <div class="cart-icon-container" onclick="toggleCart()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
     </header>
+
     <main class="products-section">
-        <h2 style="letter-spacing:4px; color:#7a5c33; text-transform:uppercase;">Accessories Collection</h2>
+        <h2 class="page-title">Executive Accessories</h2>
         <div class="products-grid">
+            
             <div class="card">
-                <div class="img-container"><img src="produtdos45.png" class="card-img" onerror="this.src='logo.png'"></div>
-                <h3 style="margin-top:15px;">Executive Accessory</h3>
-                <p style="font-weight:800; color:#7a5c33; margin:10px 0;">€ 45.00</p>
+                <div class="img-container">
+                    <img src="produtdos45.png" class="card-img" onerror="this.src='logo.png'">
+                </div>
+                <h3>Classic Executive Tie</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 45.00</p>
+                <button class="btn-add" onclick="addToCart('Executive Tie', 45)">Add to Bag</button>
             </div>
+
+            <div class="card">
+                <div class="img-container">
+                    <img src="executivemen1.png" class="card-img" style="filter: brightness(0.9);" onerror="this.src='logo.png'">
+                </div>
+                <h3>Luxury Belt Selection</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 65.00</p>
+                <button class="btn-add" onclick="addToCart('Luxury Belt', 65)">Add to Bag</button>
+            </div>
+
         </div>
     </main>
+
+    <div class="side-menu" id="sideMenu">
+        <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
+        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Your Order</h2>
+        <div id="cart-list" style="margin-top:20px;"><p style="color:#999; font-size:13px;">Bag is empty.</p></div>
+        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800;">
+            <span>TOTAL:</span><span id="total-price">€ 0.00</span>
+        </div>
+        <button style="width:100%; padding:18px; background:#000; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:20px; cursor:pointer;" onclick="alert('Proceeding to checkout...')">CHECKOUT</button>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+        function toggleCart() {
+            document.getElementById('sideMenu').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateCart();
+            document.getElementById('cart-count').innerText = cart.length;
+            toggleCart();
+        }
+        function updateCart() {
+            const list = document.getElementById('cart-list');
+            list.innerHTML = cart.map(item => `
+                <div class="cart-item"><span>${item.name}</span><span style="font-weight:800;">€ ${item.price}.00</span></div>
+            `).join('');
+            document.getElementById('total-price').innerText = `€ ${total}.00`;
+        }
+    </script>
 </body>
 </html>
-
