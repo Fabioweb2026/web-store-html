@@ -6,18 +6,16 @@
     <title>Men's Shirts | Sollene Group Official</title>
     <style>
         @import url('https://googleapis.com');
-        
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
-        /* HEADER PADRÃO SOLLENE */
+        /* HEADER PADRÃO */
         .main-header {
             background: #f7f3eb; 
             display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05);
             position: sticky; top: 0; z-index: 1000;
         }
-
         .header-left { display: flex; align-items: center; gap: 15px; }
         .logo-circle {
             width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37;
@@ -40,9 +38,9 @@
         .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; transition: 0.4s; border: 1px solid #f9f9f9; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
         
-        .img-container { width: 100%; height: 450px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #f9f9f9; }
+        .img-container { width: 100%; height: 480px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #f9f9f9; }
         .card-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .card:hover .card-img { transform: scale(1.08); }
+        .card:hover .card-img { transform: scale(1.05); }
         
         .btn-add { background: #7a5c33; color: #fff; border: none; padding: 14px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; }
 
@@ -65,23 +63,23 @@
         <h2 class="page-title">Men's Shirts Collection</h2>
         <div class="products-grid">
             
-            <!-- PRODUTO 1 -->
+            <!-- PRODUTO 1: menshirts.png -->
             <div class="card">
                 <div class="img-container">
-                    <img src="men1.png" class="card-img" alt="Executive Shirt" onerror="this.src='logo.png'">
+                    <img src="menshirts.png" class="card-img" alt="Executive Shirt" onerror="this.src='logo.png'">
                 </div>
-                <h3>Executive Classic Shirt</h3>
-                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 85.00</p>
+                <h3>Executive Cotton Shirt</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 20px;">€ 85.00</p>
                 <button class="btn-add">Add to Bag</button>
             </div>
 
-            <!-- PRODUTO 2 -->
+            <!-- PRODUTO 2: men-outfits-.png -->
             <div class="card">
                 <div class="img-container">
-                    <img src="executivemen1.png" class="card-img" alt="Premium Shirt" onerror="this.src='logo.png'">
+                    <img src="men-outfits-.png" class="card-img" alt="Luxury Outfit" onerror="this.src='logo.png'">
                 </div>
-                <h3>Premium Oxford Shirt</h3>
-                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 95.00</p>
+                <h3>Luxury Outfit Selection</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 20px;">€ 145.00</p>
                 <button class="btn-add">Add to Bag</button>
             </div>
 
@@ -90,4 +88,3 @@
 
 </body>
 </html>
-
