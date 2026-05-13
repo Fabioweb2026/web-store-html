@@ -8,7 +8,7 @@
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: sans-serif; background: #f7f3eb; overflow-x: hidden; }
 
-        /* HEADER PREMIUM BEGE SÓLIDO */
+        /* HEADER PREMIUM */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -41,10 +41,7 @@
         .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         
-        /* Ativa o menu ao passar o mouse no computador */
         .nav-item:hover .dropdown-content { display: block; }
-        
-        /* Ativa o menu ao clicar no celular */
         .dropdown-content.show { display: block; }
 
         /* CARRINHO */
@@ -78,7 +75,6 @@
             <ul>
                 <li class="nav-item"><a href="index.html" class="nav-link btn-home">HOME</a></li>
                 <li class="nav-item">
-                    <!-- Evento de clique para o celular abrir sem travar -->
                     <span class="nav-link" onclick="toggleDropdown(event)">COLLECTIONS ▼</span>
                     <div class="dropdown-content" id="myDropdown">
                         <a href="menshirts.html">MEN'S SHIRTS</a>
@@ -136,8 +132,9 @@
             document.getElementById("myDropdown").classList.remove("show");
         }
 
+        // Alterado para localStorage de forma universal
         function loadCart() {
-            cart = JSON.parse(sessionStorage.getItem('sollene_cart')) || [];
+            cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
             updateUI();
         }
 
@@ -163,7 +160,7 @@
 
         function removeItem(index) {
             cart.splice(index, 1);
-            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
+            localStorage.setItem('sollene_cart', JSON.stringify(cart));
             updateUI();
         }
 
@@ -172,7 +169,7 @@
             const method = document.querySelector('input[name="pay"]:checked').value;
             alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
             cart = [];
-            sessionStorage.removeItem('sollene_cart');
+            localStorage.removeItem('sollene_cart'); // Limpa a memória
             updateUI();
             toggleCart();
         }
