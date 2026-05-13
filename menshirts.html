@@ -4,12 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Store</title>
+<title>Sollene Store</title>
 
 <style>
 
-body{
+/* RESET */
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:sans-serif;
     background:#f7f3eb;
 }
@@ -21,76 +27,70 @@ header{
     align-items:center;
     padding:15px 5%;
     background:#fff;
-    border-bottom:1px solid #ddd;
+    border-bottom:1px solid #eee;
     position:sticky;
     top:0;
 }
 
-/* GRID */
+.logo{
+    font-weight:800;
+    color:#7a5c33;
+}
+
+/* GRID PRODUTOS */
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
     gap:25px;
     padding:40px 5%;
 }
 
+/* CARD */
 .card{
     background:#fff;
-    border-radius:15px;
+    border-radius:16px;
     padding:15px;
     text-align:center;
 }
 
-/* IMAGE FIX */
 .img-container{
-    height:260px;
+    width:100%;
+    height:320px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    background:#fdfaf6;
+    border-radius:12px;
+    overflow:hidden;
 }
 
 .card-img{
-    max-width:100%;
-    max-height:100%;
+    width:100%;
+    height:100%;
     object-fit:contain;
+    padding:10px;
 }
 
-/* SELECT */
-select{
+.select-option{
     width:100%;
     padding:10px;
-    margin:10px 0;
+    margin-top:10px;
+    border-radius:8px;
 }
 
-/* BUTTON */
 .btn-add{
     width:100%;
-    padding:10px;
+    margin-top:10px;
+    padding:12px;
     background:#7a5c33;
     color:#fff;
     border:none;
-    border-radius:20px;
     cursor:pointer;
+    font-weight:700;
+    border-radius:8px;
 }
 
 /* CART */
-.side-menu{
-    position:fixed;
-    top:0;
-    right:-400px;
-    width:360px;
-    height:100%;
-    background:#fff;
-    transition:0.3s;
-    padding:20px;
-    overflow:auto;
-    box-shadow:-5px 0 20px rgba(0,0,0,0.1);
-}
-
-.side-menu.active{
-    right:0;
-}
-
 .overlay{
     position:fixed;
     top:0;
@@ -105,30 +105,48 @@ select{
     display:block;
 }
 
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:380px;
+    height:100%;
+    background:#fff;
+    padding:20px;
+    transition:0.3s;
+    overflow:auto;
+}
+
+.side-menu.active{
+    right:0;
+}
+
 .cart-item{
     display:flex;
     justify-content:space-between;
-    border-bottom:1px solid #eee;
     padding:10px 0;
+    border-bottom:1px solid #eee;
 }
 
 .remove-btn{
-    background:none;
-    border:none;
     color:red;
+    border:none;
+    background:none;
     cursor:pointer;
-    font-weight:800;
 }
 
 .clear-btn{
     width:100%;
-    margin-top:10px;
-    padding:10px;
+    padding:12px;
     background:#000;
     color:#fff;
     border:none;
+    margin-top:15px;
     cursor:pointer;
-    border-radius:10px;
+}
+
+.cart-icon{
+    cursor:pointer;
 }
 
 </style>
@@ -136,62 +154,63 @@ select{
 
 <body>
 
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
-
 <header>
+    <div class="logo">SOLLENE GROUP</div>
 
-<h2>MY STORE</h2>
-
-<div onclick="toggleCart()" style="cursor:pointer;">
-🛒 <span id="cart-count">0</span>
-</div>
-
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒 <span id="cart-count">0</span>
+    </div>
 </header>
 
-<!-- PRODUCTS -->
 <div class="products-grid">
 
+    <!-- CARD EXEMPLO -->
     <div class="card">
         <div class="img-container">
-            <img src="bone.png" class="card-img">
+            <img src="womancalca1.png" class="card-img">
         </div>
 
-        <h3>Cap</h3>
-        <p>€45</p>
+        <h3>Product 1</h3>
+        <p>€195</p>
 
-        <select>
-            <option>Black</option>
-            <option>White</option>
+        <select class="select-option">
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Full">Full</option>
         </select>
 
         <button class="btn-add"
-        onclick="addToCart('Cap',45,this.parentNode.querySelector('select').value)">
-        Add
+        onclick="addToCart('Product 1',195,this.previousElementSibling.value)">
+        ADD TO CART
         </button>
     </div>
 
+    <!-- OUTRO CARD -->
     <div class="card">
         <div class="img-container">
-            <img src="chinelo.png" class="card-img">
+            <img src="woman.calça2.png.jpg" class="card-img">
         </div>
 
-        <h3>Slides</h3>
-        <p>€60</p>
+        <h3>Product 2</h3>
+        <p>€120</p>
 
-        <select>
-            <option>40</option>
-            <option>41</option>
+        <select class="select-option">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
         </select>
 
         <button class="btn-add"
-        onclick="addToCart('Slides',60,this.parentNode.querySelector('select').value)">
-        Add
+        onclick="addToCart('Product 2',120,this.previousElementSibling.value)">
+        ADD TO CART
         </button>
     </div>
 
 </div>
 
 <!-- CART -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
 <div class="side-menu" id="sideMenu">
 
     <h2>Your Cart</h2>
@@ -206,6 +225,8 @@ select{
 
 <script>
 
+/* CART SYSTEM */
+
 function getCart(){
     return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
@@ -215,18 +236,21 @@ function saveCart(cart){
 }
 
 function addToCart(name, price, option){
+
     let cart = getCart();
 
     cart.push({name, price, option});
 
     saveCart(cart);
     updateUI();
-    toggleCart();
+    openCart();
 }
 
 function removeItem(index){
     let cart = getCart();
+
     cart.splice(index,1);
+
     saveCart(cart);
     updateUI();
 }
@@ -253,7 +277,7 @@ function updateUI(){
         <div class="cart-item">
             <div>
                 <b>${item.name}</b><br>
-                ${item.option}<br>
+                <small>${item.option}</small><br>
                 €${item.price}
             </div>
 
@@ -262,12 +286,16 @@ function updateUI(){
             </button>
         </div>
     `).join('');
-
 }
 
 function toggleCart(){
     document.getElementById("sideMenu").classList.toggle("active");
     document.getElementById("overlay").classList.toggle("active");
+}
+
+function openCart(){
+    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
 }
 
 document.addEventListener("DOMContentLoaded", updateUI);
