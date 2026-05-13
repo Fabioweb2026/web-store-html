@@ -3,140 +3,86 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Accessories | Sollene Group</title>
+<title>Accessories</title>
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
+    margin:0;
     font-family:sans-serif;
     background:#f7f3eb;
 }
 
-.main-header{
+header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 5%;
     background:#f7f3eb;
-    border-bottom:1px solid rgba(0,0,0,0.05);
-    position:sticky;
-    top:0;
-    z-index:1000;
+    border-bottom:1px solid #ddd;
 }
 
-.logo-circle{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    border:1px solid #d4af37;
-    background:#fff url('logo.png') center/cover no-repeat;
-}
-
-.cart-btn{
-    font-weight:800;
-    cursor:pointer;
-}
-
-.products-section{
-    padding:60px 5%;
-    background:#fff;
-    min-height:100vh;
-}
-
-.products-grid{
+.products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:40px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    padding:40px;
+    background:#fff;
 }
 
 .card{
     background:#fff;
-    border-radius:20px;
-    padding:20px;
     border:1px solid #eee;
+    border-radius:12px;
+    padding:20px;
     text-align:center;
 }
 
-.img-container{
-    height:400px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#fdfaf6;
-    margin-bottom:15px;
-}
-
-.card img{
+img{
     max-width:100%;
-    max-height:100%;
+    height:220px;
+    object-fit:contain;
 }
 
 select{
     width:80%;
     padding:10px;
     margin:10px 0;
-    border-radius:10px;
 }
 
 button{
     background:#7a5c33;
     color:#fff;
     border:none;
-    padding:12px 30px;
-    border-radius:30px;
+    padding:12px 25px;
     font-weight:800;
+    border-radius:30px;
     cursor:pointer;
 }
 
-.side-menu{
+#cartBox{
     position:fixed;
+    right:0;
     top:0;
-    right:-420px;
-    width:380px;
+    width:320px;
     height:100%;
     background:#fff;
-    box-shadow:-10px 0 40px rgba(0,0,0,0.2);
-    transition:0.4s;
-    padding:25px;
+    border-left:1px solid #ddd;
+    padding:20px;
     overflow:auto;
-    z-index:2000;
 }
 
-.side-menu.active{
-    right:0;
-}
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,0.4);
-    display:none;
-    z-index:1500;
-}
-
-.overlay.active{
-    display:block;
-}
-
-.cart-item{
-    display:flex;
-    justify-content:space-between;
+.item{
     border-bottom:1px solid #eee;
     padding:10px 0;
+    font-size:13px;
 }
 
 .remove{
     background:none;
+    border:none;
     color:red;
     font-weight:800;
-    border:none;
     cursor:pointer;
 }
 
@@ -145,74 +91,53 @@ button{
 
 <body>
 
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
-
-<header class="main-header">
-
-<div class="logo-circle"></div>
-
-<div class="cart-btn" onclick="toggleCart()">
-CART (<span id="count">0</span>)
-</div>
-
+<header>
+<h2>SOLLENE ACCESSORIES</h2>
+<div>CART (<span id="count">0</span>)</div>
 </header>
 
-<section class="products-section">
+<section class="products">
 
-<div class="products-grid">
-
-<!-- CARD 1 -->
+<!-- ITEM 1 -->
 <div class="card">
-
-<div class="img-container">
-<img src="accessory1.png">
-</div>
+<img src="accessory1.png" onerror="this.src='logo.png'">
 
 <h3>Luxury Belt</h3>
 <p>€120</p>
 
-<select id="op1">
-<option value="Black">Black</option>
-<option value="Brown">Brown</option>
+<select id="opt1">
+<option>Black</option>
+<option>Brown</option>
 </select>
 
-<button onclick="add('Luxury Belt',120,op1.value)">
+<button onclick="add('Luxury Belt',120,opt1.value)">
 ADD TO CART
 </button>
-
 </div>
 
-<!-- CARD 2 -->
+<!-- ITEM 2 -->
 <div class="card">
-
-<div class="img-container">
-<img src="accessory2.png">
-</div>
+<img src="accessory2.png" onerror="this.src='logo.png'">
 
 <h3>Designer Wallet</h3>
 <p>€90</p>
 
-<select id="op2">
-<option value="Leather">Leather</option>
-<option value="Carbon">Carbon</option>
+<select id="opt2">
+<option>Leather</option>
+<option>Carbon</option>
 </select>
 
-<button onclick="add('Designer Wallet',90,op2.value)">
+<button onclick="add('Designer Wallet',90,opt2.value)">
 ADD TO CART
 </button>
-
-</div>
-
 </div>
 
 </section>
 
-<div class="side-menu" id="cart">
-
-<h3>Cart</h3>
-
+<!-- CART -->
+<div id="cartBox">
+<h3>Your Cart</h3>
 <div id="list"></div>
-
 </div>
 
 <script>
@@ -221,13 +146,8 @@ function getCart(){
 return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
 
-function save(cart){
-localStorage.setItem("sollene_cart", JSON.stringify(cart));
-}
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("active");
-document.getElementById("overlay").classList.toggle("active");
+function saveCart(c){
+localStorage.setItem("sollene_cart", JSON.stringify(c));
 }
 
 function add(name,price,option){
@@ -240,8 +160,7 @@ price:price,
 option:option
 });
 
-save(cart);
-
+saveCart(cart);
 render();
 }
 
@@ -251,8 +170,7 @@ let cart = getCart();
 
 cart.splice(i,1);
 
-save(cart);
-
+saveCart(cart);
 render();
 }
 
@@ -270,16 +188,12 @@ return;
 }
 
 list.innerHTML = cart.map((p,i)=>`
-<div class="cart-item">
-
-<div>
+<div class="item">
 <b>${p.name}</b><br>
-<small>${p.option}</small><br>
+${p.option}<br>
 € ${p.price}
-</div>
-
-<button class="remove" onclick="removeItem(${i})">X</button>
-
+<br>
+<button class="remove" onclick="removeItem(${i})">DELETE</button>
 </div>
 `).join("");
 
