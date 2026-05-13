@@ -4,189 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Accessories</title>
+<title>Accessories | Sollene Group</title>
 
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
-    margin:0;
     font-family:sans-serif;
     background:#f7f3eb;
+    color:#1a1a1a;
 }
 
-header{
+/* HEADER */
+.main-header{
     display:flex;
     justify-content:space-between;
+    align-items:center;
     padding:15px 5%;
     background:#f7f3eb;
-    border-bottom:1px solid #ddd;
+    border-bottom:1px solid rgba(0,0,0,0.08);
 }
 
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    padding:40px;
-    background:#fff;
+.logo-circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#fff url('logo.png') center/cover no-repeat;
+    border:1px solid #d4af37;
 }
 
-.card{
-    background:#fff;
-    border:1px solid #eee;
-    border-radius:12px;
-    padding:20px;
-    text-align:center;
-}
-
-img{
-    max-width:100%;
-    height:200px;
-    object-fit:contain;
-}
-
-select{
-    width:80%;
-    padding:10px;
-    margin:10px 0;
-}
-
-button{
-    background:#7a5c33;
-    color:#fff;
-    border:none;
-    padding:12px 20px;
-    font-weight:800;
-    border-radius:25px;
-    cursor:pointer;
-}
-
-#cart{
-    position:fixed;
-    right:0;
-    top:0;
-    width:300px;
-    height:100%;
-    background:#fff;
-    border-left:1px solid #ddd;
-    padding:20px;
-    overflow:auto;
-}
-
-.item{
-    border-bottom:1px solid #eee;
-    padding:10px 0;
-    font-size:13px;
-}
-
-</style>
-</head>
-
-<body>
-
-<header>
-<h2>SOLLENE</h2>
-<div>CART (<span id="count">0</span>)</div>
-</header>
-
-<section class="products">
-
-<div class="card">
-<h3>Luxury Belt</h3>
-<p>€120</p>
-
-<select id="opt1">
-<option>Black</option>
-<option>Brown</option>
-</select>
-
-<button onclick="add('Luxury Belt',120,opt1.value)">ADD</button>
-</div>
-
-<div class="card">
-<h3>Wallet</h3>
-<p>€90</p>
-
-<select id="opt2">
-<option>Leather</option>
-<option>Carbon</option>
-</select>
-
-<button onclick="add('Wallet',90,opt2.value)">ADD</button>
-</div>
-
-</section>
-
-<div id="cart">
-<h3>Cart</h3>
-<div id="list"></div>
-</div>
-
-<script>
-
-function getCart(){
-try{
-return JSON.parse(localStorage.getItem("sollene_cart")) || [];
-}catch(e){
-return [];
-}
-}
-
-function save(c){
-localStorage.setItem("sollene_cart", JSON.stringify(c));
-}
-
-function add(name,price,option){
-
-let cart = getCart();
-
-cart.push({name,price,option});
-
-save(cart);
-
-render();
-}
-
-function removeItem(i){
-
-let cart = getCart();
-
-cart.splice(i,1);
-
-save(cart);
-
-render();
-}
-
-function render(){
-
-let cart = getCart();
-
-let count = document.getElementById("count");
-let list = document.getElementById("list");
-
-if(!count || !list) return;
-
-count.innerText = cart.length;
-
-if(cart.length === 0){
-list.innerHTML = "<p>Cart empty</p>";
-return;
-}
-
-list.innerHTML = cart.map((p,i)=>`
-<div class="item">
-<b>${p.name}</b><br>
-${p.option}<br>
-€${p.price}<br>
-<button onclick="removeItem(${i})">DELETE</button>
-</div>
-`).join("");
-
-}
-
-window.onload = render;
-
-</script>
-
-</body>
-</html>
+/* PRODUCTS */
+.products
