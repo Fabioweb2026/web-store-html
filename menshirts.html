@@ -4,117 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Men Shirts | Sollene Group</title>
+<title>Store</title>
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
 body{
+    margin:0;
     font-family:sans-serif;
     background:#f7f3eb;
 }
 
-.main-header{
+/* HEADER */
+header{
     display:flex;
     justify-content:space-between;
     align-items:center;
     padding:15px 5%;
-    background:#f7f3eb;
+    background:#fff;
     border-bottom:1px solid #ddd;
+    position:sticky;
+    top:0;
 }
 
-.logo-circle{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:url('logo.png') center/cover;
-    border:1px solid #d4af37;
-}
-
+/* GRID */
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
     padding:40px 5%;
 }
 
 .card{
     background:#fff;
-    border-radius:20px;
+    border-radius:15px;
     padding:15px;
     text-align:center;
+}
+
+/* IMAGE FIX */
 .img-container{
-    width:100%;
-    height:320px;
+    height:260px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#fdfaf6;
-    border-radius:16px;
-    overflow:hidden;
 }
 
 .card-img{
-    width:100%;
-    height:100%;
-    object-fit:contain; /* mantém proporção sem cortar */
-    padding:10px;
-}
-.select-option{
-    width:90%;
-    padding:12px;
-    margin:10px 0;
-}
-    .img-container{
-    width:100%;
-    height:320px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#fdfaf6;
-    border-radius:16px;
-    overflow:hidden;
+    max-width:100%;
+    max-height:100%;
+    object-fit:contain;
 }
 
-.card-img{
+/* SELECT */
+select{
     width:100%;
-    height:100%;
-    object-fit:contain; /* mantém proporção sem cortar */
     padding:10px;
-}
-
-.select-option{
-    width:90%;
-    padding:12px;
     margin:10px 0;
 }
 
+/* BUTTON */
 .btn-add{
     width:100%;
-    padding:12px;
+    padding:10px;
     background:#7a5c33;
-    border:none;
     color:#fff;
+    border:none;
     border-radius:20px;
     cursor:pointer;
-    font-weight:bold;
 }
 
+/* CART */
 .side-menu{
     position:fixed;
-    right:-420px;
     top:0;
-    width:380px;
+    right:-400px;
+    width:360px;
     height:100%;
     background:#fff;
     transition:0.3s;
     padding:20px;
     overflow:auto;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.1);
 }
 
 .side-menu.active{
@@ -136,31 +106,41 @@ body{
 }
 
 .cart-item{
-    padding:10px 0;
+    display:flex;
+    justify-content:space-between;
     border-bottom:1px solid #eee;
+    padding:10px 0;
 }
 
 .remove-btn{
     background:none;
     border:none;
     color:red;
-    font-size:12px;
     cursor:pointer;
+    font-weight:800;
+}
+
+.clear-btn{
+    width:100%;
+    margin-top:10px;
+    padding:10px;
+    background:#000;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-<header class="main-header">
+<header>
 
-<div class="logo-circle"></div>
-
-<h3>SOLLENE MEN</h3>
+<h2>MY STORE</h2>
 
 <div onclick="toggleCart()" style="cursor:pointer;">
 🛒 <span id="cart-count">0</span>
@@ -168,95 +148,64 @@ body{
 
 </header>
 
+<!-- PRODUCTS -->
 <div class="products-grid">
 
-<!-- CARD 1 -->
-<div class="card">
-    <div class="img-container">
-        <img src="bone.png" class="card-img">
+    <div class="card">
+        <div class="img-container">
+            <img src="bone.png" class="card-img">
+        </div>
+
+        <h3>Cap</h3>
+        <p>€45</p>
+
+        <select>
+            <option>Black</option>
+            <option>White</option>
+        </select>
+
+        <button class="btn-add"
+        onclick="addToCart('Cap',45,this.parentNode.querySelector('select').value)">
+        Add
+        </button>
     </div>
-    <h3>Luxury Cap</h3>
-    <p>€45</p>
 
-    <select class="select-option">
-        <option>Black</option>
-        <option>White</option>
-    </select>
+    <div class="card">
+        <div class="img-container">
+            <img src="chinelo.png" class="card-img">
+        </div>
 
-    <button class="btn-add"
-    onclick="addToCart('Luxury Cap',45,this.parentNode.querySelector('select').value)">
-    Add to Bag
-    </button>
-</div>
+        <h3>Slides</h3>
+        <p>€60</p>
 
-<!-- CARD 2 -->
-<div class="card">
-    <div class="img-container">
-        <img src="chinelo.png" class="card-img">
+        <select>
+            <option>40</option>
+            <option>41</option>
+        </select>
+
+        <button class="btn-add"
+        onclick="addToCart('Slides',60,this.parentNode.querySelector('select').value)">
+        Add
+        </button>
     </div>
-    <h3>Luxury Slides</h3>
-    <p>€60</p>
-
-    <select class="select-option">
-        <option>40</option>
-        <option>41</option>
-        <option>42</option>
-    </select>
-
-    <button class="btn-add"
-    onclick="addToCart('Luxury Slides',60,this.parentNode.querySelector('select').value)">
-    Add to Bag
-    </button>
-</div>
-
-<!-- CARD 3 -->
-<div class="card">
-    <div class="img-container">
-        <img src="gravata.png">
-    </div>
-    <h3>Silk Tie</h3>
-    <p>€35</p>
-
-    <select class="select-option">
-        <option>Red</option>
-        <option>Black</option>
-    </select>
-
-    <button class="btn-add"
-    onclick="addToCart('Silk Tie',35,this.parentNode.querySelector('select').value)">
-    Add to Bag
-    </button>
-</div>
-
-<!-- CARD 4 -->
-<div class="card">
-    <div class="img-container">
-        <img src="menshorts.png">
-    </div>
-    <h3>Summer Shorts</h3>
-    <p>€80</p>
-
-    <select class="select-option">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-    </select>
-
-    <button class="btn-add"
-    onclick="addToCart('Summer Shorts',80,this.parentNode.querySelector('select').value)">
-    Add to Bag
-    </button>
-</div>
 
 </div>
 
 <!-- CART -->
 <div class="side-menu" id="sideMenu">
-    <h3>Cart</h3>
+
+    <h2>Your Cart</h2>
+
     <div id="cart-list"></div>
+
+    <button class="clear-btn" onclick="clearCart()">
+        CLEAR CART
+    </button>
+
 </div>
 
 <script>
+
 function getCart(){
     return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
@@ -268,11 +217,7 @@ function saveCart(cart){
 function addToCart(name, price, option){
     let cart = getCart();
 
-    cart.push({
-        name: name,
-        price: price,
-        option: option
-    });
+    cart.push({name, price, option});
 
     saveCart(cart);
     updateUI();
@@ -281,7 +226,7 @@ function addToCart(name, price, option){
 
 function removeItem(index){
     let cart = getCart();
-    cart.splice(index, 1);
+    cart.splice(index,1);
     saveCart(cart);
     updateUI();
 }
@@ -295,40 +240,30 @@ function updateUI(){
 
     let cart = getCart();
 
-    const count = document.getElementById("cart-count");
-    const list = document.getElementById("cart-list");
+    document.getElementById("cart-count").innerText = cart.length;
 
-    if(count) count.innerText = cart.length;
-
-    if(!list) return;
+    let list = document.getElementById("cart-list");
 
     if(cart.length === 0){
-        list.innerHTML = `<p style="color:#999;">Cart empty</p>`;
+        list.innerHTML = "<p>Cart empty</p>";
         return;
     }
 
     list.innerHTML = cart.map((item,index)=>`
         <div class="cart-item">
-
             <div>
                 <b>${item.name}</b><br>
-                <small>${item.option}</small><br>
+                ${item.option}<br>
                 €${item.price}
             </div>
 
-            <div style="display:flex; flex-direction:column; gap:5px;">
-                <button class="remove-btn" onclick="removeItem(${index})">
-                    REMOVE
-                </button>
-            </div>
-
+            <button class="remove-btn" onclick="removeItem(${index})">
+                X
+            </button>
         </div>
     `).join('');
 
 }
-
-    document.getElementById("cart-count").innerText = cart.length;
-
 
 function toggleCart(){
     document.getElementById("sideMenu").classList.toggle("active");
