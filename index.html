@@ -45,11 +45,20 @@ nav a{
     font-size:12px;
 }
 
-/* HERO */
+/* HERO CORRIGIDO */
 .hero{
     width:100%;
     height:85vh;
-    background:url('Solle-Global-Store.png') center/cover no-repeat;
+
+    /* 🔥 CORREÇÃO PRINCIPAL */
+    background-image:url('Solle-Global-Store.png');
+    background-repeat:no-repeat;
+
+    /* antes era cover (cortava) */
+    background-size:contain;
+
+    background-position:center;
+    background-color:#f7f3eb;
 }
 
 /* COLLECTIONS */
@@ -82,7 +91,6 @@ nav a{
     font-weight:800;
 }
 
-/* CART ICON */
 .cart{
     cursor:pointer;
 }
