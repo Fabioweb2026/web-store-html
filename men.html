@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Men's Shirts | Sollene Group Official</title>
     <style>
-        @import url('https://googleapis.com');
+        @import url('googleapis.com');
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; }
 
@@ -24,29 +24,49 @@
             display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
         }
 
-        /* VITRINE */
+        /* VITRINE HARMÔNICA - LADO A LADO */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; border: 1px solid #f9f9f9; }
-        .img-container { width: 100%; height: 500px; overflow: hidden; border-radius: 20px; margin-bottom: 20px; background: #fdfaf6; padding: 10px; display: flex; align-items: center; justify-content: center;}
-        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+
+        .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; border: 1px solid #f9f9f9; transition: 0.4s; }
+        
+        .img-container { 
+            width: 100%; 
+            height: 520px; 
+            overflow: hidden; 
+            background: #fdfaf6; 
+            margin-bottom: 20px; 
+            border-radius: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        .card-img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            transition: 0.5s; 
+        }
 
         .btn-add {
             background: #7a5c33; color: #fff; border: none; padding: 15px 45px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 11px; cursor: pointer;
         }
 
         /* ABA LATERAL */
-        .side-menu {
-            position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
-            background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1);
-            z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto;
-        }
+        .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
-        
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
+
+        @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -70,33 +90,39 @@
 
     <main class="products-section">
         <div class="products-grid">
+            <!-- CAMISA 1 -->
             <div class="card">
-                <div class="img-container"><img src="menshirts.png" class="card-img" onerror="this.src='logo.png'"></div>
-                <h3>Executive Shirt</h3>
+                <div class="img-container">
+                    <img src="menshirts.png" class="card-img" onerror="this.src='logo.png'">
+                </div>
+                <h3>Executive Cotton Shirt</h3>
                 <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 85.00</p>
                 <button class="btn-add" onclick="addToCart('Executive Shirt', 85)">Add to Bag</button>
             </div>
 
-            <!-- PRODUTO ATUALIZADO COM A NOVA IMAGEM -->
+            <!-- CAMISA 2 -->
             <div class="card">
                 <div class="img-container">
                     <img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'">
                 </div>
-                <h3>Premium Outfit</h3>
-                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 145.00</p>
-                <button class="btn-add" onclick="addToCart('Premium Outfit', 145)">Add to Bag</button>
+                <h3>Premium Linen Shirt</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 95.00</p>
+                <button class="btn-add" onclick="addToCart('Linen Shirt', 95)">Add to Bag</button>
             </div>
         </div>
     </main>
 
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Your Order</h2>
+        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Selected Items</h2>
+        
+        <!-- ESTA DIV RENDERIZA APENAS O TEXTO DA LISTA LATERAL -->
         <div id="cart-list" style="margin-top:20px;"></div>
-        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800;">
-            <span>TOTAL:</span><span id="total-price">€ 0.00</span>
-        </div>
-        <button style="width:100%; padding:18px; background:#000; color:#fff; border:none; border-radius:12px; font-weight:800; margin-top:20px; cursor:pointer;" onclick="alert('Proceeding to Checkout')">COMPLETE PURCHASE</button>
+        
+        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
+            To delete items or pay,<br>please return to the <strong>HOME PAGE</strong>.
+        </p>
+        <a href="index.html" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">GO TO CHECKOUT</a>
     </div>
 
     <script>
@@ -109,19 +135,9 @@
 
         function addToCart(name, price) {
             cart.push({name, price});
-            saveCart();
+            localStorage.setItem('sollene_cart', JSON.stringify(cart));
             updateUI();
             toggleCart();
-        }
-
-        function removeItem(index) {
-            cart.splice(index, 1);
-            saveCart();
-            updateUI();
-        }
-
-        function saveCart() {
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
         }
 
         function updateUI() {
@@ -130,18 +146,13 @@
             if (cart.length === 0) {
                 list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
             } else {
-                list.innerHTML = cart.map((item, index) => `
+                list.innerHTML = cart.map(item => `
                     <div class="cart-item">
-                        <div>
-                            <p style="font-size:11px; font-weight:800;">${item.name}</p>
-                            <p style="font-size:11px; color:#7a5c33;">€ ${item.price}.00</p>
-                        </div>
-                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                        <span>${item.name}</span>
+                        <span style="font-weight:800;">€ ${item.price}.00</span>
                     </div>
                 `).join('');
             }
-            let total = cart.reduce((sum, i) => sum + i.price, 0);
-            document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
 
         window.onload = updateUI;
