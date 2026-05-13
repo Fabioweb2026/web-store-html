@@ -92,19 +92,9 @@
     </div>
 
     <script>
-        // Alterado para sessionStorage para limpar o carrinho quando fechar a aba
         let cart = [];
-
-        function toggleCart() {
-            document.getElementById('sideMenu').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        }
-
-        function loadCart() {
-            cart = JSON.parse(sessionStorage.getItem('sollene_cart')) || [];
-            updateUI();
-        }
-
+        function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
+        function loadCart() { cart = JSON.parse(sessionStorage.getItem('sollene_cart')) || []; updateUI(); }
         function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
@@ -113,10 +103,7 @@
             } else {
                 list.innerHTML = cart.map((item, index) => `
                     <div class="cart-item">
-                        <div>
-                            <p style="font-size:12px; font-weight:800; text-transform:uppercase;">${item.name}</p>
-                            <p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p>
-                        </div>
+                        <div><p style="font-size:12px; font-weight:800; text-transform:uppercase;">${item.name}</p><p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p></div>
                         <button class="btn-delete" onclick="removeItem(${index})">DELETE</button>
                     </div>
                 `).join('');
@@ -124,23 +111,12 @@
             let total = cart.reduce((sum, i) => sum + i.price, 0);
             document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
-
-        function removeItem(index) {
-            cart.splice(index, 1);
-            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
-            updateUI();
-        }
-
+        function removeItem(index) { cart.splice(index, 1); sessionStorage.setItem('sollene_cart', JSON.stringify(cart)); updateUI(); }
         function finalizeOrder() {
             if(cart.length === 0) return alert("Select products before paying.");
-            const method = document.querySelector('input[name="pay"]:checked').value;
-            alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
-            cart = [];
-            sessionStorage.removeItem('sollene_cart');
-            updateUI();
-            toggleCart();
+            alert("Success! Order processed.\nTotal: " + document.getElementById('total-price').innerText);
+            cart = []; sessionStorage.removeItem('sollene_cart'); updateUI(); toggleCart();
         }
-
         window.onload = loadCart;
     </script>
 </body>
