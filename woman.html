@@ -1,82 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Women's Selection | Sollene Group</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:sans-serif;
+            background:#f7f3eb;
+            color:#1a1a1a;
+        }
+
+        .main-header{
+            background:#f7f3eb;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:15px 5%;
+            border-bottom:1px solid rgba(0,0,0,0.05);
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+        .logo-circle{
+            width:55px;
+            height:55px;
+            border-radius:50%;
+            border:1px solid #d4af37;
+            background:#fff url('logo.png') no-repeat center center;
+            background-size:cover;
+        }
+
+        nav a{
+            text-decoration:none;
+            color:#000;
+            font-size:11px;
+            font-weight:800;
+            text-transform:uppercase;
+            border:2px solid #000;
+            padding:8px 20px;
+            border-radius:6px;
+        }
+
+        .cart-icon{
+            cursor:pointer;
+            position:relative;
+            padding:5px;
+        }
+
+        .cart-badge{
+            position:absolute;
+            top:-10px;
+            right:-8px;
+            background:#7a5c33;
+            color:#fff;
+            font-size:10px;
+            font-weight:800;
+            width:20px;
+            height:20px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
+            border:2px solid #f7f3eb;
+        }
+
+        .products-section{
+            padding:60px 5%;
+            background:#fff;
+            min-height:100vh;
+            text-align:center;
+        }
+
+        .products-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+            gap:40px;
+            max-width:1200px;
+            margin:0 auto;
+        }
+
+        .card{
+            background:#fff;
+            border-radius:24px;
+            text-align:center;
+            padding-bottom:30px;
+            border:1px solid #f9f9f9;
+            overflow:hidden;
+        }
+
+        .img-container{
+            width:100%;
+            height:550px;
+            overflow:hidden;
+            background:#fdfaf6;
+            margin-bottom:20px;
+            padding:10px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        .card-img{
+            max-width:100%;
+            max-height:100%;
+            object-fit:contain;
+        }
+
+        .btn-add{
+            background:#7a5c33;
+            color:#fff;
+            border:none;
+            padding:15px 45px;
+            border-radius:50px;
+            font-weight:800;
+            text-transform:uppercase;
+            font-size:10px;
+            cursor:pointer;
+        }
+
+        .side-menu{
+            position:fixed;
+            top:0;
+            right:-420px;
+            width:400px;
+            height:100%;
+            background:#fff;
+            box-shadow:-10px 0 50px rgba(0,0,0,0.1);
+            z-index:2000;
+            transition:0.5s;
+            padding:40px;
+            overflow-y:auto;
+        }
+
+        .side-menu.active{
+            right:0;
+        }
+
+        .overlay{
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0,0,0,0.4);
+            display:none;
+            z-index:1900;
+        }
+
+        .overlay.active{
+            display:block;
+        }
+
+        .cart-item{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:15px;
+            border-bottom:1px solid #eee;
+            padding-bottom:10px;
+            font-size:13px;
+        }
+
+        .remove-btn{
+            color:#ff4d4d;
+            border:none;
+            background:none;
+            cursor:pointer;
+            font-size:10px;
+            font-weight:800;
+            text-transform:uppercase;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+
+<header class="main-header">
+
+    <div style="display:flex; align-items:center; gap:15px;">
+        <div class="logo-circle"></div>
+
+        <h1 style="font-size:20px; color:#7a5c33; font-weight:800;">
+            SOLLENE
+        </h1>
+    </div>
+
+    <nav>
+        <a href="index.html">HOME</a>
+    </nav>
+
+    <div class="cart-icon" onclick="toggleCart()">
+
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+
+        <div class="cart-badge" id="cart-count">0</div>
+
+    </div>
+
+</header>
+
+<main class="products-section">
+
+    <div class="products-grid">
+
+        <!-- CARD 1 -->
+        <div class="card">
+
+            <div class="img-container">
+                <img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
+            </div>
+
+            <h3>Executive Signature Style</h3>
+
+            <p style="font-weight:800; margin:15px 0; font-size:20px;">
+                € 195.00
+            </p>
+
+            <button class="btn-add" onclick="addToCart('Signature Style', 195)">
+                Add to Bag
+            </button>
+
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+
+            <div class="img-container">
+                <img src="imagen.woman.png2.png" class="card-img" onerror="this.src='logo.png'">
+            </div>
+
+            <h3>Prestige Female Outfit</h3>
+
+            <p style="font-weight:800; margin:15px 0; font-size:20px;">
+                € 245.00
+            </p>
+
+            <button class="btn-add" onclick="addToCart('Prestige Outfit', 245)">
+                Add to Bag
+            </button>
+
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+
+            <div class="img-container">
+                <img src="woman.bag.png" class="card-img" onerror="this.src='logo.png'">
+            </div>
+
+            <h3>Luxury Leather Clutch</h3>
+
+            <p style="font-weight:800; margin:15px 0; font-size:20px;">
+                € 185.00
+            </p>
+
+            <button class="btn-add" onclick="addToCart('Leather Clutch', 185)">
+                Add to Bag
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+<div class="side-menu" id="sideMenu">
+
+    <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align:right;">
+        ✕ CLOSE
+    </div>
+
+    <h2 style="font-size:18px; text-transform:uppercase; color:#7a5c33;">
+        Selected Items
+    </h2>
+
+    <div id="cart-list" style="margin-top:20px;"></div>
+
+    <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
+        To finalize payment,<br>
+        please proceed to the <strong>HOME PAGE</strong>.
+    </p>
+
+    <a href="index.html"
+       style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">
+        GO TO CHECKOUT
+    </a>
+
+</div>
+
 <script>
 
-    function getCart() {
-        return JSON.parse(localStorage.getItem('sollene_cart')) || [];
-    }
+function getCart() {
+    return JSON.parse(localStorage.getItem('sollene_cart')) || [];
+}
 
-    function toggleCart() {
-        document.getElementById('sideMenu').classList.toggle('active');
-        document.getElementById('overlay').classList.toggle('active');
-    }
+function toggleCart() {
 
-    function addToCart(name, price) {
+    document.getElementById('sideMenu').classList.toggle('active');
 
-        let currentCart = getCart();
+    document.getElementById('overlay').classList.toggle('active');
+}
 
-        currentCart.push({
-            name: name,
-            price: price
-        });
+function addToCart(name, price) {
 
-        localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+    let currentCart = getCart();
 
-        updateUI();
+    currentCart.push({
+        name:name,
+        price:price
+    });
 
-        document.getElementById('sideMenu').classList.add('active');
-        document.getElementById('overlay').classList.add('active');
-    }
+    localStorage.setItem(
+        'sollene_cart',
+        JSON.stringify(currentCart)
+    );
 
-    function removeItem(index) {
+    updateUI();
 
-        let currentCart = getCart();
+    document.getElementById('sideMenu').classList.add('active');
 
-        currentCart.splice(index, 1);
+    document.getElementById('overlay').classList.add('active');
+}
 
-        localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+function removeItem(index) {
 
-        updateUI();
-    }
+    let currentCart = getCart();
 
-    function updateUI() {
+    currentCart.splice(index, 1);
 
-        let currentCart = getCart();
+    localStorage.setItem(
+        'sollene_cart',
+        JSON.stringify(currentCart)
+    );
 
-        document.getElementById('cart-count').innerText = currentCart.length;
+    updateUI();
+}
 
-        const list = document.getElementById('cart-list');
+function updateUI() {
 
-        if (currentCart.length === 0) {
+    let currentCart = getCart();
 
-            list.innerHTML = `
-                <p style="color:#999; font-size:13px;">
-                    Bag is empty.
-                </p>
-            `;
+    document.getElementById('cart-count').innerText = currentCart.length;
 
-        } else {
+    const list = document.getElementById('cart-list');
 
-            list.innerHTML = currentCart.map((item, index) => `
-                <div class="cart-item">
+    if(currentCart.length === 0){
 
-                    <div>
-                        <p style="font-weight:800; text-transform:uppercase; font-size:11px;">
-                            ${item.name}
-                        </p>
+        list.innerHTML = `
+            <p style="color:#999; font-size:13px;">
+                Bag is empty.
+            </p>
+        `;
 
-                        <p style="color:#7a5c33; font-size:12px; margin-top:3px;">
-                            € ${item.price}.00
-                        </p>
-                    </div>
+    } else {
 
-                    <button class="remove-btn" onclick="removeItem(${index})">
-                        DELETE
-                    </button>
+        list.innerHTML = currentCart.map((item, index) => `
+
+            <div class="cart-item">
+
+                <div>
+
+                    <p style="font-weight:800; text-transform:uppercase; font-size:11px;">
+                        ${item.name}
+                    </p>
+
+                    <p style="color:#7a5c33; font-size:12px; margin-top:3px;">
+                        € ${item.price}.00
+                    </p>
 
                 </div>
-            `).join('');
-        }
-    }
 
-    window.onload = updateUI;
+                <button class="remove-btn" onclick="removeItem(${index})">
+                    DELETE
+                </button>
+
+            </div>
+
+        `).join('');
+    }
+}
+
+window.onload = updateUI;
 
 </script>
+
+</body>
+</html>
