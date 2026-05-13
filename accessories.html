@@ -17,15 +17,14 @@
 body{
     font-family:sans-serif;
     background:#f7f3eb;
-    color:#1a1a1a;
 }
 
 .main-header{
-    background:#f7f3eb;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     padding:15px 5%;
+    background:#f7f3eb;
     border-bottom:1px solid rgba(0,0,0,0.05);
     position:sticky;
     top:0;
@@ -37,104 +36,62 @@ body{
     height:55px;
     border-radius:50%;
     border:1px solid #d4af37;
-    background:#fff url('logo.png') no-repeat center center;
-    background-size:cover;
+    background:#fff url('logo.png') center/cover no-repeat;
 }
 
-nav a{
-    text-decoration:none;
-    color:#000;
-    font-size:11px;
+.cart-btn{
     font-weight:800;
-    text-transform:uppercase;
-    border:2px solid #000;
-    padding:8px 20px;
-    border-radius:6px;
-}
-
-.cart-icon{
     cursor:pointer;
-    position:relative;
-    padding:5px;
-}
-
-.cart-badge{
-    position:absolute;
-    top:-10px;
-    right:-8px;
-    background:#7a5c33;
-    color:#fff;
-    font-size:10px;
-    font-weight:800;
-    width:20px;
-    height:20px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:50%;
-    border:2px solid #f7f3eb;
 }
 
 .products-section{
     padding:60px 5%;
     background:#fff;
     min-height:100vh;
-    text-align:center;
 }
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:40px;
-    max-width:1200px;
-    margin:0 auto;
 }
 
 .card{
     background:#fff;
-    border-radius:24px;
+    border-radius:20px;
+    padding:20px;
+    border:1px solid #eee;
     text-align:center;
-    padding-bottom:30px;
-    border:1px solid #f9f9f9;
-    overflow:hidden;
 }
 
 .img-container{
-    width:100%;
-    height:500px;
-    overflow:hidden;
-    background:#fdfaf6;
-    margin-bottom:20px;
-    padding:10px;
+    height:400px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    background:#fdfaf6;
+    margin-bottom:15px;
 }
 
-.card-img{
+.card img{
     max-width:100%;
     max-height:100%;
-    object-fit:contain;
 }
 
-.select-option{
+select{
     width:80%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    margin-bottom:15px;
-    font-weight:700;
+    padding:10px;
+    margin:10px 0;
+    border-radius:10px;
 }
 
-.btn-add{
+button{
     background:#7a5c33;
     color:#fff;
     border:none;
-    padding:15px 45px;
-    border-radius:50px;
+    padding:12px 30px;
+    border-radius:30px;
     font-weight:800;
-    text-transform:uppercase;
-    font-size:10px;
     cursor:pointer;
 }
 
@@ -142,14 +99,14 @@ nav a{
     position:fixed;
     top:0;
     right:-420px;
-    width:400px;
+    width:380px;
     height:100%;
     background:#fff;
-    box-shadow:-10px 0 50px rgba(0,0,0,0.1);
+    box-shadow:-10px 0 40px rgba(0,0,0,0.2);
+    transition:0.4s;
+    padding:25px;
+    overflow:auto;
     z-index:2000;
-    transition:0.5s;
-    padding:40px;
-    overflow-y:auto;
 }
 
 .side-menu.active{
@@ -158,13 +115,10 @@ nav a{
 
 .overlay{
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    inset:0;
     background:rgba(0,0,0,0.4);
     display:none;
-    z-index:1900;
+    z-index:1500;
 }
 
 .overlay.active{
@@ -174,21 +128,16 @@ nav a{
 .cart-item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
     border-bottom:1px solid #eee;
-    padding-bottom:10px;
-    font-size:13px;
+    padding:10px 0;
 }
 
-.remove-btn{
-    color:#ff4d4d;
-    border:none;
+.remove{
     background:none;
-    cursor:pointer;
-    font-size:10px;
+    color:red;
     font-weight:800;
-    text-transform:uppercase;
+    border:none;
+    cursor:pointer;
 }
 
 </style>
@@ -200,30 +149,15 @@ nav a{
 
 <header class="main-header">
 
-<div style="display:flex; align-items:center; gap:15px;">
 <div class="logo-circle"></div>
-<h1 style="font-size:20px; color:#7a5c33; font-weight:800;">SOLLENE</h1>
-</div>
 
-<nav>
-<a href="index.html">HOME</a>
-</nav>
-
-<div class="cart-icon" onclick="toggleCart()">
-
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2">
-<circle cx="9" cy="21" r="1"></circle>
-<circle cx="20" cy="21" r="1"></circle>
-<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-</svg>
-
-<div class="cart-badge" id="cart-count">0</div>
-
+<div class="cart-btn" onclick="toggleCart()">
+CART (<span id="count">0</span>)
 </div>
 
 </header>
 
-<main class="products-section">
+<section class="products-section">
 
 <div class="products-grid">
 
@@ -231,20 +165,19 @@ nav a{
 <div class="card">
 
 <div class="img-container">
-<img src="accessory1.png" class="card-img" onerror="this.src='logo.png'">
+<img src="accessory1.png">
 </div>
 
 <h3>Luxury Belt</h3>
+<p>€120</p>
 
-<p style="font-weight:800; margin:15px 0; font-size:20px;">€ 120.00</p>
-
-<select id="opt1" class="select-option">
+<select id="op1">
 <option value="Black">Black</option>
 <option value="Brown">Brown</option>
 </select>
 
-<button class="btn-add" onclick="addToCart('Luxury Belt',120,document.getElementById('opt1').value)">
-Add to Bag
+<button onclick="add('Luxury Belt',120,op1.value)">
+ADD TO CART
 </button>
 
 </div>
@@ -253,125 +186,106 @@ Add to Bag
 <div class="card">
 
 <div class="img-container">
-<img src="accessory2.png" class="card-img" onerror="this.src='logo.png'">
+<img src="accessory2.png">
 </div>
 
 <h3>Designer Wallet</h3>
+<p>€90</p>
 
-<p style="font-weight:800; margin:15px 0; font-size:20px;">€ 90.00</p>
-
-<select id="opt2" class="select-option">
+<select id="op2">
 <option value="Leather">Leather</option>
 <option value="Carbon">Carbon</option>
 </select>
 
-<button class="btn-add" onclick="addToCart('Designer Wallet',90,document.getElementById('opt2').value)">
-Add to Bag
+<button onclick="add('Designer Wallet',90,op2.value)">
+ADD TO CART
 </button>
 
 </div>
 
 </div>
 
-</main>
+</section>
 
-<div class="side-menu" id="sideMenu">
+<div class="side-menu" id="cart">
 
-<div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align:right;">
-✕ CLOSE
-</div>
+<h3>Cart</h3>
 
-<h2 style="font-size:18px; text-transform:uppercase; color:#7a5c33;">
-Cart
-</h2>
-
-<div id="cart-list" style="margin-top:20px;"></div>
+<div id="list"></div>
 
 </div>
 
 <script>
 
 function getCart(){
-    return JSON.parse(localStorage.getItem('sollene_cart')) || [];
+return JSON.parse(localStorage.getItem("sollene_cart")) || [];
+}
+
+function save(cart){
+localStorage.setItem("sollene_cart", JSON.stringify(cart));
 }
 
 function toggleCart(){
-    document.getElementById('sideMenu').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
+document.getElementById("cart").classList.toggle("active");
+document.getElementById("overlay").classList.toggle("active");
 }
 
-function addToCart(name, price, option){
+function add(name,price,option){
 
-    let cart = getCart();
+let cart = getCart();
 
-    cart.push({
-        name:name,
-        price:price,
-        option:option
-    });
+cart.push({
+name:name,
+price:price,
+option:option
+});
 
-    localStorage.setItem('sollene_cart', JSON.stringify(cart));
+save(cart);
 
-    updateUI();
-
-    document.getElementById('sideMenu').classList.add('active');
-    document.getElementById('overlay').classList.add('active');
+render();
 }
 
-function removeItem(index){
+function removeItem(i){
 
-    let cart = getCart();
+let cart = getCart();
 
-    cart.splice(index,1);
+cart.splice(i,1);
 
-    localStorage.setItem('sollene_cart', JSON.stringify(cart));
+save(cart);
 
-    updateUI();
+render();
 }
 
-function updateUI(){
+function render(){
 
-    let cart = getCart();
+let cart = getCart();
 
-    document.getElementById('cart-count').innerText = cart.length;
+document.getElementById("count").innerText = cart.length;
 
-    const list = document.getElementById('cart-list');
+let list = document.getElementById("list");
 
-    if(cart.length === 0){
-
-        list.innerHTML = `<p style="color:#999;font-size:13px;">Cart empty</p>`;
-
-    } else {
-
-        list.innerHTML = cart.map((item,index)=>`
-
-        <div class="cart-item">
-
-            <div>
-                <p style="font-weight:800;text-transform:uppercase;font-size:11px;">
-                    ${item.name}
-                </p>
-
-                <p style="color:#7a5c33;font-size:12px;margin-top:3px;">
-                    ${item.option || ''}
-                </p>
-
-                <p style="font-size:12px;margin-top:3px;">
-                    € ${item.price}.00
-                </p>
-            </div>
-
-            <button class="remove-btn" onclick="removeItem(${index})">
-                DELETE
-            </button>
-
-        </div>
-
-        `).join('');
-    }
+if(cart.length === 0){
+list.innerHTML = "<p>Cart empty</p>";
+return;
 }
 
-window.onload = updateUI;
+list.innerHTML = cart.map((p,i)=>`
+<div class="cart-item">
+
+<div>
+<b>${p.name}</b><br>
+<small>${p.option}</small><br>
+€ ${p.price}
+</div>
+
+<button class="remove" onclick="removeItem(${i})">X</button>
+
+</div>
+`).join("");
+
+}
+
+render();
 
 </script>
 
