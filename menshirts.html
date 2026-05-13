@@ -18,8 +18,10 @@
         .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
         
         .cart-icon-container { position: relative; cursor: pointer; display: flex; align-items: center; }
+        
+        /* ESTILO DO CONTADOR CONFORME SUA IMAGEM */
         .cart-badge {
-            position: absolute; top: -8px; right: -8px; background: #7a5c33; color: #fff;
+            position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff;
             font-size: 10px; font-weight: 800; width: 20px; height: 20px;
             display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
         }
@@ -99,7 +101,7 @@
         <h2 class="page-title">Men's Apparel Selection</h2>
         <div class="products-grid">
             
-            <!-- CARD 1: APENAS CAMISA ALGODÃO -->
+            <!-- CARD 1 -->
             <div class="card">
                 <div class="img-container">
                     <img src="menshirts.png" class="card-img" onerror="this.src='logo.png'">
@@ -109,7 +111,7 @@
                 <button class="btn-add" onclick="addToCart('Executive Shirt', 85)">Add to Bag</button>
             </div>
 
-            <!-- CARD 2: APENAS CAMISA LINHO -->
+            <!-- CARD 2 -->
             <div class="card">
                 <div class="img-container">
                     <img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'">
@@ -119,7 +121,7 @@
                 <button class="btn-add" onclick="addToCart('Linen Shirt', 95)">Add to Bag</button>
             </div>
 
-            <!-- CARD 3: APENAS SHORT EXECUTIVO -->
+            <!-- CARD 3 -->
             <div class="card">
                 <div class="img-container">
                     <img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'">
@@ -143,7 +145,10 @@
     </div>
 
     <script>
-        let cart = JSON.parse(sessionStorage.getItem('sollene_cart')) || [];
+        // SOLUÇÃO DO PROBLEMA: Sempre puxa o que já existe antes de recriar a lista
+        function getCart() {
+            return JSON.parse(sessionStorage.getItem('sollene_cart')) || [];
+        }
 
         function toggleCart() {
             document.getElementById('sideMenu').classList.toggle('active');
@@ -151,25 +156,28 @@
         }
 
         function addToCart(name, price) {
-            cart.push({name, price});
-            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
+            let currentCart = getCart();
+            currentCart.push({name, price}); // Acrescenta sem apagar os outros
+            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
             toggleCart();
         }
 
         function removeItem(index) {
-            cart.splice(index, 1);
-            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
+            let currentCart = getCart();
+            currentCart.splice(index, 1);
+            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
         }
 
         function updateUI() {
-            document.getElementById('cart-count').innerText = cart.length;
+            let currentCart = getCart();
+            document.getElementById('cart-count').innerText = currentCart.length;
             const list = document.getElementById('cart-list');
-            if (cart.length === 0) {
+            if (currentCart.length === 0) {
                 list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
             } else {
-                list.innerHTML = cart.map((item, index) => `
+                list.innerHTML = currentCart.map((item, index) => `
                     <div class="cart-item">
                         <div>
                             <p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p>
