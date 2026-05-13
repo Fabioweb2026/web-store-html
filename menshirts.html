@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Men's Shirts | Sollene Group Official</title>
+    <title>Men's Shirts & Shorts | Sollene Group Official</title>
     <style>
         @import url('googleapis.com');
         *{ margin:0; padding:0; box-sizing:border-box; }
@@ -24,21 +24,24 @@
             display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb;
         }
 
-        /* VITRINE HARMÔNICA */
+        /* VITRINE HARMÔNICA - 3 CARDS SEPARADOS */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
+        .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
+        
         .products-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 40px; 
-            max-width: 1200px; 
+            max-width: 1300px; 
             margin: 0 auto; 
         }
 
         .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; border: 1px solid #f9f9f9; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
         
         .img-container { 
             width: 100%; 
-            height: 520px; 
+            height: 480px; 
             overflow: hidden; 
             background: #fdfaf6; 
             margin-bottom: 20px; 
@@ -46,6 +49,7 @@
             display: flex; 
             align-items: center; 
             justify-content: center;
+            padding: 15px;
         }
 
         .card-img { 
@@ -56,8 +60,9 @@
         }
 
         .btn-add {
-            background: #7a5c33; color: #fff; border: none; padding: 15px 45px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 11px; cursor: pointer;
+            background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s;
         }
+        .btn-add:hover { background: #000; }
 
         /* ABA LATERAL REVISADA */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
@@ -66,19 +71,7 @@
         .overlay.active { display: block; }
         
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
-        
-        /* BOTÃO DELETE CORRIGIDO NO CSS */
-        .remove-btn { 
-            color: #ff4d4d; 
-            border: none; 
-            background: none; 
-            cursor: pointer; 
-            font-size: 11px; 
-            font-weight: 800; 
-            text-transform: uppercase; 
-            padding: 5px 10px;
-        }
-        .remove-btn:hover { color: #000; }
+        .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
         @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } }
     </style>
@@ -103,29 +96,46 @@
     </header>
 
     <main class="products-section">
+        <h2 class="page-title">Men's Apparel Selection</h2>
         <div class="products-grid">
+            
+            <!-- CARD 1: APENAS CAMISA ALGODÃO -->
             <div class="card">
-                <div class="img-container"><img src="menshirts.png" class="card-img" onerror="this.src='logo.png'"></div>
+                <div class="img-container">
+                    <img src="menshirts.png" class="card-img" onerror="this.src='logo.png'">
+                </div>
                 <h3>Executive Cotton Shirt</h3>
                 <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 85.00</p>
                 <button class="btn-add" onclick="addToCart('Executive Shirt', 85)">Add to Bag</button>
             </div>
 
+            <!-- CARD 2: APENAS CAMISA LINHO -->
             <div class="card">
-                <div class="img-container"><img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'"></div>
+                <div class="img-container">
+                    <img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'">
+                </div>
                 <h3>Premium Linen Shirt</h3>
                 <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 95.00</p>
                 <button class="btn-add" onclick="addToCart('Linen Shirt', 95)">Add to Bag</button>
             </div>
+
+            <!-- CARD 3: APENAS SHORT EXECUTIVO -->
+            <div class="card">
+                <div class="img-container">
+                    <img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'">
+                </div>
+                <h3>Executive Tailored Shorts</h3>
+                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 60.00</p>
+                <button class="btn-add" onclick="addToCart('Tailored Shorts', 60)">Add to Bag</button>
+            </div>
+
         </div>
     </main>
 
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Selected Items</h2>
-        
         <div id="cart-list" style="margin-top:20px;"></div>
-        
         <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
             To finalize payment,<br>please proceed to the <strong>HOME PAGE</strong>.
         </p>
@@ -133,7 +143,7 @@
     </div>
 
     <script>
-        let cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
+        let cart = JSON.parse(sessionStorage.getItem('sollene_cart')) || [];
 
         function toggleCart() {
             document.getElementById('sideMenu').classList.toggle('active');
@@ -142,14 +152,14 @@
 
         function addToCart(name, price) {
             cart.push({name, price});
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
+            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
             updateUI();
             toggleCart();
         }
 
         function removeItem(index) {
             cart.splice(index, 1);
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
+            sessionStorage.setItem('sollene_cart', JSON.stringify(cart));
             updateUI();
         }
 
