@@ -7,12 +7,7 @@
 <title>Women's Selection | Sollene Group</title>
 
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
     font-family:sans-serif;
@@ -21,32 +16,27 @@ body{
 }
 
 .main-header{
-    background:#f7f3eb;
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     padding:15px 5%;
-    border-bottom:1px solid rgba(0,0,0,0.05);
     position:sticky;
     top:0;
-    z-index:1000;
+    background:#f7f3eb;
+    border-bottom:1px solid rgba(0,0,0,0.05);
 }
 
 .logo-circle{
-    width:55px;
-    height:55px;
-    border-radius:50%;
+    width:55px;height:55px;border-radius:50%;
     border:1px solid #d4af37;
-    background:#fff url('logo.png') no-repeat center center;
-    background-size:cover;
+    background:#fff url('logo.png') center/cover no-repeat;
 }
 
 nav a{
     text-decoration:none;
-    color:#000;
-    font-size:11px;
     font-weight:800;
-    text-transform:uppercase;
+    font-size:11px;
+    color:#000;
     border:2px solid #000;
     padding:8px 20px;
     border-radius:6px;
@@ -55,87 +45,69 @@ nav a{
 .cart-icon{
     cursor:pointer;
     position:relative;
-    padding:5px;
 }
 
 .cart-badge{
     position:absolute;
-    top:-10px;
+    top:-8px;
     right:-8px;
     background:#7a5c33;
     color:#fff;
     font-size:10px;
-    font-weight:800;
-    width:20px;
-    height:20px;
+    width:18px;
+    height:18px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     border-radius:50%;
-    border:2px solid #f7f3eb;
 }
 
 .products-section{
     padding:60px 5%;
     background:#fff;
-    min-height:100vh;
-    text-align:center;
 }
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:40px;
-    max-width:1200px;
-    margin:0 auto;
 }
 
 .card{
     background:#fff;
-    border-radius:24px;
+    border-radius:20px;
+    padding-bottom:25px;
     text-align:center;
-    padding-bottom:30px;
-    border:1px solid #f9f9f9;
-    overflow:hidden;
 }
 
 .img-container{
-    width:100%;
-    height:550px;
-    overflow:hidden;
-    background:#fdfaf6;
-    margin-bottom:20px;
-    padding:10px;
+    height:500px;
     display:flex;
     align-items:center;
     justify-content:center;
+    background:#fdfaf6;
+    margin-bottom:15px;
 }
 
 .card-img{
     max-width:100%;
     max-height:100%;
-    object-fit:contain;
 }
 
 .select-option{
     width:80%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #ddd;
-    margin-bottom:18px;
-    font-weight:700;
-    background:#fff;
+    padding:12px;
+    margin:10px 0;
+    border-radius:10px;
 }
 
 .btn-add{
     background:#7a5c33;
     color:#fff;
     border:none;
-    padding:15px 45px;
-    border-radius:50px;
+    padding:14px 40px;
+    border-radius:40px;
     font-weight:800;
-    text-transform:uppercase;
-    font-size:10px;
     cursor:pointer;
 }
 
@@ -147,51 +119,36 @@ nav a{
     height:100%;
     background:#fff;
     box-shadow:-10px 0 50px rgba(0,0,0,0.1);
-    z-index:2000;
-    transition:0.5s;
-    padding:40px;
+    transition:0.4s;
+    padding:30px;
     overflow-y:auto;
 }
 
-.side-menu.active{
-    right:0;
-}
+.side-menu.active{right:0;}
 
 .overlay{
     position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
+    inset:0;
     background:rgba(0,0,0,0.4);
     display:none;
-    z-index:1900;
 }
 
-.overlay.active{
-    display:block;
-}
+.overlay.active{display:block;}
 
 .cart-item{
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    margin-bottom:15px;
     border-bottom:1px solid #eee;
-    padding-bottom:10px;
-    font-size:13px;
+    padding:10px 0;
 }
 
 .remove-btn{
-    color:#ff4d4d;
-    border:none;
     background:none;
-    cursor:pointer;
+    border:none;
+    color:red;
     font-size:10px;
-    font-weight:800;
-    text-transform:uppercase;
+    cursor:pointer;
 }
-
 </style>
 </head>
 
@@ -200,257 +157,140 @@ nav a{
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <header class="main-header">
+    <div style="display:flex;gap:15px;align-items:center;">
+        <div class="logo-circle"></div>
+        <h2 style="color:#7a5c33;">SOLLENE</h2>
+    </div>
 
-<div style="display:flex; align-items:center; gap:15px;">
+    <nav>
+        <a href="index.html">HOME</a>
+    </nav>
 
-<div class="logo-circle"></div>
-
-<h1 style="font-size:20px; color:#7a5c33; font-weight:800;">
-SOLLENE
-</h1>
-
-</div>
-
-<nav>
-<a href="index.html">HOME</a>
-</nav>
-
-<div class="cart-icon" onclick="toggleCart()">
-
-<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2">
-<circle cx="9" cy="21" r="1"></circle>
-<circle cx="20" cy="21" r="1"></circle>
-<path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-</svg>
-
-<div class="cart-badge" id="cart-count">0</div>
-
-</div>
-
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒
+        <div class="cart-badge" id="cart-count">0</div>
+    </div>
 </header>
 
-<main class="products-section">
+<section class="products-section">
 
 <div class="products-grid">
 
-<!-- CARD 1-->
+<!-- CARD 1 -->
 <div class="card">
+    <div class="img-container">
+        <img src="imagem.woman.png" class="card-img">
+    </div>
 
-<div class="img-container">
-<img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
+    <h3>Executive Signature Style</h3>
+    <p><b>€195.00</b></p>
+
+    <select class="select-option">
+        <option>T-Shirt</option>
+        <option>Pants</option>
+        <option>Full Outfit</option>
+    </select>
+
+    <button class="btn-add"
+    onclick="addToCart('Executive Signature Style',195,this.parentNode.querySelector('select').value)">
+    Add to Bag
+    </button>
 </div>
 
-<h3>Executive Signature Style</h3>
-
-<p style="font-weight:800; margin:15px 0; font-size:20px;">
-€195.00
-</p>
-
-<select class="select-option">
-<option value="T-Shirt">T-Shirt</option>
-<option value="Pants">Pants</option>
-<option value="Full Outfit">Full Outfit</option>
-</select>
-
-<button class="btn-add"
-onclick="addToCart('Executive Signature Style',195,this.previousElementSibling.value)">
-Add to Bag
-</button>
-
-</div>
-<!-- CARD 2-->
+<!-- CARD 2 -->
 <div class="card">
+    <div class="img-container">
+        <img src="womancalca2.png" class="card-img">
+    </div>
 
-<div class="img-container">
- <img src="womancalca2.png" class="card-img">   
+    <h3>Executive Pants Style</h3>
+    <p><b>€25.00</b></p>
+
+    <select class="select-option">
+        <option>Pants 1</option>
+        <option>Pants 2</option>
+        <option>Full Outfit</option>
+    </select>
+
+    <button class="btn-add"
+    onclick="addToCart('Executive Pants Style',25,this.parentNode.querySelector('select').value)">
+    Add to Bag
+    </button>
 </div>
-<h3>Executive Pants Style</h3>
-<p style="font-weight:800; margin:15px 0; font-size:20px;">
-€25.00
-</p>
 
-<select class="select-option">
-<option value="Pants 1">Pants 1</option>
-<option value="Pants 2">Pants 2</option>
-<option value="Full Outfit">Full Outfit</option>
-</select>
-<button class="btn-add"
-onclick="addToCart(
-onclick="addToCart(
-'Executive Pants Style',
-25,
-this.parentNode.querySelector('select').value
-)"
-Add to Bag
-</button>
 </div>
-</main>
 
+</section>
+
+<!-- CART -->
 <div class="side-menu" id="sideMenu">
-
-<div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align:right;">
-✕ CLOSE
-</div>
-
-<h2 style="font-size:18px; text-transform:uppercase; color:#7a5c33;">
-Selected Items
-</h2>
-
-<div id="cart-list" style="margin-top:20px;"></div>
-
-<p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
-To finalize payment,<br>
-please proceed to the <strong>HOME PAGE</strong>.
-</p>
-
-<a href="index.html"
-style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">
-GO TO CHECKOUT
-</a>
-
+    <h3>Cart</h3>
+    <div id="cart-list"></div>
 </div>
 
 <script>
 
 function getCart(){
-
-return JSON.parse(localStorage.getItem('sollene_cart')) || [];
-
+    return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
 
-function toggleCart(){
-
-document.getElementById('sideMenu').classList.toggle('active');
-
-document.getElementById('overlay').classList.toggle('active');
-
+function saveCart(cart){
+    localStorage.setItem("sollene_cart", JSON.stringify(cart));
 }
 
 function addToCart(name, price, option){
 
-let currentCart = getCart();
+    let cart = getCart();
 
-currentCart.push({
+    cart.push({name, price, option});
 
-name:name,
-price:price,
-option:option
-
-});
-
-localStorage.setItem(
-'sollene_cart',
-JSON.stringify(currentCart)
-);
-
-updateUI();
-
-document.getElementById('sideMenu').classList.add('active');
-
-document.getElementById('overlay').classList.add('active');
-
+    saveCart(cart);
+    updateUI();
+    toggleCart();
 }
+
 function removeItem(index){
-
-let currentCart = getCart();
-
-currentCart.splice(index,1);
-
-localStorage.setItem(
-"sollene_cart",
-JSON.stringify(currentCart)
-);
-
-updateUI();
-
-}
-
-
-
+    let cart = getCart();
+    cart.splice(index,1);
+    saveCart(cart);
+    updateUI();
 }
 
 function updateUI(){
 
-let currentCart = getCart();
+    let cart = getCart();
 
-document.getElementById('cart-count').innerText = currentCart.length;
+    document.getElementById("cart-count").innerText = cart.length;
 
-const list = document.getElementById('cart-list');
+    let list = document.getElementById("cart-list");
 
-if(currentCart.length === 0){
+    if(!list) return;
 
-list.innerHTML = `
-<p style="color:#999; font-size:13px;">
-Bag is empty.
-</p>
-`;
+    if(cart.length === 0){
+        list.innerHTML = "<p>Cart empty</p>";
+        return;
+    }
 
-}else{
-
-list.innerHTML = currentCart.map((item,index)=>`
-
-<div class="cart-item">
-
-<div>
-
-<p style="font-weight:800; text-transform:uppercase; font-size:11px;">
-${item.name}
-</p>
-
-<p style="color:#7a5c33; font-size:12px; margin-top:3px;">
-${item.option}
-</p>
-
-<p style="color:#000; font-size:12px; margin-top:3px;">
-€ ${item.price}.00
-</p>
-
-</div>
-
-<button class="remove-btn" onclick="removeItem(${index})">
-DELETE
-</button>
-
-</div>
-
-`).join('');
-
-}
-
-}
-    function updateUI(){
-function updateUI(){
-
-let currentCart = getCart();
-
-document.getElementById('cart-count').innerText = currentCart.length;
-
-const list = document.getElementById('cart-list');
-
-if(currentCart.length === 0){
-    list.innerHTML = `<p style="color:#999;font-size:13px;">Bag is empty.</p>`;
-}else{
-    list.innerHTML = currentCart.map((item,index)=>`
+    list.innerHTML = cart.map((item,index)=>`
         <div class="cart-item">
             <div>
-                <p style="font-weight:800;text-transform:uppercase;font-size:11px;">
-                    ${item.name}
-                </p>
-                <p style="color:#7a5c33;font-size:12px;">
-                    ${item.option}
-                </p>
-                <p style="font-size:12px;">
-                    € ${item.price}.00
-                </p>
+                <b>${item.name}</b><br>
+                ${item.option}<br>
+                €${item.price}
             </div>
-
-            <button class="remove-btn" onclick="removeItem(${index})">
-                DELETE
-            </button>
+            <button class="remove-btn" onclick="removeItem(${index})">X</button>
         </div>
     `).join('');
 }
 
+function toggleCart(){
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
 }
+
+document.addEventListener("DOMContentLoaded", updateUI);
+
+</script>
+
 </body>
 </html>
