@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -23,56 +24,78 @@ html{
 
 body{
     font-family:'Plus Jakarta Sans',sans-serif;
-    background:#070707;
     color:white;
     overflow-x:hidden;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(212,175,55,0.12),
+    transparent 30%),
+
+    radial-gradient(circle at bottom right,
+    rgba(255,255,255,0.04),
+    transparent 25%),
+
+    linear-gradient(135deg,
+    #050505,
+    #0d0d0d,
+    #111111);
+
+    background-attachment:fixed;
 }
 
-/* BACKGROUND EFFECT */
+/* PREMIUM BACKGROUND */
 
 body::before{
     content:'';
     position:fixed;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,#d4af3720,transparent 70%);
-    top:-200px;
-    left:-200px;
+    width:900px;
+    height:900px;
+    background:radial-gradient(circle,#d4af3715,transparent 70%);
+    top:-350px;
+    left:-350px;
     z-index:-1;
+    filter:blur(30px);
 }
 
 body::after{
     content:'';
     position:fixed;
-    width:600px;
-    height:600px;
+    width:800px;
+    height:800px;
     background:radial-gradient(circle,#ffffff08,transparent 70%);
-    bottom:-200px;
-    right:-200px;
+    bottom:-350px;
+    right:-350px;
     z-index:-1;
+    filter:blur(40px);
 }
 
 /* HEADER */
 
 header{
     width:100%;
-    padding:25px 8%;
+    padding:24px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
+
     position:fixed;
     top:0;
     left:0;
+
     z-index:1000;
+
     backdrop-filter:blur(14px);
+
     background:rgba(0,0,0,0.45);
+
     border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
 .logo{
     font-size:28px;
     font-weight:700;
-    letter-spacing:4px;
+    letter-spacing:5px;
 }
 
 nav{
@@ -81,9 +104,9 @@ nav{
 }
 
 nav a{
-    color:white;
     text-decoration:none;
-    font-size:15px;
+    color:white;
+    font-size:14px;
     transition:0.3s;
 }
 
@@ -96,7 +119,7 @@ nav a:hover{
 .cart-button{
     background:#d4af37;
     color:black;
-    padding:12px 22px;
+    padding:12px 24px;
     border-radius:40px;
     font-weight:700;
     cursor:pointer;
@@ -112,45 +135,57 @@ nav a:hover{
 .hero{
     width:100%;
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
+
     position:relative;
+
     padding:120px 8%;
+
     background:
-    linear-gradient(rgba(0,0,0,0.55),
-    rgba(0,0,0,0.7)),
-    url('menshirts.png') center/cover;
+    linear-gradient(rgba(0,0,0,0.65),
+    rgba(0,0,0,0.82)),
+
+    url('menshirts.png')
+    center/cover no-repeat;
+
+    border-bottom:
+    1px solid rgba(255,255,255,0.05);
 }
 
 .hero-content{
-    max-width:800px;
+    max-width:850px;
 }
 
 .hero h1{
-    font-size:82px;
+    font-size:85px;
     line-height:1.1;
     margin-bottom:25px;
     letter-spacing:5px;
 }
 
 .hero p{
-    font-size:19px;
-    color:#d7d7d7;
-    margin-bottom:35px;
-    line-height:1.7;
+    font-size:18px;
+    color:#d9d9d9;
+    line-height:1.8;
+    margin-bottom:40px;
 }
 
 .hero button{
-    padding:17px 40px;
+    padding:18px 42px;
     border:none;
-    border-radius:40px;
+    border-radius:50px;
+
     background:#d4af37;
+
     color:black;
     font-weight:700;
-    font-size:15px;
+
     cursor:pointer;
+
     transition:0.3s;
 }
 
@@ -167,35 +202,46 @@ nav a:hover{
 .section-title{
     text-align:center;
     font-size:45px;
-    margin-bottom:70px;
     letter-spacing:4px;
+    margin-bottom:70px;
 }
 
 .products-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(270px,1fr));
+
     gap:35px;
 }
 
 .product-card{
-    background:rgba(255,255,255,0.03);
-    border:1px solid rgba(255,255,255,0.05);
+    background:
+    rgba(255,255,255,0.03);
+
+    border:
+    1px solid rgba(255,255,255,0.05);
+
     border-radius:28px;
+
     overflow:hidden;
+
     transition:0.4s;
-    backdrop-filter:blur(10px);
-    position:relative;
+
+    backdrop-filter:blur(12px);
 }
 
 .product-card:hover{
     transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,0.5);
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,0.45);
 }
 
 .product-card img{
     width:100%;
     height:340px;
     object-fit:cover;
+
     transition:0.5s;
 }
 
@@ -225,11 +271,17 @@ nav a:hover{
 
 .buttons button{
     flex:1;
+
     padding:14px;
+
     border:none;
+
     border-radius:14px;
+
     font-weight:700;
+
     cursor:pointer;
+
     transition:0.3s;
 }
 
@@ -239,28 +291,37 @@ nav a:hover{
 }
 
 .save-btn{
-    background:#1f1f1f;
+    background:#1d1d1d;
     color:white;
 }
 
 .buttons button:hover{
-    opacity:0.8;
+    opacity:0.85;
 }
 
 /* CART */
 
 .cart-sidebar{
     position:fixed;
+
     top:0;
     right:-420px;
+
     width:380px;
     height:100%;
+
     background:#101010;
+
     z-index:2000;
+
     transition:0.4s;
+
     padding:30px;
+
     overflow-y:auto;
-    border-left:1px solid rgba(255,255,255,0.08);
+
+    border-left:
+    1px solid rgba(255,255,255,0.08);
 }
 
 .cart-sidebar.active{
@@ -269,21 +330,27 @@ nav a:hover{
 
 .close-cart{
     position:absolute;
-    top:20px;
-    right:25px;
+
+    top:18px;
+    right:24px;
+
     font-size:30px;
+
     cursor:pointer;
 }
 
 .cart-sidebar h2{
-    margin-bottom:40px;
-    margin-top:20px;
+    margin-top:25px;
+    margin-bottom:35px;
 }
 
 .cart-item{
-    background:#1b1b1b;
+    background:#1a1a1a;
+
     padding:18px;
+
     border-radius:18px;
+
     margin-bottom:18px;
 }
 
@@ -292,31 +359,48 @@ nav a:hover{
 }
 
 .remove-btn{
-    margin-top:12px;
     width:100%;
+
+    margin-top:12px;
+
     padding:11px;
+
     border:none;
-    background:#7a0000;
-    color:white;
+
     border-radius:10px;
+
+    background:#7b0000;
+
+    color:white;
+
     cursor:pointer;
 }
 
 .total{
-    font-size:24px;
-    color:#d4af37;
     margin-top:25px;
+
+    font-size:24px;
+
+    color:#d4af37;
 }
 
 .checkout-btn{
     width:100%;
+
+    margin-top:22px;
+
     padding:16px;
+
     border:none;
+
     border-radius:14px;
-    margin-top:20px;
+
     background:#d4af37;
+
     color:black;
+
     font-weight:700;
+
     cursor:pointer;
 }
 
@@ -324,9 +408,13 @@ nav a:hover{
 
 footer{
     text-align:center;
-    padding:40px;
+
+    padding:45px;
+
     color:#777;
-    border-top:1px solid rgba(255,255,255,0.05);
+
+    border-top:
+    1px solid rgba(255,255,255,0.05);
 }
 
 /* MOBILE */
@@ -334,7 +422,7 @@ footer{
 @media(max-width:768px){
 
 .hero h1{
-    font-size:50px;
+    font-size:52px;
 }
 
 .hero p{
@@ -357,6 +445,8 @@ nav{
 
 <body>
 
+<!-- HEADER -->
+
 <header>
 
 <div class="logo">
@@ -372,8 +462,11 @@ SOLLENE
 
 </nav>
 
-<div class="cart-button" onclick="toggleCart()">
+<div class="cart-button"
+onclick="toggleCart()">
+
 CART (<span id="cart-count">0</span>)
+
 </div>
 
 </header>
@@ -385,12 +478,13 @@ CART (<span id="cart-count">0</span>)
 <div class="hero-content">
 
 <h1>
-MEN<br>ESSENTIALS
+MEN<br>
+ESSENTIALS
 </h1>
 
 <p>
-A sophisticated menswear experience inspired by timeless elegance,
-minimal aesthetics and modern luxury fashion.
+A premium menswear experience inspired by modern luxury,
+minimal aesthetics and timeless elegance.
 </p>
 
 <button onclick="document.getElementById('products').scrollIntoView()">
@@ -411,7 +505,7 @@ LUXURY COLLECTION
 
 <div class="products-grid">
 
-<!-- 1 -->
+<!-- PRODUCT 1 -->
 
 <div class="product-card">
 
@@ -440,7 +534,7 @@ Save
 
 </div>
 
-<!-- 2 -->
+<!-- PRODUCT 2 -->
 
 <div class="product-card">
 
@@ -469,7 +563,7 @@ Save
 
 </div>
 
-<!-- 3 -->
+<!-- PRODUCT 3 -->
 
 <div class="product-card">
 
@@ -498,7 +592,7 @@ Save
 
 </div>
 
-<!-- 4 -->
+<!-- PRODUCT 4 -->
 
 <div class="product-card">
 
@@ -527,7 +621,7 @@ Save
 
 </div>
 
-<!-- 5 -->
+<!-- PRODUCT 5 -->
 
 <div class="product-card">
 
@@ -556,7 +650,7 @@ Save
 
 </div>
 
-<!-- 6 -->
+<!-- PRODUCT 6 -->
 
 <div class="product-card">
 
@@ -591,7 +685,8 @@ Save
 
 <!-- CART -->
 
-<div class="cart-sidebar" id="cartSidebar">
+<div class="cart-sidebar"
+id="cartSidebar">
 
 <div class="close-cart"
 onclick="toggleCart()">
@@ -604,7 +699,8 @@ YOUR CART
 
 <div id="cartItems"></div>
 
-<div class="total" id="cartTotal">
+<div class="total"
+id="cartTotal">
 Total: €0
 </div>
 
@@ -613,6 +709,8 @@ Checkout
 </button>
 
 </div>
+
+<!-- FOOTER -->
 
 <footer>
 
@@ -668,7 +766,9 @@ cartItems.innerHTML += `
 
 <button class="remove-btn"
 onclick="removeItem(${index})">
+
 Remove
+
 </button>
 
 </div>
