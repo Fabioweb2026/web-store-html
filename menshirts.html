@@ -1,787 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Sollene Men Collection</title>
-
-<style>
-
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:'Plus Jakarta Sans',sans-serif;
-    color:white;
-    overflow-x:hidden;
-
-    background:
-    radial-gradient(circle at top left,
-    rgba(212,175,55,0.12),
-    transparent 30%),
-
-    radial-gradient(circle at bottom right,
-    rgba(255,255,255,0.04),
-    transparent 25%),
-
-    linear-gradient(135deg,
-    #050505,
-    #0d0d0d,
-    #111111);
-
-    background-attachment:fixed;
-}
-
-/* PREMIUM BACKGROUND */
-
-body::before{
-    content:'';
-    position:fixed;
-    width:900px;
-    height:900px;
-    background:radial-gradient(circle,#d4af3715,transparent 70%);
-    top:-350px;
-    left:-350px;
-    z-index:-1;
-    filter:blur(30px);
-}
-
-body::after{
-    content:'';
-    position:fixed;
-    width:800px;
-    height:800px;
-    background:radial-gradient(circle,#ffffff08,transparent 70%);
-    bottom:-350px;
-    right:-350px;
-    z-index:-1;
-    filter:blur(40px);
-}
-
-/* HEADER */
-
-header{
-    width:100%;
-    padding:24px 8%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    position:fixed;
-    top:0;
-    left:0;
-
-    z-index:1000;
-
-    backdrop-filter:blur(14px);
-
-    background:rgba(0,0,0,0.45);
-
-    border-bottom:1px solid rgba(255,255,255,0.05);
-}
-
-.logo{
-    font-size:28px;
-    font-weight:700;
-    letter-spacing:5px;
-}
-
-nav{
-    display:flex;
-    gap:35px;
-}
-
-nav a{
-    text-decoration:none;
-    color:white;
-    font-size:14px;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#d4af37;
-}
-
-/* CART BUTTON */
-
-.cart-button{
-    background:#d4af37;
-    color:black;
-    padding:12px 24px;
-    border-radius:40px;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.cart-button:hover{
-    transform:scale(1.05);
-}
-
-/* HERO */
-
-.hero{
-    width:100%;
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-
-    position:relative;
-
-    padding:120px 8%;
-
-    background:
-    linear-gradient(rgba(0,0,0,0.65),
-    rgba(0,0,0,0.82)),
-
-    url('menshirts.png')
-    center/cover no-repeat;
-
-    border-bottom:
-    1px solid rgba(255,255,255,0.05);
-}
-
-.hero-content{
-    max-width:850px;
-}
-
-.hero h1{
-    font-size:85px;
-    line-height:1.1;
-    margin-bottom:25px;
-    letter-spacing:5px;
-}
-
-.hero p{
-    font-size:18px;
-    color:#d9d9d9;
-    line-height:1.8;
-    margin-bottom:40px;
-}
-
-.hero button{
-    padding:18px 42px;
-    border:none;
-    border-radius:50px;
-
-    background:#d4af37;
-
-    color:black;
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-.hero button:hover{
-    transform:translateY(-5px);
-}
-
-/* PRODUCTS */
-
-.products{
-    padding:100px 8%;
-}
-
-.section-title{
-    text-align:center;
-    font-size:46px;
-    margin-bottom:70px;
-    letter-spacing:4px;
-}
-
-.products-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(270px,1fr));
-
-    gap:35px;
-}
-
-.product-card{
-    background:
-    linear-gradient(
-    180deg,
-    rgba(255,255,255,0.04),
-    rgba(255,255,255,0.02));
-
-    border:
-    1px solid rgba(255,255,255,0.06);
-
-    border-radius:28px;
-
-    overflow:hidden;
-
-    transition:0.4s;
-
-    backdrop-filter:blur(12px);
-}
-
-.product-card:hover{
-    transform:translateY(-10px);
-
-    box-shadow:
-    0 20px 40px rgba(0,0,0,0.45);
-}
-
-.product-card img{
-    width:100%;
-    height:340px;
-    object-fit:cover;
-    transition:0.5s;
-}
-
-.product-card:hover img{
-    transform:scale(1.05);
-}
-
-.product-info{
-    padding:22px;
-}
-
-.product-info h3{
-    font-size:22px;
-    margin-bottom:10px;
-}
-
-.price{
-    color:#d4af37;
-    font-size:22px;
-    margin-bottom:22px;
-}
-
-.buttons{
-    display:flex;
-    gap:10px;
-}
-
-.buttons button{
-    flex:1;
-    padding:14px;
-    border:none;
-    border-radius:14px;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.add-btn{
-    background:#d4af37;
-    color:black;
-}
-
-.save-btn{
-    background:#1d1d1d;
-    color:white;
-}
-
-.buttons button:hover{
-    opacity:0.85;
-}
-
-/* CART */
-
-.cart-sidebar{
-    position:fixed;
-
-    top:0;
-    right:-420px;
-
-    width:380px;
-    height:100%;
-
-    background:#101010;
-
-    z-index:2000;
-
-    transition:0.4s;
-
-    padding:30px;
-
-    overflow-y:auto;
-
-    border-left:
-    1px solid rgba(255,255,255,0.08);
-}
-
-.cart-sidebar.active{
-    right:0;
-}
-
-.close-cart{
-    position:absolute;
-
-    top:18px;
-    right:24px;
-
-    font-size:30px;
-
-    cursor:pointer;
-}
-
-.cart-sidebar h2{
-    margin-top:25px;
-    margin-bottom:35px;
-}
-
-.cart-item{
-    background:#1a1a1a;
-
-    padding:18px;
-
-    border-radius:18px;
-
-    margin-bottom:18px;
-}
-
-.cart-item h4{
-    margin-bottom:8px;
-}
-
-.remove-btn{
-    width:100%;
-
-    margin-top:12px;
-
-    padding:11px;
-
-    border:none;
-
-    border-radius:10px;
-
-    background:#7b0000;
-
-    color:white;
-
-    cursor:pointer;
-}
-
-.total{
-    margin-top:25px;
-
-    font-size:24px;
-
-    color:#d4af37;
-}
-
-.checkout-btn{
-    width:100%;
-
-    margin-top:22px;
-
-    padding:16px;
-
-    border:none;
-
-    border-radius:14px;
-
-    background:#d4af37;
-
-    color:black;
-
-    font-weight:700;
-
-    cursor:pointer;
-}
-
-/* FOOTER */
-
-footer{
-    text-align:center;
-
-    padding:45px;
-
-    color:#777;
-
-    border-top:
-    1px solid rgba(255,255,255,0.05);
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-    font-size:52px;
-}
-
-.hero p{
-    font-size:16px;
-}
-
-nav{
-    display:none;
-}
-
-.cart-sidebar{
-    width:100%;
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Shirts & Shorts | Sollene Group Official</title>
+    <style>
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; }
+
+        /* HEADER PADRÃO */
+        .main-header {
+            background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
+            padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
+        }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
+        
+        /* MENU COM SUPORTE A CLIQUE */
+        nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; user-select: none; }
+        .btn-home { border: 2px solid #000; border-radius: 6px; }
+
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
+        .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
+        .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
+        .nav-item:hover .dropdown-content { display: block; }
+        .dropdown-content.show { display: block; }
+
+        .cart-icon-container { position: relative; cursor: pointer; display: flex; align-items: center; }
+        .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
+
+        /* VITRINE */
+        .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
+        .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1300px; margin: 0 auto; }
+        .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; border: 1px solid #f9f9f9; transition: 0.4s; }
+        .img-container { width: 100%; height: 480px; overflow: hidden; background: #fdfaf6; margin-bottom: 20px; border-radius: 20px; display: flex; align-items: center; justify-content: center; padding: 15px; }
+        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .btn-add { background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; }
+
+        /* ABA LATERAL */
+        .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
+        .side-menu.active { right: 0; }
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
+        .overlay.active { display: block; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
+        .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+    </style>
 </head>
-
 <body>
-
-<!-- HEADER -->
-
-<header>
-
-<div class="logo">
-SOLLENE
-</div>
-
-<nav>
-<a href="#products">COLLECTION</a>
-<a href="#">LUXURY</a>
-<a href="#">CONTACT</a>
-</nav>
-
-<div class="cart-button" onclick="toggleCart()">
-CART (<span id="cart-count">0</span>)
-</div>
-
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>
-MEN<br>
-ESSENTIALS
-</h1>
-
-<p>
-A premium menswear experience inspired by modern luxury,
-minimal aesthetics and timeless elegance.
-</p>
-
-<button onclick="document.getElementById('products').scrollIntoView()">
-EXPLORE COLLECTION
-</button>
-
-</div>
-
-</section>
-
-<!-- PRODUCTS -->
-
-<section class="products" id="products">
-
-<h2 class="section-title">
-MEN COLLECTION
-</h2>
-
-<div class="products-grid">
-
-<!-- PRODUCT 1 -->
-
-<div class="product-card">
-
-<img src="menshirts.png" alt="Executive Linen Shirt">
-
-<div class="product-info">
-
-<h3>Executive Linen Shirt</h3>
-
-<div class="price">€89</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Executive Linen Shirt',89)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 2 -->
-
-<div class="product-card">
-
-<img src="menshorts.png" alt="Luxury Casual Shorts">
-
-<div class="product-info">
-
-<h3>Luxury Casual Shorts</h3>
-
-<div class="price">€74</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Luxury Casual Shorts',74)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 3 -->
-
-<div class="product-card">
-
-<img src="gravata.png" alt="Classic Black Tie">
-
-<div class="product-info">
-
-<h3>Classic Black Tie</h3>
-
-<div class="price">€39</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Classic Black Tie',39)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 4 -->
-
-<div class="product-card">
-
-<img src="bone.png" alt="Urban Luxury Cap">
-
-<div class="product-info">
-
-<h3>Urban Luxury Cap</h3>
-
-<div class="price">€45</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Urban Luxury Cap',45)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 5 -->
-
-<div class="product-card">
-
-<img src="chinelo.png" alt="Summer Elite Slides">
-
-<div class="product-info">
-
-<h3>Summer Elite Slides</h3>
-
-<div class="price">€29</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Summer Elite Slides',29)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PRODUCT 6 -->
-
-<div class="product-card">
-
-<img src="imagenswen.png" alt="Premium Fashion Piece">
-
-<div class="product-info">
-
-<h3>Premium Fashion Piece</h3>
-
-<div class="price">€95</div>
-
-<div class="buttons">
-
-<button class="add-btn"
-onclick="addToCart('Premium Fashion Piece',95)">
-Add to Cart
-</button>
-
-<button class="save-btn">
-Save
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CART -->
-
-<div class="cart-sidebar" id="cartSidebar">
-
-<div class="close-cart" onclick="toggleCart()">
-×
-</div>
-
-<h2>
-YOUR CART
-</h2>
-
-<div id="cartItems"></div>
-
-<div class="total" id="cartTotal">
-Total: €0
-</div>
-
-<button class="checkout-btn">
-Checkout
-</button>
-
-</div>
-
-<!-- FOOTER -->
-
-<footer>
-
-© 2026 Sollene Luxury Experience
-
-</footer>
-
-<script>
-
-let cart = [];
-let total = 0;
-
-function toggleCart(){
-
-document
-.getElementById('cartSidebar')
-.classList.toggle('active');
-
-}
-
-function addToCart(name,price){
-
-cart.push({name,price});
-
-total += price;
-
-updateCart();
-
-}
-
-function updateCart(){
-
-const cartItems =
-document.getElementById('cartItems');
-
-const cartTotal =
-document.getElementById('cartTotal');
-
-const cartCount =
-document.getElementById('cart-count');
-
-cartItems.innerHTML = '';
-
-cart.forEach((item,index)=>{
-
-cartItems.innerHTML += `
-
-<div class="cart-item">
-
-<h4>${item.name}</h4>
-
-<p>€${item.price}</p>
-
-<button class="remove-btn"
-onclick="removeItem(${index})">
-
-Remove
-
-</button>
-
-</div>
-
-`;
-
-});
-
-cartTotal.innerHTML =
-`Total: €${total}`;
-
-cartCount.innerHTML =
-cart.length;
-
-}
-
-function removeItem(index){
-
-total -= cart[index].price;
-
-cart.splice(index,1);
-
-updateCart();
-
-}
-
-</script>
-
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <header class="main-header">
+        <div class="header-left"><div class="logo-circle"></div><h1 style="font-size: 20px; font-weight: 800; color: #7a5c33;">SOLLENE</h1></div>
+        <nav>
+            <ul>
+                <li class="nav-item"><a href="index.html" class="nav-link btn-home">HOME</a></li>
+                <li class="nav-item">
+                    <span class="nav-link" onclick="toggleDropdown(event)">COLLECTIONS ▼</span>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="menshirts.html">MEN'S SHIRTS</a>
+                        <a href="accessories.html">ACCESSORIES</a>
+                        <a href="bolsas.html">BAGS COLLECTION</a>
+                        <a href="woman.html">WOMAN'S SELECTION</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <div class="cart-icon-container" onclick="toggleCart()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
+    </header>
+
+    <main class="products-section">
+        <h2 class="page-title">Men's Apparel Selection</h2>
+        <div class="products-grid">
+            <div class="card">
+                <div class="img-container"><img src="menshirts.png" class="card-img" onerror="this.src='logo.png'"></div>
+                <h3>Executive Cotton Shirt</h3><p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 85.00</p>
+                <button class="btn-add" onclick="addToCart('Executive Shirt', 85)">Add to Bag</button>
+            </div>
+            <div class="card">
+                <div class="img-container"><img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'"></div>
+                <h3>Premium Linen Shirt</h3><p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 95.00</p>
+                <button class="btn-add" onclick="addToCart('Linen Shirt', 95)">Add to Bag</button>
+            </div>
+            <div class="card">
+                <div class="img-container"><img src="imagenswen.2png.jpg" class="card-img" onerror="this.src='logo.png'"></div>
+                <h3>Executive Tailored Shorts</h3><p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 60.00</p>
+                <button class="btn-add" onclick="addToCart('Tailored Shorts', 60)">Add to Bag</button>
+            </div>
+        </div>
+    </main>
+
+    <div class="side-menu" id="sideMenu">
+        <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
+        <h2 style="font-size:18px; text-transform:uppercase; color:#7a5c33;">Selected Items</h2>
+        <div id="cart-list" style="margin-top:20px;"></div>
+        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">To finalize payment,<br>please proceed to the <strong>HOME PAGE</strong>.</p>
+        <a href="index.html" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">GO TO CHECKOUT</a>
+    </div>
+
+    <script>
+        function getCart() { return JSON.parse(sessionStorage.getItem('sollene_cart')) || []; }
+        function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
+        function toggleDropdown(event) { event.stopPropagation(); document.getElementById("myDropdown").classList.toggle("show"); }
+        window.onclick = function() { document.getElementById("myDropdown").classList.remove("show"); }
+        
+        function addToCart(name, price) {
+            let currentCart = getCart();
+            currentCart.push({name, price});
+            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            updateUI();
+            toggleCart();
+        }
+        function removeItem(index) {
+            let currentCart = getCart();
+            currentCart.splice(index, 1);
+            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            updateUI();
+        }
+        function updateUI() {
+            let currentCart = getCart();
+            document.getElementById('cart-count').innerText = currentCart.length;
+            const list = document.getElementById('cart-list');
+            if (currentCart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>'; } 
+            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p><p style="color:#7a5c33; font-size:12px; margin-top:3px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
+        }
+        window.onload = updateUI;
+    </script>
 </body>
 </html>
