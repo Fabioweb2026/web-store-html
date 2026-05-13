@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sollene Store</title>
+<title>Sollene Men Collection</title>
 
 <style>
 
-/* RESET */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap');
+
 *{
     margin:0;
     padding:0;
@@ -16,289 +17,609 @@
 }
 
 body{
-    font-family:sans-serif;
-    background:#f7f3eb;
+    background:#0b0b0b;
+    color:white;
+    font-family:'Plus Jakarta Sans',sans-serif;
 }
 
 /* HEADER */
+
 header{
+    width:100%;
+    padding:25px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 5%;
-    background:#fff;
-    border-bottom:1px solid #eee;
     position:sticky;
     top:0;
+    background:#0b0b0b;
+    z-index:999;
+    border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 .logo{
-    font-weight:800;
-    color:#7a5c33;
-}
-
-/* GRID PRODUTOS */
-.products-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:25px;
-    padding:40px 5%;
-}
-
-/* CARD */
-.card{
-    background:#fff;
-    border-radius:16px;
-    padding:15px;
-    text-align:center;
-}
-
-.img-container{
-    width:100%;
-    height:320px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:#fdfaf6;
-    border-radius:12px;
-    overflow:hidden;
-}
-
-.card-img{
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    padding:10px;
-}
-
-.select-option{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border-radius:8px;
-}
-
-.btn-add{
-    width:100%;
-    margin-top:10px;
-    padding:12px;
-    background:#7a5c33;
-    color:#fff;
-    border:none;
-    cursor:pointer;
+    font-size:28px;
     font-weight:700;
-    border-radius:8px;
+    letter-spacing:3px;
 }
 
-/* CART */
-.overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.4);
-    display:none;
-}
-
-.overlay.active{
-    display:block;
-}
-
-.side-menu{
-    position:fixed;
-    top:0;
-    right:-400px;
-    width:380px;
-    height:100%;
-    background:#fff;
-    padding:20px;
-    transition:0.3s;
-    overflow:auto;
-}
-
-.side-menu.active{
-    right:0;
-}
-
-.cart-item{
+nav{
     display:flex;
-    justify-content:space-between;
-    padding:10px 0;
-    border-bottom:1px solid #eee;
+    gap:30px;
 }
 
-.remove-btn{
-    color:red;
-    border:none;
-    background:none;
-    cursor:pointer;
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    transition:0.3s;
 }
 
-.clear-btn{
-    width:100%;
-    padding:12px;
-    background:#000;
-    color:#fff;
-    border:none;
-    margin-top:15px;
-    cursor:pointer;
+nav a:hover{
+    color:#d4af37;
 }
 
 .cart-icon{
+    background:#d4af37;
+    color:black;
+    padding:10px 18px;
+    border-radius:30px;
     cursor:pointer;
+    font-weight:700;
+}
+
+/* HERO */
+
+.hero{
+    width:100%;
+    height:75vh;
+    background:url('menshirts.png') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.55);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero-content h1{
+    font-size:65px;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#d8d8d8;
+    margin-bottom:30px;
+}
+
+.hero-content button{
+    padding:15px 35px;
+    border:none;
+    background:#d4af37;
+    color:black;
+    font-weight:700;
+    border-radius:40px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.hero-content button:hover{
+    transform:scale(1.05);
+}
+
+/* PRODUCTS */
+
+.products-section{
+    padding:80px 8%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:60px;
+    letter-spacing:3px;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:35px;
+}
+
+.product-card{
+    background:#141414;
+    border-radius:22px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 8px 30px rgba(0,0,0,0.4);
+}
+
+.product-card:hover{
+    transform:translateY(-10px);
+}
+
+.product-card img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-info h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#d4af37;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+}
+
+.buttons button{
+    flex:1;
+    border:none;
+    padding:13px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.add-btn{
+    background:#d4af37;
+    color:black;
+}
+
+.save-btn{
+    background:#2a2a2a;
+    color:white;
+}
+
+.buttons button:hover{
+    opacity:0.8;
+}
+
+/* CART */
+
+.cart-sidebar{
+    position:fixed;
+    right:-400px;
+    top:0;
+    width:350px;
+    height:100%;
+    background:#121212;
+    padding:25px;
+    transition:0.4s;
+    z-index:1000;
+    overflow-y:auto;
+    box-shadow:-10px 0 30px rgba(0,0,0,0.5);
+}
+
+.cart-sidebar.active{
+    right:0;
+}
+
+.cart-sidebar h2{
+    margin-bottom:25px;
+}
+
+.cart-item{
+    background:#1d1d1d;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+}
+
+.cart-item h4{
+    margin-bottom:8px;
+}
+
+.remove-btn{
+    margin-top:10px;
+    width:100%;
+    background:#a80000;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.total{
+    margin-top:25px;
+    font-size:22px;
+    color:#d4af37;
+}
+
+.checkout-btn{
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#d4af37;
+    color:black;
+    font-weight:700;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+.close-cart{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    padding:40px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    margin-top:60px;
+    color:#999;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero-content h1{
+    font-size:42px;
+}
+
+nav{
+    display:none;
+}
+
+.cart-sidebar{
+    width:100%;
+}
+
 }
 
 </style>
 </head>
-
 <body>
 
 <header>
-    <div class="logo">SOLLENE GROUP</div>
 
-    <div class="cart-icon" onclick="toggleCart()">
-        🛒 <span id="cart-count">0</span>
-    </div>
+<div class="logo">SOLLENE</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Collection</a>
+<a href="#">Luxury</a>
+<a href="#">Contact</a>
+</nav>
+
+<div class="cart-icon" onclick="toggleCart()">
+Cart (<span id="cart-count">0</span>)
+</div>
+
 </header>
+
+<section class="hero">
+
+<div class="hero-content">
+<h1>MEN COLLECTION</h1>
+
+<p>
+Modern elegance for men who value luxury and identity.
+</p>
+
+<button>
+Shop Now
+</button>
+
+</div>
+
+</section>
+
+<section class="products-section">
+
+<h2 class="section-title">
+Luxury Essentials
+</h2>
 
 <div class="products-grid">
 
-    <!-- CARD EXEMPLO -->
-    <div class="card">
-        <div class="img-container">
-            <img src="womancalca1.png" class="card-img">
-        </div>
+<!-- PRODUCT 1 -->
 
-        <h3>Product 1</h3>
-        <p>€195</p>
+<div class="product-card">
 
-        <select class="select-option">
-            <option value="T-Shirt">T-Shirt</option>
-            <option value="Pants">Pants</option>
-            <option value="Full">Full</option>
-        </select>
+<img src="menshirts.png" alt="Men Shirt">
 
-        <button class="btn-add"
-        onclick="addToCart('Product 1',195,this.previousElementSibling.value)">
-        ADD TO CART
-        </button>
-    </div>
+<div class="product-info">
 
-    <!-- OUTRO CARD -->
-    <div class="card">
-        <div class="img-container">
-            <img src="woman.calça2.png.jpg" class="card-img">
-        </div>
+<h3>Executive Linen Shirt</h3>
 
-        <h3>Product 2</h3>
-        <p>€120</p>
+<div class="price">€89</div>
 
-        <select class="select-option">
-            <option value="S">S</option>
-            <option value="M">M</option>
-            <option value="L">L</option>
-        </select>
+<div class="buttons">
 
-        <button class="btn-add"
-        onclick="addToCart('Product 2',120,this.previousElementSibling.value)">
-        ADD TO CART
-        </button>
-    </div>
+<button class="add-btn"
+onclick="addToCart('Executive Linen Shirt',89)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
 
 </div>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 2 -->
+
+<div class="product-card">
+
+<img src="menshorts.png" alt="Shorts">
+
+<div class="product-info">
+
+<h3>Luxury Casual Shorts</h3>
+
+<div class="price">€74</div>
+
+<div class="buttons">
+
+<button class="add-btn"
+onclick="addToCart('Luxury Casual Shorts',74)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 3 -->
+
+<div class="product-card">
+
+<img src="gravata.png" alt="Tie">
+
+<div class="product-info">
+
+<h3>Classic Black Tie</h3>
+
+<div class="price">€39</div>
+
+<div class="buttons">
+
+<button class="add-btn"
+onclick="addToCart('Classic Black Tie',39)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 4 -->
+
+<div class="product-card">
+
+<img src="bone.png" alt="Cap">
+
+<div class="product-info">
+
+<h3>Urban Luxury Cap</h3>
+
+<div class="price">€45</div>
+
+<div class="buttons">
+
+<button class="add-btn"
+onclick="addToCart('Urban Luxury Cap',45)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 5 -->
+
+<div class="product-card">
+
+<img src="chinelo.png" alt="Slides">
+
+<div class="product-info">
+
+<h3>Summer Elite Slides</h3>
+
+<div class="price">€29</div>
+
+<div class="buttons">
+
+<button class="add-btn"
+onclick="addToCart('Summer Elite Slides',29)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PRODUCT 6 -->
+
+<div class="product-card">
+
+<img src="imagenswen.png" alt="Fashion">
+
+<div class="product-info">
+
+<h3>Premium Fashion Piece</h3>
+
+<div class="price">€95</div>
+
+<div class="buttons">
+
+<button class="add-btn"
+onclick="addToCart('Premium Fashion Piece',95)">
+Add to Cart
+</button>
+
+<button class="save-btn">
+Save
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- CART -->
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-<div class="side-menu" id="sideMenu">
+<div class="cart-sidebar" id="cartSidebar">
 
-    <h2>Your Cart</h2>
+<div class="close-cart" onclick="toggleCart()">
+×
+</div>
 
-    <div id="cart-list"></div>
+<h2>Your Cart</h2>
 
-    <button class="clear-btn" onclick="clearCart()">
-        CLEAR CART
-    </button>
+<div id="cartItems"></div>
+
+<div class="total" id="cartTotal">
+Total: €0
+</div>
+
+<button class="checkout-btn">
+Checkout
+</button>
 
 </div>
+
+<footer>
+© 2026 Sollene Luxury Store — Premium Men Experience
+</footer>
 
 <script>
 
-/* CART SYSTEM */
+let cart = [];
+let total = 0;
 
-function getCart(){
-    return JSON.parse(localStorage.getItem("sollene_cart")) || [];
+function toggleCart(){
+
+document
+.getElementById('cartSidebar')
+.classList.toggle('active');
+
 }
 
-function saveCart(cart){
-    localStorage.setItem("sollene_cart", JSON.stringify(cart));
+function addToCart(name,price){
+
+cart.push({name,price});
+
+total += price;
+
+updateCart();
+
 }
 
-function addToCart(name, price, option){
+function updateCart(){
 
-    let cart = getCart();
+const cartItems = document.getElementById('cartItems');
 
-    cart.push({name, price, option});
+const cartTotal = document.getElementById('cartTotal');
 
-    saveCart(cart);
-    updateUI();
-    openCart();
+const cartCount = document.getElementById('cart-count');
+
+cartItems.innerHTML = '';
+
+cart.forEach((item,index)=>{
+
+cartItems.innerHTML += `
+
+<div class="cart-item">
+
+<h4>${item.name}</h4>
+
+<p>€${item.price}</p>
+
+<button class="remove-btn"
+onclick="removeItem(${index})">
+Remove
+</button>
+
+</div>
+
+`;
+
+});
+
+cartTotal.innerHTML = `Total: €${total}`;
+
+cartCount.innerHTML = cart.length;
+
 }
 
 function removeItem(index){
-    let cart = getCart();
 
-    cart.splice(index,1);
+total -= cart[index].price;
 
-    saveCart(cart);
-    updateUI();
+cart.splice(index,1);
+
+updateCart();
+
 }
-
-function clearCart(){
-    localStorage.removeItem("sollene_cart");
-    updateUI();
-}
-
-function updateUI(){
-
-    let cart = getCart();
-
-    document.getElementById("cart-count").innerText = cart.length;
-
-    let list = document.getElementById("cart-list");
-
-    if(cart.length === 0){
-        list.innerHTML = "<p>Cart empty</p>";
-        return;
-    }
-
-    list.innerHTML = cart.map((item,index)=>`
-        <div class="cart-item">
-            <div>
-                <b>${item.name}</b><br>
-                <small>${item.option}</small><br>
-                €${item.price}
-            </div>
-
-            <button class="remove-btn" onclick="removeItem(${index})">
-                X
-            </button>
-        </div>
-    `).join('');
-}
-
-function toggleCart(){
-    document.getElementById("sideMenu").classList.toggle("active");
-    document.getElementById("overlay").classList.toggle("active");
-}
-
-function openCart(){
-    document.getElementById("sideMenu").classList.add("active");
-    document.getElementById("overlay").classList.add("active");
-}
-
-document.addEventListener("DOMContentLoaded", updateUI);
 
 </script>
 
