@@ -234,55 +234,26 @@ SOLLENE
 <div class="products-grid">
 
 <!-- CARD 1-->
-
 <div class="card">
 
 <div class="img-container">
 <img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
 </div>
+
 <h3>Executive Signature Style</h3>
+
 <p style="font-weight:800; margin:15px 0; font-size:20px;">
-€ 195.00
+€195.00
 </p>
 
-<select id="option1" class="select-option">
+<select class="select-option">
 <option value="T-Shirt">T-Shirt</option>
 <option value="Pants">Pants</option>
 <option value="Full Outfit">Full Outfit</option>
 </select>
 
-<button
-class="btn-add"
-onclick="addToCart(
-'Executive Signature Style',
-195,
-document.getElementById('option1').value
-)">
-Add to Bag
-</button>
-    <div class="card">
-
-<div class="img-container">
-<img src="imagem.woman.png" class="card-img" onerror="this.src='logo.png'">
-</div>
-<h3>Executive Signature Style</h3>
-<p style="font-weight:800; margin:15px 0; font-size:20px;">
-€ 195.00
-</p>
-
-<select id="option1" class="select-option">
-<option value="T-Shirt">T-Shirt</option>
-<option value="Pants">Pants</option>
-<option value="Full Outfit">Full Outfit</option>
-</select>
-
-<button
-class="btn-add"
-onclick="addToCart(
-'Executive Signature Style',
-195,
-document.getElementById('option1').value
-)">
+<button class="btn-add"
+onclick="addToCart('Executive Signature Style',195,this.previousElementSibling.value)">
 Add to Bag
 </button>
 
@@ -291,34 +262,28 @@ Add to Bag
 <div class="card">
 
 <div class="img-container">
-<img src="womancal1.png" class="card-img">
+ <img src="womancalca2.png" class="card-img">   
 </div>
-<h3>Executive Signature Style</h3>
+<h3>Executive Pants Style</h3>
 <p style="font-weight:800; margin:15px 0; font-size:20px;">
-€ 25
+€25.00
 </p>
-<select id="option1" class="select-option">
-<option value="woman.calca1.png </option>
-<option value="Pants">calça1.</option>
+
+<select class="select-option">
+<option value="Pants 1">Pants 1</option>
+<option value="Pants 2">Pants 2</option>
 <option value="Full Outfit">Full Outfit</option>
 </select>
-<button
-class="btn-add"
+<button class="btn-add"
 onclick="addToCart(
-'Executive Signature Style',
-  € 36  
-document.getElementById('option1').value
-)">
+onclick="addToCart(
+'Executive Pants Style',
+25,
+this.parentNode.querySelector('select').value
+)"
 Add to Bag
 </button>
-
 </div>
-
-
-
-
-</div>
-
 </main>
 
 <div class="side-menu" id="sideMenu">
@@ -385,7 +350,6 @@ document.getElementById('sideMenu').classList.add('active');
 document.getElementById('overlay').classList.add('active');
 
 }
-
 function removeItem(index){
 
 let currentCart = getCart();
@@ -393,11 +357,15 @@ let currentCart = getCart();
 currentCart.splice(index,1);
 
 localStorage.setItem(
-'sollene_cart',
+"sollene_cart",
 JSON.stringify(currentCart)
 );
 
 updateUI();
+
+}
+
+
 
 }
 
@@ -450,10 +418,39 @@ DELETE
 }
 
 }
+    function updateUI(){
+function updateUI(){
 
-window.onload = updateUI;
+let currentCart = getCart();
 
-</script>
+document.getElementById('cart-count').innerText = currentCart.length;
 
+const list = document.getElementById('cart-list');
+
+if(currentCart.length === 0){
+    list.innerHTML = `<p style="color:#999;font-size:13px;">Bag is empty.</p>`;
+}else{
+    list.innerHTML = currentCart.map((item,index)=>`
+        <div class="cart-item">
+            <div>
+                <p style="font-weight:800;text-transform:uppercase;font-size:11px;">
+                    ${item.name}
+                </p>
+                <p style="color:#7a5c33;font-size:12px;">
+                    ${item.option}
+                </p>
+                <p style="font-size:12px;">
+                    € ${item.price}.00
+                </p>
+            </div>
+
+            <button class="remove-btn" onclick="removeItem(${index})">
+                DELETE
+            </button>
+        </div>
+    `).join('');
+}
+
+}
 </body>
 </html>
