@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accessories | Sollene Group</title>
+    <style>
+        @import url('https://googleapis.com');
+        *{ margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; color: #1a1a1a; }
+        .main-header { background: rgba(247, 243, 235, 0.95); display: flex; align-items: center; justify-content: space-between; padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .logo-circle { width: 60px; height: 60px; border-radius: 50%; border: 1px solid #7a5c33; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
+        nav a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 12px 15px; }
+        .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 40px auto; }
+        .card { background: #fff; border-radius: 20px; padding-bottom: 25px; border: 1px solid #f9f9f9; }
+        .img-container { width: 100%; height: 350px; overflow: hidden; border-radius: 15px; background: #f9f9f9; }
+        .card-img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div style="display:flex; align-items:center; gap:15px;"><div class="logo-circle"></div><h1>Sollene</h1></div>
+        <nav><a href="index.html">HOME</a></nav>
+    </header>
+    <main class="products-section">
+        <h2 style="letter-spacing:4px; color:#7a5c33; text-transform:uppercase;">Accessories Collection</h2>
+        <div class="products-grid">
+            <div class="card">
+                <div class="img-container"><img src="produtdos45.png" class="card-img" onerror="this.src='logo.png'"></div>
+                <h3 style="margin-top:15px;">Executive Accessory</h3>
+                <p style="font-weight:800; color:#7a5c33; margin:10px 0;">€ 45.00</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
 
