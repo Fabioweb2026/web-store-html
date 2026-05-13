@@ -1,379 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Luxury Checkout</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+<title>Sollene Store</title>
 
-        *{ margin:0; padding:0; box-sizing:border-box; }
+<style>
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #f7f3eb;
-            overflow-x: hidden;
-        }
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        .main-header {
-            background: #f7f3eb;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 15px 5%;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+body{
+    font-family:sans-serif;
+    background:#f7f3eb;
+}
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
+/* HEADER */
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 5%;
+    background:#fff;
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+}
 
-        .logo-circle {
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: 1px solid #d4af37;
-            background: #fff url('logo.png') no-repeat center center;
-            background-size: cover;
-        }
+.logo{
+    font-weight:800;
+    color:#7a5c33;
+}
 
-        .brand-info h1 {
-            font-size: 24px;
-            font-weight: 800;
-            color: #7a5c33;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
+/* GRID PRODUTOS */
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:25px;
+    padding:40px 5%;
+}
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 10px;
-            align-items: center;
-        }
+/* CARD */
+.card{
+    background:#fff;
+    border-radius:16px;
+    padding:15px;
+    text-align:center;
+}
 
-        .nav-item { position: relative; }
+.img-container{
+    width:100%;
+    height:320px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fdfaf6;
+    border-radius:12px;
+    overflow:hidden;
+}
 
-        .nav-link {
-            text-decoration: none;
-            color: #000;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 10px 20px;
-            cursor: pointer;
-            display: block;
-        }
+.card-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    padding:10px;
+}
 
-        .btn-home {
-            border: 2px solid #000;
-            border-radius: 6px;
-        }
+.select-option{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border-radius:8px;
+}
 
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #fff;
-            min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border-radius: 4px;
-            z-index: 1100;
-        }
+.btn-add{
+    width:100%;
+    margin-top:10px;
+    padding:12px;
+    background:#7a5c33;
+    color:#fff;
+    border:none;
+    cursor:pointer;
+    font-weight:700;
+    border-radius:8px;
+}
 
-        .dropdown-content a {
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-size: 10px;
-            font-weight: 700;
-            border-bottom: 1px solid #f9f9f9;
-        }
+/* CART */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    display:none;
+}
 
-        .dropdown-content a:hover {
-            background-color: #f7f3eb;
-            color: #7a5c33;
-        }
+.overlay.active{
+    display:block;
+}
 
-        .nav-item:hover .dropdown-content {
-            display: block;
-        }
+.side-menu{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:380px;
+    height:100%;
+    background:#fff;
+    padding:20px;
+    transition:0.3s;
+    overflow:auto;
+}
 
-        .cart-icon {
-            cursor: pointer;
-            position: relative;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-        }
+.side-menu.active{
+    right:0;
+}
 
-        .cart-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #7a5c33;
-            color: #fff;
-            font-size: 9px;
-            font-weight: 800;
-            width: 18px;
-            height: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-        }
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    padding:10px 0;
+    border-bottom:1px solid #eee;
+}
 
-        .hero-banner {
-            width: 100%;
-            height: 90vh;
-            background: url('Solle-Global-Store.png') no-repeat center top;
-            background-size: cover;
-        }
+.remove-btn{
+    color:red;
+    border:none;
+    background:none;
+    cursor:pointer;
+}
 
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -420px;
-            width: 400px;
-            height: 100%;
-            background: #fff;
-            box-shadow: -10px 0 50px rgba(0,0,0,0.1);
-            z-index: 2000;
-            transition: 0.5s;
-            padding: 40px;
-            overflow-y: auto;
-        }
+.clear-btn{
+    width:100%;
+    padding:12px;
+    background:#000;
+    color:#fff;
+    border:none;
+    margin-top:15px;
+    cursor:pointer;
+}
 
-        .side-menu.active { right: 0; }
+.cart-icon{
+    cursor:pointer;
+}
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            display: none;
-            z-index: 1900;
-        }
-
-        .overlay.active { display: block; }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .btn-delete {
-            color: #ff4d4d;
-            border: none;
-            background: none;
-            cursor: pointer;
-            font-size: 11px;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .payment-box {
-            margin-top: 30px;
-            text-align: left;
-            background: #fdfaf6;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #f1eee4;
-        }
-
-        .btn-finalize {
-            width: 100%;
-            padding: 20px;
-            background: #000;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-weight: 800;
-            margin-top: 20px;
-            cursor: pointer;
-            text-transform: uppercase;
-        }
-
-        @media(max-width: 900px) {
-            .side-menu { width: 100%; }
-        }
-    </style>
+</style>
 </head>
 
 <body>
 
-<div class="overlay" id="overlay" onclick="toggleCart()"></div>
-
-<header class="main-header">
-
-    <div class="header-left">
-        <div class="logo-circle"></div>
-
-        <div class="brand-info">
-            <h1>SOLLENE GROUP</h1>
-        </div>
-    </div>
-
-    <nav>
-        <ul>
-
-            <li class="nav-item">
-                <a href="index.html" class="nav-link btn-home">HOME</a>
-            </li>
-
-            <li class="nav-item">
-                <span class="nav-link">COLLECTIONS ▼</span>
-
-                <div class="dropdown-content">
-                    <a href="menshirts.html">MEN'S SHIRTS</a>
-                    <a href="accessories.html">ACCESSORIES</a>
-                    <a href="bolsas.html">BAGS COLLECTION</a>
-                    <a href="woman.html">WOMAN'S SELECTION</a>
-                </div>
-            </li>
-
-        </ul>
-    </nav>
+<header>
+    <div class="logo">SOLLENE GROUP</div>
 
     <div class="cart-icon" onclick="toggleCart()">
-
-        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2.5">
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-            <circle cx="9" cy="21" r="1"></circle>
-            <circle cx="20" cy="21" r="1"></circle>
-        </svg>
-
-        <div class="cart-badge" id="cart-count">0</div>
-
+        🛒 <span id="cart-count">0</span>
     </div>
-
 </header>
 
-<section class="hero-banner"></section>
+<div class="products-grid">
+
+    <!-- CARD EXEMPLO -->
+    <div class="card">
+        <div class="img-container">
+            <img src="womancalca1.png" class="card-img">
+        </div>
+
+        <h3>Product 1</h3>
+        <p>€195</p>
+
+        <select class="select-option">
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Pants">Pants</option>
+            <option value="Full">Full</option>
+        </select>
+
+        <button class="btn-add"
+        onclick="addToCart('Product 1',195,this.previousElementSibling.value)">
+        ADD TO CART
+        </button>
+    </div>
+
+    <!-- OUTRO CARD -->
+    <div class="card">
+        <div class="img-container">
+            <img src="woman.calça2.png.jpg" class="card-img">
+        </div>
+
+        <h3>Product 2</h3>
+        <p>€120</p>
+
+        <select class="select-option">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+        </select>
+
+        <button class="btn-add"
+        onclick="addToCart('Product 2',120,this.previousElementSibling.value)">
+        ADD TO CART
+        </button>
+    </div>
+
+</div>
+
+<!-- CART -->
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
 <div class="side-menu" id="sideMenu">
 
-    <div onclick="toggleCart()" style="cursor:pointer;font-weight:800;color:#7a5c33;margin-bottom:30px;text-align:right;">
-        ✕ CLOSE
-    </div>
-
-    <h2 style="letter-spacing:1px;font-size:18px;text-transform:uppercase;color:#7a5c33;margin-bottom:20px;">
-        Review & Pay
-    </h2>
+    <h2>Your Cart</h2>
 
     <div id="cart-list"></div>
 
-    <div style="margin-top:30px;padding-top:20px;border-top:2px solid #7a5c33;display:flex;justify-content:space-between;font-weight:800;font-size:18px;">
-        <span>TOTAL:</span>
-        <span id="total-price">€ 0.00</span>
-    </div>
-
-    <button class="btn-finalize" onclick="finalizeOrder()">
-        COMPLETE PURCHASE
+    <button class="clear-btn" onclick="clearCart()">
+        CLEAR CART
     </button>
 
 </div>
 
 <script>
 
-let cart = [];
+/* CART SYSTEM */
 
-function toggleCart() {
-    document.getElementById('sideMenu').classList.toggle('active');
-    document.getElementById('overlay').classList.toggle('active');
+function getCart(){
+    return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
 
-function loadCart() {
+function saveCart(cart){
+    localStorage.setItem("sollene_cart", JSON.stringify(cart));
+}
 
-    cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
+function addToCart(name, price, option){
 
+    let cart = getCart();
+
+    cart.push({name, price, option});
+
+    saveCart(cart);
+    updateUI();
+    openCart();
+}
+
+function removeItem(index){
+    let cart = getCart();
+
+    cart.splice(index,1);
+
+    saveCart(cart);
     updateUI();
 }
 
-function updateUI() {
-
-    document.getElementById('cart-count').innerText = cart.length;
-
-    const list = document.getElementById('cart-list');
-
-    if (cart.length === 0) {
-
-        list.innerHTML = `
-            <p style="color:#999;font-size:13px;text-align:center;padding:20px 0;">
-                Your selection is empty.
-            </p>
-        `;
-
-    } else {
-
-        list.innerHTML = cart.map((item, index) => `
-            <div class="cart-item">
-
-                <div>
-                    <p style="font-size:12px;font-weight:800;text-transform:uppercase;">
-                        ${item.name}
-                    </p>
-
-                    <p style="font-size:12px;color:#7a5c33;margin-top:3px;">
-                        € ${item.price}.00
-                    </p>
-                </div>
-
-                <button class="btn-delete" onclick="removeItem(${index})">
-                    DELETE
-                </button>
-
-            </div>
-        `).join('');
-    }
-
-    let total = cart.reduce((sum, i) => sum + i.price, 0);
-
-    document.getElementById('total-price').innerText = `€ ${total}.00`;
-}
-
-function removeItem(index) {
-
-    cart.splice(index, 1);
-
-    localStorage.setItem('sollene_cart', JSON.stringify(cart));
-
+function clearCart(){
+    localStorage.removeItem("sollene_cart");
     updateUI();
 }
 
-function finalizeOrder() {
+function updateUI(){
 
-    if(cart.length === 0) {
-        alert("Select products before paying.");
+    let cart = getCart();
+
+    document.getElementById("cart-count").innerText = cart.length;
+
+    let list = document.getElementById("cart-list");
+
+    if(cart.length === 0){
+        list.innerHTML = "<p>Cart empty</p>";
         return;
     }
 
-    alert("Success! Order processed.");
+    list.innerHTML = cart.map((item,index)=>`
+        <div class="cart-item">
+            <div>
+                <b>${item.name}</b><br>
+                <small>${item.option}</small><br>
+                €${item.price}
+            </div>
 
-    cart = [];
-
-    localStorage.removeItem('sollene_cart');
-
-    updateUI();
-
-    toggleCart();
+            <button class="remove-btn" onclick="removeItem(${index})">
+                X
+            </button>
+        </div>
+    `).join('');
 }
 
-window.onload = loadCart;
+function toggleCart(){
+    document.getElementById("sideMenu").classList.toggle("active");
+    document.getElementById("overlay").classList.toggle("active");
+}
+
+function openCart(){
+    document.getElementById("sideMenu").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+
+document.addEventListener("DOMContentLoaded", updateUI);
 
 </script>
 
