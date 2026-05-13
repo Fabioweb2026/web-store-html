@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessories | Sollene Group Official</title>
     <style>
         *{ margin:0; padding:0; box-sizing:border-box; }
@@ -65,19 +66,19 @@
     </div>
 
     <script>
-        function getCart() { return JSON.parse(sessionStorage.getItem('sollene_cart')) || []; }
+        function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
         function addToCart(name, price) {
             let currentCart = getCart();
             currentCart.push({name, price});
-            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
             toggleCart();
         }
         function removeItem(index) {
             let currentCart = getCart();
             currentCart.splice(index, 1);
-            sessionStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
         }
         function updateUI() {
@@ -85,7 +86,12 @@
             document.getElementById('cart-count').innerText = currentCart.length;
             const list = document.getElementById('cart-list');
             if (currentCart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>'; } 
-            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p><p style="color:#7a5c33; font-size:12px; margin-top:3px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
+            else { list.innerHTML = currentCart.map((item, index) => `
+                <div class="cart-item">
+                    <div><p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p><p style="color:#7a5c33; font-size:12px; margin-top:3px;">€ ${item.price}.00</p></div>
+                    <button class="remove-btn" onclick="removeItem(${index})">DELETE</button>
+                </div>
+            `).join(''); }
         }
         window.onload = updateUI;
     </script>
