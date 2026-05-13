@@ -257,7 +257,6 @@ body{
 </div>
 
 <script>
-
 function getCart(){
     return JSON.parse(localStorage.getItem("sollene_cart")) || [];
 }
@@ -268,7 +267,13 @@ function saveCart(cart){
 
 function addToCart(name, price, option){
     let cart = getCart();
-    cart.push({name, price, option});
+
+    cart.push({
+        name: name,
+        price: price,
+        option: option
+    });
+
     saveCart(cart);
     updateUI();
     toggleCart();
@@ -276,8 +281,13 @@ function addToCart(name, price, option){
 
 function removeItem(index){
     let cart = getCart();
-    cart.splice(index,1);
+    cart.splice(index, 1);
     saveCart(cart);
+    updateUI();
+}
+
+function clearCart(){
+    localStorage.removeItem("sollene_cart");
     updateUI();
 }
 
@@ -285,27 +295,40 @@ function updateUI(){
 
     let cart = getCart();
 
-    document.getElementById("cart-count").innerText = cart.length;
+    const count = document.getElementById("cart-count");
+    const list = document.getElementById("cart-list");
 
-    let list = document.getElementById("cart-list");
+    if(count) count.innerText = cart.length;
 
     if(!list) return;
 
     if(cart.length === 0){
-        list.innerHTML = "<p>Cart empty</p>";
+        list.innerHTML = `<p style="color:#999;">Cart empty</p>`;
         return;
     }
 
     list.innerHTML = cart.map((item,index)=>`
         <div class="cart-item">
-            <b>${item.name}</b><br>
-            ${item.option}<br>
-            €${item.price}
-            <br>
-            <button class="remove-btn" onclick="removeItem(${index})">REMOVE</button>
+
+            <div>
+                <b>${item.name}</b><br>
+                <small>${item.option}</small><br>
+                €${item.price}
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:5px;">
+                <button class="remove-btn" onclick="removeItem(${index})">
+                    REMOVE
+                </button>
+            </div>
+
         </div>
     `).join('');
+
 }
+
+    document.getElementById("cart-count").innerText = cart.length;
+
 
 function toggleCart(){
     document.getElementById("sideMenu").classList.toggle("active");
