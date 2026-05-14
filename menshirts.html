@@ -9,7 +9,7 @@
         body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; }
         .main-header { background: #f7f3eb; display: flex; align-items: center; justify-content: space-between; padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
         .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('sollenegroup.png.png') no-repeat center center; background-size: cover; }
-        .nav-box a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; border: 2px solid #000; padding: 8px 20px; border-radius: 6px; }
+        .nav-box a { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; border: 2px solid #000; padding: 8px 20px; border-radius: 6px; cursor: pointer; }
         .cart-icon-container { position: relative; cursor: pointer; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
@@ -17,8 +17,11 @@
         .card { background: #fff; border-radius: 24px; text-align: center; padding-bottom: 30px; border: 1px solid #f9f9f9; }
         .img-container { width: 100%; height: 480px; overflow: hidden; background: #fdfaf6; padding: 15px; display: flex; align-items: center; justify-content: center; border-radius: 20px; margin-bottom: 20px; }
         .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; text-decoration: none; user-select: none; }
-        .btn-add:hover { background: #000; }
+        
+        /* Botão estilizado de forma segura usando tag div para o navegador não interceptar cliques */
+        .btn-add-click { display: inline-block; background: #7a5c33; color: #fff; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; user-select: none; }
+        .btn-add-click:hover { background: #000; }
+
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -31,7 +34,7 @@
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <header class="main-header">
         <div style="display:flex; align-items:center; gap:15px;"><div class="logo-circle"></div><h1 style="font-size:20px; color:#7a5c33; font-weight:800;">SOLLENE</h1></div>
-        <div class="nav-box"><a href="index.html">HOME</a></div>
+        <nav class="nav-box"><a href="index.html">HOME</a></nav>
         <div class="cart-icon-container" onclick="toggleCart()">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             <div class="cart-badge" id="cart-count">0</div>
@@ -43,13 +46,13 @@
             <div class="card">
                 <div class="img-container"><img src="executivemen1.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Executive Cotton Shirt</h3><p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 85.00</p>
-                <!-- Alterado href para travar o recarregamento nativo do navegador -->
-                <a href="javascript:void(0);" class="btn-add" onclick="addToCart(event, 'Executive Shirt', 85)">Add to Bag</a>
+                <!-- Modificado taticamente para div para cortar recarregamentos em lote -->
+                <div class="btn-add-click" onclick="addToCart('Executive Shirt', 85)">Add to Bag</div>
             </div>
             <div class="card">
                 <div class="img-container"><img src="imagenswen.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Premium Linen Shirt</h3><p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 95.00</p>
-                <a href="javascript:void(0);" class="btn-add" onclick="addToCart(event, 'Linen Shirt', 95)">Add to Bag</a>
+                <div class="btn-add-click" onclick="addToCart('Linen Shirt', 95)">Add to Bag</div>
             </div>
         </div>
     </main>
@@ -59,26 +62,34 @@
         <h2>Selected Items</h2>
         <div id="cart-list" style="margin-top:20px;"></div>
         <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">To finalize payment, please proceed to the HOME PAGE.</p>
-        <a href="index.html?openCart=true" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">GO TO CHECKOUT</a>
+        <a href="index.html?openCheck=true" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px; font-size:11px; text-transform:uppercase;">GO TO CHECKOUT</a>
     </div>
 
     <script>
         function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
-        function addToCart(event, name, price) {
-            event.preventDefault(); 
+        
+        function addToCart(name, price) {
             let currentCart = getCart();
             currentCart.push({name, price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
             toggleCart(); 
         }
-        function removeItem(index) { let currentCart = getCart(); currentCart.splice(index, 1); localStorage.setItem('sollene_cart', JSON.stringify(currentCart)); updateUI(); }
+
+        function removeItem(index) {
+            let currentCart = getCart();
+            currentCart.splice(index, 1);
+            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            updateUI();
+        }
+
         function updateUI() {
-            let currentCart = getCart(); document.getElementById('cart-count').innerText = currentCart.length;
+            let currentCart = getCart();
+            document.getElementById('cart-count').innerText = currentCart.length;
             const list = document.getElementById('cart-list');
             if (currentCart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>'; } 
-            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p><p style="color:#7a5c33; font-size:12px; font-weight:600; margin-top:3px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
+            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800;">${item.name}</p><p style="color:#7a5c33; font-size:12px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
         }
         window.onload = updateUI;
     </script>
