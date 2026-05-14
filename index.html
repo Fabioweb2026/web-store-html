@@ -8,7 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
-        /* HEADER PREMIUM */
+        /* HEADER PREMIUM IDÊNTICO AO SEU PRINT */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -23,7 +23,7 @@
         nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
         .nav-item { position: relative; }
         .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; }
-        .btn-home-print { border: 2px solid #000; border-radius: 6px; padding: 8px 20px; background: transparent; }
+        .btn-home-print { border: 2px solid #000; border-radius: 6px; padding: 8px 20px; background: transparent; font-weight: 800; }
 
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
         .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
@@ -35,16 +35,16 @@
 
         .hero-banner { width: 100%; height: 75vh; background: url('sollenegroup.png.png') no-repeat center top; background-size: cover; }
 
-        /* ABA LATERAL */
+        /* PAINEL LATERAL DE SOLUÇÃO */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
         
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
-        .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 11px; font-weight: 800; text-transform: uppercase; }
+        .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
-        /* INPUTS DE CARTÃO E DINHEIRO */
+        /* OPÇÕES DE LIQUIDAÇÃO */
         .payment-box { margin-top: 30px; text-align: left; background: #fdfaf6; padding: 20px; border-radius: 12px; border: 1px solid #f1eee4; }
         .payment-method-title { font-size: 11px; text-transform: uppercase; color: #7a5c33; margin-bottom: 15px; font-weight: 800; }
         .payment-option { display: block; margin-bottom: 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
@@ -53,7 +53,8 @@
         .card-fields { display: block; margin-top: 10px; }
         .input-field { width: 100%; padding: 10px; margin-top: 5px; margin-bottom: 10px; border: 1px solid #e1dbcf; border-radius: 6px; font-size: 13px; outline: none; background: #fff; }
 
-        .btn-save-continue { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; }
+        .btn-finalize-purchase { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; transition: 0.3s; }
+        .btn-finalize-purchase:hover { background: #7a5c33; }
         @media(max-width: 768px) { .side-menu { width: 100%; } }
     </style>
 </head>
@@ -84,17 +85,18 @@
 
     <section class="hero-banner"></section>
 
+    <!-- PAINEL DE FECHAMENTO INTEGRADO -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Review & Pay</h2>
         
+        <!-- Lista Dinâmica onde aparecem os produtos e a opção REMOVE -->
         <div id="cart-list" style="margin-top:20px;"></div>
 
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
 
-        <!-- BOX DE PAGAMENTO CORRIGIDO -->
         <div class="payment-box">
             <h4 class="payment-method-title">Payment Method</h4>
             
@@ -102,7 +104,6 @@
                 <input type="radio" name="pay" value="Card" checked onchange="togglePaymentFields()"> Credit / Debit Card
             </label>
             
-            <!-- Campos de Cartão Interativos -->
             <div id="cardFields" class="card-fields">
                 <label style="font-size: 11px; font-weight:700;">Card Number:</label>
                 <input type="text" id="cardNumber" class="input-field" placeholder="0000 0000 0000 0000" maxlength="19">
@@ -113,18 +114,23 @@
             </label>
         </div>
 
-        <button class="btn-save-continue" onclick="finalizeOrder()">Complete Purchase</button>
+        <button class="btn-finalize-purchase" onclick="finalizeOrder()">Complete Purchase</button>
     </div>
 
     <script>
         let cart = [];
-        function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
+        
+        function toggleCart() { 
+            document.getElementById('sideMenu').classList.toggle('active'); 
+            document.getElementById('overlay').classList.toggle('active'); 
+        }
         
         function loadCart() { 
             cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; 
             updateUI(); 
         }
         
+        // SINCRONIZAÇÃO COMPLETA: Garante a renderização dos itens salvos e o botão DELETE
         function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
@@ -137,6 +143,7 @@
                             <p style="font-size:12px; font-weight:800; text-transform:uppercase; max-width:220px; word-wrap:break-word;">${item.name}</p>
                             <p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p>
                         </div>
+                        <!-- Opção de remover ativa e funcional na Home -->
                         <button class="remove-btn" onclick="removeItem(${index})">DELETE</button>
                     </div>
                 `).join(''); 
@@ -151,13 +158,8 @@
         }
 
         function togglePaymentFields() {
-            const cardRadio = document.querySelector('input[name="pay"]:checked').value;
-            const cardFields = document.getElementById('cardFields');
-            if(cardRadio === 'Card') {
-                cardFields.style.display = 'block';
-            } else {
-                cardFields.style.display = 'none';
-            }
+            const method = document.querySelector('input[name="pay"]:checked').value;
+            document.getElementById('cardFields').style.display = (method === 'Card') ? 'block' : 'none';
         }
 
         function finalizeOrder() { 
@@ -167,7 +169,7 @@
             if(method === 'Card') {
                 const cardNum = document.getElementById('cardNumber').value;
                 if(cardNum.trim() === "") return alert("Please type your card number.");
-                alert("Success! Payment authorized for Card ending in " + cardNum.slice(-4));
+                alert("Success! Order finalized via Card ending in " + cardNum.slice(-4));
             } else {
                 alert("Success! Order placed via Cash on Delivery.");
             }
@@ -178,7 +180,7 @@
             toggleCart(); 
         }
 
-        // CORREÇÃO: Força o carregamento da lista de forma imediata na inicialização
+        // Força a injeção instantânea na leitura da tela principal
         window.onload = function() { 
             loadCart(); 
             const urlParams = new URLSearchParams(window.location.search); 
@@ -189,5 +191,3 @@
     </script>
 </body>
 </html>
-
-
