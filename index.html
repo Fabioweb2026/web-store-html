@@ -107,62 +107,211 @@
     </div>
 
     <script>
-        let cart = [];
+      <!-- SUBSTITUA SOMENTE O <script> ATUAL POR ESTE -->
+<script>
 
-        function toggleCart() {
-            document.getElementById('sideMenu').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        }
+    let cart = [];
 
-        function loadCart() {
-            cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
-            updateUI();
-        }
+    function toggleCart() {
 
-        function updateUI() {
-            document.getElementById('cart-count').innerText = cart.length;
-            const list = document.getElementById('cart-list');
-            if (cart.length === 0) {
-                list.innerHTML = '<p style="color:#999; font-size:13px; text-align:center; padding:20px 0;">Your selection is empty.</p>';
-            } else {
-                list.innerHTML = cart.map((item, index) => `
-                    <div class="cart-item">
-                        <div>
-                            <p style="font-size:12px; font-weight:800; text-transform:uppercase;">${item.name}</p>
-                            <p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p>
-                        </div>
-                        <button class="btn-delete" onclick="removeItem(${index})">DELETE</button>
+        document.getElementById('sideMenu').classList.toggle('active');
+        document.getElementById('overlay').classList.toggle('active');
+
+    }
+
+    function loadCart() {
+
+        cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
+
+        updateUI();
+
+    }
+
+    function updateUI() {
+
+        document.getElementById('cart-count').innerText = cart.length;
+
+        const list = document.getElementById('cart-list');
+
+        if (cart.length === 0) {
+
+            list.innerHTML = `
+                <p style="
+                    color:#999;
+                    font-size:13px;
+                    text-align:center;
+                    padding:20px 0;
+                ">
+                    Your selection is empty.
+                </p>
+            `;
+
+        } else {
+
+            list.innerHTML = cart.map((item, index) => `
+
+                <div class="cart-item">
+
+                    <div>
+                        <p style="
+                            font-size:12px;
+                            font-weight:800;
+                            text-transform:uppercase;
+                        ">
+                            ${item.name}
+                        </p>
+
+                        <p style="
+                            font-size:12px;
+                            color:#7a5c33;
+                            margin-top:3px;
+                        ">
+                            € ${item.price}.00
+                        </p>
                     </div>
-                `).join('');
+
+                    <button
+                        class="btn-delete"
+                        onclick="removeItem(${index})"
+                    >
+                        DELETE
+                    </button>
+
+                </div>
+
+            `).join('');
+
+        }
+
+        let total = cart.reduce((sum, item) => sum + item.price, 0);
+
+        document.getElementById('total-price').innerText = `€ ${total}.00`;
+
+    }
+
+    function removeItem(index) {
+
+        cart.splice(index, 1);
+
+        localStorage.setItem(
+            'sollene_cart',
+            JSON.stringify(cart)
+        );
+
+        updateUI();
+
+    }
+
+    function finalizeOrder() {
+
+        if(cart.length === 0){
+
+            alert("Select products before paying.");
+
+            return;
+
+        }
+
+        const method = document.querySelector(
+            'input[name="pay"]:checked'
+        ).value;
+
+        alert(
+            "Success! Order placed via " +
+            method +
+            ".\nTotal: " +
+            document.getElementById('total-price').innerText
+        );
+
+        cart = [];
+
+        localStorage.removeItem('sollene_cart');
+
+        updateUI();
+
+        toggleCart();
+
+    }
+
+
+
+    /* =========================================
+       CORREÇÃO PRINCIPAL DA COLLECTION
+    ========================================== */
+
+    // impede redirecionamentos estranhos
+    document.querySelectorAll('a').forEach(link => {
+
+        link.addEventListener('click', function(e){
+
+            const href = this.getAttribute('href');
+
+            // bloqueia links quebrados
+            if(
+                href === '#' ||
+                href === '' ||
+                href === null
+            ){
+                e.preventDefault();
             }
-            let total = cart.reduce((sum, i) => sum + i.price, 0);
-            document.getElementById('total-price').innerText = `€ ${total}.00`;
-        }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
-            updateUI();
-        }
+        });
 
-        function finalizeOrder() {
-            if(cart.length === 0) return alert("Select products before paying.");
-            const method = document.querySelector('input[name="pay"]:checked').value;
-            alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
-            cart = [];
-            localStorage.removeItem('sollene_cart');
-            updateUI();
+    });
+
+
+
+    /* =========================================
+       ABERTURA AUTOMÁTICA DO CARRINHO
+    ========================================== */
+
+    window.addEventListener('load', () => {
+
+        loadCart();
+
+        const urlParams = new URLSearchParams(
+            window.location.search
+        );
+
+        // abre carrinho somente quando vem da collection
+        if(urlParams.get('openCart') === 'true'){
+
             toggleCart();
+
         }
 
-        // Sensor inteligente da URL limpo de conflitos
-        window.onload = function() {
-            loadCart();
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('openCart') === 'true') {
-                toggleCart();
+    });
+
+
+
+    /* =========================================
+       SCROLL SUAVE COLLECTION
+    ========================================== */
+
+    document.querySelectorAll('a[href="#products"]')
+    .forEach(anchor => {
+
+        anchor.addEventListener('click', function(e){
+
+            e.preventDefault();
+
+            const section = document.querySelector('#products');
+
+            if(section){
+
+                section.scrollIntoView({
+                    behavior: 'smooth'
+                });
+
             }
-        }
+
+        });
+
+    });
+
+</script>
+
+        
     </script>
 </body>
 </html>
