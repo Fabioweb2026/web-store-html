@@ -34,31 +34,10 @@
         /* VITRINE EM CARDS ISOLADOS HARMÔNICOS */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
-        
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 40px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-        }
-
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
         .card { background: #fff; border-radius: 24px; text-align: center; padding: 0 15px 30px 15px; border: 1px solid #f5f5f5; transition: 0.4s; }
         .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        
-        .img-container { 
-            width: 100%; 
-            height: 380px; 
-            overflow: hidden; 
-            background: #fdfaf6; 
-            margin-top: 15px;
-            margin-bottom: 20px; 
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 15px;
-        }
+        .img-container { width: 100%; height: 380px; overflow: hidden; background: #fdfaf6; margin-top: 15px; margin-bottom: 20px; border-radius: 20px; display: flex; align-items: center; justify-content: center; padding: 15px; }
         .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         /* SELETORES DE OPÇÕES VARIÁVEIS EXATOS */
@@ -67,7 +46,6 @@
         .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
         .option-select { background: #fdfaf6; border: 1px solid #e1dbcf; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #1a1a1a; outline: none; cursor: pointer; }
 
-        /* BOTÃO SEM REFRESH NATIVO */
         .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; width: 100%; text-align: center; user-select: none; }
         .btn-add:hover { background: #000; }
 
@@ -76,10 +54,8 @@
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
-        
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
-
         .btn-save-continue { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; text-decoration: none; }
         @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } .side-menu { width: 100%; } }
     </style>
@@ -120,14 +96,8 @@
                 <h3>Executive Social Shirt</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 95.00</p>
                 <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Off-White</option><option>Light Blue</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>S</option><option>M</option><option>L</option></select>
-                    </div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Off-White</option><option>Light Blue</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>S</option><option>M</option><option>L</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'w1', 'Executive Social Shirt', 95)">Add to Bag</button>
             </div>
@@ -138,14 +108,8 @@
                 <h3>Prestige Tailored Trousers III</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 145.00</p>
                 <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Beige</option><option>Black</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>36</option><option>38</option><option>40</option></select>
-                    </div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Beige</option><option>Black</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>36</option><option>38</option><option>40</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'w2', 'Prestige Tailored Trousers III', 145)">Add to Bag</button>
             </div>
@@ -156,14 +120,8 @@
                 <h3>Prestige Tailored Trousers II</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 135.00</p>
                 <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Camel</option><option>Navy</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>36</option><option>38</option></select>
-                    </div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Camel</option><option>Navy</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>36</option><option>38</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'w3', 'Prestige Tailored Trousers II', 135)">Add to Bag</button>
             </div>
@@ -174,14 +132,8 @@
                 <h3>Prestige Tailored Trousers I</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 150.00</p>
                 <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Deep Black</option><option>Ivory</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>36</option><option>38</option><option>40</option></select>
-                    </div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Deep Black</option><option>Ivory</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>36</option><option>38</option><option>40</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'w4', 'Prestige Tailored Trousers I', 150)">Add to Bag</button>
             </div>
@@ -212,7 +164,8 @@
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
-            currentCart.push({name: fullName, price: Number(price)});
+            // CORREÇÃO CIRÚRGICA: Envia o valor plano direto para que a Home leia sem dar erro de tipo
+            currentCart.push({name: fullName, price: price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
             updateUI();
