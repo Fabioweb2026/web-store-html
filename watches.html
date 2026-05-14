@@ -28,10 +28,10 @@
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         .nav-item:hover .dropdown-content { display: block; }
 
-        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; }
+        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; outline: none; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; z-index: 10; }
 
-        /* VITRINE EM CARDS ISOLADOS HARMÔNICOS (GRADE DE 4 RELÓGIOS) */
+        /* VITRINE EM CARDS ISOLADOS HARMÔNICOS */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
@@ -49,7 +49,7 @@
         .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; width: 100%; text-align: center; user-select: none; }
         .btn-add:hover { background: #000; }
 
-        /* ABA LATERAL DE CONSULTA */
+        /* ABA LATERAL */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -90,7 +90,7 @@
         <h2 class="page-title">Luxury Watches Collection</h2>
         <div class="products-grid">
             
-            <!-- CARD 1: pulseira.3.jpg -->
+            <!-- CARD 1 -->
             <div class="card" id="w1">
                 <div class="img-container"><img src="pulseira.3.jpg" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Prestige Chronograph Special</h3>
@@ -102,7 +102,7 @@
                 <button class="btn-add" onclick="addToCart(event, 'w1', 'Prestige Chronograph Special', 380)">Add to Bag</button>
             </div>
 
-            <!-- CARD 2: pulseira.png -->
+            <!-- CARD 2 -->
             <div class="card" id="w2">
                 <div class="img-container"><img src="pulseira.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Executive Signature Automatic</h3>
@@ -114,7 +114,7 @@
                 <button class="btn-add" onclick="addToCart(event, 'w2', 'Executive Signature Automatic', 450)">Add to Bag</button>
             </div>
 
-            <!-- CARD 3: pulseira1.jpg -->
+            <!-- CARD 3 -->
             <div class="card" id="w3">
                 <div class="img-container"><img src="pulseira1.jpg" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Classic Heritage Oyster</h3>
@@ -126,7 +126,7 @@
                 <button class="btn-add" onclick="addToCart(event, 'w3', 'Classic Heritage Oyster', 320)">Add to Bag</button>
             </div>
 
-            <!-- CARD 4: pulseita2.jpg -->
+            <!-- CARD 4 -->
             <div class="card" id="w4">
                 <div class="img-container"><img src="pulseita2.jpg" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Royal Aviator Edition</h3>
@@ -148,12 +148,14 @@
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
-        <p style="margin-top:20px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">Review your choices below.</p>
         <button class="btn-save-continue" onclick="toggleCart()">Save & Continue Shopping</button>
     </div>
 
     <script>
-        function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
+        // Sincronizador unificado absoluto para a mesma partição de memória
+        function getCart() { 
+            return JSON.parse(window.localStorage.getItem('sollene_cart')) || []; 
+        }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 
         function addToCart(event, cardId, baseName, price) {
@@ -164,8 +166,10 @@
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
-            currentCart.push({name: fullName, price: Number(price)});
-            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            currentCart.push({name: fullName, price: price});
+            
+            // Gravação forçada sem limpar o histórico das outras seções
+            window.localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
             updateUI();
             toggleCart(); 
@@ -174,7 +178,7 @@
         function removeItem(index) {
             let currentCart = getCart();
             currentCart.splice(index, 1);
-            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            window.localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
         }
 
@@ -208,5 +212,3 @@
     </script>
 </body>
 </html>
-
-                   
