@@ -8,6 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
+        /* HEADER PREMIUM IDÊNTICO AO SEU PADRÃO */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -34,6 +35,7 @@
 
         .hero-banner { width: 100%; height: 75vh; background: url('sollenegroup.png.png') no-repeat center top; background-size: cover; }
 
+        /* PAINEL LATERAL DE CHECKOUT */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -42,6 +44,7 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
+        /* SEÇÃO DE PAGAMENTO INTERATIVA */
         .payment-box { margin-top: 30px; text-align: left; background: #fdfaf6; padding: 20px; border-radius: 12px; border: 1px solid #f1eee4; }
         .payment-method-title { font-size: 11px; text-transform: uppercase; color: #7a5c33; margin-bottom: 15px; font-weight: 800; }
         .payment-option { display: block; margin-bottom: 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
@@ -83,6 +86,7 @@
 
     <section class="hero-banner"></section>
 
+    <!-- PAINEL DE FECHAMENTO INTERATIVO -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2>Review & Pay</h2>
@@ -119,9 +123,12 @@
             document.getElementById('overlay').classList.toggle('active'); 
         }
         
-        // REVISÃO PROTOCOLAR ÚNICA: Evita que o onload limpe a lista ao mudar de aba
         function loadCart() { 
-            cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; 
+            try {
+                cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; 
+            } catch(e) {
+                cart = [];
+            }
             updateUI(); 
         }
         
@@ -136,14 +143,17 @@
                 list.innerHTML = cart.map((item, index) => `
                     <div class="cart-item">
                         <div>
-                            <p style="font-size:12px; font-weight:800; text-transform:uppercase; max-width:220px; word-wrap:break-word;">${item.name}</p>
+                            <p style="font-size:12px; font-weight:800; text-transform:uppercase; max-width:220px; word-wrap:break-word;">${item.name || 'Premium Item'}</p>
                             <p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p>
                         </div>
                         <button class="remove-btn" onclick="removeItem(${index})">DELETE</button>
                     </div>
                 `).join(''); 
             }
-            document.getElementById('total-price').innerText = `€ ${cart.reduce((sum, i) => sum + i.price, 0)}.00`;
+            
+            // CORREÇÃO DEFINITIVA: Converte as strings de preço das coleções em números inteiros reais antes de somar
+            let total = cart.reduce((sum, i) => sum + (parseInt(i.price) || 0), 0);
+            document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
 
         function removeItem(index) { 
@@ -175,8 +185,10 @@
             toggleCart(); 
         }
 
-        // BLOQUEIO DO CONFLITO: Apenas um disparador de leitura ativa é permitido por ciclo
+        // DISPARADORES CONTRA BLOQUEIOS DE SESSÃO
         window.onload = loadCart;
+        window.addEventListener('pageshow', loadCart);
+        document.addEventListener('DOMContentLoaded', loadCart);
     </script>
 </body>
 </html>
