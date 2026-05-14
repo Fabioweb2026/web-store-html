@@ -56,31 +56,25 @@
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2>Selected Items</h2>
         <div id="cart-list" style="margin-top:20px;"></div>
-        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">To finalize payment, please proceed to the HOME PAGE.</p>
-        <a href="index.html?openCheck=true" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px;">GO TO CHECKOUT</a>
+        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">Review your items and close to pick more pieces.</p>
+        <!-- AJUSTE AQUI: Transforma o botão em fechar para continuar comprando -->
+        <div onclick="toggleCart()" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; border-radius:12px; font-weight:800; margin-top:15px; font-size:11px; text-transform:uppercase; cursor:pointer; letter-spacing:1px;">CONTINUE SHOPPING</div>
     </div>
 
     <script>
         function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
-        
-        // CORREÇÃO CIRÚRGICA: Salva em silêncio na mesma página, sem abrir o menu lateral e sem pular
         function addToCart(name, price) {
-            let currentCart = getCart();
-            currentCart.push({name, price});
+            let currentCart = getCart(); currentCart.push({name, price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
-            updateUI(); 
-            alert(name + " added to your bag!"); // Confirmação sutil na tela
+            updateUI(); toggleCart(); 
         }
-
         function removeItem(index) { let currentCart = getCart(); currentCart.splice(index, 1); localStorage.setItem('sollene_cart', JSON.stringify(currentCart)); updateUI(); }
-        
         function updateUI() {
-            let currentCart = getCart(); 
-            document.getElementById('cart-count').innerText = currentCart.length;
+            let currentCart = getCart(); document.getElementById('cart-count').innerText = currentCart.length;
             const list = document.getElementById('cart-list');
             if (currentCart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>'; } 
-            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800;">${item.name}</p><p style="color:#7a5c33; font-size:12px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
+            else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800; text-transform:uppercase; font-size:11px;">${item.name}</p><p style="color:#7a5c33; font-size:12px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
         }
         window.onload = updateUI;
     </script>
