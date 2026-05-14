@@ -20,27 +20,15 @@
         }
         .brand-info h1 { font-size: 24px; font-weight: 800; color: #7a5c33; letter-spacing: 3px; text-transform: uppercase; }
 
-        /* MENU COM HOVER E CLIQUE CORRIGIDOS */
+        /* MENU COM DROPDOWN ESTILO AMAZON */
         nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
         .nav-item { position: relative; }
         .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; user-select: none; }
         .btn-home { border: 2px solid #000; border-radius: 6px; }
 
-        /* Dropdown Estilo Amazon Corrigido */
-        .dropdown-content { 
-            display: none; 
-            position: absolute; 
-            top: 100%; 
-            left: 0; 
-            background-color: #fff; 
-            min-width: 220px; 
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1); 
-            border-radius: 4px; 
-            z-index: 1100; 
-        }
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
         .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
-        
         .nav-item:hover .dropdown-content { display: block; }
         .dropdown-content.show { display: block; }
 
@@ -70,7 +58,6 @@
 
     <header class="main-header">
         <div class="header-left"><div class="logo-circle"></div><div class="brand-info"><h1>SOLLENE GROUP</h1></div></div>
-        
         <nav>
             <ul>
                 <li class="nav-item"><a href="index.html" class="nav-link btn-home">HOME</a></li>
@@ -85,7 +72,6 @@
                 </li>
             </ul>
         </nav>
-
         <div class="cart-icon" onclick="toggleCart()">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             <div class="cart-badge" id="cart-count">0</div>
@@ -94,24 +80,19 @@
 
     <section class="hero-banner"></section>
 
-    <!-- CENTRAL DE PAGAMENTO DA HOME -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33; margin-bottom: 20px;">Review & Pay</h2>
-        
         <div id="cart-list"></div>
-
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
-
         <div class="payment-box">
             <h4 style="font-size:11px; text-transform:uppercase; color:#7a5c33; margin-bottom:15px;">Payment Method</h4>
             <label style="display:block; margin-bottom:12px; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Card" checked style="margin-right:10px; accent-color:#7a5c33;"> Credit / Debit Card</label>
             <label style="display:block; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Cash" style="margin-right:10px; accent-color:#7a5c33;"> Cash on Delivery</label>
             <p style="color:#991b1b; font-size:10px; font-weight:800; margin-top:20px; text-transform:uppercase;">* Full payment required (Europe Standard)</p>
         </div>
-
         <button class="btn-finalize" onclick="finalizeOrder()">COMPLETE PURCHASE</button>
     </div>
 
@@ -132,7 +113,6 @@
             document.getElementById("myDropdown").classList.remove("show");
         }
 
-        // Alterado para localStorage de forma universal
         function loadCart() {
             cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
             updateUI();
@@ -169,12 +149,19 @@
             const method = document.querySelector('input[name="pay"]:checked').value;
             alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
             cart = [];
-            localStorage.removeItem('sollene_cart'); // Limpa a memória
+            localStorage.removeItem('sollene_cart');
             updateUI();
             toggleCart();
         }
 
-        window.onload = loadCart;
+        // FUNÇÃO DE SENSOR DO LINK DA OUTRA PÁGINA
+        window.onload = function() {
+            loadCart();
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('openCart') === 'true') {
+                toggleCart();
+            }
+        }
     </script>
 </body>
 </html>
