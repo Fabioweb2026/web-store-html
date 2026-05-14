@@ -28,7 +28,7 @@
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         .nav-item:hover .dropdown-content { display: block; }
 
-        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; }
+        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; outline: none; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; z-index: 10; }
 
         /* VITRINE EM CARDS ISOLADOS HARMÔNICOS */
@@ -176,7 +176,8 @@
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
-            currentCart.push({name: fullName, price: Number(price)});
+            // CORREÇÃO: Envia o valor sem conversão numérica forçada no envio para manter compatibilidade absoluta com o index
+            currentCart.push({name: fullName, price: price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
             updateUI();
@@ -211,7 +212,7 @@
                 `).join('');
             }
             if (document.getElementById('total-price')) {
-                let total = currentCart.reduce((sum, i) => sum + i.price, 0);
+                let total = currentCart.reduce((sum, i) => sum + Number(i.price), 0);
                 document.getElementById('total-price').innerText = `€ ${total}.00`;
             }
         }
