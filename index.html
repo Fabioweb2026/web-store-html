@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Luxury Checkout</title>
+    <title>Sollene Group | Luxury Checkout Hub</title>
     <style>
+        @import url('googleapis.com');
         *{ margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: sans-serif; background: #f7f3eb; overflow-x: hidden; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f3eb; overflow-x: hidden; }
 
-        /* HEADER PREMIUM */
+        /* HEADER PREMIUM PREMIUM */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -20,26 +21,32 @@
         }
         .brand-info h1 { font-size: 24px; font-weight: 800; color: #7a5c33; letter-spacing: 3px; text-transform: uppercase; }
 
-        /* MENU COM DROPDOWN ESTILO AMAZON */
+        /* MENU SEGURO VIA CSS (NUNCA TRAVA O JAVASCRIPT) */
         nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
         .nav-item { position: relative; }
-        .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; user-select: none; }
+        .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; }
         .btn-home { border: 2px solid #000; border-radius: 6px; }
 
-        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
+        /* Dropdown Estilo Amazon Pura Linha CSS */
+        .dropdown-content {
+            display: none; position: absolute; top: 100%; left: 0;
+            background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 4px; z-index: 1100;
+        }
         .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
-        .nav-item:hover .dropdown-content { display: block; }
-        .dropdown-content.show { display: block; }
+        
+        /* Abre no Computador (Hover) e Celular (Clique/Foco) */
+        .nav-item:hover .dropdown-content, .nav-item:focus-within .dropdown-content { display: block; }
 
         /* CARRINHO */
         .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
 
-        /* FOTO DE CAMPANHA INTEGRAL */
+        /* BANNER */
         .hero-banner { width: 100%; height: 90vh; background: url('Solle-Global-Store.png') no-repeat center top; background-size: cover; }
 
-        /* SIDE MENU (CHECKOUT CENTRAL) */
+        /* MENU LATERAL DE PAGAMENTO */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -61,9 +68,9 @@
         <nav>
             <ul>
                 <li class="nav-item"><a href="index.html" class="nav-link btn-home">HOME</a></li>
-                <li class="nav-item">
-                    <span class="nav-link" onclick="toggleDropdown(event)">COLLECTIONS ▼</span>
-                    <div class="dropdown-content" id="myDropdown">
+                <li class="nav-item" tabIndex="0">
+                    <span class="nav-link">COLLECTIONS ▼</span>
+                    <div class="dropdown-content">
                         <a href="menshirts.html">MEN'S SHIRTS</a>
                         <a href="accessories.html">ACCESSORIES</a>
                         <a href="bolsas.html">BAGS COLLECTION</a>
@@ -83,16 +90,19 @@
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33; margin-bottom: 20px;">Review & Pay</h2>
+        
         <div id="cart-list"></div>
+
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
+
         <div class="payment-box">
             <h4 style="font-size:11px; text-transform:uppercase; color:#7a5c33; margin-bottom:15px;">Payment Method</h4>
             <label style="display:block; margin-bottom:12px; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Card" checked style="margin-right:10px; accent-color:#7a5c33;"> Credit / Debit Card</label>
             <label style="display:block; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Cash" style="margin-right:10px; accent-color:#7a5c33;"> Cash on Delivery</label>
-            <p style="color:#991b1b; font-size:10px; font-weight:800; margin-top:20px; text-transform:uppercase;">* Full payment required (Europe Standard)</p>
         </div>
+
         <button class="btn-finalize" onclick="finalizeOrder()">COMPLETE PURCHASE</button>
     </div>
 
@@ -102,15 +112,6 @@
         function toggleCart() {
             document.getElementById('sideMenu').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
-        }
-
-        function toggleDropdown(event) {
-            event.stopPropagation();
-            document.getElementById("myDropdown").classList.toggle("show");
-        }
-
-        window.onclick = function(event) {
-            document.getElementById("myDropdown").classList.remove("show");
         }
 
         function loadCart() {
@@ -154,7 +155,7 @@
             toggleCart();
         }
 
-        // FUNÇÃO DE SENSOR DO LINK DA OUTRA PÁGINA
+        // Sensor inteligente da URL limpo de conflitos
         window.onload = function() {
             loadCart();
             const urlParams = new URLSearchParams(window.location.search);
