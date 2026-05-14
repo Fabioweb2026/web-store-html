@@ -84,6 +84,9 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
+        /* Estilo do botão preto modificado */
+        .btn-continue-shopping { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 20px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 12px; letter-spacing: 1px; }
+
         @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } .side-menu { width: 100%; } }
     </style>
 </head>
@@ -233,12 +236,13 @@
 
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2>Selected Items</h2>
+        <h2>Review & Pay</h2>
         <div id="cart-list" style="margin-top:20px;"></div>
-        <p style="margin-top:30px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
-            Review your items and close to pick more pieces.
-        </p>
-        <a href="index.html?openCheck=true" style="display:block; text-align:center; padding:18px; background:#000; color:#fff; text-decoration:none; border-radius:12px; font-weight:800; margin-top:15px; font-size:11px; text-transform:uppercase; letter-spacing:1px;">GO TO CHECKOUT</a>
+        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
+            <span>TOTAL:</span><span id="total-price">€ 0.00</span>
+        </div>
+        <!-- CORRIGIDO: Botão preto agora apenas fecha o menu lateral para continuar comprando -->
+        <button class="btn-continue-shopping" onclick="toggleCart()">Continue Shopping</button>
     </div>
 
     <script>
@@ -273,7 +277,7 @@
             document.getElementById('cart-count').innerText = currentCart.length;
             const list = document.getElementById('cart-list');
             if (currentCart.length === 0) {
-                list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
+                list.innerHTML = '<p style="color:#999; font-size:13px; text-align:center;">Bag is empty.</p>';
             } else {
                 list.innerHTML = currentCart.map((item, index) => `
                     <div class="cart-item">
@@ -285,6 +289,8 @@
                     </div>
                 `).join('');
             }
+            let total = currentCart.reduce((sum, i) => sum + i.price, 0);
+            document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
 
         window.onload = updateUI;
