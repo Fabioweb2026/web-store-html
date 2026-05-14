@@ -28,10 +28,10 @@
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         .nav-item:hover .dropdown-content { display: block; }
 
-        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; }
+        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; outline: none; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; z-index: 10; }
 
-        /* VITRINE EM CARDS ISOLADOS HARMÔNICOS */
+        /* VITRINE EM CARDS ISOLADOS HARMÔNICOS (GRADE DE 6 PRODUTOS) */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
         
@@ -67,19 +67,16 @@
         .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
         .option-select { background: #fdfaf6; border: 1px solid #e1dbcf; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #1a1a1a; outline: none; cursor: pointer; }
 
-        /* BOTÃO SEM REFRESH NATIVO */
         .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; width: 100%; text-align: center; user-select: none; }
         .btn-add:hover { background: #000; }
 
-        /* ABA LATERAL DE CONSULTA DA SEÇÃO */
+        /* ABA LATERAL */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
         .overlay.active { display: block; }
-        
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
-
         .btn-save-continue { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; text-decoration: none; }
         @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } .side-menu { width: 100%; } }
     </style>
@@ -114,74 +111,74 @@
         <h2 class="page-title">Men's Apparel & Accessories</h2>
         <div class="products-grid">
             
-            <!-- CARD 1: bone.png.png -->
+            <!-- CARD 1 -->
             <div class="card" id="p1">
                 <div class="img-container"><img src="bone.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Premium Executive Cap</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 45.00</p>
                 <div class="product-options">
-                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Black</option><option>Beige</option><option>Navy</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>Unique Size</option></select></div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Black</option><option>Beige</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>Unique</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p1', 'Premium Executive Cap', 45)">Add to Bag</button>
             </div>
 
-            <!-- CARD 2: chinelo.png.png -->
+            <!-- CARD 2 -->
             <div class="card" id="p2">
                 <div class="img-container"><img src="chinelo.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Luxury Resort Slides</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 75.00</p>
                 <div class="product-options">
-                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Brown Leather</option><option>Classic Black</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>40</option><option>41</option><option>42</option><option>43</option></select></div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Brown</option><option>Black</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>41</option><option>42</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p2', 'Luxury Resort Slides', 75)">Add to Bag</button>
             </div>
 
-            <!-- CARD 3: men-outfits-ideas-2025-21.png -->
+            <!-- CARD 3 -->
             <div class="card" id="p3">
                 <div class="img-container"><img src="men-outfits-ideas-2025-21.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Prestige Summer Outfit</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 260.00</p>
                 <div class="product-options">
-                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Signature Linen</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>S</option><option>M</option><option>L</option><option>XL</option></select></div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Linen</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>M</option><option>L</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p3', 'Prestige Summer Outfit', 260)">Add to Bag</button>
             </div>
 
-            <!-- CARD 4: menshirts.png -->
+            <!-- CARD 4 -->
             <div class="card" id="p4">
                 <div class="img-container"><img src="menshirts.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Executive Cotton Shirt</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 85.00</p>
                 <div class="product-options">
-                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Pure White</option><option>Light Blue</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>M</option><option>L</option><option>XL</option></select></div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>White</option><option>Blue</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>M</option><option>L</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p4', 'Executive Cotton Shirt', 85)">Add to Bag</button>
             </div>
 
-            <!-- CARD 5: menshorts.png.png -->
+            <!-- CARD 5 -->
             <div class="card" id="p5">
                 <div class="img-container"><img src="menshorts.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Tailored Chino Shorts</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 65.00</p>
                 <div class="product-options">
-                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Beige</option><option>Kaki</option><option>Navy</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>40</option><option>42</option><option>44</option></select></div>
+                    <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Beige</option><option>Navy</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>42</option><option>44</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p5', 'Tailored Chino Shorts', 65)">Add to Bag</button>
             </div>
 
-            <!-- CARD 6: gravata.png.png -->
+            <!-- CARD 6 -->
             <div class="card" id="p6">
                 <div class="img-container"><img src="gravata.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
                 <h3>Silk Jacquard Tie</h3>
                 <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 50.00</p>
                 <div class="product-options">
                     <div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Bronze</option><option>Burgundy</option></select></div>
-                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>Standard Slim</option></select></div>
+                    <div class="option-group"><label>Size</label><select class="option-select opt-size"><option>Slim</option></select></div>
                 </div>
                 <button class="btn-add" onclick="addToCart(event, 'p6', 'Silk Jacquard Tie', 50)">Add to Bag</button>
             </div>
@@ -196,12 +193,14 @@
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
-        <p style="margin-top:20px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">Review your choices below.</p>
         <button class="btn-save-continue" onclick="toggleCart()">Save & Continue Shopping</button>
     </div>
 
     <script>
-        function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
+        // Sincronizador unificado absoluto para todas as páginas
+        function getCart() { 
+            return JSON.parse(window.localStorage.getItem('sollene_cart')) || []; 
+        }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 
         function addToCart(event, cardId, baseName, price) {
@@ -212,8 +211,10 @@
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
-            currentCart.push({name: fullName, price: Number(price)});
-            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            currentCart.push({name: fullName, price: price});
+            
+            // Gravação forçada sem limpar o histórico das outras abas
+            window.localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
             updateUI();
             toggleCart(); 
@@ -222,7 +223,7 @@
         function removeItem(index) {
             let currentCart = getCart();
             currentCart.splice(index, 1);
-            localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
+            window.localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
         }
 
