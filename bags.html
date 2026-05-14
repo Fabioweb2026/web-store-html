@@ -61,18 +61,14 @@
         }
         .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* SELETORES DE OPÇÕES VARIÁVEIS */
+        /* SELETORES DE OPÇÕES VARIÁVEIS EXATOS */
         .product-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .option-group { text-align: left; }
         .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
         .option-select { background: #fdfaf6; border: 1px solid #e1dbcf; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #1a1a1a; outline: none; cursor: pointer; }
 
-        .btn-add {
-            display: inline-block; background: #7a5c33; color: #fff; border: none; 
-            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
-            text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s;
-            text-decoration: none; user-select: none; width: 100%; text-align: center;
-        }
+        /* BOTÃO SEM REFRESH NATIVO */
+        .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; width: 100%; text-align: center; user-select: none; }
         .btn-add:hover { background: #000; }
 
         /* ABA LATERAL DE CONSULTA DA SEÇÃO */
@@ -126,14 +122,14 @@
                 <div class="product-options">
                     <div class="option-group">
                         <label>Color</label>
-                        <select class="option-select opt-color"><option>Classic Brown</option><option>Deep Black</option><option>Ivory</option></select>
+                        <select class="option-select opt-color"><option>Classic Brown</option><option>Deep Black</option></select>
                     </div>
                     <div class="option-group">
                         <label>Size</label>
                         <select class="option-select opt-size"><option>Standard</option><option>Mini</option></select>
                     </div>
                 </div>
-                <button class="btn-add" onclick="addToCart(event, 'b1', 'Signature Bag', 195)">Add to Bag</button>
+                <button class="btn-add" onclick="addToCart(event, 'b1', 'Executive Signature Bag', 195)">Add to Bag</button>
             </div>
 
             <!-- CARD 2: woman.bag.png -->
@@ -144,14 +140,14 @@
                 <div class="product-options">
                     <div class="option-group">
                         <label>Color</label>
-                        <select class="option-select opt-color"><option>Caramel Leather</option><option>Classic Black</option><option>Burgundy</option></select>
+                        <select class="option-select opt-color"><option>Caramel Leather</option><option>Classic Black</option></select>
                     </div>
                     <div class="option-group">
                         <label>Size</label>
                         <select class="option-select opt-size"><option>Unique Size</option></select>
                     </div>
                 </div>
-                <button class="btn-add" onclick="addToCart(event, 'b2', 'Leather Clutch', 185)">Add to Bag</button>
+                <button class="btn-add" onclick="addToCart(event, 'b2', 'Luxury Leather Clutch', 185)">Add to Bag</button>
             </div>
 
         </div>
@@ -169,7 +165,6 @@
     </div>
 
     <script>
-        // Sincronizador global corrigido
         function getCart() { return JSON.parse(localStorage.getItem('sollene_cart')) || []; }
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 
@@ -180,9 +175,8 @@
             const size = cardElement.querySelector('.opt-size').value;
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
-            // Resgata o carrinho real para somar, sem sobrescrever
             let currentCart = getCart();
-            currentCart.push({name: fullName, price: price});
+            currentCart.push({name: fullName, price: Number(price)});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
             updateUI();
@@ -217,7 +211,8 @@
                 `).join('');
             }
             if (document.getElementById('total-price')) {
-                document.getElementById('total-price').innerText = `€ ${currentCart.reduce((sum, i) => sum + i.price, 0)}.00`;
+                let total = currentCart.reduce((sum, i) => sum + i.price, 0);
+                document.getElementById('total-price').innerText = `€ ${total}.00`;
             }
         }
 
@@ -225,4 +220,3 @@
     </script>
 </body>
 </html>
-
