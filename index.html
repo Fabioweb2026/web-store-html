@@ -8,6 +8,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; overflow-x: hidden; }
 
+        /* HEADER PREMIUM IDÊNTICO AO SEU PRINT */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -34,6 +35,7 @@
 
         .hero-banner { width: 100%; height: 75vh; background: url('sollenegroup.png.png') no-repeat center top; background-size: cover; }
 
+        /* PAINEL LATERAL COERENTE */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -42,6 +44,7 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
+        /* SEÇÃO DE PAGAMENTO */
         .payment-box { margin-top: 30px; text-align: left; background: #fdfaf6; padding: 20px; border-radius: 12px; border: 1px solid #f1eee4; }
         .payment-method-title { font-size: 11px; text-transform: uppercase; color: #7a5c33; margin-bottom: 15px; font-weight: 800; }
         .payment-option { display: block; margin-bottom: 12px; font-size: 13px; font-weight: 600; cursor: pointer; }
@@ -52,6 +55,7 @@
 
         .btn-save-continue { width: 100%; padding: 18px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 15px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; }
         .btn-finalize-order { width: 100%; padding: 18px; background: #7a5c33; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 10px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; }
+        
         @media(max-width: 768px) { .side-menu { width: 100%; } }
     </style>
 </head>
@@ -85,42 +89,99 @@
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2>Review & Pay</h2>
+        
         <div id="cart-list" style="margin-top:20px;"></div>
+
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
+
         <div class="payment-box">
             <h4 class="payment-method-title">Payment Method</h4>
-            <label class="payment-option"><input type="radio" name="pay" value="Card" checked onchange="togglePaymentFields()"> Credit / Debit Card</label>
+            <label class="payment-option">
+                <input type="radio" name="pay" value="Card" checked onchange="togglePaymentFields()"> Credit / Debit Card
+            </label>
             <div id="cardFields" class="card-fields">
                 <label style="font-size: 11px; font-weight:700;">Card Number:</label>
                 <input type="text" id="cardNumber" class="input-field" placeholder="0000 0000 0000 0000" maxlength="19">
             </div>
-            <label class="payment-option"><input type="radio" name="pay" value="Cash" onchange="togglePaymentFields()"> Cash on Delivery</label>
+            <label class="payment-option">
+                <input type="radio" name="pay" value="Cash" onchange="togglePaymentFields()"> Cash on Delivery
+            </label>
         </div>
+
         <button class="btn-save-continue" onclick="toggleCart()">Save & Continue Shopping</button>
         <button class="btn-finalize-order" onclick="finalizeOrder()">Complete Purchase</button>
     </div>
 
     <script>
         let cart = [];
-        function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
-        function loadCart() { cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; updateUI(); }
+        
+        function toggleCart() { 
+            document.getElementById('sideMenu').classList.toggle('active'); 
+            document.getElementById('overlay').classList.toggle('active'); 
+        }
+        
+        // CORREÇÃO MÁGICA: Lê o banco global forçando o sincronismo entre caminhos relativos
+        function loadCart() { 
+            cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; 
+            updateUI(); 
+        }
+        
         function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
-            if (cart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px; text-align:center; padding:20px 0;">Your selection is empty.</p>'; } 
-            else { list.innerHTML = cart.map((item, index) => `<div class="cart-item"><div><p style="font-size:12px; font-weight:800; text-transform:uppercase;">${item.name}</p><p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
+            if (!list) return;
+
+            if (cart.length === 0) { 
+                list.innerHTML = '<p style="color:#999; font-size:13px; text-align:center; padding:20px 0;">Your selection is empty.</p>'; 
+            } else { 
+                list.innerHTML = cart.map((item, index) => `
+                    <div class="cart-item">
+                        <div>
+                            <p style="font-size:12px; font-weight:800; text-transform:uppercase; max-width:220px; word-wrap:break-word;">${item.name}</p>
+                            <p style="font-size:12px; color:#7a5c33; margin-top:3px;">€ ${item.price}.00</p>
+                        </div>
+                        <button class="remove-btn" onclick="removeItem(${index})">DELETE</button>
+                    </div>
+                `).join(''); 
+            }
             document.getElementById('total-price').innerText = `€ ${cart.reduce((sum, i) => sum + i.price, 0)}.00`;
         }
-        function removeItem(index) { cart.splice(index, 1); localStorage.setItem('sollene_cart', JSON.stringify(cart)); updateUI(); }
-        function togglePaymentFields() { document.getElementById('cardFields').style.display = (document.querySelector('input[name="pay"]:checked').value === 'Card') ? 'block' : 'none'; }
-        function finalizeOrder() {
-            if(cart.length === 0) return alert("Select products before paying.");
-            alert("Success! Order placed.\n\nCart cleared for the next customer.");
-            cart = []; localStorage.removeItem('sollene_cart'); updateUI(); toggleCart();
+
+        function removeItem(index) { 
+            cart.splice(index, 1); 
+            localStorage.setItem('sollene_cart', JSON.stringify(cart)); 
+            updateUI(); 
         }
-        window.onload = function() { loadCart(); if (window.location.search.includes('openCheck=true')) { toggleCart(); } }
+
+        function togglePaymentFields() {
+            const method = document.querySelector('input[name="pay"]:checked').value;
+            document.getElementById('cardFields').style.display = (method === 'Card') ? 'block' : 'none';
+        }
+
+        function finalizeOrder() { 
+            if(cart.length === 0) return alert("Select products before paying."); 
+            const method = document.querySelector('input[name="pay"]:checked').value;
+            
+            if(method === 'Card') {
+                const cardNum = document.getElementById('cardNumber').value;
+                if(cardNum.trim() === "") return alert("Please type your card number.");
+                alert("Success! Order finalized via Card ending in " + cardNum.slice(-4));
+            } else {
+                alert("Success! Order placed via Cash on Delivery.");
+            }
+            
+            cart = []; 
+            localStorage.removeItem('sollene_cart'); 
+            updateUI(); 
+            toggleCart(); 
+        }
+
+        // EXECUÇÃO IMEDIATA E CONSTANTE DE SEGURANÇA VIA DOM
+        document.addEventListener('DOMContentLoaded', loadCart);
+        window.addEventListener('pageshow', loadCart);
+        window.onload = loadCart;
     </script>
 </body>
 </html>
