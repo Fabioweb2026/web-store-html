@@ -3,22 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Official Luxury Hub</title>
+    <title>Sollene Group | Luxury Hub</title>
     <style>
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: sans-serif; background: #f7f3eb; overflow-x: hidden; color: #1a1a1a; }
 
-        /* HEADER PREMIUM */
+        /* HEADER PREMIUM EXATO DA IMAGEM */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
         }
         .header-left { display: flex; align-items: center; gap: 15px; }
-        .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('sollenegroup.png.png') no-repeat center center; background-size: cover; }
-        .brand-info h1 { font-size: 24px; font-weight: 800; color: #7a5c33; letter-spacing: 3px; text-transform: uppercase; }
+        .logo-circle { width: 55px; height: 55px; border-radius: 50%; border: 1px solid #d4af37; background: #fff url('logo.png') no-repeat center center; background-size: cover; }
+        .brand-title { font-size: 24px; font-weight: 800; color: #7a5c33; letter-spacing: 3px; text-transform: uppercase; }
 
-        nav ul { display: flex; list-style: none; gap: 10px; align-items: center; }
-        .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; border: 2px solid #000; border-radius: 6px; }
+        nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .nav-item { position: relative; }
+        .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; }
+        
+        /* Borda do botão HOME conforme o print */
+        .btn-home-print { border: 2px solid #000; border-radius: 6px; padding: 8px 20px; background: transparent; }
+
+        /* Dropdown Estilo Amazon */
+        .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
+        .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
+        .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
+        .nav-item:hover .dropdown-content { display: block; }
 
         .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
@@ -26,51 +36,7 @@
         /* BANNER CAMPANHA */
         .hero-banner { width: 100%; height: 75vh; background: url('sollenegroup.png.png') no-repeat center top; background-size: cover; }
 
-        /* VITRINE UNIFICADA DE 6 PRODUTOS */
-        .products-section { padding: 80px 5%; background: #fff; text-align: center; }
-        .page-title { margin-bottom: 60px; letter-spacing: 6px; color: #7a5c33; text-transform: uppercase; font-size: 16px; font-weight: 800; }
-        
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 40px; 
-            max-width: 1400px; 
-            margin: 0 auto; 
-        }
-
-        .card { background: #fff; border-radius: 24px; text-align: center; padding: 0 15px 30px 15px; border: 1px solid #f5f5f5; transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
-        
-        .img-container { 
-            width: 100%; 
-            height: 380px; 
-            overflow: hidden; 
-            background: #fdfaf6; 
-            margin-top: 15px;
-            margin-bottom: 20px; 
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 15px;
-        }
-        .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-        /* SELETORES DE CORES E TAMANHOS */
-        .product-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .option-group { text-align: left; }
-        .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
-        .option-select { background: #fdfaf6; border: 1px solid #e1dbcf; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #1a1a1a; outline: none; cursor: pointer; }
-
-        .btn-add {
-            display: inline-block; background: #7a5c33; color: #fff; border: none; 
-            padding: 15px 40px; border-radius: 50px; font-weight: 800; 
-            text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s;
-            user-select: none; width: 100%;
-        }
-        .btn-add:hover { background: #000; }
-
-        /* ABA LATERAL DE CHECKOUT */
+        /* CENTRAL DE CHECKOUT LATERAL */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -89,10 +55,19 @@
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
     <header class="main-header">
-        <div class="header-left"><div class="logo-circle"></div><div class="brand-info"><h1>SOLLENE GROUP</h1></div></div>
+        <div class="header-left"><div class="logo-circle"></div><h1 class="brand-title">SOLLENE GROUP</h1></div>
         <nav>
             <ul>
-                <li><a href="index.html" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link btn-home-print">HOME</a></li>
+                <li class="nav-item">
+                    <span class="nav-link">COLLECTIONS ▼</span>
+                    <div class="dropdown-content">
+                        <a href="menshirts.html">MEN'S SHIRTS</a>
+                        <a href="watches.html">WATCHES</a>
+                        <a href="bags.html">BAGS COLLECTION</a>
+                        <a href="women.html">WOMEN'S SELECTION</a>
+                    </div>
+                </li>
             </ul>
         </nav>
         <div class="cart-icon" onclick="toggleCart()">
@@ -103,133 +78,23 @@
 
     <section class="hero-banner"></section>
 
-    <main class="products-section">
-        <h2 class="page-title">Sollene Premium Collection</h2>
-        <div class="products-grid">
-            
-            <!-- CARD 1: bone.png.png -->
-            <div class="card" id="p1">
-                <div class="img-container"><img src="bone.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Premium Executive Cap</h3>
-                <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 45.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Black</option><option>Beige</option><option>Navy</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>Unique</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p1', 'Premium Cap', 45)">Add to Bag</button>
-            </div>
-
-            <!-- CARD 2: chinelo.png.png -->
-            <div class="card" id="p2">
-                <div class="img-container"><img src="chinelo.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Luxury Resort Slides</h3>
-                <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 75.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Brown Leather</option><option>Black</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>40</option><option>41</option><option>42</option><option>43</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p2', 'Luxury Slides', 75)">Add to Bag</button>
-            </div>
-
-            <!-- CARD 3: men-outfits-ideas-2025-21.png -->
-            <div class="card" id="p3">
-                <div class="img-container"><img src="men-outfits-ideas-2025-21.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Prestige Summer Outfit</h3>
-                <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 260.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Signature Linen</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>S</option><option>M</option><option>L</option><option>XL</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p3', 'Prestige Outfit', 260)">Add to Bag</button>
-            </div>
-
-            <!-- CARD 4: menshirts.png -->
-            <div class="card" id="p4">
-                <div class="img-container"><img src="menshirts.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Executive Cotton Shirt</h3>
-                <p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 85.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Pure White</option><option>Light Blue</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>M</option><option>L</option><option>XL</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p4', 'Executive Shirt', 85)">Add to Bag</button>
-            </div>
-
-            <!-- CARD 5: menshorts.png.png -->
-            <div class="card" id="p5">
-                <div class="img-container"><img src="menshorts.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Tailored Chino Shorts</h3>
-                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 65.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Beige</option><option>Kaki</option><option>Navy</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>40</option><option>42</option><option>44</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p5', 'Chino Shorts', 65)">Add to Bag</button>
-            </div>
-
-            <!-- CARD 6: gravata.png.png -->
-            <div class="card" id="p6">
-                <div class="img-container"><img src="gravata.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
-                <h3>Silk Jacquard Tie</h3>
-                <p style="font-weight:800; margin:15px 0; font-size: 18px;">€ 50.00</p>
-                <div class="product-options">
-                    <div class="option-group">
-                        <label>Color</label>
-                        <select class="option-select opt-color"><option>Bronze</option><option>Burgundy</option><option>Blue-Gold</option></select>
-                    </div>
-                    <div class="option-group">
-                        <label>Size</label>
-                        <select class="option-select opt-size"><option>Standard Slim</option></select>
-                    </div>
-                </div>
-                <button class="btn-add" onclick="addToCart('p6', 'Jacquard Tie', 50)">Add to Bag</button>
-            </div>
-
-        </div>
-    </main>
-
+    <!-- CENTRAL DE CHECKOUT DA HOME -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33; margin-bottom: 20px;">Review & Pay</h2>
+        
         <div id="cart-list"></div>
+
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
+
         <div class="payment-box">
             <h4 style="font-size:11px; text-transform:uppercase; color:#7a5c33; margin-bottom:15px;">Payment Method</h4>
             <label style="display:block; margin-bottom:12px; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Card" checked style="margin-right:10px; accent-color:#7a5c33;"> Credit / Debit Card</label>
             <label style="display:block; font-size:13px; font-weight:600; cursor:pointer;"><input type="radio" name="pay" value="Cash" style="margin-right:10px; accent-color:#7a5c33;"> Cash on Delivery</label>
         </div>
+
         <button class="btn-finalize" onclick="finalizeOrder()">COMPLETE PURCHASE</button>
     </div>
 
@@ -246,18 +111,7 @@
             updateUI();
         }
 
-        function addToCart(cardId, baseName, price) {
-            const cardElement = document.getElementById(cardId);
-            const selectedColor = cardElement.querySelector('.opt-color').value;
-            const selectedSize = cardElement.querySelector('.opt-size').value;
-            const fullName = `${baseName} (${selectedColor} / Sz: ${selectedSize})`;
-
-            cart.push({name: fullName, price: price});
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
-            updateUI();
-            toggleCart(); 
-        }
-
+        // Renderizador de lote dinâmico unificado
         function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
@@ -294,7 +148,14 @@
             toggleCart();
         }
 
-        window.onload = loadCart;
+        // GATILHO DA URL EXTERNA UNIFICADO (?openCheck=true)
+        window.onload = function() {
+            loadCart();
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('openCheck') === 'true') {
+                toggleCart();
+            }
+        }
     </script>
 </body>
 </html>
