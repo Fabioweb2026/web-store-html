@@ -14,7 +14,7 @@
         nav ul { display: flex; list-style: none; gap: 20px; align-items: center; }
         .nav-item { position: relative; }
         .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; }
-        .btn-home-print { border: 2px solid #000; border-radius: 6px; padding: 8px 20px; background: transparent; text-decoration: none; color: #000; font-weight: 800; }
+        .btn-home-print { border: 2px solid #000; border-radius: 6px; padding: 8px 20px; background: transparent; }
         .dropdown-content { display: none; position: absolute; top: 100%; left: 0; background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); border-radius: 4px; z-index: 1100; }
         .dropdown-content a { color: #333; padding: 12px 16px; text-decoration: none; display: block; font-size: 10px; font-weight: 700; border-bottom: 1px solid #f9f9f9; }
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
@@ -32,7 +32,7 @@
         .option-group { text-align: left; }
         .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
         .option-select { background: #fdfaf6; border: 1px solid #e1dbcf; padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #1a1a1a; outline: none; cursor: pointer; }
-        .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; width: 100%; user-select: none; text-decoration: none; text-align: center; }
+        .btn-add { display: inline-block; background: #7a5c33; color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 800; text-transform: uppercase; font-size: 10px; cursor: pointer; transition: 0.3s; text-decoration: none; user-select: none; width: 100%; text-align: center; }
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -49,8 +49,7 @@
         <div class="header-left"><div class="logo-circle"></div><h1 class="brand-title">SOLLENE GROUP</h1></div>
         <nav>
             <ul>
-                <!-- CORREÇÃO DA PONTE DE LINK DA HOME -->
-                <li class="nav-item"><a href="github.io" class="btn-home-print">HOME</a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link btn-home-print">HOME</a></li>
                 <li class="nav-item">
                     <span class="nav-link">COLLECTIONS ▼</span>
                     <div class="dropdown-content">
@@ -62,7 +61,10 @@
                 </li>
             </ul>
         </nav>
-        <div class="cart-icon" onclick="toggleCart()"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg><div class="cart-badge" id="cart-count">0</div></div>
+        <div class="cart-icon" onclick="toggleCart()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+            <div class="cart-badge" id="cart-count">0</div>
+        </div>
     </header>
 
     <main class="products-section">
@@ -93,16 +95,16 @@
                 <a href="#" class="btn-add" onclick="addToCart(event, 'p4', 'Executive Shirt', 85)">Add to Bag</a>
             </div>
             <div class="card" id="p5">
-                <div class="img-container"><img src="menshorts.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
+                <div class="img-container"><img src="menshorts.png.png" class="card-img" onerror="this.src='logo.png'"></div>
                 <h3>Tailored Chino Shorts</h3><p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 65.00</p>
                 <div class="product-options"><div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Beige</option><option>Navy</option></select></div><div class="option-group"><label>Size</label><select class="option-select opt-size"><option>42</option><option>44</option></select></div></div>
-                <a href="#" class="btn-add" onclick="addToCart(event, 'p5', 'Chino Shorts', 65)">Add to Bag</a>
+                <button class="btn-add" onclick="addToCart(event, 'p5', 'Chino Shorts', 65)">Add to Bag</button>
             </div>
             <div class="card" id="p6">
-                <div class="img-container"><img src="gravata.png.png" class="card-img" onerror="this.src='sollenegroup.png.png'"></div>
+                <div class="img-container"><img src="gravata.png.png" class="card-img" onerror="this.src='logo.png'"></div>
                 <h3>Silk Jacquard Tie</h3><p style="font-weight:800; margin:10px 0; font-size: 18px;">€ 50.00</p>
                 <div class="product-options"><div class="option-group"><label>Color</label><select class="option-select opt-color"><option>Bronze</option><option>Burgundy</option></select></div><div class="option-group"><label>Size</label><select class="option-select opt-size"><option>Slim</option></select></div></div>
-                <a href="#" class="btn-add" onclick="addToCart(event, 'p6', 'Jacquard Tie', 50)">Add to Bag</a>
+                <button class="btn-add" onclick="addToCart(event, 'p6', 'Jacquard Tie', 50)">Add to Bag</button>
             </div>
         </div>
     </main>
@@ -111,9 +113,11 @@
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2>Selected Items</h2>
         <div id="cart-list" style="margin-top:20px;"></div>
-        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;"><span>TOTAL:</span><span id="total-price">€ 0.00</span></div>
-        <p style="margin-top:20px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">Review choices and go to HOME to checkout.</p>
-        <button class="btn-save-continue" onclick="toggleCart()">Save & Continue Shopping</button>
+        <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
+            <span>TOTAL:</span><span id="total-price">€ 0.00</span>
+        </div>
+        <!-- MUDANÇA TOTAL: O botão preto agora manda o cliente direto para o checkout da Home -->
+        <button class="btn-save-continue" onclick="goToCheckout()">Go to Checkout & Pay</button>
     </div>
 
     <script>
@@ -136,6 +140,9 @@
             if (currentCart.length === 0) { list.innerHTML = '<p style="color:#999; font-size:13px; text-align:center;">Bag is empty.</p>'; } 
             else { list.innerHTML = currentCart.map((item, index) => `<div class="cart-item"><div><p style="font-weight:800; max-width:220px; word-wrap:break-word;">${item.name}</p><p style="color:#7a5c33; font-size:12px; margin-top:3px;">€ ${item.price}.00</p></div><button class="remove-btn" onclick="removeItem(${index})">DELETE</button></div>`).join(''); }
             document.getElementById('total-price').innerText = `€ ${currentCart.reduce((sum, i) => sum + i.price, 0)}.00`;
+        }
+        function goToCheckout() {
+            window.location.href = "index.html?openCheck=true";
         }
         window.onload = updateUI;
     </script>
