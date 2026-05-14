@@ -28,8 +28,14 @@
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         .nav-item:hover .dropdown-content { display: block; }
 
-        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; }
-        .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; z-index: 10; }
+        /* REGRAS VISUAIS DE RENDERIZAÇÃO DA BOLINHA BRONZE */
+        .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; background: none; border: none; outline: none; }
+        .cart-badge { 
+            position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; 
+            font-size: 10px; font-weight: 800; width: 20px; height: 20px; 
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; border: 2px solid #f7f3eb; z-index: 10; display: flex !important;
+        }
 
         /* VITRINE EM CARDS ISOLADOS HARMÔNICOS */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
@@ -80,10 +86,10 @@
                 </li>
             </ul>
         </nav>
-        <div class="cart-icon" onclick="toggleCart()">
+        <button class="cart-icon" onclick="toggleCart()">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7a5c33" stroke-width="2"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
             <div class="cart-badge" id="cart-count">0</div>
-        </div>
+        </button>
     </header>
 
     <main class="products-section">
@@ -164,7 +170,6 @@
             const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
-            // CORREÇÃO CIRÚRGICA: Envia o valor plano direto para que a Home leia sem dar erro de tipo
             currentCart.push({name: fullName, price: price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             
@@ -181,8 +186,10 @@
 
         function updateUI() {
             let currentCart = getCart();
-            if (document.getElementById('cart-count')) {
-                document.getElementById('cart-count').innerText = currentCart.length;
+            // AJUSTE CRUCIAL DE SINCRONISMO DIRETO DO ID DA BOLINHA BRONZE
+            const badge = document.getElementById('cart-count');
+            if (badge) {
+                badge.innerText = currentCart.length;
             }
             const list = document.getElementById('cart-list');
             if (!list) return;
