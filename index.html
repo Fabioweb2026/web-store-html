@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sollene Group | Official Luxury Hub</title>
-    <!-- LINK VITAL: Puxa o design e as bolinhas do style.css que você acabou de recriar -->
+    <!-- LINK INTEGRADO PARA O ESTILO CORRIGIDO -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Regra exclusiva do banner para manter a imagem limpa e responsiva na Home */
+        /* Regra do banner principal corrigida para ler a imagem direto da raiz */
         .hero-banner { 
             width: 100%; 
             height: 75vh; 
@@ -18,10 +18,9 @@
 </head>
 <body>
 
-    <!-- Cortina escura de fundo para dar destaque ao menu lateral -->
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 
-    <!-- HEADER PREMIUM PADRONIZADO -->
+    <!-- HEADER PREMIUM RECUPERADO -->
     <header class="main-header">
         <div class="header-left">
             <div class="logo-circle"></div>
@@ -50,23 +49,19 @@
         </button>
     </header>
 
-    <!-- BANNER PRINCIPAL DE ENTRADA -->
     <section class="hero-banner"></section>
 
-    <!-- CENTRAL LATERAL DE CHECKOUT UNIFICADA -->
+    <!-- CENTRAL DE CONFERÊNCIA LATERAL -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Review & Pay</h2>
         
-        <!-- Lista de itens salvos injetados por JavaScript -->
         <div id="cart-list" style="margin-top:20px;"></div>
 
-        <!-- Bloco de Somatório Total -->
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
 
-        <!-- Métodos de Pagamento Oficiais -->
         <div class="payment-box">
             <h4 style="font-size:11px; text-transform:uppercase; color:#7a5c33; margin-bottom:15px;">Payment Method</h4>
             <label style="display:block; margin-bottom:12px; font-size:13px; font-weight:600; cursor:pointer;">
@@ -77,25 +72,14 @@
             </label>
         </div>
 
-        <!-- Botão Principal de Conclusão na Home -->
         <button class="btn-save-continue" onclick="finalizeOrder()">Complete Purchase</button>
     </div>
 
-    <!-- SCRIPT DE GERENCIAMENTO DE ESTADO LOCAL -->
     <script>
         let cart = [];
-
-        function toggleCart() {
-            document.getElementById('sideMenu').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
-        }
-
-        // Carrega os dados gravados na memória unificada local compartilhada
-        function loadCart() {
-            cart = JSON.parse(localStorage.getItem('sollene_cart')) || [];
-            updateUI();
-        }
-
+        function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
+        function loadCart() { cart = JSON.parse(localStorage.getItem('sollene_cart')) || []; updateUI(); }
+        
         function updateUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const list = document.getElementById('cart-list');
@@ -116,30 +100,16 @@
             document.getElementById('total-price').innerText = `€ ${total}.00`;
         }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            localStorage.setItem('sollene_cart', JSON.stringify(cart));
-            updateUI();
-        }
+        function removeItem(index) { cart.splice(index, 1); localStorage.setItem('sollene_cart', JSON.stringify(cart)); updateUI(); }
 
         function finalizeOrder() {
             if(cart.length === 0) return alert("Select products before paying.");
             const method = document.querySelector('input[name="pay"]:checked').value;
-            alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
-            cart = [];
-            localStorage.removeItem('sollene_cart');
-            updateUI();
-            toggleCart();
+            alert("Success! Order placed.\nTotal: " + document.getElementById('total-price').innerText);
+            cart = []; localStorage.removeItem('sollene_cart'); updateUI(); toggleCart();
         }
 
-        // SENSOR INTELIGENTE DA URL (?openCheck=true)
-        window.onload = function() {
-            loadCart();
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('openCheck') === 'true') {
-                toggleCart();
-            }
-        }
+        window.onload = function() { loadCart(); if (window.location.search.includes('openCheck=true')) { toggleCart(); } }
     </script>
 </body>
 </html>
