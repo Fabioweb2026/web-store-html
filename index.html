@@ -27,12 +27,6 @@ header {
     background: #000;
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
 /* HERO */
 .hero {
     height: 70vh;
@@ -42,6 +36,7 @@ header {
     flex-direction: column;
     text-align: center;
     background: linear-gradient(180deg, #111, #000);
+    padding: 20px;
 }
 
 .hero h1 {
@@ -55,7 +50,7 @@ header {
 
 /* COLLECTIONS */
 .collections {
-    padding: 60px 40px;
+    padding: 60px 20px;
     text-align: center;
 }
 
@@ -66,14 +61,14 @@ header {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 20px;
 }
 
 .card {
     background: #1a1a1a;
     padding: 40px;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
@@ -88,6 +83,21 @@ footer {
     text-align: center;
     padding: 30px;
     opacity: 0.5;
+}
+
+/* RESPONSIVO */
+@media (max-width: 600px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .card {
+        padding: 25px;
+    }
 }
 </style>
 
