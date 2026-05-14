@@ -8,7 +8,7 @@
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: sans-serif; background: #f7f3eb; color: #1a1a1a; }
 
-        /* HEADER PREMIUM EXATO DA SUA IMAGEM */
+        /* HEADER PREMIUM PREMIUM */
         .main-header {
             background: #f7f3eb; display: flex; align-items: center; justify-content: space-between;
             padding: 15px 5%; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;
@@ -31,7 +31,7 @@
         .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
 
-        /* VITRINE EM CARDS ISOLADOS COM AS SUAS IMAGENS INSERIDAS */
+        /* VITRINE COM 6 PRODUTOS VARIADOS */
         .products-section { padding: 60px 5%; background: #fff; min-height: 100vh; text-align: center; }
         .page-title { margin-bottom: 50px; letter-spacing: 5px; color: #7a5c33; text-transform: uppercase; font-size: 14px; }
         
@@ -61,7 +61,7 @@
         }
         .card-img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
-        /* SELETORES DE OPÇÕES VARIÁVEIS */
+        /* SELETORES */
         .product-options { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
         .option-group { text-align: left; }
         .option-group label { display: block; font-size: 10px; font-weight: 800; color: #7a5c33; text-transform: uppercase; margin-bottom: 4px; }
@@ -75,7 +75,7 @@
         }
         .btn-add:hover { background: #000; }
 
-        /* ABA LATERAL DE CONSULTA DA SEÇÃO */
+        /* ABA LATERAL REVISADA */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -84,8 +84,9 @@
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee; font-size: 13px; }
         .remove-btn { color: #ff4d4d; border: none; background: none; cursor: pointer; font-size: 10px; font-weight: 800; text-transform: uppercase; }
 
-        /* Estilo do botão preto modificado */
-        .btn-continue-shopping { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 20px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 12px; letter-spacing: 1px; }
+        /* ESTILO DO BOTÃO SALVAR E CONTINUAR DO SEU PRINT */
+        .btn-save-continue { width: 100%; padding: 20px; background: #000; color: #fff; border: none; border-radius: 12px; font-weight: 800; margin-top: 25px; cursor: pointer; text-transform: uppercase; text-align: center; font-size: 11px; letter-spacing: 1px; display: block; text-decoration: none; }
+        .btn-save-continue:hover { background: #7a5c33; }
 
         @media(max-width: 768px) { .products-grid { grid-template-columns: 1fr; } .side-menu { width: 100%; } }
     </style>
@@ -236,13 +237,16 @@
 
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
-        <h2>Review & Pay</h2>
+        <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33;">Review & Pay</h2>
         <div id="cart-list" style="margin-top:20px;"></div>
         <div style="margin-top:30px; padding-top:20px; border-top:2px solid #7a5c33; display:flex; justify-content:space-between; font-weight:800; font-size: 18px;">
             <span>TOTAL:</span><span id="total-price">€ 0.00</span>
         </div>
-        <!-- CORRIGIDO: Botão preto agora apenas fecha o menu lateral para continuar comprando -->
-        <button class="btn-continue-shopping" onclick="toggleCart()">Continue Shopping</button>
+        <p style="margin-top:20px; font-size:12px; background:#f7f3eb; padding:15px; border-radius:8px; font-weight:600; text-align:center;">
+            Review your choices below.
+        </p>
+        <!-- BOTÃO PRETO CORRIGIDO: Salva a sessão localmente e apenas fecha o painel para continuar na vitrine -->
+        <button class="btn-save-continue" onclick="toggleCart()">Save & Continue Shopping</button>
     </div>
 
     <script>
@@ -255,7 +259,7 @@
             const cardElement = document.getElementById(cardId);
             const color = cardElement.querySelector('.opt-color').value;
             const size = cardElement.querySelector('.opt-size').value;
-            const fullName = `${baseName} (${color} / Sz: ${size})`;
+            const fullName = `${baseName} (${color} / SZ: ${size})`;
 
             let currentCart = getCart();
             currentCart.push({name: fullName, price: price});
