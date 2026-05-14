@@ -128,12 +128,12 @@
         function toggleCart() { document.getElementById('sideMenu').classList.toggle('active'); document.getElementById('overlay').classList.toggle('active'); }
 
         function addToCart(event, name, price) {
-            event.preventDefault(); 
+            event.preventDefault(); // Trava a navegação nativa do link #
             let currentCart = getCart();
             currentCart.push({name, price});
             localStorage.setItem('sollene_cart', JSON.stringify(currentCart));
             updateUI();
-            toggleCart(); 
+            toggleCart(); // Abre o resumo lateral na mesma página
         }
 
         function removeItem(index) {
@@ -145,7 +145,14 @@
 
         function updateUI() {
             let currentCart = getCart();
-            document.getElementById('cart-count').innerText = currentCart.length;
+            
+            // TRAVA DE SEGURANÇA CONTRA ERROS DE ID INEXISTENTES
+            try {
+                if(document.getElementById('cart-count')) {
+                    document.getElementById('cart-count').innerText = currentCart.length;
+                }
+            } catch(err) { console.log(err); }
+
             const list = document.getElementById('cart-list');
             if (currentCart.length === 0) {
                 list.innerHTML = '<p style="color:#999; font-size:13px;">Bag is empty.</p>';
@@ -165,4 +172,3 @@
     </script>
 </body>
 </html>
-
