@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sollene Group | Luxury Hub</title>
+    <title>Sollene Group | Luxury Checkout Hub</title>
     <style>
         *{ margin:0; padding:0; box-sizing:border-box; }
         body { font-family: sans-serif; background: #f7f3eb; overflow-x: hidden; }
@@ -26,7 +26,7 @@
         .nav-link { text-decoration: none; color: #000; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 10px 20px; cursor: pointer; display: block; }
         .btn-home { border: 2px solid #000; border-radius: 6px; }
 
-        /* DROPDOWN BLINDADO CSS */
+        /* DROPDOWN */
         .dropdown-content {
             display: none; position: absolute; top: 100%; left: 0;
             background-color: #fff; min-width: 220px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);
@@ -36,14 +36,14 @@
         .dropdown-content a:hover { background-color: #f7f3eb; color: #7a5c33; }
         .nav-item:hover .dropdown-content { display: block; }
 
-        /* CARRINHO COM CORES OFICIAIS */
+        /* CARRINHO */
         .cart-icon { cursor: pointer; position: relative; padding: 5px; display: flex; align-items: center; }
         .cart-badge { position: absolute; top: -10px; right: -8px; background: #7a5c33; color: #fff; font-size: 10px; font-weight: 800; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 2px solid #f7f3eb; }
 
-        /* BANNER CAMPANHA */
+        /* BANNER */
         .hero-banner { width: 100%; height: 90vh; background: url('sollenegroup.png.png') no-repeat center top; background-size: cover; }
 
-        /* MENU LATERAL DE PAGAMENTO */
+        /* MENU LATERAL */
         .side-menu { position: fixed; top: 0; right: -420px; width: 400px; height: 100%; background: #fff; box-shadow: -10px 0 50px rgba(0,0,0,0.1); z-index: 2000; transition: 0.5s; padding: 40px; overflow-y: auto; }
         .side-menu.active { right: 0; }
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none; z-index: 1900; }
@@ -68,7 +68,6 @@
                 <li class="nav-item">
                     <span class="nav-link">COLLECTIONS ▼</span>
                     <div class="dropdown-content">
-                        <!-- Rotas corrigidas para bater com os arquivos reais do seu repositório -->
                         <a href="menshirts.html">MEN'S SHIRTS</a>
                         <a href="watches.html">WATCHES</a>
                         <a href="bags.html">BAGS COLLECTION</a>
@@ -85,7 +84,6 @@
 
     <section class="hero-banner"></section>
 
-    <!-- CENTRAL DE CONFERÊNCIA E PAGAMENTO -->
     <div class="side-menu" id="sideMenu">
         <div onclick="toggleCart()" style="cursor:pointer; font-weight:800; color:#7a5c33; margin-bottom:30px; text-align: right;">✕ CLOSE</div>
         <h2 style="letter-spacing:1px; font-size:18px; text-transform:uppercase; color:#7a5c33; margin-bottom: 20px;">Review & Pay</h2>
@@ -146,19 +144,17 @@
 
         function finalizeOrder() {
             if(cart.length === 0) return alert("Select products before paying.");
-            const method = document.querySelector('input[name="pay"]:checked').value;
-            alert("Success! Order placed via " + method + ".\nTotal: " + document.getElementById('total-price').innerText);
             cart = [];
             localStorage.removeItem('sollene_cart');
             updateUI();
             toggleCart();
+            alert("Success! Order placed.");
         }
 
-        // Carregamento dinâmico sem interferência ou loops
+        // Abre a aba lateral automaticamente apenas se ler a instrução correta da URL externa
         window.onload = function() {
             loadCart();
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('openCart') === 'true') {
+            if (window.location.search.includes('openCheck=true')) {
                 toggleCart();
             }
         }
